@@ -470,6 +470,7 @@ void list_it_erase(register const ListIt * restrict it)
 	{
 		it->list->tail = it->node->prev;
 	}
+	--it->list->count;
 
 	free(it->node);
 }
