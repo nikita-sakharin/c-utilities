@@ -1,6 +1,8 @@
 #ifndef _BIN_TREE_H_
 #define _BIN_TREE_H_
 
+#include <stdbool.h>
+
 #define BIN_TREE_SUCCESS       0
 #define BIN_TREE_NO_MEMORY     (1 << 0)
 #define BIN_TREE_ALREADY_EXIST (1 << 1)
