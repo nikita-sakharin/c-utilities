@@ -262,7 +262,7 @@ int bin_tree_find(const BinTree * restrict tree, const void *value, void *buffer
 	return BIN_TREE_NOT_EXIST;
 }
 
-void *bin_tree_data(const BinTree * restrict tree, const void * restrict value)
+const void *bin_tree_data(const BinTree * restrict tree, const void * restrict value)
 {
 #	ifdef _BIN_TREE_H_SAVE_
 	if (tree == NULL || value == NULL)
@@ -291,7 +291,7 @@ void *bin_tree_data(const BinTree * restrict tree, const void * restrict value)
 	return NULL;
 }
 
-int bin_tree_delete(BinTree * restrict tree, const void * restrict value)
+int bin_tree_erase(BinTree * restrict tree, const void * restrict value)
 {
 #	ifdef _BIN_TREE_H_SAVE_
 	if (tree == NULL || value == NULL)
