@@ -214,17 +214,17 @@ int bin_tree_insert(BinTree * restrict tree, const void * restrict value)
 		}
 	}
 
-	BinTreeNode *temp = aligned_alloc(alignof(BinTreeNode), sizeof(BinTreeNode) + tree->size);
-	if (temp == NULL)
+	node_ptr = aligned_alloc(alignof(BinTreeNode), sizeof(BinTreeNode) + tree->size);
+	if (node_ptr == NULL)
 	{
 		return BIN_TREE_NO_MEMORY;
 	}
 
-	temp->parent = parent_ptr;
-	temp->left = temp->right = NULL;
-	memcpy(temp->data, value, tree->size);
+	node_ptr->parent = parent_ptr;
+	node_ptr->left = node_ptr->right = NULL;
+	memcpy(node_ptr->data, value, tree->size);
 
-	*link_ptr = temp;
+	*link_ptr = node_ptr;
 
 	++tree->count;
 
