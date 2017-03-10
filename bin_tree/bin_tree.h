@@ -26,7 +26,7 @@ int bin_tree_insert(BinTree *, const void *);
 
 int bin_tree_find(const BinTree *, const void *, void *);
 
-const void *bin_tree_data(const BinTree *, const void *);
+const void *bin_tree_at(const BinTree *, const void *);
 
 int bin_tree_erase(BinTree *, const void *);
 
