@@ -36,7 +36,7 @@ int bin_tree_create(BinTree ** restrict tree_ptr, size_t size, void (*destructor
 	}
 #	endif
 
-	BinTree *temp = aligned_alloc(alignof(BinTree), sizeof(BinTree));
+	register BinTree *temp = aligned_alloc(alignof(BinTree), sizeof(BinTree));
 	if (temp == NULL)
 	{
 		return BIN_TREE_NO_MEMORY;
@@ -62,7 +62,7 @@ void bin_tree_destroy(BinTree * restrict tree)
 	}
 #	endif
 
-	for (BinTreeNode *node_ptr = tree->root; node_ptr != NULL;)
+	for (register BinTreeNode *node_ptr = tree->root; node_ptr != NULL;)
 	{
 		while (node_ptr->left != NULL || node_ptr->right != NULL)
 		{
@@ -88,7 +88,7 @@ void bin_tree_destroy(BinTree * restrict tree)
 			}
 		}
 
-		BinTreeNode *temp = node_ptr;
+		register BinTreeNode *temp = node_ptr;
 		node_ptr = node_ptr->parent;
 		if (tree->destructor != NULL)
 		{
@@ -109,7 +109,7 @@ void bin_tree_clear(BinTree * restrict tree)
 	}
 #	endif
 
-	for (BinTreeNode *node_ptr = tree->root; node_ptr != NULL;)
+	for (register BinTreeNode *node_ptr = tree->root; node_ptr != NULL;)
 	{
 		while (node_ptr->left != NULL && node_ptr->right != NULL)
 		{
@@ -135,7 +135,7 @@ void bin_tree_clear(BinTree * restrict tree)
 			}
 		}
 
-		BinTreeNode *temp = node_ptr;
+		register BinTreeNode *temp = node_ptr;
 		node_ptr = node_ptr->parent;
 		if (tree->destructor != NULL)
 		{
@@ -193,10 +193,10 @@ int bin_tree_insert(BinTree * restrict tree, const void * restrict value)
 	}
 #	endif
 
-	BinTreeNode *node_ptr = tree->root, **link_ptr = &tree->root, *parent_ptr = NULL;
+	register BinTreeNode *node_ptr = tree->root, **link_ptr = &tree->root, *parent_ptr = NULL;
 	while (node_ptr != NULL)
 	{
-		int cmp_result = tree->cmp(value, node_ptr->data);
+		register int cmp_result = tree->cmp(value, node_ptr->data);
 		parent_ptr = node_ptr;
 		if (cmp_result < 0)
 		{
@@ -240,9 +240,9 @@ int bin_tree_find(const BinTree * restrict tree, const void *value, void *buffer
 	}
 #	endif
 
-	for (BinTreeNode *node_ptr = tree->root; node_ptr != NULL;)
+	for (register BinTreeNode *node_ptr = tree->root; node_ptr != NULL;)
 	{
-		int cmp_result = tree->cmp(value, node_ptr->data);
+		register int cmp_result = tree->cmp(value, node_ptr->data);
 		if (cmp_result < 0)
 		{
 			node_ptr = node_ptr->left;
@@ -271,9 +271,9 @@ const void *bin_tree_at(const BinTree * restrict tree, const void * restrict val
 	}
 #	endif
 
-	for (BinTreeNode *node_ptr = tree->root; node_ptr != NULL;)
+	for (register BinTreeNode *node_ptr = tree->root; node_ptr != NULL;)
 	{
-		int cmp_result = tree->cmp(value, node_ptr->data);
+		register int cmp_result = tree->cmp(value, node_ptr->data);
 		if (cmp_result < 0)
 		{
 			node_ptr = node_ptr->left;
@@ -303,7 +303,7 @@ int bin_tree_erase(BinTree * restrict tree, const void * restrict value)
 	register BinTreeNode *node_ptr = tree->root, *parent_ptr = NULL, **link_ptr = &tree->root;
 	while (node_ptr != NULL)
 	{
-		int cmp_result = tree->cmp(value, node_ptr->data);
+		register int cmp_result = tree->cmp(value, node_ptr->data);
 		if (cmp_result < 0)
 		{
 			parent_ptr = node_ptr;
