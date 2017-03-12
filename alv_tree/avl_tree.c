@@ -637,7 +637,7 @@ inline static AvlTreeNode *rotate_left_right(register AvlTreeNode * restrict nod
 
 inline static AvlTreeNode *rebalance(register AvlTreeNode * restrict node_ptr, register const AvlTreeNode ** restrict link_ptr)
 {
-	AvlTreeNode *result;
+	register AvlTreeNode *result;
 	if (node_ptr->balance < -1)
 	{
 		if (node_ptr->left->balance > 0)
