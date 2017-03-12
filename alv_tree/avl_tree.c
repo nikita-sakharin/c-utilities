@@ -44,7 +44,7 @@ int avl_tree_create(AvlTree ** restrict tree_ptr, size_t size, void (*destructor
 	}
 #	endif
 
-	AvlTree *temp = aligned_alloc(alignof(AvlTree), sizeof(AvlTree));
+	register AvlTree *temp = aligned_alloc(alignof(AvlTree), sizeof(AvlTree));
 	if (temp == NULL)
 	{
 		return AVL_TREE_NO_MEMORY;
@@ -70,7 +70,7 @@ void avl_tree_destroy(AvlTree * restrict tree)
 	}
 #	endif
 
-	for (AvlTreeNode *node_ptr = tree->root; node_ptr != NULL;)
+	for (register AvlTreeNode *node_ptr = tree->root; node_ptr != NULL;)
 	{
 		while (node_ptr->left != NULL || node_ptr->right != NULL)
 		{
@@ -96,7 +96,7 @@ void avl_tree_destroy(AvlTree * restrict tree)
 			}
 		}
 
-		AvlTreeNode *temp = node_ptr;
+		register AvlTreeNode *temp = node_ptr;
 		node_ptr = node_ptr->parent;
 		if (tree->destructor != NULL)
 		{
@@ -117,7 +117,7 @@ void avl_tree_clear(AvlTree * restrict tree)
 	}
 #	endif
 
-	for (AvlTreeNode *node_ptr = tree->root; node_ptr != NULL;)
+	for (register AvlTreeNode *node_ptr = tree->root; node_ptr != NULL;)
 	{
 		while (node_ptr->left != NULL && node_ptr->right != NULL)
 		{
@@ -143,7 +143,7 @@ void avl_tree_clear(AvlTree * restrict tree)
 			}
 		}
 
-		AvlTreeNode *temp = node_ptr;
+		register AvlTreeNode *temp = node_ptr;
 		node_ptr = node_ptr->parent;
 		if (tree->destructor != NULL)
 		{
@@ -156,7 +156,7 @@ void avl_tree_clear(AvlTree * restrict tree)
 	tree->size = 0u;
 }
 
-size_t avl_tree_sizeof(const AvlTree * restrict tree)
+size_t avl_tree_sizeof(register const AvlTree * restrict tree)
 {
 #	ifdef _AVL_TREE_H_SAVE_
 	if (tree == NULL)
@@ -168,7 +168,7 @@ size_t avl_tree_sizeof(const AvlTree * restrict tree)
 	return tree->size;
 }
 
-bool avl_tree_empty(const AvlTree * restrict tree)
+bool avl_tree_empty(register const AvlTree * restrict tree)
 {
 #	ifdef _AVL_TREE_H_SAVE_
 	if (tree == NULL)
@@ -180,7 +180,7 @@ bool avl_tree_empty(const AvlTree * restrict tree)
 	return !tree->count;
 }
 
-size_t avl_tree_size(const AvlTree * restrict tree)
+size_t avl_tree_size(register const AvlTree * restrict tree)
 {
 #	ifdef _AVL_TREE_H_SAVE_
 	if (tree == NULL)
@@ -201,10 +201,10 @@ int avl_tree_insert(AvlTree * restrict tree, const void * restrict value)
 	}
 #	endif
 
-	AvlTreeNode *node_ptr = tree->root, **link_ptr = &tree->root, *parent_ptr = NULL;
+	register AvlTreeNode *node_ptr = tree->root, **link_ptr = &tree->root, *parent_ptr = NULL;
 	while (node_ptr != NULL)
 	{
-		int cmp_result = tree->cmp(value, node_ptr->data);
+		register int cmp_result = tree->cmp(value, node_ptr->data);
 		parent_ptr = node_ptr;
 		if (cmp_result < 0)
 		{
@@ -284,9 +284,9 @@ int avl_tree_find(const AvlTree * restrict tree, const void *value, void *buffer
 	}
 #	endif
 
-	for (register AvlTreeNode *node_ptr = tree->root; node_ptr != NULL;)
+	for (register const AvlTreeNode *node_ptr = tree->root; node_ptr != NULL;)
 	{
-		int cmp_result = tree->cmp(value, node_ptr->data);
+		register int cmp_result = tree->cmp(value, node_ptr->data);
 		if (cmp_result < 0)
 		{
 			node_ptr = node_ptr->left;
@@ -317,7 +317,7 @@ const void *avl_tree_at(const AvlTree * restrict tree, const void * restrict val
 
 	for (register const AvlTreeNode *node_ptr = tree->root; node_ptr != NULL;)
 	{
-		int cmp_result = tree->cmp(value, node_ptr->data);
+		register int cmp_result = tree->cmp(value, node_ptr->data);
 		if (cmp_result < 0)
 		{
 			node_ptr = node_ptr->left;
