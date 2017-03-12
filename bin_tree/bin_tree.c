@@ -253,7 +253,7 @@ int bin_tree_find(const BinTree * restrict tree, const void *value, void *buffer
 		}
 		else
 		{
-			memmove(buffer, node_ptr->data, tree->size);
+			memcpy(buffer, node_ptr->data, tree->size);
 
 			return BIN_TREE_SUCCESS;
 		}
