@@ -240,7 +240,7 @@ int bin_tree_find(const BinTree * restrict tree, const void *value, void *buffer
 	}
 #	endif
 
-	for (register BinTreeNode *node_ptr = tree->root; node_ptr != NULL;)
+	for (register const BinTreeNode *node_ptr = tree->root; node_ptr != NULL;)
 	{
 		register int cmp_result = tree->cmp(value, node_ptr->data);
 		if (cmp_result < 0)
@@ -271,7 +271,7 @@ const void *bin_tree_at(const BinTree * restrict tree, const void * restrict val
 	}
 #	endif
 
-	for (register BinTreeNode *node_ptr = tree->root; node_ptr != NULL;)
+	for (register const BinTreeNode *node_ptr = tree->root; node_ptr != NULL;)
 	{
 		register int cmp_result = tree->cmp(value, node_ptr->data);
 		if (cmp_result < 0)
