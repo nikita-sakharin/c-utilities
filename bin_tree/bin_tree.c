@@ -318,55 +318,60 @@ int bin_tree_erase(BinTree * restrict tree, const void * restrict value)
 		}
 		else
 		{
-			if (tree->destructor != NULL)
-			{
-				tree->destructor(node_ptr->data);
-			}
-			if (node_ptr->left != NULL && node_ptr->right != NULL)
-			{
-				void *data = node_ptr->data;
-
-				parent_ptr = node_ptr;
-				link_ptr = &node_ptr->right;
-				node_ptr = node_ptr->right;
-				while (node_ptr->left != NULL)
-				{
-					parent_ptr = node_ptr;
-					link_ptr = &node_ptr->left;
-					node_ptr = node_ptr->left;
-				}
-
-				*link_ptr = node_ptr->right;
-				if (node_ptr->right)
-				{
-					node_ptr->right->parent = parent_ptr;
-				}
-				memcpy(data, node_ptr->data, tree->size);
-			}
-			else
-			{
-				if (node_ptr->left != NULL)
-				{
-					*link_ptr = node_ptr->left;
-					node_ptr->left->parent = parent_ptr;
-				}
-				else if (node_ptr->right != NULL)
-				{
-					*link_ptr = node_ptr->right;
-					node_ptr->right->parent = parent_ptr;
-				}
-				else
-				{
-					*link_ptr = NULL;
-				}
-			}
-			free(node_ptr);
-
-			--tree->count;
-
-			return BIN_TREE_SUCCESS;
+			break;
 		}
 	}
 
-	return BIN_TREE_NOT_EXIST;
+	if (node_ptr == NULL)
+	{
+		return BIN_TREE_NOT_EXIST;
+	}
+
+	if (tree->destructor != NULL)
+	{
+		tree->destructor(node_ptr->data);
+	}
+	if (node_ptr->left != NULL && node_ptr->right != NULL)
+	{
+		void *data = node_ptr->data;
+
+		parent_ptr = node_ptr;
+		link_ptr = &node_ptr->right;
+		node_ptr = node_ptr->right;
+		while (node_ptr->left != NULL)
+		{
+			parent_ptr = node_ptr;
+			link_ptr = &node_ptr->left;
+			node_ptr = node_ptr->left;
+		}
+
+		*link_ptr = node_ptr->right;
+		if (node_ptr->right != NULL)
+		{
+			node_ptr->right->parent = parent_ptr;
+		}
+		memcpy(data, node_ptr->data, tree->size);
+	}
+	else
+	{
+		if (node_ptr->left != NULL)
+		{
+			*link_ptr = node_ptr->left;
+			node_ptr->left->parent = parent_ptr;
+		}
+		else if (node_ptr->right != NULL)
+		{
+			*link_ptr = node_ptr->right;
+			node_ptr->right->parent = parent_ptr;
+		}
+		else
+		{
+			*link_ptr = NULL;
+		}
+	}
+	free(node_ptr);
+
+	--tree->count;
+
+	return BIN_TREE_SUCCESS;
 }
