@@ -148,7 +148,7 @@ void bin_tree_clear(BinTree * restrict tree)
 	tree->size = 0u;
 }
 
-size_t bin_tree_sizeof(const BinTree * restrict tree)
+size_t bin_tree_sizeof(register const BinTree * restrict tree)
 {
 #	ifdef _BIN_TREE_H_SAVE_
 	if (tree == NULL)
@@ -160,7 +160,7 @@ size_t bin_tree_sizeof(const BinTree * restrict tree)
 	return tree->size;
 }
 
-bool bin_tree_empty(const BinTree * restrict tree)
+bool bin_tree_empty(register const BinTree * restrict tree)
 {
 #	ifdef _BIN_TREE_H_SAVE_
 	if (tree == NULL)
@@ -172,7 +172,7 @@ bool bin_tree_empty(const BinTree * restrict tree)
 	return !tree->count;
 }
 
-size_t bin_tree_size(const BinTree * restrict tree)
+size_t bin_tree_size(register const BinTree * restrict tree)
 {
 #	ifdef _BIN_TREE_H_SAVE_
 	if (tree == NULL)
