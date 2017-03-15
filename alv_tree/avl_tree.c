@@ -26,11 +26,6 @@ struct avl_tree
 	size_t count;
 };
 
-static AvlTreeNode *rotate_left(AvlTreeNode *, AvlTreeNode **);
-static AvlTreeNode *rotate_right(AvlTreeNode *, AvlTreeNode **);
-static AvlTreeNode *rotate_right_left(AvlTreeNode *, AvlTreeNode **);
-static AvlTreeNode *rotate_left_right(AvlTreeNode *, AvlTreeNode **);
-
 static AvlTreeNode *rebalance(AvlTreeNode *, AvlTreeNode **);
 
 #define _AVL_TREE_H_SAVE_
@@ -234,7 +229,6 @@ int avl_tree_insert(AvlTree * restrict tree, const void * restrict value)
 	memcpy(node_ptr->data, value, tree->size);
 
 	*link_ptr = node_ptr;
-
 	++tree->count;
 
 	for (; parent_ptr != NULL; node_ptr = parent_ptr, parent_ptr = node_ptr->parent)
@@ -434,7 +428,6 @@ int avl_tree_erase(AvlTree * restrict tree, const void * restrict value)
 		}
 	}
 	free(node_ptr);
-
 	--tree->count;
 
 	if (parent_ptr->left == NULL && parent_ptr->right == NULL)
@@ -483,6 +476,40 @@ int avl_tree_erase(AvlTree * restrict tree, const void * restrict value)
 	}
 
 	return AVL_TREE_SUCCESS;
+}
+
+static AvlTreeNode *rotate_left(AvlTreeNode *, AvlTreeNode **);
+static AvlTreeNode *rotate_right(AvlTreeNode *, AvlTreeNode **);
+static AvlTreeNode *rotate_right_left(AvlTreeNode *, AvlTreeNode **);
+static AvlTreeNode *rotate_left_right(AvlTreeNode *, AvlTreeNode **);
+
+inline static AvlTreeNode *rebalance(register AvlTreeNode * restrict node_ptr, register AvlTreeNode ** restrict link_ptr)
+{
+	register AvlTreeNode *result;
+	if (node_ptr->balance < -1)
+	{
+		if (node_ptr->left->balance > 0)
+		{
+			result = rotate_left_right(node_ptr, link_ptr);
+		}
+		else
+		{
+			result = rotate_right(node_ptr, link_ptr);
+		}
+	}
+	else
+	{
+		if (node_ptr->right->balance < 0)
+		{
+			result = rotate_right_left(node_ptr, link_ptr);
+		}
+		else
+		{
+			result = rotate_left(node_ptr, link_ptr);
+		}
+	}
+
+	return result;
 }
 
 inline static AvlTreeNode *rotate_left(register AvlTreeNode * restrict node_ptr, register AvlTreeNode ** restrict link_ptr)
@@ -633,33 +660,4 @@ inline static AvlTreeNode *rotate_left_right(register AvlTreeNode * restrict nod
 	local_temp->balance = 0;
 
 	return local_temp;
-}
-
-inline static AvlTreeNode *rebalance(register AvlTreeNode * restrict node_ptr, register AvlTreeNode ** restrict link_ptr)
-{
-	register AvlTreeNode *result;
-	if (node_ptr->balance < -1)
-	{
-		if (node_ptr->left->balance > 0)
-		{
-			result = rotate_left_right(node_ptr, link_ptr);
-		}
-		else
-		{
-			result = rotate_right(node_ptr, link_ptr);
-		}
-	}
-	else
-	{
-		if (node_ptr->right->balance < 0)
-		{
-			result = rotate_right_left(node_ptr, link_ptr);
-		}
-		else
-		{
-			result = rotate_left(node_ptr, link_ptr);
-		}
-	}
-
-	return result;
 }
