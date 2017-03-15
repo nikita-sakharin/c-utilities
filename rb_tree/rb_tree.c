@@ -29,14 +29,6 @@ struct rb_tree
 	size_t count;
 };
 
-static RBTreeNode *sibling(const RBTreeNode *);
-static RBTreeNode *sib(const RBTreeNode *, const RBTreeNode *);
-static RBTreeNode *grandparent(const RBTreeNode *);
-static RBTreeNode **link(const RBTreeNode *, RBTreeNode **);
-
-static void rotate_left(RBTreeNode *, RBTreeNode **);
-static void rotate_right(RBTreeNode *, RBTreeNode **);
-
 static void rebalance_insert(RBTreeNode *, RBTreeNode **);
 static void rebalance_delete(RBTreeNode *, RBTreeNode *, RBTreeNode **);
 
@@ -400,7 +392,122 @@ int rb_tree_erase(RBTree * restrict tree, const void * restrict value)
 	return RB_TREE_SUCCESS;
 }
 
-inline static RBTreeNode *sib(register const RBTreeNode * restrict node_ptr, register const RBTreeNode * restrict parent_ptr)
+static RBTreeNode *sibling(const RBTreeNode *, const RBTreeNode *);
+static RBTreeNode *grandparent(const RBTreeNode *);
+static RBTreeNode **link(const RBTreeNode *, RBTreeNode **);
+
+static void rotate_left(RBTreeNode *, RBTreeNode **);
+static void rotate_right(RBTreeNode *, RBTreeNode **);
+
+inline static void rebalance_insert(register RBTreeNode * restrict node_ptr, register RBTreeNode ** restrict root)
+{
+	while (node_ptr->parent != NULL && node_ptr->parent->color == RED)
+	{
+		register RBTreeNode *parent_ptr = node_ptr->parent;
+		register RBTreeNode *uncle = sibling(parent_ptr, parent_ptr->parent), *grand = grandparent(node_ptr);
+		if (uncle != NULL && uncle->color == RED)
+		{
+			parent_ptr->color = uncle->color = BLACK;
+			grand->color = RED;
+			node_ptr = grand;
+		}
+		else
+		{
+			if (node_ptr == parent_ptr->right && parent_ptr == grand->left)
+			{
+				rotate_left(parent_ptr, &grand->left);
+				node_ptr = parent_ptr;
+				parent_ptr = node_ptr->parent;
+			}
+			else if (node_ptr == parent_ptr->left && parent_ptr == grand->right)
+			{
+				rotate_right(parent_ptr, &grand->right);
+				node_ptr = parent_ptr;
+				parent_ptr = node_ptr->parent;
+			}
+
+			parent_ptr->color = BLACK;
+			grand->color = RED;
+			register RBTreeNode **link_ptr = link(grand, root);
+			if (node_ptr == parent_ptr->right && parent_ptr == grand->right)
+			{
+				rotate_left(grand, link_ptr);
+			}
+			else
+			{
+				rotate_right(grand, link_ptr);
+			}
+		}
+	}
+	(*root)->color = BLACK;
+}
+
+inline static void rebalance_delete(register RBTreeNode * restrict node_ptr, register RBTreeNode * restrict parent_ptr, register RBTreeNode ** restrict root)
+{
+	while (parent_ptr != NULL && (node_ptr == NULL || node_ptr->color == BLACK))
+	{
+		register RBTreeNode *sib = sibling(node_ptr, parent_ptr);
+		if (sib->color == RED)
+		{
+			sib->color = BLACK;
+			parent_ptr->color = RED;
+			register RBTreeNode **link_ptr = link(parent_ptr, root);
+			if (node_ptr == parent_ptr->left)
+			{
+				rotate_left(parent_ptr, link_ptr);
+			}
+			else
+			{
+				rotate_right(parent_ptr, link_ptr);
+			}
+		}
+		else
+		{
+			if ((sib->left == NULL || sib->left->color == BLACK) && (sib->right == NULL || sib->right->color == BLACK))
+			{
+				sib->color = RED;
+				node_ptr = parent_ptr;
+				parent_ptr = node_ptr->parent;
+			}
+			else if (sib == parent_ptr->left && (sib->left == NULL || sib->left->color == BLACK))
+			{
+				sib->color = RED;
+				sib->right->color = BLACK;
+				rotate_left(sib, link(sib, root));
+			}
+			else if (sib == parent_ptr->right && (sib->right == NULL || sib->right->color == BLACK))
+			{
+				sib->color = RED;
+				sib->left->color = BLACK;
+				rotate_right(sib, link(sib, root));
+			}
+			else
+			{
+				sib->color = parent_ptr->color;
+				parent_ptr->color = BLACK;
+				register RBTreeNode **link_ptr = link(parent_ptr, root);
+				if (sib == parent_ptr->right)
+				{
+					sib->right->color = BLACK;
+					rotate_left(parent_ptr, link_ptr);
+				}
+				else
+				{
+					sib->left->color = BLACK;
+					rotate_right(parent_ptr, link_ptr);
+				}
+				break;
+			}
+		}
+	}
+
+	if (node_ptr != NULL)
+	{
+		node_ptr->color = BLACK;
+	}
+}
+
+inline static RBTreeNode *sibling(register const RBTreeNode * restrict node_ptr, register const RBTreeNode * restrict parent_ptr)
 {
 	if (node_ptr == parent_ptr->left)
 	{
@@ -409,18 +516,6 @@ inline static RBTreeNode *sib(register const RBTreeNode * restrict node_ptr, reg
 	else
 	{
 		return parent_ptr->left;
-	}
-}
-
-inline static RBTreeNode *sibling(register const RBTreeNode * restrict node_ptr)
-{
-	if (node_ptr == node_ptr->parent->left)
-	{
-		return node_ptr->parent->right;
-	}
-	else
-	{
-		return node_ptr->parent->left;
 	}
 }
 
@@ -478,169 +573,4 @@ inline static void rotate_right(register RBTreeNode * restrict node_ptr, registe
 
 	node_ptr->parent = temp;
 	temp->right = node_ptr;
-}
-
-inline static void rebalance_insert(register RBTreeNode * restrict node_ptr, register RBTreeNode ** restrict root)
-{
-	while (node_ptr->parent != NULL && node_ptr->parent->color == RED)
-	{
-		register RBTreeNode *parent_ptr = node_ptr->parent, *uncle = sibling(node_ptr->parent), *grand = grandparent(node_ptr);
-		if (uncle != NULL && uncle->color == RED)
-		{
-			parent_ptr->color = uncle->color = BLACK;
-			grand->color = RED;
-			node_ptr = grand;
-		}
-		else
-		{
-			if (node_ptr == parent_ptr->right && parent_ptr == grand->left)
-			{
-				rotate_left(parent_ptr, &grand->left);
-				node_ptr = parent_ptr;
-				parent_ptr = node_ptr->parent;
-			}
-			else if (node_ptr == parent_ptr->left && parent_ptr == grand->right)
-			{
-				rotate_right(parent_ptr, &grand->right);
-				node_ptr = parent_ptr;
-				parent_ptr = node_ptr->parent;
-			}
-
-			parent_ptr->color = BLACK;
-			grand->color = RED;
-			register RBTreeNode **link_ptr = link(grand, root);
-			if (node_ptr == parent_ptr->right && parent_ptr == grand->right)
-			{
-				rotate_left(grand, link_ptr);
-			}
-			else
-			{
-				rotate_right(grand, link_ptr);
-			}
-		}
-	}
-	(*root)->color = BLACK;
-}
-
-inline static void rebalance_delete(register RBTreeNode * restrict node_ptr, register RBTreeNode * restrict parent_ptr, register RBTreeNode ** restrict root)
-{
-	if (node_ptr != NULL && node_ptr->color == RED)
-	{
-		node_ptr->color = BLACK;
-		return;
-	}
-
-	while (node_ptr != *root && (node_ptr == NULL || node_ptr->color == BLACK))
-	{
-		register RBTreeNode *s = sib(node_ptr, parent_ptr);
-		if (s->color == RED)
-		{
-			parent_ptr->color = RED;
-			s->color = BLACK;
-			register RBTreeNode **link_ptr = link(parent_ptr, root);
-			if (node_ptr == parent_ptr->left)
-			{
-				rotate_left(parent_ptr, link_ptr);
-			}
-			else
-			{
-				rotate_right(parent_ptr, link_ptr);
-			}
-		}
-		s = sib(node_ptr, parent_ptr);
-		if (parent_ptr->color == BLACK && s->color == BLACK && (s->left == NULL || s->left->color == BLACK) && (s->right == NULL || s->right->color == BLACK))
-		{
-			s->color = RED;
-			node_ptr = parent_ptr;
-			parent_ptr = node_ptr->parent;
-			continue;
-		}
-		else if (parent_ptr->color == RED && s->color == BLACK && (s->left == NULL || s->left->color == BLACK) && (s->right == NULL || s->right->color == BLACK))
-		{
-			s->color = RED;
-			parent_ptr->color = BLACK;
-		}
-		else
-		{
-			if (s->color == BLACK)
-			{
-				register RBTreeNode **link_ptr = link(s, root);
-				if (node_ptr == parent_ptr->right && (s->left == NULL || s->left->color == BLACK) && (s->right != NULL && s->right->color == RED))
-				{
-					s->color = RED;
-					s->right->color = BLACK;
-					rotate_left(s, link_ptr);
-				}
-				else if (node_ptr == parent_ptr->left && (s->left != NULL && s->left->color == RED) && (s->right == NULL || s->right->color == BLACK))
-				{
-					s->color = RED;
-					s->left->color = BLACK;
-					rotate_right(s, link_ptr);
-				}
-			}
-
-			s = sib(node_ptr, parent_ptr);
-			s->color = parent_ptr->color;
-			parent_ptr->color = BLACK;
-			register RBTreeNode **link_ptr = link(parent_ptr, root);
-			if (node_ptr == parent_ptr->left)
-			{
-				s->right->color = BLACK;
-				rotate_left(parent_ptr, link_ptr);
-			}
-			else
-			{
-				s->left->color = BLACK;
-				rotate_right(parent_ptr, link_ptr);
-			}
-		}
-		break;
-	}
-}
-#include <stdio.h>
-
-size_t rb_tree_node_check(const RBTreeNode *);
-
-size_t rb_tree_check(register const RBTree * restrict tree)
-{
-	if (tree->root != NULL && tree->root->color == RED)
-	{
-		printf("tree->root != NULL && tree->root->color == RED\n");
-		exit(EXIT_FAILURE);
-	}
-	return rb_tree_node_check(tree->root);
-}
-
-size_t rb_tree_node_check(register const RBTreeNode * restrict node_ptr)
-{
-	if (node_ptr == NULL)
-	{
-		return 0u;
-	}
-
-	int *int_ptr = (int *) node_ptr->data;
-	size_t delta = 0u;
-	if (node_ptr->color == RED)
-	{
-		if ((node_ptr->left != NULL && node_ptr->left->color != BLACK) || (node_ptr->right != NULL && node_ptr->right->color != BLACK))
-		{
-			printf("node_ptr->left->color != BLACK || node_ptr->right->color != BLACK\n");
-			printf("*(int *) node_ptr->data = %d\n", *int_ptr);
-			exit(EXIT_FAILURE);
-		}
-	}
-	else
-	{
-		delta = 1u;
-	}
-
-	size_t left = rb_tree_node_check(node_ptr->left), right = rb_tree_node_check(node_ptr->right);
-	if (left != right)
-	{
-		printf("left != right\n");
-		printf("*(int *) node_ptr->data = %d\n", *int_ptr);
-		exit(EXIT_FAILURE);
-	}
-
-	return left + delta;
 }
