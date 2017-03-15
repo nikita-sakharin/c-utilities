@@ -225,7 +225,6 @@ int bin_tree_insert(BinTree * restrict tree, const void * restrict value)
 	memcpy(node_ptr->data, value, tree->size);
 
 	*link_ptr = node_ptr;
-
 	++tree->count;
 
 	return BIN_TREE_SUCCESS;
@@ -370,7 +369,6 @@ int bin_tree_erase(BinTree * restrict tree, const void * restrict value)
 		}
 	}
 	free(node_ptr);
-
 	--tree->count;
 
 	return BIN_TREE_SUCCESS;
