@@ -233,7 +233,6 @@ int rb_tree_insert(RBTree * restrict tree, const void * restrict value)
 	memcpy(node_ptr->data, value, tree->size);
 
 	*link_ptr = node_ptr;
-
 	++tree->count;
 
 	rebalance_insert(node_ptr, &tree->root);
@@ -386,7 +385,6 @@ int rb_tree_erase(RBTree * restrict tree, const void * restrict value)
 	}
 
 	free(node_ptr);
-
 	--tree->count;
 
 	return RB_TREE_SUCCESS;
