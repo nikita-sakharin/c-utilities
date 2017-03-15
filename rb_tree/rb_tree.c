@@ -387,16 +387,15 @@ int rb_tree_erase(RBTree * restrict tree, const void * restrict value)
 			*link_ptr = NULL;
 		}
 	}
-	bool color = node_ptr->color;
+
+	if (node_ptr->color == BLACK)
+	{
+		rebalance_delete(*link_ptr, parent_ptr, &tree->root);
+	}
 
 	free(node_ptr);
 
 	--tree->count;
-
-	if (color == BLACK)
-	{
-		rebalance_delete(*link_ptr, parent_ptr, &tree->root);
-	}
 
 	return RB_TREE_SUCCESS;
 }
