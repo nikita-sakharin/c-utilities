@@ -9,24 +9,24 @@
 
 typedef struct queue Queue;
 
-int queue_create(Queue **, size_t);
+int queue_create(Queue ** restrict, size_t);
 
-void queue_destroy(Queue *);
+void queue_destroy(Queue * restrict);
 
-void queue_clear(Queue *);
+void queue_clear(Queue * restrict);
 
-size_t queue_sizeof(const Queue *);
+size_t queue_sizeof(const Queue * restrict);
 
-bool queue_empty(const Queue *);
+bool queue_empty(const Queue * restrict);
 
-size_t queue_size(const Queue *);
+size_t queue_size(const Queue * restrict);
 
-int queue_push(Queue *, const void *);
+int queue_push(Queue * restrict, const void *);
 
-int queue_top(const Queue *, void *);
+int queue_top(const Queue * restrict, void *);
 
-void *queue_data(const Queue *);
+void *queue_data(const Queue * restrict);
 
-int queue_pop(Queue *);
+int queue_pop(Queue * restrict);
 
 #endif
