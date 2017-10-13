@@ -21,11 +21,11 @@ struct queue
 	size_t count;
 };
 
-#define _QUEUE_H_SAVE_
+#define __QUEUE_SAVE__
 
 int queue_create(register Queue ** restrict queue_ptr, size_t size)
 {
-#	ifdef _QUEUE_H_SAVE_
+#	ifdef __QUEUE_SAVE__
 	if (queue_ptr == NULL || !size)
 	{
 		exit(EXIT_FAILURE);
@@ -49,7 +49,7 @@ int queue_create(register Queue ** restrict queue_ptr, size_t size)
 
 void queue_destroy(register Queue * restrict queue)
 {
-#	ifdef _QUEUE_H_SAVE_
+#	ifdef __QUEUE_SAVE__
 	if (queue == NULL)
 	{
 		exit(EXIT_FAILURE);
@@ -67,7 +67,7 @@ void queue_destroy(register Queue * restrict queue)
 
 void queue_clear(register Queue * restrict queue)
 {
-#	ifdef _QUEUE_H_SAVE_
+#	ifdef __QUEUE_SAVE__
 	if (queue == NULL)
 	{
 		exit(EXIT_FAILURE);
@@ -86,7 +86,7 @@ void queue_clear(register Queue * restrict queue)
 
 size_t queue_sizeof(register const Queue * restrict queue)
 {
-#	ifdef _QUEUE_H_SAVE_
+#	ifdef __QUEUE_SAVE__
 	if (queue == NULL)
 	{
 		exit(EXIT_FAILURE);
@@ -98,7 +98,7 @@ size_t queue_sizeof(register const Queue * restrict queue)
 
 bool queue_empty(register const Queue * restrict queue)
 {
-#	ifdef _QUEUE_H_SAVE_
+#	ifdef __QUEUE_SAVE__
 	if (queue == NULL)
 	{
 		exit(EXIT_FAILURE);
@@ -110,7 +110,7 @@ bool queue_empty(register const Queue * restrict queue)
 
 size_t queue_size(register const Queue * restrict queue)
 {
-#	ifdef _QUEUE_H_SAVE_
+#	ifdef __QUEUE_SAVE__
 	if (queue == NULL)
 	{
 		exit(EXIT_FAILURE);
@@ -122,7 +122,7 @@ size_t queue_size(register const Queue * restrict queue)
 
 int queue_push(register Queue * restrict queue, const void * restrict source)
 {
-#	ifdef _QUEUE_H_SAVE_
+#	ifdef __QUEUE_SAVE__
 	if (queue == NULL || source == NULL)
 	{
 		exit(EXIT_FAILURE);
@@ -154,7 +154,7 @@ int queue_push(register Queue * restrict queue, const void * restrict source)
 
 int queue_top(register const Queue * restrict queue, void * restrict dest)
 {
-#	ifdef _QUEUE_H_SAVE_
+#	ifdef __QUEUE_SAVE__
 	if (queue == NULL || dest == NULL)
 	{
 		exit(EXIT_FAILURE);
@@ -171,9 +171,9 @@ int queue_top(register const Queue * restrict queue, void * restrict dest)
 	return QUEUE_SUCCESS;
 }
 
-void *queue_data(register const Queue * restrict queue)
+void *queue_top_(register const Queue * restrict queue)
 {
-#	ifdef _QUEUE_H_SAVE_
+#	ifdef __QUEUE_SAVE__
 	if (queue == NULL)
 	{
 		exit(EXIT_FAILURE);
@@ -190,7 +190,7 @@ void *queue_data(register const Queue * restrict queue)
 
 int queue_pop(register Queue * restrict queue)
 {
-#	ifdef _QUEUE_H_SAVE_
+#	ifdef __QUEUE_SAVE__
 	if (queue == NULL)
 	{
 		exit(EXIT_FAILURE);

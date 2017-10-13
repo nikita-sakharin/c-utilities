@@ -1,5 +1,5 @@
-#ifndef _QUEUE_H_
-#define _QUEUE_H_
+#ifndef __QUEUE_H__
+#define __QUEUE_H__
 
 #include <stdbool.h>
 
@@ -25,7 +25,7 @@ int queue_push(Queue * restrict, const void *);
 
 int queue_top(const Queue * restrict, void *);
 
-void *queue_data(const Queue * restrict);
+void *queue_top_(const Queue * restrict);
 
 int queue_pop(Queue * restrict);
 
