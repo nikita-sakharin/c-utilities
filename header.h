@@ -29,14 +29,16 @@ typedef long double ldbl;
     int: abs, \
     long: labs, \
     llong: llabs, \
-    default: imaxabs \
+    intmax_t: imaxabs, \
+    default: abs
 )(X)
 
 #define div(X, Y) _Generic((X) + (Y), \
     int: div, \
     long: ldiv, \
     llong: lldiv, \
-    default: imaxdiv \
+    intmax_t: imaxdiv, \
+    default: div
 )(X, Y)
 
 #define max(X) _Generic((X), \
@@ -47,15 +49,20 @@ typedef long double ldbl;
     llong: llmax, \
     ullong: ullmax, \
     intmax_t: imaxmax, \
-    uintmax_t: uimaxmax, \ // TODO
-    default: uimaxmax \
+    uintmax_t: uimaxmax, \
+    default: max \
 )(X)
 
 #define min(X) _Generic((X), \
-    int: min, \
-    long: lmin, \
-    llong: llmin, \
-    default: imaxmin \
+    int: max, \
+    uint: umax, \
+    long: lmax, \
+    ulong: ulmax, \
+    llong: llmax, \
+    ullong: ullmax, \
+    intmax_t: imaxmax, \
+    uintmax_t: uimaxmax, \
+    default: max \
 )(X)
 
 int max(int, int);
