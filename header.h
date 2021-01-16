@@ -23,7 +23,7 @@ typedef long double ldbl;
         if (cnd_value) { \
             goto label; \
         } \
-    } while (0);
+    } while (0)
 
 #define abs(X) _Generic((X), \
     int: abs, \
