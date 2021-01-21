@@ -3,7 +3,29 @@
 #include "b_search.h"
 
 #define _B_SEARCH_H_SAVE_
-
+/*
+void *b_search(
+    const void * const key,
+    const void *base,
+    size_t nmemb,
+    const size_t size,
+    int (* const compar)(const void *, const void *)
+) {
+    while (nmemb > 0) {
+        const size_t step = nmemb / 2;
+        const uchar * const ptr = (const uchar *) base + step * size;
+        const int cmp = compar(key, ptr);
+        if (cmp > 0) {
+            base = ptr + size;
+            nmemb -= step + 1;
+        } else if (cmp < 0)
+            nmemb = step;
+        else
+            return ptr;
+    }
+    return NULL;
+}
+*/
 void *b_search(register const void *key, const void *base, size_t num, size_t size, int (compar)(const void *, const void *))
 {
 #	ifdef _B_SEARCH_H_SAVE_
