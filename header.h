@@ -18,9 +18,9 @@ typedef float flt;
 typedef double dbl;
 typedef long double ldbl;
 
-#define err_if(cnd_value, label) \
+#define err_if(condition, label) \
     do { \
-        if (cnd_value) { \
+        if (condition) \
             goto label; \
         } \
     } while (0)
@@ -49,20 +49,20 @@ typedef long double ldbl;
     llong: llmax, \
     ullong: ullmax, \
     intmax_t: imaxmax, \
-    uintmax_t: uimaxmax, \
+    uintmax_t: umaxmax, \
     default: max \
 )(X)
 
 #define min(X) _Generic((X), \
-    int: max, \
-    uint: umax, \
-    long: lmax, \
-    ulong: ulmax, \
-    llong: llmax, \
-    ullong: ullmax, \
-    intmax_t: imaxmax, \
-    uintmax_t: uimaxmax, \
-    default: max \
+    int: min, \
+    uint: umin, \
+    long: lmin, \
+    ulong: ulmin, \
+    llong: llmin, \
+    ullong: ullmin, \
+    intmax_t: imaxmin, \
+    uintmax_t: umaxmin, \
+    default: min \
 )(X)
 
 int max(int, int);
@@ -71,10 +71,8 @@ long lmax(long, long); // maxl
 ulong ulmax(ulong, ulong); // maxul
 llong llmax(llong, llong); // maxll
 ullong ullmax(ullong, ullong); // maxull
-intmax_t imaxmax(intmax_t, intmax_t); // jmax, maxj
-uintmax_t uimaxmax(uintmax_t, uintmax_t); // ujmax, maxuj
-// size_t uzmax(size_t, size_t); // maxuz
-// ptrdiff_t tmax(ptrdiff_t, ptrdiff_t); // maxt
+intmax_t imaxmax(intmax_t, intmax_t); // maximax, jmax, maxj
+uintmax_t umaxmax(uintmax_t, uintmax_t); // maxumax, ujmax, maxuj
 
 int min(int, int);
 uint umin(uint, uint); // minu
@@ -82,9 +80,7 @@ long lmin(long, long); // minl
 ulong ulmin(ulong, ulong); // minul
 llong llmin(llong, llong); // minll
 ullong ullmin(ullong, ullong); // minull
-intmax_t imaxmin(intmax_t, intmax_t); // jmin, minj
-uintmax_t uimaxmin(uintmax_t, uintmax_t); // ujmin, minuj
-// size_t uzmin(size_t, size_t); // minuz
-// ptrdiff_t tmin(ptrdiff_t, ptrdiff_t); // mint
+intmax_t imaxmin(intmax_t, intmax_t); // minimax, jmin, minj
+uintmax_t umaxmin(uintmax_t, uintmax_t); // minumax, ujmin, minuj
 
 #endif
