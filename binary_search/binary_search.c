@@ -3,6 +3,7 @@
 #include "b_search.h"
 
 #define _B_SEARCH_H_SAVE_
+
 /*
 void *b_search(
     const void * const key,
