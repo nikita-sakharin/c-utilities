@@ -30,6 +30,24 @@
     default: div
 )(X, Y)
 
+int max(int, int);
+uint umax(uint, uint); // maxu
+long lmax(long, long); // maxl
+ulong ulmax(ulong, ulong); // maxul
+llong llmax(llong, llong); // maxll
+ullong ullmax(ullong, ullong); // maxull
+intmax_t imaxmax(intmax_t, intmax_t); // maximax
+uintmax_t umaxmax(uintmax_t, uintmax_t); // maxumax
+
+int min(int, int);
+uint umin(uint, uint); // minu
+long lmin(long, long); // minl
+ulong ulmin(ulong, ulong); // minul
+llong llmin(llong, llong); // minll
+ullong ullmin(ullong, ullong); // minull
+intmax_t imaxmin(intmax_t, intmax_t); // minimax
+uintmax_t umaxmin(uintmax_t, uintmax_t); // minumax
+
 #define max(X) _Generic((X), \
     int: max, \
     uint: umax, \
@@ -53,23 +71,5 @@
     uintmax_t: umaxmin, \
     default: min \
 )(X)
-
-int max(int, int);
-uint umax(uint, uint); // maxu
-long lmax(long, long); // maxl
-ulong ulmax(ulong, ulong); // maxul
-llong llmax(llong, llong); // maxll
-ullong ullmax(ullong, ullong); // maxull
-intmax_t imaxmax(intmax_t, intmax_t); // maximax
-uintmax_t umaxmax(uintmax_t, uintmax_t); // maxumax
-
-int min(int, int);
-uint umin(uint, uint); // minu
-long lmin(long, long); // minl
-ulong ulmin(ulong, ulong); // minul
-llong llmin(llong, llong); // minll
-ullong ullmin(ullong, ullong); // minull
-intmax_t imaxmin(intmax_t, intmax_t); // minimax
-uintmax_t umaxmin(uintmax_t, uintmax_t); // minumax
 
 #endif
