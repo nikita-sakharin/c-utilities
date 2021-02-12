@@ -60,8 +60,8 @@ long lmax(long, long); // maxl
 ulong ulmax(ulong, ulong); // maxul
 llong llmax(llong, llong); // maxll
 ullong ullmax(ullong, ullong); // maxull
-intmax_t imaxmax(intmax_t, intmax_t); // maximax, jmax, maxj
-uintmax_t umaxmax(uintmax_t, uintmax_t); // maxumax, ujmax, maxuj
+intmax_t imaxmax(intmax_t, intmax_t); // maximax
+uintmax_t umaxmax(uintmax_t, uintmax_t); // maxumax
 
 int min(int, int);
 uint umin(uint, uint); // minu
