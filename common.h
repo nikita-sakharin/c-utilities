@@ -72,4 +72,23 @@ uintmax_t umaxmin(uintmax_t, uintmax_t); // minumax
     default: min \
 )(X)
 
+inline void memswap(
+    void * const restrict s1,
+    void * const restrict s2,
+    size_t n
+) {
+    uchar buffer[64]; // 512 bit
+    while (n >= sizeof(buffer)) {
+        memcpy(data, s1, sizeof(buffer));
+        memcpy(s1, s2, sizeof(buffer));
+        memcpy(s2, data, sizeof(buffer));
+        s1 += sizeof(buffer); // TODO
+        s2 += sizeof(buffer); // TODO
+        n -= sizeof(buffer);
+    }
+    memcpy(data, s1, n);
+    memcpy(s1, s2, n);
+    memcpy(s2, data, n);
+}
+
 #endif
