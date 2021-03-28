@@ -9,7 +9,7 @@ EXECUTABLE=main
 
 all: $(SOURCES) $(EXECUTABLE)
 
-debug: CXXFLAGS+=-Og -g
+debug: CFLAGS+=-Og -g
 debug: all
 release: CFLAGS+=-DNDEBUG -O3 -flto -s
 release: LDFLAGS+=-O3 -flto -s
