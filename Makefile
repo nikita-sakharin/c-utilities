@@ -1,6 +1,6 @@
 CC=gcc
 RM=rm -frd
-CFLAGS=-std=c18 -pedantic-errors -Wall -Werror -Wextra -Wfatal-errors -Wpedantic
+CFLAGS=-std=c18 -Wall -Werror -Wextra -Wfatal-errors -Wpedantic -pedantic-errors
 LDFLAGS=
 LDLIBS=-lm
 SOURCES=main.c
@@ -11,7 +11,7 @@ all: $(SOURCES) $(EXECUTABLE)
 
 debug: CXXFLAGS+=-Og -g
 debug: all
-release: CFLAGS+=-DNDEBUG -O3 -flto
+release: CFLAGS+=-DNDEBUG -O3 -flto -s
 release: LDFLAGS+=-O3 -flto -s
 release: all
 
