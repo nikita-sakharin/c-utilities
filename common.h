@@ -108,7 +108,7 @@ inline uintmax_t umaxmin(
     default: div
 )(X, Y)
 
-#define max(X) _Generic((X), \
+#define max(X) _Generic((X) + (Y), \
     int: max, \
     uint: umax, \
     long: lmax, \
@@ -120,7 +120,7 @@ inline uintmax_t umaxmin(
     default: max \
 )(X)
 
-#define min(X) _Generic((X), \
+#define min(X) _Generic((X) + (Y), \
     int: min, \
     uint: umin, \
     long: lmin, \
@@ -148,7 +148,7 @@ inline uintmax_t umaxmin(
     default: div
 )(X, Y)
 
-#define max(X) _Generic((X), \
+#define max(X) _Generic((X) + (Y), \
     int: max, \
     uint: umax, \
     long: lmax, \
@@ -158,7 +158,7 @@ inline uintmax_t umaxmin(
     default: max \
 )(X)
 
-#define min(X) _Generic((X), \
+#define min(X) _Generic((X) + (Y), \
     int: min, \
     uint: umin, \
     long: lmin, \
