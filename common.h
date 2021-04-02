@@ -15,79 +15,79 @@
     } while (0)
 
 inline int max(register const int a, register const int b) {
-    return a >= b ? a : b;
+    return a < b ? b : a;
 }
 
 inline uint umax(register const uint a, register const uint b) {
-    return a >= b ? a : b;
+    return a < b ? b : a;
 }
 
 inline long lmax(register const long a, register const long b) {
-    return a >= b ? a : b;
+    return a < b ? b : a;
 }
 
 inline ulong ulmax(register const ulong a, register const ulong b) {
-    return a >= b ? a : b;
+    return a < b ? b : a;
 }
 
 inline llong llmax(register const llong a, register const llong b) {
-    return a >= b ? a : b;
+    return a < b ? b : a;
 }
 
 inline ullong ullmax(register const ullong a, register const ullong b) {
-    return a >= b ? a : b;
+    return a < b ? b : a;
 }
 
 inline intmax_t imaxmax(
     register const intmax_t a,
     register const intmax_t b
 ) {
-    return a >= b ? a : b;
+    return a < b ? b : a;
 }
 
 inline uintmax_t umaxmax(
     register const uintmax_t a,
     register const uintmax_t b
 ) {
-    return a >= b ? a : b;
+    return a < b ? b : a;
 }
 
-inline int max(register const int a, register const int b) {
-    return a >= b ? a : b;
+inline int min(register const int a, register const int b) {
+    return b < a ? b : a;
 }
 
-inline uint umax(register const uint a, register const uint b) {
-    return a >= b ? a : b;
+inline uint umin(register const uint a, register const uint b) {
+    return b < a ? b : a;
 }
 
-inline long lmax(register const long a, register const long b) {
-    return a >= b ? a : b;
+inline long lmin(register const long a, register const long b) {
+    return b < a ? b : a;
 }
 
-inline ulong ulmax(register const ulong a, register const ulong b) {
-    return a >= b ? a : b;
+inline ulong ulmin(register const ulong a, register const ulong b) {
+    return b < a ? b : a;
 }
 
-inline llong llmax(register const llong a, register const llong b) {
-    return a >= b ? a : b;
+inline llong llmin(register const llong a, register const llong b) {
+    return b < a ? b : a;
 }
 
-inline ullong ullmax(register const ullong a, register const ullong b) {
-    return a >= b ? a : b;
+inline ullong ullmin(register const ullong a, register const ullong b) {
+    return b < a ? b : a;
 }
 
-inline intmax_t imaxmax(
+inline intmax_t imaxmin(
     register const intmax_t a,
     register const intmax_t b
 ) {
-    return a >= b ? a : b;
+    return b < a ? b : a;
 }
 
-inline uintmax_t umaxmax(
+inline uintmax_t umaxmin(
     register const uintmax_t a,
     register const uintmax_t b
 ) {
-    return a >= b ? a : b;
+    return b < a ? b : a;
 }
 
 #if UINTMAX_MAX > ULLONG_MAX
