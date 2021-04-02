@@ -14,6 +14,84 @@
         } \
     } while (0)
 
+inline int max(register const int a, register const int b) {
+    return a >= b ? a : b;
+}
+
+inline uint umax(register const uint a, register const uint b) {
+    return a >= b ? a : b;
+}
+
+inline long lmax(register const long a, register const long b) {
+    return a >= b ? a : b;
+}
+
+inline ulong ulmax(register const ulong a, register const ulong b) {
+    return a >= b ? a : b;
+}
+
+inline llong llmax(register const llong a, register const llong b) {
+    return a >= b ? a : b;
+}
+
+inline ullong ullmax(register const ullong a, register const ullong b) {
+    return a >= b ? a : b;
+}
+
+inline intmax_t imaxmax(
+    register const intmax_t a,
+    register const intmax_t b
+) {
+    return a >= b ? a : b;
+}
+
+inline uintmax_t umaxmax(
+    register const uintmax_t a,
+    register const uintmax_t b
+) {
+    return a >= b ? a : b;
+}
+
+inline int max(register const int a, register const int b) {
+    return a >= b ? a : b;
+}
+
+inline uint umax(register const uint a, register const uint b) {
+    return a >= b ? a : b;
+}
+
+inline long lmax(register const long a, register const long b) {
+    return a >= b ? a : b;
+}
+
+inline ulong ulmax(register const ulong a, register const ulong b) {
+    return a >= b ? a : b;
+}
+
+inline llong llmax(register const llong a, register const llong b) {
+    return a >= b ? a : b;
+}
+
+inline ullong ullmax(register const ullong a, register const ullong b) {
+    return a >= b ? a : b;
+}
+
+inline intmax_t imaxmax(
+    register const intmax_t a,
+    register const intmax_t b
+) {
+    return a >= b ? a : b;
+}
+
+inline uintmax_t umaxmax(
+    register const uintmax_t a,
+    register const uintmax_t b
+) {
+    return a >= b ? a : b;
+}
+
+#if UINTMAX_MAX > ULLONG_MAX
+
 #define abs(X) _Generic((X), \
     int: abs, \
     long: labs, \
@@ -29,24 +107,6 @@
     intmax_t: imaxdiv, \
     default: div
 )(X, Y)
-
-int max(int, int);
-uint umax(uint, uint); // maxu
-long lmax(long, long); // maxl
-ulong ulmax(ulong, ulong); // maxul
-llong llmax(llong, llong); // maxll
-ullong ullmax(ullong, ullong); // maxull
-intmax_t imaxmax(intmax_t, intmax_t); // maximax
-uintmax_t umaxmax(uintmax_t, uintmax_t); // maxumax
-
-int min(int, int);
-uint umin(uint, uint); // minu
-long lmin(long, long); // minl
-ulong ulmin(ulong, ulong); // minul
-llong llmin(llong, llong); // minll
-ullong ullmin(ullong, ullong); // minull
-intmax_t imaxmin(intmax_t, intmax_t); // minimax
-uintmax_t umaxmin(uintmax_t, uintmax_t); // minumax
 
 #define max(X) _Generic((X), \
     int: max, \
@@ -72,12 +132,50 @@ uintmax_t umaxmin(uintmax_t, uintmax_t); // minumax
     default: min \
 )(X)
 
+#else
+
+#define abs(X) _Generic((X), \
+    int: abs, \
+    long: labs, \
+    llong: llabs, \
+    default: abs
+)(X)
+
+#define div(X, Y) _Generic((X) + (Y), \
+    int: div, \
+    long: ldiv, \
+    llong: lldiv, \
+    default: div
+)(X, Y)
+
+#define max(X) _Generic((X), \
+    int: max, \
+    uint: umax, \
+    long: lmax, \
+    ulong: ulmax, \
+    llong: llmax, \
+    ullong: ullmax, \
+    default: max \
+)(X)
+
+#define min(X) _Generic((X), \
+    int: min, \
+    uint: umin, \
+    long: lmin, \
+    ulong: ulmin, \
+    llong: llmin, \
+    ullong: ullmin, \
+    default: min \
+)(X)
+
+#endif // UINTMAX_MAX > ULLONG_MAX
+
 inline void memswap(
     void * const restrict s1,
     void * const restrict s2,
     size_t n
 ) {
-    uchar buffer[64]; // 512 bit
+    uchar buffer[64U]; // 512 bit
     while (n >= sizeof(buffer)) {
         memcpy(data, s1, sizeof(buffer));
         memcpy(s1, s2, sizeof(buffer));
