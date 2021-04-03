@@ -175,7 +175,7 @@ inline void *memswap(
     void * const restrict s2,
     size_t n
 ) {
-    uchar * restrict ptr1 = s1, * restrict ptr2 = s2; // check UB or not???
+    uchar * restrict ptr1 = s1, * restrict ptr2 = s2;
     uchar buffer[64U]; // 512 bit
     while (n >= sizeof(buffer)) {
         memcpy(buffer, ptr1, sizeof(buffer));
@@ -185,7 +185,6 @@ inline void *memswap(
         ptr2 += sizeof(buffer);
         n -= sizeof(buffer);
     }
-
     memcpy(buffer, ptr1, n);
     memcpy(ptr1, ptr2, n);
     memcpy(ptr2, buffer, n); // reorder memcpy, return memcpy(ptr1, ...); ???
