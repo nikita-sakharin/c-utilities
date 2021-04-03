@@ -170,23 +170,26 @@ inline uintmax_t umaxmin(
 
 #endif // UINTMAX_MAX > ULLONG_MAX
 
-inline void memswap(
+inline void *memswap(
     void * const restrict s1,
     void * const restrict s2,
     size_t n
 ) {
+    uchar * restrict ptr1 = s1, * restrict ptr2 = s2; // check UB or not???
     uchar buffer[64U]; // 512 bit
     while (n >= sizeof(buffer)) {
-        memcpy(data, s1, sizeof(buffer));
-        memcpy(s1, s2, sizeof(buffer));
-        memcpy(s2, data, sizeof(buffer));
-        s1 += sizeof(buffer); // TODO
-        s2 += sizeof(buffer); // TODO
+        memcpy(buffer, ptr1, sizeof(buffer));
+        memcpy(ptr1, ptr2, sizeof(buffer));
+        memcpy(ptr2, buffer, sizeof(buffer));
+        ptr1 += sizeof(buffer);
+        ptr2 += sizeof(buffer);
         n -= sizeof(buffer);
     }
-    memcpy(data, s1, n);
-    memcpy(s1, s2, n);
-    memcpy(s2, data, n);
+
+    memcpy(buffer, ptr1, n);
+    memcpy(ptr1, ptr2, n);
+    memcpy(ptr2, buffer, n); // reorder memcpy, return memcpy(ptr1, ...); ???
+    return ptr1;
 }
 
 #endif
