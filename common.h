@@ -173,9 +173,9 @@ inline uintmax_t umaxmin(
 inline void *memswap(
     void * const restrict s1,
     void * const restrict s2,
-    size_t n
+    register size_t n
 ) {
-    uchar * restrict ptr1 = s1, * restrict ptr2 = s2;
+    register uchar * restrict ptr1 = s1, * restrict ptr2 = s2; // TODO UB ???
     uchar buffer[64U]; // 512 bit
     while (n >= sizeof(buffer)) {
         memcpy(buffer, ptr1, sizeof(buffer));
@@ -187,7 +187,7 @@ inline void *memswap(
     }
     memcpy(buffer, ptr1, n);
     memcpy(ptr1, ptr2, n);
-    memcpy(ptr2, buffer, n); // reorder memcpy, return memcpy(ptr1, ...); ???
+    memcpy(ptr2, buffer, n); // return memcpy(ptr1, ...); ???
     return ptr1;
 }
 
