@@ -170,20 +170,19 @@ inline uintmax_t umaxmin(
 
 #endif // UINTMAX_MAX > ULLONG_MAX
 
-inline void *memswap(
+inline void *mem_swap(
     void * const restrict s1,
     void * const restrict s2,
     register size_t n
-) {
-    register uchar * restrict ptr1 = s1, * restrict ptr2 = s2; // TODO UB ???
+) { // XOR ???
     uchar buffer[64U]; // 512 bit
-    while (n >= sizeof(buffer)) {
-        memcpy(buffer, ptr1, sizeof(buffer));
-        memcpy(ptr1, ptr2, sizeof(buffer));
-        memcpy(ptr2, buffer, sizeof(buffer));
-        ptr1 += sizeof(buffer);
-        ptr2 += sizeof(buffer);
-        n -= sizeof(buffer);
+    static const size_t size = sizeof(buffer); // enum buffer_size ???
+    for (register uchar * restrict ptr1 = s1, * restrict ptr2 = s2;
+        n >= size; ptr1 += size, ptr2 += size, n -= size
+    ) {
+        memcpy(buffer, ptr1, size);
+        memcpy(ptr1, ptr2, size);
+        memcpy(ptr2, buffer, size);
     }
     memcpy(buffer, ptr1, n);
     memcpy(ptr1, ptr2, n);
