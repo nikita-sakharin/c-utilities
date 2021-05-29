@@ -11,7 +11,6 @@
     do { \
         if (condition) \
             goto label; \
-        } \
     } while (0)
 
 inline int max(register const int a, register const int b) {
