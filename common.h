@@ -186,7 +186,7 @@ inline void *mem_swap(
     memcpy(buffer, ptr1, n);
     memcpy(ptr1, ptr2, n);
     memcpy(ptr2, buffer, n); // return memcpy(ptr1, ...); ???
-    return ptr1;
+    return s1;
 }
 
 #endif
