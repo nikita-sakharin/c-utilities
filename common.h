@@ -174,7 +174,7 @@ inline void *mem_offset(
     register size_t index,
     register size_t size
 ) {
-    return (uchar *) ptr + index * size;
+    return (void *) ((uchar *) ptr + index * size);
 }
 
 inline void *mem_swap(
