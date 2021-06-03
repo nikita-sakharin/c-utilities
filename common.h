@@ -170,7 +170,7 @@ inline uintmax_t umaxmin(
 #endif // UINTMAX_MAX > ULLONG_MAX
 
 inline void *mem_offset(
-    register const void * const ptr,
+    register const void * const ptr, // restrict ???
     register size_t index,
     register size_t size
 ) {
