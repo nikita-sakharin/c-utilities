@@ -96,7 +96,7 @@ inline uintmax_t umaxmin(
     long: labs, \
     llong: llabs, \
     intmax_t: imaxabs, \
-    default: abs
+    default: abs \
 )(X)
 
 #define div(X, Y) _Generic((X) + (Y), \
@@ -104,7 +104,7 @@ inline uintmax_t umaxmin(
     long: ldiv, \
     llong: lldiv, \
     intmax_t: imaxdiv, \
-    default: div
+    default: div \
 )(X, Y)
 
 #define max(X) _Generic((X) + (Y), \
@@ -137,14 +137,14 @@ inline uintmax_t umaxmin(
     int: abs, \
     long: labs, \
     llong: llabs, \
-    default: abs
+    default: abs \
 )(X)
 
 #define div(X, Y) _Generic((X) + (Y), \
     int: div, \
     long: ldiv, \
     llong: lldiv, \
-    default: div
+    default: div \
 )(X, Y)
 
 #define max(X) _Generic((X) + (Y), \
