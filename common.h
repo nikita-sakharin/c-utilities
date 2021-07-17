@@ -7,7 +7,7 @@
 
 #include "types.h"
 
-#define err_if(condition, label) \
+#define goto_if(condition, label) \
     do { \
         if (condition) \
             goto label; \
@@ -181,19 +181,18 @@ inline void *mem_swap(
     void * const restrict s1,
     void * const restrict s2,
     register size_t n
-) { // XOR ???
-    uchar buffer[64U]; // 512 bit
-    static const size_t size = sizeof buffer; // enum buffer_size ???
+) {
+    uchar buffer[64U]; // uintmax_t ???
+    static const size_t size = sizeof buffer;
     for (register uchar * restrict ptr1 = s1, * restrict ptr2 = s2;
-        n >= size; ptr1 += size, ptr2 += size, n -= size
+        n > 0; ptr1 += size, ptr2 += size
     ) {
-        memcpy(buffer, ptr1, size);
-        memcpy(ptr1, ptr2, size);
-        memcpy(ptr2, buffer, size);
+        const size_t min_n = min(n, size);
+        n -= min_n;
+        memcpy(buffer, ptr1, min_n);
+        memcpy(ptr1, ptr2, min_n);
+        memcpy(ptr2, buffer, min_n);
     }
-    memcpy(buffer, ptr1, n);
-    memcpy(ptr1, ptr2, n);
-    memcpy(ptr2, buffer, n); // return memcpy(ptr1, ...); ???
     return s1;
 }
 
