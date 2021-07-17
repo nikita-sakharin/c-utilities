@@ -183,7 +183,7 @@ inline void *mem_swap(
     register size_t n
 ) { // XOR ???
     uchar buffer[64U]; // 512 bit
-    static const size_t size = sizeof(buffer); // enum buffer_size ???
+    static const size_t size = sizeof buffer; // enum buffer_size ???
     for (register uchar * restrict ptr1 = s1, * restrict ptr2 = s2;
         n >= size; ptr1 += size, ptr2 += size, n -= size
     ) {
