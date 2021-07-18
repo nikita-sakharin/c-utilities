@@ -1,9 +1,9 @@
 CC=gcc
 RM=rm -frd
-CFLAGS=-Wall -Walloc-zero -Walloca -Wcast-align=strict -Wcast-qual \
-    -Wdouble-promotion -Werror -Wextra -Wfatal-errors -Wfloat-equal -Wformat=2 \
-    -Wformat-overflow=2 -Wformat-signedness -Wformat-truncation=2 \
-    -Wimplicit-fallthrough=5 -Winit-self -Winline -Wmain \
+CFLAGS=-Wall -Walloc-zero -Walloca -Warray-bounds=2 -Wcast-align=strict \
+    -Wcast-qual -Wdouble-promotion -Werror -Wextra -Wfatal-errors \
+    -Wfloat-equal -Wformat=2 -Wformat-overflow=2 -Wformat-signedness \
+    -Wformat-truncation=2 -Wimplicit-fallthrough=5 -Winit-self -Winline -Wmain \
     -Wmissing-declarations -Wmissing-include-dirs -Wmissing-noreturn \
     -Wnull-dereference -Wpadded -Wpedantic -Wredundant-decls -Wshadow=global \
     -Wshift-overflow=2 -Wstrict-overflow=5 -Wstringop-overflow=4 \
