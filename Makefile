@@ -6,7 +6,7 @@ CFLAGS=-Wall -Walloc-zero -Walloca -Warray-bounds=2 -Wbad-function-cast \
     -Wformat-signedness -Wformat-truncation=2 -Wimplicit-fallthrough=5 \
     -Winit-self -Winline -Wlogical-op -Wmain -Wmissing-declarations \
     -Wmissing-include-dirs -Wmissing-noreturn -Wnull-dereference \
-    -Wold-style-definition -Wpadded -Wpedantic -Wredundant-decls \
+    -Wold-style-definition -Wpacked -Wpadded -Wpedantic -Wredundant-decls \
     -Wshadow=global -Wshift-overflow=2 -Wstrict-overflow=5 \
     -Wstringop-overflow=4 -Wswitch-default -Wswitch-enum -Wundef \
     -Wunreachable-code -Wunused-const-variable=2 -Wunused-macros \
