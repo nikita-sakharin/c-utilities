@@ -7,6 +7,19 @@
 
 #include "types.h"
 
+// TODO: include or in another one file
+#define exit_if(condition, message) \
+    do { \
+        if (condition) { \
+            fprintf(stderr, "%s:%d: ", __FILE__, __LINE__); \
+            const char * const str = (message); \
+            if (str != NULL && str[0] != '\0') \
+                fprintf(stderr, "%s: ", str); \
+            fprintf(stderr, "%s\n", strerror(errno)); \
+            exit(EXIT_FAILURE); \
+        } \
+    } while (0)
+
 #define goto_if(condition, label) \
     do { \
         if (condition) \
