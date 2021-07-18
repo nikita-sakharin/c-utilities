@@ -183,7 +183,7 @@ inline void *mem_swap(
     register size_t n
 ) {
     for (register uchar * restrict ptr1 = s1, * restrict ptr2 = s2;
-        n > 0; ++ptr1, ++ptr2, --n
+        n-- > 0; ++ptr1, ++ptr2
     ) {
         const uchar buffer = *ptr1;
         *ptr1 = *ptr2;
@@ -202,11 +202,11 @@ inline void *mem_swap(
     for (register uchar * restrict ptr1 = s1, * restrict ptr2 = s2;
         n > 0; ptr1 += size, ptr2 += size
     ) {
-        const size_t min_n = min(n, size);
-        n -= min_n;
-        memcpy(buffer, ptr1, min_n);
-        memcpy(ptr1, ptr2, min_n);
-        memcpy(ptr2, buffer, min_n);
+        const size_t offset = min(n, size);
+        n -= offset;
+        memcpy(buffer, ptr1, offset);
+        memcpy(ptr1, ptr2, offset);
+        memcpy(ptr2, buffer, offset);
     }
     return s1;
 } */
