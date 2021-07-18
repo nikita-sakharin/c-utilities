@@ -9,7 +9,7 @@ CFLAGS=-Wall -Walloc-zero -Walloca -Warray-bounds=2 -Wbad-function-cast \
     -Wredundant-decls -Wshadow=global -Wshift-overflow=2 -Wstrict-overflow=5 \
     -Wstringop-overflow=4 -Wswitch-default -Wswitch-enum -Wundef \
     -Wunreachable-code -Wunused-const-variable=2 -Wunused-macros \
-    -pedantic-errors -std=c18
+    -Wwrite-strings -pedantic-errors -std=c18
 # -Wunused -Wattribute-alias=2
 LDFLAGS=
 LDLIBS=-lm
