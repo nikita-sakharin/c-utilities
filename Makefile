@@ -1,17 +1,18 @@
 CC=gcc
 RM=rm -frd
 CFLAGS=-Wall -Walloc-zero -Walloca -Warray-bounds=2 -Wbad-function-cast \
-    -Wcast-align=strict -Wcast-qual -Wdouble-promotion -Werror -Wextra \
-    -Wfatal-errors -Wfloat-equal -Wformat=2 -Wformat-overflow=2 \
-    -Wformat-signedness -Wformat-truncation=2 -Wimplicit-fallthrough=5 \
-    -Winit-self -Winline -Wlogical-op -Wmain -Wmissing-declarations \
-    -Wmissing-include-dirs -Wmissing-noreturn -Wnull-dereference \
-    -Wold-style-definition -Wpacked -Wpadded -Wpedantic -Wredundant-decls \
-    -Wshadow=global -Wshift-overflow=2 -Wstrict-overflow=5 \
+    -Wc++-compat -Wcast-align=strict -Wcast-qual -Wdisabled-optimization \
+    -Wdouble-promotion -Werror -Wextra -Wfatal-errors -Wfloat-equal -Wformat=2 \
+    -Wformat-overflow=2 -Wformat-signedness -Wformat-truncation=2 \
+    -Wimplicit-fallthrough=5 -Winit-self -Winline -Wlogical-op -Wmain \
+    -Wmissing-declarations -Wmissing-include-dirs -Wmissing-noreturn \
+    -Wnull-dereference -Wold-style-definition -Wpacked -Wpadded -Wpedantic \
+    -Wredundant-decls -Wshadow=global -Wshift-overflow=2 -Wstrict-overflow=5 \
     -Wstringop-overflow=4 -Wswitch-default -Wswitch-enum -Wundef \
     -Wunreachable-code -Wunused-const-variable=2 -Wunused-macros \
-    -Wwrite-strings -pedantic-errors -std=c18
-# -Wattribute-alias=2 -Wc++-compat -Wunused
+    -Wvector-operation-performance -Wvla -Wwrite-strings -pedantic-errors \
+    -std=c18
+# -Wattribute-alias=2 -Wunused
 LDFLAGS=
 LDLIBS=-lm
 SOURCES=main.c
