@@ -190,12 +190,14 @@ inline void *mem_offset(
     return (void *) ((uchar *) ptr + index * size);
 }
 
+#ifdef NDEBUG
+
 inline void *mem_swap(
     void * const restrict s1,
     void * const restrict s2,
     register size_t n
 ) {
-    for (register uchar * restrict ptr1 = s1, * restrict ptr2 = s2;
+    for (register uchar * restrict ptr1 = (uchar *) s1, * restrict ptr2 = (uchar *) s2;
         n-- > 0; ++ptr1, ++ptr2
     ) {
         const uchar buffer = *ptr1;
@@ -205,12 +207,14 @@ inline void *mem_swap(
     return s1;
 }
 
-/* inline void *mem_swap(
+#else
+
+inline void *mem_swap(
     void * const restrict s1,
     void * const restrict s2,
     register size_t n
 ) {
-    uchar buffer[64U]; // uintmax_t ???
+    uchar buffer[64U]; // sizeof uintmax_t ???
     static const size_t size = sizeof buffer;
     for (register uchar * restrict ptr1 = s1, * restrict ptr2 = s2;
         n > 0; ptr1 += size, ptr2 += size
@@ -222,6 +226,8 @@ inline void *mem_swap(
         memcpy(ptr2, buffer, offset);
     }
     return s1;
-} */
+}
+
+#endif // NDEBUG
 
 #endif
