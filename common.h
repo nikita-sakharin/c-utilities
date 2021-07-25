@@ -184,8 +184,8 @@ inline uintmax_t umaxmin(
 
 inline void *mem_offset(
     register const void * const ptr, // restrict ???
-    register size_t index,
-    register size_t size
+    register const size_t index,
+    register const size_t size
 ) {
     return (void *) ((uchar *) ptr + index * size);
 }
