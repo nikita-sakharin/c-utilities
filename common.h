@@ -2,7 +2,7 @@
 #define COMMON_H
 
 #include <inttypes.h> // imaxabs, imaxdiv
-#include <stddef.h> // ptrdiff_t
+#include <stddef.h> // ptrdiff_t, size_t
 #include <stdint.h> // intmax_t, uintmax_t
 #include <stdlib.h> // abs, div, labs, ldiv, llabs, lldiv
 #include <string.h> // memcpy
