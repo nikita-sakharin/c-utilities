@@ -10,13 +10,14 @@
 #include "types.h"
 
 // TODO: include or in another one file
+// _str ???
 #define exit_if(condition, message) \
     do { \
         if (condition) { \
             fprintf(stderr, "%s:%d: ", __FILE__, __LINE__); \
-            const char * const str = (message); /* _str or str or str_ ??? */ \
-            if (str != NULL && str[0] != '\0') \
-                fprintf(stderr, "%s: ", str); \
+            const char * const _str = (message); \
+            if (_str != NULL && _str[0] != '\0') \
+                fprintf(stderr, "%s: ", _str); \
             fprintf(stderr, "%s\n", strerror(errno)); \
             exit(EXIT_FAILURE); \
         } \
