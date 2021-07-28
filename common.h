@@ -216,7 +216,6 @@ inline void *mem_swap(
     return s1;
 }
 
-// mem or ptr ???
 // restrict ???
 // char or uchar ???
 inline ptrdiff_t ptr_diff(
