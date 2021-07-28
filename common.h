@@ -10,7 +10,6 @@
 #include "types.h"
 
 // TODO: include or in another one file
-// _message ???
 #define exit_if(condition, message) \
     do { \
         if (condition) { \
