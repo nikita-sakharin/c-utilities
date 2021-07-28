@@ -2,8 +2,10 @@
 #define COMMON_H
 
 #include <inttypes.h> // imaxabs, imaxdiv
+#include <stddef.h> // ptrdiff_t
 #include <stdint.h> // intmax_t, uintmax_t
 #include <stdlib.h> // abs, div, labs, ldiv, llabs, lldiv
+#include <string.h> // memcpy
 
 #include "types.h"
 
@@ -12,7 +14,7 @@
     do { \
         if (condition) { \
             fprintf(stderr, "%s:%d: ", __FILE__, __LINE__); \
-            const char * const str = (message); \
+            const char * const str = (message); /* _str or str or str_ ??? */ \
             if (str != NULL && str[0] != '\0') \
                 fprintf(stderr, "%s: ", str); \
             fprintf(stderr, "%s\n", strerror(errno)); \
@@ -120,7 +122,7 @@ inline uintmax_t umaxmin(
     default: div \
 )(X, Y)
 
-#define max(X) _Generic((X) + (Y), \
+#define max(X, Y) _Generic((X) + (Y), \
     int: max, \
     uint: umax, \
     long: lmax, \
@@ -130,9 +132,9 @@ inline uintmax_t umaxmin(
     intmax_t: imaxmax, \
     uintmax_t: umaxmax, \
     default: max \
-)(X)
+)(X, Y)
 
-#define min(X) _Generic((X) + (Y), \
+#define min(X, Y) _Generic((X) + (Y), \
     int: min, \
     uint: umin, \
     long: lmin, \
@@ -142,7 +144,7 @@ inline uintmax_t umaxmin(
     intmax_t: imaxmin, \
     uintmax_t: umaxmin, \
     default: min \
-)(X)
+)(X, Y)
 
 #else
 
@@ -160,7 +162,7 @@ inline uintmax_t umaxmin(
     default: div \
 )(X, Y)
 
-#define max(X) _Generic((X) + (Y), \
+#define max(X, Y) _Generic((X) + (Y), \
     int: max, \
     uint: umax, \
     long: lmax, \
@@ -168,9 +170,9 @@ inline uintmax_t umaxmin(
     llong: llmax, \
     ullong: ullmax, \
     default: max \
-)(X)
+)(X, Y)
 
-#define min(X) _Generic((X) + (Y), \
+#define min(X, Y) _Generic((X) + (Y), \
     int: min, \
     uint: umin, \
     long: lmin, \
@@ -178,25 +180,16 @@ inline uintmax_t umaxmin(
     llong: llmin, \
     ullong: ullmin, \
     default: min \
-)(X)
+)(X, Y)
 
 #endif // UINTMAX_MAX > ULLONG_MAX
-
-inline void *mem_offset(
-    register const void * const ptr, // restrict ???
-    register const size_t index,
-    register const size_t size
-) {
-    return (void *) ((uchar *) ptr + index * size);
-}
-
-#ifdef NDEBUG
 
 inline void *mem_swap(
     void * const restrict s1,
     void * const restrict s2,
     register size_t n
 ) {
+#   ifdef NDEBUG
     for (register uchar
         * restrict ptr1 = (uchar *) s1, * restrict ptr2 = (uchar *) s2;
         n-- > 0; ++ptr1, ++ptr2
@@ -205,16 +198,7 @@ inline void *mem_swap(
         *ptr1 = *ptr2;
         *ptr2 = buffer;
     }
-    return s1;
-}
-
-#else
-
-inline void *mem_swap(
-    void * const restrict s1,
-    void * const restrict s2,
-    register size_t n
-) {
+#   else
     uchar buffer[64U]; // sizeof uintmax_t ???
     static const size_t size = sizeof buffer;
     for (register uchar
@@ -227,9 +211,27 @@ inline void *mem_swap(
         memcpy(ptr1, ptr2, offset);
         memcpy(ptr2, buffer, offset);
     }
+#   endif // NDEBUG
     return s1;
 }
 
-#endif // NDEBUG
+// mem or ptr ???
+// restrict ???
+// char or uchar ???
+inline ptrdiff_t ptr_diff(
+    register const void * const ptr1,
+    register const void * const ptr2,
+    register const size_t size
+) {
+    return ((const char *) ptr1 - (const char *) ptr2) / (ptrdiff_t) size;
+}
+
+inline void *ptr_offset(
+    register const void * const ptr,
+    register const size_t index,
+    register const size_t size
+) {
+    return (void *) ((char *) ptr + index * size);
+}
 
 #endif
