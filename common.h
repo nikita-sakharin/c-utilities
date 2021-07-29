@@ -2,14 +2,16 @@
 #define COMMON_H
 
 #include <inttypes.h> // imaxabs, imaxdiv
+#include <limits.h> // ULLONG_MAX
 #include <stddef.h> // ptrdiff_t, size_t
-#include <stdint.h> // intmax_t, uintmax_t
+#include <stdint.h> // UINTMAX_MAX, intmax_t, uintmax_t
 #include <stdlib.h> // abs, div, labs, ldiv, llabs, lldiv
 #include <string.h> // memcpy
 
 #include "types.h"
 
 // TODO: include or in another one file
+// _message or message_ ???
 #define exit_if(condition, message) \
     do { \
         if (condition) { \
