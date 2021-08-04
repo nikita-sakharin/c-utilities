@@ -10,8 +10,7 @@
 
 #include "types.h"
 
-// TODO: include or in another one file
-// _message or message_ ???
+// (condition) or condition ???
 #define exit_if(condition, message) \
     do { \
         if (condition) { \
@@ -201,7 +200,7 @@ inline void *mem_swap(
         *ptr2 = buffer;
     }
 #   else
-    uchar buffer[64U]; // sizeof uintmax_t ???
+    uchar buffer[64U]; // sizeof intmax_t ???
     static const size_t size = sizeof buffer;
     for (register uchar
         * restrict ptr1 = (uchar *) s1, * restrict ptr2 = (uchar *) s2;
@@ -217,8 +216,10 @@ inline void *mem_swap(
     return s1;
 }
 
-// restrict ???
 // char or uchar ???
+// intptr_t defined ???
+// intptr_t or uintptr_t ???
+// restrict ???
 inline ptrdiff_t ptr_diff(
     register const void * const ptr1,
     register const void * const ptr2,
