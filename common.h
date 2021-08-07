@@ -2,9 +2,9 @@
 #define COMMON_H
 
 #include <inttypes.h> // imaxabs, imaxdiv
-#include <limits.h> // LLONG_MAX
+#include <limits.h> // ULLONG_MAX
 #include <stddef.h> // ptrdiff_t, size_t
-#include <stdint.h> // INTMAX_MAX, intmax_t, uintmax_t
+#include <stdint.h> // UINTMAX_MAX, intmax_t, uintmax_t
 #include <stdlib.h> // abs, div, labs, ldiv, llabs, lldiv
 #include <string.h> // memcpy
 
@@ -105,7 +105,7 @@ inline uintmax_t umaxmin(
     return b < a ? b : a;
 }
 
-#if INTMAX_MAX > LLONG_MAX
+#if UINTMAX_MAX > ULLONG_MAX
 
 #define abs(X) _Generic((X), \
     int: abs, \
@@ -183,7 +183,7 @@ inline uintmax_t umaxmin(
     default: min \
 )(X, Y)
 
-#endif // INTMAX_MAX > LLONG_MAX
+#endif // UINTMAX_MAX > ULLONG_MAX
 
 inline void *mem_swap(
     void * const restrict s1,
