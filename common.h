@@ -14,11 +14,8 @@
 #define exit_if(condition, message) \
     do { \
         if (condition) { \
-            const char * const _message = (message); \
             fprintf(stderr, "%s:%d: ", __FILE__, __LINE__); \
-            if (_message != NULL && _message[0] != '\0') \
-                fprintf(stderr, "%s: ", _message); \
-            fprintf(stderr, "%s\n", strerror(errno)); \
+            perror(message); \
             exit(EXIT_FAILURE); \
         } \
     } while (0)
