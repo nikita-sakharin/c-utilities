@@ -203,7 +203,7 @@ inline void *mem_swap(
         * restrict ptr1 = (uchar *) s1, * restrict ptr2 = (uchar *) s2;
         n > 0; ptr1 += size, ptr2 += size
     ) {
-        const size_t offset = min(n, size);
+        const size_t offset = min(size, n);
         n -= offset;
         memcpy(buffer, ptr1, offset);
         memcpy(ptr1, ptr2, offset);
