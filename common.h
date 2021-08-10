@@ -10,22 +10,6 @@
 
 #include "types.h"
 
-// (condition) or condition ???
-#define exit_if(condition, message) \
-    do { \
-        if (condition) { \
-            fprintf(stderr, "%s:%d: ", __FILE__, __LINE__); \
-            perror(message); \
-            exit(EXIT_FAILURE); \
-        } \
-    } while (0)
-
-#define goto_if(condition, label) \
-    do { \
-        if (condition) \
-            goto label; \
-    } while (0)
-
 inline int max(register const int a, register const int b) {
     return a < b ? b : a;
 }
