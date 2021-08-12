@@ -1,5 +1,5 @@
-#ifndef TYPES_H
-#define TYPES_H
+#ifndef C_UTILITIES_TYPES_H
+#define C_UTILITIES_TYPES_H
 
 typedef signed char schar;
 typedef unsigned char uchar;

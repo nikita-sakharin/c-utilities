@@ -1,5 +1,5 @@
-#ifndef COMMON_H
-#define COMMON_H
+#ifndef C_UTILITIES_COMMON_H
+#define C_UTILITIES_COMMON_H
 
 #include <inttypes.h> // imaxabs, imaxdiv
 #include <limits.h> // LLONG_MAX
