@@ -1,5 +1,5 @@
-#ifndef ERROR_H
-#define ERROR_H
+#ifndef ERROR_HANDLING_H
+#define ERROR_HANDLING_H
 
 #include <stdio.h> // fprintf, perror, stderr
 #include <stdlib.h> // EXIT_FAILURE, exit
