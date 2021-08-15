@@ -2,7 +2,7 @@
 #define C_UTILITIES_COMMON_H
 
 #include <inttypes.h> // imaxabs, imaxdiv
-#include <limits.h> // LLONG_MAX
+#include <limits.h> // CHAR_BIT, LLONG_MAX
 #include <stddef.h> // ptrdiff_t, size_t
 #include <stdint.h> // INTMAX_MAX, intmax_t, uintmax_t
 #include <stdlib.h> // abs, div, labs, ldiv, llabs, lldiv
@@ -181,7 +181,7 @@ inline void *mem_swap(
         *ptr2 = buffer;
     }
 #   else
-    uchar buffer[64U]; // sizeof intmax_t ???
+    uchar buffer[CHAR_BIT * sizeof(intmax_t)];
     static const size_t size = sizeof buffer;
     for (register uchar
         * restrict ptr1 = (uchar *) s1, * restrict ptr2 = (uchar *) s2;
