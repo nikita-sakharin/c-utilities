@@ -166,6 +166,19 @@ inline uintmax_t umaxmin(
 
 #endif // INTMAX_MAX > LLONG_MAX
 
+inline int arr_compare(
+    register const void * const restrict arr, // restrict ???
+    register const size_t index1,
+    register const size_t index2,
+    register const size_t size,
+    register int (* const compare)(const void *, const void *)
+) {
+    return compare(
+        ptr_offset(arr, index1, size),
+        ptr_offset(arr, index2, size)
+    );
+}
+
 inline void *mem_swap(
     void * const restrict s1,
     void * const restrict s2,
