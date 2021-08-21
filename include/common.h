@@ -179,6 +179,18 @@ inline int arr_compare(
     );
 }
 
+inline void *arr_swap(
+    register const void * const restrict arr, // restrict ???
+    register const size_t index1,
+    register const size_t index2,
+    register const size_t size
+) {
+    return mem_swap(
+        ptr_offset(arr, index1, size),
+        ptr_offset(arr, index2, size)
+    );
+}
+
 inline void *mem_swap(
     void * const restrict s1,
     void * const restrict s2,
@@ -210,7 +222,6 @@ inline void *mem_swap(
     return s1;
 }
 
-// char or uchar ???
 // intptr_t defined ???
 // intptr_t or uintptr_t ???
 // restrict ???
