@@ -210,13 +210,15 @@ inline void *mem_swap(
     static const size_t size = sizeof buffer;
     for (register uchar
         * restrict ptr1 = (uchar *) s1, * restrict ptr2 = (uchar *) s2;
-        n > 0; ptr1 += size, ptr2 += size
+        n > 0;
     ) {
         register const size_t offset = min(size, n);
         n -= offset;
         memcpy(buffer, ptr1, offset);
         memcpy(ptr1, ptr2, offset);
         memcpy(ptr2, buffer, offset);
+        ptr1 += offset;
+        ptr2 += offset;
     }
 #   endif // NDEBUG
     return s1;
