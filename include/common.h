@@ -213,10 +213,10 @@ inline void *mem_swap(
         n > 0;
     ) {
         register const size_t offset = min(size, n);
-        n -= offset;
         memcpy(buffer, ptr1, offset);
         memcpy(ptr1, ptr2, offset);
         memcpy(ptr2, buffer, offset);
+        n -= offset;
         ptr1 += offset;
         ptr2 += offset;
     }
