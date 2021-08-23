@@ -201,7 +201,7 @@ inline void *mem_swap(
         * restrict ptr1 = (uchar *) s1, * restrict ptr2 = (uchar *) s2;
         n-- > 0; ++ptr1, ++ptr2
     ) {
-        const uchar buffer = *ptr1;
+        register const uchar buffer = *ptr1;
         *ptr1 = *ptr2;
         *ptr2 = buffer;
     }
