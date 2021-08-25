@@ -240,7 +240,14 @@ inline void *ptr_offset(
     register const size_t index,
     register const size_t size
 ) {
-    return (void *) ((const char *) ptr + index * size);
+#   if defined(__GNUC__)
+#   pragma GCC diagnostic push
+#   pragma GCC diagnostic ignored "-Wcast-qual"
+#   endif
+    return (char *) ptr + index * size;
+#   if defined(__GNUC__)
+#   pragma GCC diagnostic pop
+#   endif
 }
 
 #endif
