@@ -224,8 +224,6 @@ inline void *mem_swap(
     return s1;
 }
 
-// intptr_t defined ???
-// intptr_t or uintptr_t ???
 // restrict ???
 inline ptrdiff_t ptr_diff(
     register const void * const ptr1,
@@ -240,12 +238,17 @@ inline void *ptr_offset(
     register const size_t index,
     register const size_t size
 ) {
-#   if defined(__GNUC__)
+#   if defined(__clang__)
+#   pragma clang diagnostic push
+#   pragma clang diagnostic ignored "-Wcast-qual"
+#   elif defined(__GNUC__)
 #   pragma GCC diagnostic push
 #   pragma GCC diagnostic ignored "-Wcast-qual"
 #   endif
     return (char *) ptr + index * size;
-#   if defined(__GNUC__)
+#   if defined(__clang__)
+#   pragma clang diagnostic pop
+#   elif defined(__GNUC__)
 #   pragma GCC diagnostic pop
 #   endif
 }
