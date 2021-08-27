@@ -5,7 +5,7 @@
 #include <stdlib.h> // EXIT_FAILURE, exit
 
 // (condition) or condition ???
-#define exit_if(condition, message) \
+#define EXIT_IF(condition, message) \
     do { \
         if (condition) { \
             fprintf(stderr, "%s:%d: ", __FILE__, __LINE__); \
@@ -14,10 +14,10 @@
         } \
     } while (0)
 
-#define goto_if(condition, label) \
+#define GOTO_IF(condition, label) \
     do { \
         if (condition) \
             goto label; \
     } while (0)
 
-#endif
+#endif // C_UTILITIES_ERROR_HANDLING_H

@@ -13,4 +13,4 @@ typedef float flt;
 typedef double dbl;
 typedef long double ldbl;
 
-#endif
+#endif // C_UTILITIES_TYPES_H

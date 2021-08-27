@@ -253,4 +253,4 @@ inline void *ptr_offset(
 #   endif
 }
 
-#endif
+#endif // C_UTILITIES_COMMON_H
