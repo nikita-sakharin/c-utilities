@@ -2,6 +2,7 @@
 #define C_UTILITIES_COMMON_H
 
 #include <limits.h> // CHAR_BIT
+#include <stdbool.h> // bool
 #include <stddef.h> // ptrdiff_t, size_t
 #include <stdint.h> // intmax_t
 #include <string.h> // memcpy
@@ -9,8 +10,9 @@
 #include "arithmetic.h"
 #include "types.h"
 
+// restrict ???
 inline int arr_compare(
-    register const void * const restrict arr, // restrict ???
+    register const void * const restrict arr,
     register const size_t index1,
     register const size_t index2,
     register const size_t size,
@@ -22,8 +24,21 @@ inline int arr_compare(
     );
 }
 
+inline bool arr_compare_swap(
+    register void * const restrict arr,
+    register const size_t index1,
+    register const size_t index2,
+    register const size_t size,
+    register int (* const compare)(const void *, const void *)
+) {
+    if (arr_compare(arr, index1, index2, size, compare) <= 0)
+        return false;
+    arr_swap(arr, index1, index2, size);
+    return true;
+}
+
 inline void *arr_swap(
-    register void * const restrict arr, // restrict ???
+    register void * const restrict arr,
     register const size_t index1,
     register const size_t index2,
     register const size_t size
