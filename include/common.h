@@ -23,7 +23,7 @@ inline int arr_compare(
 }
 
 inline void *arr_swap(
-    register const void * const restrict arr, // restrict ???
+    register void * const restrict arr, // restrict ???
     register const size_t index1,
     register const size_t index2,
     register const size_t size
