@@ -65,7 +65,7 @@ inline void *mem_swap(
         *ptr2 = buffer;
     }
 #   else
-    alignas(64) uchar buffer[CHAR_BIT * sizeof(intmax_t)];
+    alignas(64U) uchar buffer[CHAR_BIT * sizeof(intmax_t)];
     static const size_t size = sizeof buffer;
     for (register uchar
         * restrict ptr1 = (uchar *) s1, * restrict ptr2 = (uchar *) s2;
