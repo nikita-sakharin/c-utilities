@@ -2,6 +2,7 @@
 #define C_UTILITIES_COMMON_H
 
 #include <limits.h> // CHAR_BIT
+#include <stdalign.h> // alignas
 #include <stdbool.h> // bool
 #include <stddef.h> // ptrdiff_t, size_t
 #include <stdint.h> // intmax_t
@@ -64,7 +65,7 @@ inline void *mem_swap(
         *ptr2 = buffer;
     }
 #   else
-    uchar buffer[CHAR_BIT * sizeof(intmax_t)];
+    alignas(64) uchar buffer[CHAR_BIT * sizeof(intmax_t)];
     static const size_t size = sizeof buffer;
     for (register uchar
         * restrict ptr1 = (uchar *) s1, * restrict ptr2 = (uchar *) s2;
