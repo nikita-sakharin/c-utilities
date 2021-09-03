@@ -8,6 +8,10 @@
 
 #include "types.h"
 
+#define ABS(a) ((a) < 0 ? -(a) : (a))
+#define MAX(a, b) ((a) < (b) ? (b) : (a))
+#define MIN(a, b) ((b) < (a) ? (b) : (a))
+
 inline int max(register const int a, register const int b) {
     return a < b ? b : a;
 }
