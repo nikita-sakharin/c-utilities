@@ -1,0 +1,7 @@
+#ifndef C_UTILITIES_COMMON_H
+#define C_UTILITIES_COMMON_H
+
+#define CACHE_LINE_SIZE (64U)
+#define PAGE_SIZE (4096U)
+
+#endif // C_UTILITIES_COMMON_H
