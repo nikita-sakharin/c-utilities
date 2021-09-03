@@ -1,14 +1,13 @@
 #ifndef C_UTILITIES_COMMON_H
 #define C_UTILITIES_COMMON_H
 
-#include <limits.h> // CHAR_BIT
 #include <stdalign.h> // alignas
 #include <stdbool.h> // bool
 #include <stddef.h> // ptrdiff_t, size_t
-#include <stdint.h> // intmax_t
 #include <string.h> // memcpy
 
 #include "arithmetic.h"
+#include "system_config.h"
 #include "types.h"
 
 // restrict ???
@@ -65,13 +64,12 @@ inline void *mem_swap(
         *ptr2 = buffer;
     }
 #   else
-    alignas(64U) uchar buffer[CHAR_BIT * sizeof(intmax_t)];
-    static const size_t size = sizeof buffer;
+    alignas(CACHE_LINE_SIZE) uchar buffer[CACHE_LINE_SIZE];
     for (register uchar
         * restrict ptr1 = (uchar *) s1, * restrict ptr2 = (uchar *) s2;
         n > 0;
     ) {
-        register const size_t offset = min(size, n);
+        register const size_t offset = min(CACHE_LINE_SIZE, n);
         memcpy(buffer, ptr1, offset);
         memcpy(ptr1, ptr2, offset);
         memcpy(ptr2, buffer, offset);
