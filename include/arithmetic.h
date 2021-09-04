@@ -8,84 +8,84 @@
 
 #include "types.h"
 
-#define ABS(a) ((a) < 0 ? -(a) : (a))
-#define MAX(a, b) ((a) < (b) ? (b) : (a))
-#define MIN(a, b) ((b) < (a) ? (b) : (a))
+#define ABS(x) ((x) < 0 ? -(x) : (x))
+#define MAX(x, y) ((x) < (y) ? (y) : (x))
+#define MIN(x, y) ((y) < (x) ? (y) : (x))
 
-inline int max(register const int a, register const int b) {
-    return a < b ? b : a;
+inline int max(register const int x, register const int y) {
+    return MAX(x, y);
 }
 
-inline uint umax(register const uint a, register const uint b) {
-    return a < b ? b : a;
+inline uint umax(register const uint x, register const uint y) {
+    return MAX(x, y);
 }
 
-inline long lmax(register const long a, register const long b) {
-    return a < b ? b : a;
+inline long lmax(register const long x, register const long y) {
+    return MAX(x, y);
 }
 
-inline ulong ulmax(register const ulong a, register const ulong b) {
-    return a < b ? b : a;
+inline ulong ulmax(register const ulong x, register const ulong y) {
+    return MAX(x, y);
 }
 
-inline llong llmax(register const llong a, register const llong b) {
-    return a < b ? b : a;
+inline llong llmax(register const llong x, register const llong y) {
+    return MAX(x, y);
 }
 
-inline ullong ullmax(register const ullong a, register const ullong b) {
-    return a < b ? b : a;
+inline ullong ullmax(register const ullong x, register const ullong y) {
+    return MAX(x, y);
 }
 
 inline intmax_t imaxmax(
-    register const intmax_t a,
-    register const intmax_t b
+    register const intmax_t x,
+    register const intmax_t y
 ) {
-    return a < b ? b : a;
+    return MAX(x, y);
 }
 
 inline uintmax_t umaxmax(
-    register const uintmax_t a,
-    register const uintmax_t b
+    register const uintmax_t x,
+    register const uintmax_t y
 ) {
-    return a < b ? b : a;
+    return MAX(x, y);
 }
 
-inline int min(register const int a, register const int b) {
-    return b < a ? b : a;
+inline int min(register const int x, register const int y) {
+    return MIN(x, y);
 }
 
-inline uint umin(register const uint a, register const uint b) {
-    return b < a ? b : a;
+inline uint umin(register const uint x, register const uint y) {
+    return MIN(x, y);
 }
 
-inline long lmin(register const long a, register const long b) {
-    return b < a ? b : a;
+inline long lmin(register const long x, register const long y) {
+    return MIN(x, y);
 }
 
-inline ulong ulmin(register const ulong a, register const ulong b) {
-    return b < a ? b : a;
+inline ulong ulmin(register const ulong x, register const ulong y) {
+    return MIN(x, y);
 }
 
-inline llong llmin(register const llong a, register const llong b) {
-    return b < a ? b : a;
+inline llong llmin(register const llong x, register const llong y) {
+    return MIN(x, y);
 }
 
-inline ullong ullmin(register const ullong a, register const ullong b) {
-    return b < a ? b : a;
+inline ullong ullmin(register const ullong x, register const ullong y) {
+    return MIN(x, y);
 }
 
 inline intmax_t imaxmin(
-    register const intmax_t a,
-    register const intmax_t b
+    register const intmax_t x,
+    register const intmax_t y
 ) {
-    return b < a ? b : a;
+    return MIN(x, y);
 }
 
 inline uintmax_t umaxmin(
-    register const uintmax_t a,
-    register const uintmax_t b
+    register const uintmax_t x,
+    register const uintmax_t y
 ) {
-    return b < a ? b : a;
+    return MIN(x, y);
 }
 
 #if LLONG_MAX < INTMAX_MAX
