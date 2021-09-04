@@ -6,7 +6,7 @@
 #include <stdint.h> // INTMAX_MAX, intmax_t, uintmax_t
 #include <stdlib.h> // abs, div, labs, ldiv, llabs, lldiv
 
-#include "types.h"
+#include "c_utilities/types.h"
 
 #define ABS(x) ((x) < 0 ? -(x) : (x))
 #define MAX(x, y) ((x) < (y) ? (y) : (x))
