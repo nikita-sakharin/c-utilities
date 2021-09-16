@@ -6,9 +6,11 @@
 #include <stddef.h> // ptrdiff_t, size_t
 #include <string.h> // memcpy
 
-#include "c_utilities/arithmetic.h"
-#include "c_utilities/system_config.h"
-#include "c_utilities/types.h"
+#include "c_utilities/arithmetic.h" // max
+#include "c_utilities/system_config.h" // LEVEL1_DCACHE_LINESIZE
+#include "c_utilities/types.h" // uchar
+// arr_compare_max or arr_max
+// ptr_compare_max or ptr_max
 
 // restrict ???
 inline int arr_compare(
