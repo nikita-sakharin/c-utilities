@@ -66,12 +66,12 @@ inline void *mem_swap(
         *ptr2 = buffer;
     }
 #   else
-    alignas(CACHE_LINE_SIZE) uchar buffer[CACHE_LINE_SIZE];
+    alignas(LEVEL1_DCACHE_LINESIZE) uchar buffer[LEVEL1_DCACHE_LINESIZE];
     for (register uchar
         * restrict ptr1 = (uchar *) s1, * restrict ptr2 = (uchar *) s2;
         n > 0;
     ) {
-        register const size_t offset = min(CACHE_LINE_SIZE, n);
+        register const size_t offset = min(LEVEL1_DCACHE_LINESIZE, n);
         memcpy(buffer, ptr1, offset);
         memcpy(ptr1, ptr2, offset);
         memcpy(ptr2, buffer, offset);
