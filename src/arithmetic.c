@@ -1,7 +1,7 @@
 #include <stdint.h> // intmax_t, uintmax_t
 
-#include "c_utilities/arithmetic.h"
-#include "c_utilities/types.h"
+#include <c_utilities/arithmetic.h>
+#include <c_utilities/types.h>
 
 extern inline int max(int, int);
 extern inline uint umax(uint, uint);
