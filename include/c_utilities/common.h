@@ -59,7 +59,7 @@ inline void *mem_swap(
 #   ifdef NDEBUG
     for (register uchar
         * restrict ptr1 = (uchar *) s1, * restrict ptr2 = (uchar *) s2;
-        n-- > 0; ++ptr1, ++ptr2
+        n > 0; --n, ++ptr1, ++ptr2
     ) {
         register const uchar buffer = *ptr1;
         *ptr1 = *ptr2;
