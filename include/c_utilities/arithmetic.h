@@ -10,11 +10,11 @@
 #include <c_utilities/type_generic.h>
 #include <c_utilities/types.h> // llong, uint, ullong, ulong
 
-#define ABS(X) ((X) < 0 ? -(X) : (X))
-#define CLAMP(X, A, B) ((X) < (A) ? (A) : (B) < (X) ? (B) : (X))
-#define DIM(X, Y) ((Y) < (X) ? (X) - (Y) : 0)
-#define MAX(X, Y) ((X) < (Y) ? (Y) : (X))
-#define MIN(X, Y) ((Y) < (X) ? (Y) : (X))
+#define ABS(x) ((x) < 0 ? -(x) : (x))
+#define CLAMP(x, a, b) ((x) < (a) ? (a) : (b) < (x) ? (b) : (x))
+#define DIM(x, y) ((y) < (x) ? (x) - (y) : 0)
+#define MAX(x, y) ((x) < (y) ? (y) : (x))
+#define MIN(x, y) ((y) < (x) ? (y) : (x))
 
 inline int clamp(
     register const int x,
