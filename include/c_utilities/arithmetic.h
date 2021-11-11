@@ -1,16 +1,52 @@
 #ifndef C_UTILITIES_ARITHMETIC_H
 #define C_UTILITIES_ARITHMETIC_H
 
+#include <assert.h> // assert
 #include <inttypes.h> // imaxabs, imaxdiv
 #include <limits.h> // LLONG_MAX
 #include <stdint.h> // INTMAX_MAX, intmax_t, uintmax_t
 #include <stdlib.h> // abs, div, labs, ldiv, llabs, lldiv
 
-#include <c_utilities/types.h>
+#include <c_utilities/type_generic.h>
+#include <c_utilities/types.h> // llong, uint, ullong, ulong
 
-#define ABS(x) ((x) < 0 ? -(x) : (x))
-#define MAX(x, y) ((x) < (y) ? (y) : (x))
-#define MIN(x, y) ((y) < (x) ? (y) : (x))
+#define ABS(X) ((X) < 0 ? -(X) : (X))
+#define CLAMP(X, A, B) ((X) < (A) ? (A) : (B) < (X) ? (B) : (X))
+#define DIM(X, Y) ((Y) < (X) ? (X) - (Y) : 0)
+#define MAX(X, Y) ((X) < (Y) ? (Y) : (X))
+#define MIN(X, Y) ((Y) < (X) ? (Y) : (X))
+
+inline int clamp(
+    register const int x,
+    register const int a,
+    register const int b
+) {
+    assert(a <= b);
+    return CLAMP(x, a, b);
+}
+
+inline uint uclamp(
+    register const uint x,
+    register const uint a,
+    register const uint b
+) {
+    assert(a <= b);
+    return CLAMP(x, a, b);
+}
+
+inline int dim(
+    register const int x,
+    register const int y
+) {
+    return DIM(x, y);
+}
+
+inline uint udim(
+    register const uint x,
+    register const uint y
+) {
+    return DIM(x, y);
+}
 
 inline int max(register const int x, register const int y) {
     return MAX(x, y);
@@ -88,84 +124,12 @@ inline uintmax_t umaxmin(
     return MIN(x, y);
 }
 
-#if LLONG_MAX < INTMAX_MAX
+#define abs(X)
+#define div(X, Y)
 
-#define abs(X) _Generic((X), \
-    int: abs, \
-    long: labs, \
-    llong: llabs, \
-    intmax_t: imaxabs, \
-    default: abs \
-)(X)
-
-#define div(X, Y) _Generic((X) + (Y), \
-    int: div, \
-    long: ldiv, \
-    llong: lldiv, \
-    intmax_t: imaxdiv, \
-    default: div \
-)(X, Y)
-
-#define max(X, Y) _Generic((X) + (Y), \
-    int: max, \
-    uint: umax, \
-    long: lmax, \
-    ulong: ulmax, \
-    llong: llmax, \
-    ullong: ullmax, \
-    intmax_t: imaxmax, \
-    uintmax_t: umaxmax, \
-    default: max \
-)(X, Y)
-
-#define min(X, Y) _Generic((X) + (Y), \
-    int: min, \
-    uint: umin, \
-    long: lmin, \
-    ulong: ulmin, \
-    llong: llmin, \
-    ullong: ullmin, \
-    intmax_t: imaxmin, \
-    uintmax_t: umaxmin, \
-    default: min \
-)(X, Y)
-
-#else
-
-#define abs(X) _Generic((X), \
-    int: abs, \
-    long: labs, \
-    llong: llabs, \
-    default: abs \
-)(X)
-
-#define div(X, Y) _Generic((X) + (Y), \
-    int: div, \
-    long: ldiv, \
-    llong: lldiv, \
-    default: div \
-)(X, Y)
-
-#define max(X, Y) _Generic((X) + (Y), \
-    int: max, \
-    uint: umax, \
-    long: lmax, \
-    ulong: ulmax, \
-    llong: llmax, \
-    ullong: ullmax, \
-    default: max \
-)(X, Y)
-
-#define min(X, Y) _Generic((X) + (Y), \
-    int: min, \
-    uint: umin, \
-    long: lmin, \
-    ulong: ulmin, \
-    llong: llmin, \
-    ullong: ullmin, \
-    default: min \
-)(X, Y)
-
-#endif // LLONG_MAX < INTMAX_MAX
+#define clamp(X, A, B)
+#define dim(X, Y)
+#define max(X, Y)
+#define min(X, Y)
 
 #endif // C_UTILITIES_ARITHMETIC_H
