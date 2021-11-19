@@ -58,7 +58,7 @@ inline void *mem_swap(
     register size_t n
 ) {
     assert(s1 && s1 <= (uchar *) s1 + n && s2 && s2 <= (uchar *) s2 + n &&
-        ((uchar *) s1 >= (uchar *) s2 + n || (uchar *) s2 >= (uchar *) s1 + n)
+        (s1 >= (uchar *) s2 + n || s2 >= (uchar *) s1 + n)
     );
 #   ifdef NDEBUG
     for (register uchar
