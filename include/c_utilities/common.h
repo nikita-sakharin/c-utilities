@@ -101,6 +101,7 @@ inline void *ptr_offset(
     register const size_t index,
     register const size_t size
 ) {
+    assert(ptr <= (const char *) ptr + index * size);
 #   if defined(__clang__)
 #   pragma clang diagnostic push
 #   pragma clang diagnostic ignored "-Wcast-qual"
