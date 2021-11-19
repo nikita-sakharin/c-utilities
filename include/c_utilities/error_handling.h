@@ -1,6 +1,7 @@
 #ifndef C_UTILITIES_ERROR_HANDLING_H
 #define C_UTILITIES_ERROR_HANDLING_H
 
+#include <stdbool.h> // false
 #include <stdio.h> // fprintf, perror, stderr
 #include <stdlib.h> // EXIT_FAILURE, exit
 
@@ -12,12 +13,12 @@
             perror(message); \
             exit(EXIT_FAILURE); \
         } \
-    } while (0)
+    } while (false)
 
 #define GOTO_IF(condition, label) \
     do { \
         if (condition) \
             goto label; \
-    } while (0)
+    } while (false)
 
 #endif // C_UTILITIES_ERROR_HANDLING_H
