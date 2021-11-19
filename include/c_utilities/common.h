@@ -1,6 +1,7 @@
 #ifndef C_UTILITIES_COMMON_H
 #define C_UTILITIES_COMMON_H
 
+#include <assert.h> // assert
 #include <stdalign.h> // alignas
 #include <stdbool.h> // bool
 #include <stddef.h> // ptrdiff_t, size_t
@@ -56,6 +57,9 @@ inline void *mem_swap(
     void * const restrict s2,
     register size_t n
 ) {
+    assert(s1 && s1 <= (uchar *) s1 + n && s2 && s2 <= (uchar *) s2 + n &&
+        ((uchar *) s1 >= (uchar *) s2 + n || (uchar *) s2 >= (uchar *) s1 + n)
+    );
 #   ifdef NDEBUG
     for (register uchar
         * restrict ptr1 = (uchar *) s1, * restrict ptr2 = (uchar *) s2;
