@@ -6,14 +6,14 @@ CFLAGS=-Wall -Walloc-zero -Walloca -Wanalyzer-too-complex -Warith-conversion \
     -Wdouble-promotion -Wduplicated-branches -Wduplicated-cond -Werror -Wextra \
     -Wfatal-errors -Wfloat-equal -Wformat=2 -Wformat-overflow=2 \
     -Wformat-signedness -Wformat-truncation=2 -Wimplicit-fallthrough=5 \
-    -Winit-self -Winline -Wlogical-op -Wnested-externs -Wmissing-declarations \
+    -Winit-self -Winline -Wlogical-op -Wmissing-declarations \
     -Wmissing-include-dirs -Wmissing-noreturn -Wmissing-prototypes \
-    -Wnull-dereference -Wold-style-definition -Wpacked -Wpadded -Wpedantic \
-    -Wredundant-decls -Wshadow=global -Wshift-overflow=2 -Wstrict-overflow=5 \
-    -Wstrict-prototypes -Wstringop-overflow=4 -Wswitch-default -Wswitch-enum \
-    -Wundef -Wunreachable-code -Wunused-const-variable=2 -Wunused-macros \
-    -Wvector-operation-performance -Wvla -Wwrite-strings -fanalyzer \
-    -pedantic-errors -std=c18
+    -Wnested-externs -Wnull-dereference -Wold-style-definition -Wpacked \
+    -Wpadded -Wpedantic -Wredundant-decls -Wshadow=global -Wshift-overflow=2 \
+    -Wstrict-overflow=5 -Wstrict-prototypes -Wstringop-overflow=4 \
+    -Wswitch-default -Wswitch-enum -Wundef -Wunreachable-code \
+    -Wunused-const-variable=2 -Wunused-macros -Wvector-operation-performance \
+    -Wvla -Wwrite-strings -fanalyzer -pedantic-errors -std=c18
 # -Wattribute-alias=2 -Wsync-nand -Wunused
 LDFLAGS=
 LDLIBS=-lm
