@@ -8,92 +8,206 @@
 
 #if LLONG_MAX < INTMAX_MAX
 
-#define TYPE_GENERIC_INTEGER_FUNCTION_1(FUNC, X) _Generic((X), \
-    int: FUNC, \
-    uint: u##FUNC, \
-    long: l##FUNC, \
-    ulong: ul##FUNC, \
-    llong: ll##FUNC, \
-    ullong: ull##FUNC, \
-    intmax_t: imax##FUNC, \
-    uintmax_t: umax##FUNC, \
-    default: FUNC \
-)(X)
+#define TYPE_GENERIC_INTEGER_FUNCTION_1(func, x) _Generic(
+    (x), \
+    int: func, \
+    uint: u##func, \
+    long: l##func, \
+    ulong: ul##func, \
+    llong: ll##func, \
+    ullong: ull##func, \
+    intmax_t: imax##func, \
+    uintmax_t: umax##func, \
+    default: func \
+)(x)
 
-#define TYPE_GENERIC_INTEGER_FUNCTION_2(FUNC, X, Y) _Generic((X) + (Y), \
-    int: FUNC, \
-    uint: u##FUNC, \
-    long: l##FUNC, \
-    ulong: ul##FUNC, \
-    llong: ll##FUNC, \
-    ullong: ull##FUNC, \
-    intmax_t: imax##FUNC, \
-    uintmax_t: umax##FUNC, \
-    default: FUNC \
-)(X, Y)
+#define TYPE_GENERIC_INTEGER_FUNCTION_2(func, x, y) _Generic(
+    (x) + (y), \
+    int: func, \
+    uint: u##func, \
+    long: l##func, \
+    ulong: ul##func, \
+    llong: ll##func, \
+    ullong: ull##func, \
+    intmax_t: imax##func, \
+    uintmax_t: umax##func, \
+    default: func \
+)(x, y)
 
-#define TYPE_GENERIC_INTEGER_FUNCTION_3(FUNC, X, Y, Z) _Generic((X) + (Y) + (Z), \
-    int: FUNC, \
-    uint: u##FUNC, \
-    long: l##FUNC, \
-    ulong: ul##FUNC, \
-    llong: ll##FUNC, \
-    ullong: ull##FUNC, \
-    intmax_t: imax##FUNC, \
-    uintmax_t: umax##FUNC, \
-    default: FUNC \
-)(X, Y, Z)
+#define TYPE_GENERIC_INTEGER_FUNCTION_3(func, x, y, z) _Generic(
+    (x) + (y) + (z), \
+    int: func, \
+    uint: u##func, \
+    long: l##func, \
+    ulong: ul##func, \
+    llong: ll##func, \
+    ullong: ull##func, \
+    intmax_t: imax##func, \
+    uintmax_t: umax##func, \
+    default: func \
+)(x, y, z)
 
-#define TYPE_GENERIC_SIGNED_INTEGER_FUNCTION_1(FUNC, X) _Generic((X), \
-    int: FUNC, \
-    long: l##FUNC, \
-    llong: ll##FUNC, \
-    intmax_t: imax##FUNC, \
-    default: FUNC \
-)(X)
+#define TYPE_GENERIC_SIGNED_INTEGER_FUNCTION_1(func, x) _Generic(
+    (x), \
+    int: func, \
+    long: l##func, \
+    llong: ll##func, \
+    intmax_t: imax##func, \
+    default: func \
+)(x)
 
-#define TYPE_GENERIC_SIGNED_INTEGER_FUNCTION_2(FUNC, X, Y) _Generic((X) + (Y), \
-    int: FUNC, \
-    long: l##FUNC, \
-    llong: ll##FUNC, \
-    intmax_t: imax##FUNC, \
-    default: FUNC \
-)(X, Y)
+#define TYPE_GENERIC_SIGNED_INTEGER_FUNCTION_2(func, x, y) _Generic(
+    (x) + (y), \
+    int: func, \
+    long: l##func, \
+    llong: ll##func, \
+    intmax_t: imax##func, \
+    default: func \
+)(x, y)
 
-#define TYPE_GENERIC_SIGNED_INTEGER_FUNCTION_3(FUNC, X, Y, Z) _Generic((X) + (Y) + (Z), \
-    int: FUNC, \
-    long: l##FUNC, \
-    llong: ll##FUNC, \
-    intmax_t: imax##FUNC, \
-    default: FUNC \
-)(X, Y, Z)
+#define TYPE_GENERIC_SIGNED_INTEGER_FUNCTION_3(func, x, y, z) _Generic(
+    (x) + (y) + (z), \
+    int: func, \
+    long: l##func, \
+    llong: ll##func, \
+    intmax_t: imax##func, \
+    default: func \
+)(x, y, z)
 
-#define TYPE_GENERIC_UNSIGNED_INTEGER_FUNCTION_1(FUNC, X) _Generic((X), \
-    uint: u##FUNC, \
-    ulong: ul##FUNC, \
-    ullong: ull##FUNC, \
-    uintmax_t: umax##FUNC, \
-    default: FUNC \
-)(X)
+#define TYPE_GENERIC_UNSIGNED_INTEGER_FUNCTION_1(func, x) _Generic(
+    (x), \
+    uint: u##func, \
+    ulong: ul##func, \
+    ullong: ull##func, \
+    uintmax_t: umax##func, \
+    default: u##func \
+)(x)
 
-#define TYPE_GENERIC_UNSIGNED_INTEGER_FUNCTION_2(FUNC, X, Y) _Generic((X) + (Y), \
-    uint: u##FUNC, \
-    ulong: ul##FUNC, \
-    ullong: ull##FUNC, \
-    uintmax_t: umax##FUNC, \
-    default: FUNC \
-)(X, Y)
+#define TYPE_GENERIC_UNSIGNED_INTEGER_FUNCTION_2(func, x, y) _Generic(
+    (x) + (y), \
+    uint: u##func, \
+    ulong: ul##func, \
+    ullong: ull##func, \
+    uintmax_t: umax##func, \
+    default: u##func \
+)(x, y)
 
-#define TYPE_GENERIC_UNSIGNED_INTEGER_FUNCTION_3(FUNC, X, Y, Z) _Generic((X) + (Y) + (Z), \
-    uint: u##FUNC, \
-    ulong: ul##FUNC, \
-    ullong: ull##FUNC, \
-    uintmax_t: umax##FUNC, \
-    default: FUNC \
-)(X, Y, Z)
+#define TYPE_GENERIC_UNSIGNED_INTEGER_FUNCTION_3(func, x, y, z) _Generic(
+    (x) + (y) + (z), \
+    uint: u##func, \
+    ulong: ul##func, \
+    ullong: ull##func, \
+    uintmax_t: umax##func, \
+    default: u##func \
+)(x, y, z)
 
 #else
 
+#define TYPE_GENERIC_INTEGER_FUNCTION_1(func, x) _Generic(
+    (x), \
+    int: func, \
+    uint: u##func, \
+    long: l##func, \
+    ulong: ul##func, \
+    llong: ll##func, \
+    ullong: ull##func, \
+    default: func \
+)(x)
+
+#define TYPE_GENERIC_INTEGER_FUNCTION_2(func, x, y) _Generic(
+    (x) + (y), \
+    int: func, \
+    uint: u##func, \
+    long: l##func, \
+    ulong: ul##func, \
+    llong: ll##func, \
+    ullong: ull##func, \
+    default: func \
+)(x, y)
+
+#define TYPE_GENERIC_INTEGER_FUNCTION_3(func, x, y, z) _Generic(
+    (x) + (y) + (z), \
+    int: func, \
+    uint: u##func, \
+    long: l##func, \
+    ulong: ul##func, \
+    llong: ll##func, \
+    ullong: ull##func, \
+    default: func \
+)(x, y, z)
+
+#define TYPE_GENERIC_SIGNED_INTEGER_FUNCTION_1(func, x) _Generic(
+    (x), \
+    int: func, \
+    long: l##func, \
+    llong: ll##func, \
+    default: func \
+)(x)
+
+#define TYPE_GENERIC_SIGNED_INTEGER_FUNCTION_2(func, x, y) _Generic(
+    (x) + (y), \
+    int: func, \
+    long: l##func, \
+    llong: ll##func, \
+    default: func \
+)(x, y)
+
+#define TYPE_GENERIC_SIGNED_INTEGER_FUNCTION_3(func, x, y, z) _Generic(
+    (x) + (y) + (z), \
+    int: func, \
+    long: l##func, \
+    llong: ll##func, \
+    default: func \
+)(x, y, z)
+
+#define TYPE_GENERIC_UNSIGNED_INTEGER_FUNCTION_1(func, x) _Generic(
+    (x), \
+    uint: u##func, \
+    ulong: ul##func, \
+    ullong: ull##func, \
+    default: u##func \
+)(x)
+
+#define TYPE_GENERIC_UNSIGNED_INTEGER_FUNCTION_2(func, x, y) _Generic(
+    (x) + (y), \
+    uint: u##func, \
+    ulong: ul##func, \
+    ullong: ull##func, \
+    default: u##func \
+)(x, y)
+
+#define TYPE_GENERIC_UNSIGNED_INTEGER_FUNCTION_3(func, x, y, z) _Generic(
+    (x) + (y) + (z), \
+    uint: u##func, \
+    ulong: ul##func, \
+    ullong: ull##func, \
+    default: u##func \
+)(x, y, z)
+
 #endif // LLONG_MAX < INTMAX_MAX
+
+#define TYPE_GENERIC_FLOATING_FUNCTION_1(func, x) _Generic(
+    (x), \
+    flt: func##f, \
+    dbl: func, \
+    ldbl: func##l, \
+    default: func \
+)(x)
+
+#define TYPE_GENERIC_FLOATING_FUNCTION_2(func, x, y) _Generic(
+    (x) + (y), \
+    flt: func##f, \
+    dbl: func, \
+    ldbl: func##l, \
+    default: func \
+)(x, y)
+
+#define TYPE_GENERIC_FLOATING_FUNCTION_3(func, x, y, z) _Generic(
+    (x) + (y) + (z), \
+    flt: func##f, \
+    dbl: func, \
+    ldbl: func##l, \
+    default: func \
+)(x, y, z)
 
 #endif // C_UTILITIES_TYPE_GENERIC_H
