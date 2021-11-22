@@ -52,13 +52,13 @@ inline void *arr_swap(
     );
 }
 
-inline void *mem_swap(
+inline void *memSwap(
     void * const restrict s1,
     void * const restrict s2,
     register size_t n
 ) {
     assert(s1 && s1 <= (uchar *) s1 + n && s2 && s2 <= (uchar *) s2 + n &&
-        (s1 >= (uchar *) s2 + n || s2 >= (uchar *) s1 + n)
+        (s1 >= (uchar *) s2 + n || s2 >= (uchar *) s1 + n) && n <= PTRDIFF_MAX
     );
 #   ifdef NDEBUG
     for (register uchar
@@ -88,7 +88,7 @@ inline void *mem_swap(
 }
 
 // restrict ???
-inline ptrdiff_t ptr_diff(
+inline ptrdiff_t ptrDiff(
     register const void * const ptr1,
     register const void * const ptr2,
     register const size_t size
@@ -96,12 +96,12 @@ inline ptrdiff_t ptr_diff(
     return ((const char *) ptr1 - (const char *) ptr2) / (ptrdiff_t) size;
 }
 
-inline void *ptr_offset(
+inline void *ptrOffset(
     register const void * const ptr,
     register const size_t index,
     register const size_t size
 ) {
-    assert(ptr <= (const char *) ptr + index * size);
+    assert(ptr != NULL && ptr <= (const char *) ptr + index * size);
 #   if defined(__clang__)
 #   pragma clang diagnostic push
 #   pragma clang diagnostic ignored "-Wcast-qual"
