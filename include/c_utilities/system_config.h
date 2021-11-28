@@ -16,7 +16,7 @@ static_assert(
         LEVEL1_DCACHE_LINESIZE <= PTRDIFF_MAX &&
         HAS_SINGLE_BIT(LEVEL1_DCACHE_LINESIZE),
     "LEVEL1_DCACHE_LINESIZE must be power of 2, "
-    "be greater than or equal to alignof(max_align_t) and"
+    "be greater than or equal to alignof(max_align_t) and "
     "be less than or equal to PTRDIFF_MAX"
 );
 
@@ -28,7 +28,7 @@ static_assert(
         LEVEL1_ICACHE_LINESIZE <= PTRDIFF_MAX &&
         HAS_SINGLE_BIT(LEVEL1_ICACHE_LINESIZE),
     "LEVEL1_ICACHE_LINESIZE must be power of 2, "
-    "be greater than or equal to alignof(max_align_t) and"
+    "be greater than or equal to alignof(max_align_t) and "
     "be less than or equal to PTRDIFF_MAX"
 );
 
@@ -40,7 +40,7 @@ static_assert(
         LEVEL2_CACHE_LINESIZE <= PTRDIFF_MAX &&
         HAS_SINGLE_BIT(LEVEL2_CACHE_LINESIZE),
     "LEVEL2_CACHE_LINESIZE must be power of 2, "
-    "be greater than or equal to alignof(max_align_t) and"
+    "be greater than or equal to alignof(max_align_t) and "
     "be less than or equal to PTRDIFF_MAX"
 );
 
@@ -54,7 +54,7 @@ static_assert(
         HAS_SINGLE_BIT(LEVEL3_CACHE_LINESIZE)
     ),
     "LEVEL3_CACHE_LINESIZE must be equal to 0 or be power of 2, "
-    "be greater than or equal to alignof(max_align_t) and"
+    "be greater than or equal to alignof(max_align_t) and "
     "be less than or equal to PTRDIFF_MAX"
 );
 
@@ -68,7 +68,7 @@ static_assert(
         HAS_SINGLE_BIT(LEVEL4_CACHE_LINESIZE)
     ),
     "LEVEL4_CACHE_LINESIZE must be equal to 0 or be power of 2, "
-    "be greater than or equal to alignof(max_align_t) and"
+    "be greater than or equal to alignof(max_align_t) and "
     "be less than or equal to PTRDIFF_MAX"
 );
 
