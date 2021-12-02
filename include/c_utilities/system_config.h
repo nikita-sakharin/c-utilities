@@ -16,8 +16,7 @@ static_assert(
         LEVEL1_DCACHE_LINESIZE <= PTRDIFF_MAX &&
         HAS_SINGLE_BIT(LEVEL1_DCACHE_LINESIZE),
     "LEVEL1_DCACHE_LINESIZE must be a power of 2, "
-    "be greater than or equal to alignof(max_align_t) and "
-    "be less than or equal to PTRDIFF_MAX"
+    "not less than alignof(max_align_t) and not greater than PTRDIFF_MAX"
 );
 
 #ifndef LEVEL1_ICACHE_LINESIZE
@@ -28,8 +27,7 @@ static_assert(
         LEVEL1_ICACHE_LINESIZE <= PTRDIFF_MAX &&
         HAS_SINGLE_BIT(LEVEL1_ICACHE_LINESIZE),
     "LEVEL1_ICACHE_LINESIZE must be a power of 2, "
-    "be greater than or equal to alignof(max_align_t) and "
-    "be less than or equal to PTRDIFF_MAX"
+    "not less than alignof(max_align_t) and not greater than PTRDIFF_MAX"
 );
 
 #ifndef LEVEL2_CACHE_LINESIZE
@@ -40,8 +38,7 @@ static_assert(
         LEVEL2_CACHE_LINESIZE <= PTRDIFF_MAX &&
         HAS_SINGLE_BIT(LEVEL2_CACHE_LINESIZE),
     "LEVEL2_CACHE_LINESIZE must be a power of 2, "
-    "be greater than or equal to alignof(max_align_t) and "
-    "be less than or equal to PTRDIFF_MAX"
+    "not less than alignof(max_align_t) and not greater than PTRDIFF_MAX"
 );
 
 #ifndef LEVEL3_CACHE_LINESIZE
@@ -53,9 +50,8 @@ static_assert(
         LEVEL3_CACHE_LINESIZE <= PTRDIFF_MAX &&
         HAS_SINGLE_BIT(LEVEL3_CACHE_LINESIZE)
     ),
-    "LEVEL3_CACHE_LINESIZE must be equal to 0 or be a power of 2 and "
-    "be greater than or equal to alignof(max_align_t) and "
-    "be less than or equal to PTRDIFF_MAX"
+    "LEVEL3_CACHE_LINESIZE must either be equal to 0 or be a power of 2, "
+    "not less than alignof(max_align_t) and not greater than PTRDIFF_MAX"
 );
 
 #ifndef LEVEL4_CACHE_LINESIZE
@@ -67,9 +63,9 @@ static_assert(
         LEVEL4_CACHE_LINESIZE <= PTRDIFF_MAX &&
         HAS_SINGLE_BIT(LEVEL4_CACHE_LINESIZE)
     ),
-    "LEVEL4_CACHE_LINESIZE must be equal to 0 or be a power of 2, "
-    "be greater than or equal to alignof(max_align_t) and "
-    "be less than or equal to PTRDIFF_MAX"
+    "if LEVEL3_CACHE_LINESIZE is equal to 0, then LEVEL4_CACHE_LINESIZE must "
+    "be equal to 0. Or else LEVEL4_CACHE_LINESIZE must be a power of 2, "
+    "not less than alignof(max_align_t) and not greater than PTRDIFF_MAX"
 );
 
 #endif // C_UTILITIES_SYSTEM_CONFIG_H
