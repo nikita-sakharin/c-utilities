@@ -2,6 +2,8 @@
 
 #include <c_utilities/common.h> // memSwap, ptrDiff, ptrOffset
 
+extern inline void *arrSwap(void * restrict, size_t, size_t, size_t);
+
 extern inline void *memSwap(void * restrict, void * restrict, size_t);
 
 extern inline ptrdiff_t ptrDiff(const void *, const void *, size_t);
