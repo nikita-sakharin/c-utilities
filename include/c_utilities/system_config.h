@@ -63,9 +63,10 @@ static_assert(
         LEVEL4_CACHE_LINESIZE <= PTRDIFF_MAX &&
         HAS_SINGLE_BIT(LEVEL4_CACHE_LINESIZE)
     ),
-    "if LEVEL3_CACHE_LINESIZE is equal to 0, then LEVEL4_CACHE_LINESIZE must "
-    "be equal to 0. Or else LEVEL4_CACHE_LINESIZE must be a power of 2, "
-    "not less than alignof(max_align_t) and not greater than PTRDIFF_MAX"
+    "LEVEL4_CACHE_LINESIZE must either be equal to 0 or be a power of 2, "
+    "not less than alignof(max_align_t) and not greater than PTRDIFF_MAX. "
+    "if LEVEL3_CACHE_LINESIZE is equal to 0, "
+    "then LEVEL4_CACHE_LINESIZE must be equal to 0 too"
 );
 
 #endif // C_UTILITIES_SYSTEM_CONFIG_H
