@@ -40,15 +40,15 @@ inline bool arr_compare_swap(
     return true;
 }
 
-inline void *arr_swap(
+inline void *arrSwap(
     register void * const restrict arr,
     register const size_t index1,
     register const size_t index2,
     register const size_t size
 ) {
-    return mem_swap(
-        ptr_offset(arr, index1, size),
-        ptr_offset(arr, index2, size)
+    return memSwap(
+        ptrOffset(arr, index1, size),
+        ptrOffset(arr, index2, size)
     );
 }
 
@@ -88,7 +88,7 @@ inline void *memSwap(
 }
 
 // restrict ???
-inline ptrdiff_t ptrDiff(
+inline ptrdiff_t ptrDifference(
     register const void * const ptr1,
     register const void * const ptr2,
     register const size_t size
@@ -101,7 +101,9 @@ inline void *ptrOffset(
     register const size_t index,
     register const size_t size
 ) {
-    assert(ptr != NULL && ptr <= (const char *) ptr + index * size);
+    assert((ptr != NULL || index == 0U) && size > 0U && size <= PTRDIFF_MAX &&
+        index <= PTRDIFF_MAX / size && ptr <= (const char *) ptr + index * size
+    );
 #   if defined(__clang__)
 #   pragma clang diagnostic push
 #   pragma clang diagnostic ignored "-Wcast-qual"
