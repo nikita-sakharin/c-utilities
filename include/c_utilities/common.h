@@ -14,7 +14,7 @@
 // ptr_compare_max or ptr_max
 
 // restrict ???
-inline int arr_compare(
+inline int arrCompare(
     register const void * const restrict arr,
     register const size_t index1,
     register const size_t index2,
@@ -22,21 +22,21 @@ inline int arr_compare(
     register int (* const compare)(const void *, const void *)
 ) {
     return compare(
-        ptr_offset(arr, index1, size),
-        ptr_offset(arr, index2, size)
+        ptrOffset(arr, index1, size),
+        ptrOffset(arr, index2, size)
     );
 }
 
-inline bool arr_compare_swap(
+inline bool arrCompareSwap(
     register void * const restrict arr,
     register const size_t index1,
     register const size_t index2,
     register const size_t size,
     register int (* const compare)(const void *, const void *)
 ) {
-    if (arr_compare(arr, index1, index2, size, compare) <= 0)
+    if (arrCompare(arr, index1, index2, size, compare) <= 0)
         return false;
-    arr_swap(arr, index1, index2, size);
+    arrSwap(arr, index1, index2, size);
     return true;
 }
 
@@ -46,10 +46,8 @@ inline void *arrSwap(
     register const size_t index2,
     register const size_t size
 ) {
-    return memSwap(
-        ptrOffset(arr, index1, size),
-        ptrOffset(arr, index2, size)
-    );
+    assert(arr != NULL && index1 != index2 && size > 0U);
+    return memSwap(ptrOffset(arr, index1, size), ptrOffset(arr, index2, size));
 }
 
 inline void *memSwap(
@@ -57,8 +55,9 @@ inline void *memSwap(
     void * const restrict s2,
     register size_t n
 ) {
-    assert(s1 && s1 <= (uchar *) s1 + n && s2 && s2 <= (uchar *) s2 + n &&
-        (s1 >= (uchar *) s2 + n || s2 >= (uchar *) s1 + n) && n <= PTRDIFF_MAX
+    assert(s1 != NULL && s2 != NULL && n <= PTRDIFF_MAX &&
+        (uchar *) s1 <= (uchar *) s1 + n && (uchar *) s2 <= (uchar *) s2 + n &&
+        ((uchar *) s1 >= (uchar *) s2 + n || (uchar *) s2 >= (uchar *) s1 + n)
     );
 #   ifdef NDEBUG
     for (register uchar
@@ -86,13 +85,15 @@ inline void *memSwap(
 #   endif // NDEBUG
     return s1;
 }
-
 // restrict ???
 inline ptrdiff_t ptrDifference(
     register const void * const ptr1,
     register const void * const ptr2,
     register const size_t size
 ) {
+    assert(ptr1 != NULL == (ptr2 != NULL) && size > 0U && size <= PTRDIFF_MAX &&
+        ((const char *) ptr1 - (const char *) ptr2) % (ptrdiff_t) size == 0
+    );
     return ((const char *) ptr1 - (const char *) ptr2) / (ptrdiff_t) size;
 }
 
@@ -102,7 +103,7 @@ inline void *ptrOffset(
     register const size_t size
 ) {
     assert((ptr != NULL || index == 0U) && size > 0U && size <= PTRDIFF_MAX &&
-        index <= PTRDIFF_MAX / size && ptr <= (const char *) ptr + index * size
+        index <= PTRDIFF_MAX / size && (const char *) ptr <= (const char *) ptr + index * size
     );
 #   if defined(__clang__)
 #   pragma clang diagnostic push
