@@ -21,6 +21,9 @@ inline int arrCompare(
     register const size_t size,
     register int (* const compare)(const void *, const void *)
 ) {
+    assert(arr != NULL && size > 0U && size <= PTRDIFF_MAX &&
+        max(index1, index2) + 1U <= PTRDIFF_MAX / size && compare != NULL
+    );
     return compare(ptrOffset(arr, index1, size), ptrOffset(arr, index2, size));
 }
 
@@ -31,6 +34,9 @@ inline bool arrCompareSwap(
     register const size_t size,
     register int (* const compare)(const void *, const void *)
 ) {
+    assert(arr != NULL && size > 0U && size <= PTRDIFF_MAX &&
+        max(index1, index2) + 1U <= PTRDIFF_MAX / size && compare != NULL
+    );
     if (arrCompare(arr, index1, index2, size, compare) <= 0)
         return false;
     arrSwap(arr, index1, index2, size);
@@ -43,7 +49,9 @@ inline void *arrSwap(
     register const size_t index2,
     register const size_t size
 ) {
-    assert(arr != NULL && index1 != index2 && size > 0U);
+    assert(arr != NULL && size > 0U && size <= PTRDIFF_MAX &&
+        max(index1, index2) + 1U <= PTRDIFF_MAX / size && compare != NULL
+    );
     return memSwap(ptrOffset(arr, index1, size), ptrOffset(arr, index2, size));
 }
 
