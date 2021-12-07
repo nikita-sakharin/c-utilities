@@ -85,6 +85,7 @@ inline void *memSwap(
 #   endif // NDEBUG
     return s1;
 }
+
 // restrict ???
 inline ptrdiff_t ptrDifference(
     register const void * const ptr1,
