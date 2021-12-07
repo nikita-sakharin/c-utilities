@@ -21,10 +21,7 @@ inline int arrCompare(
     register const size_t size,
     register int (* const compare)(const void *, const void *)
 ) {
-    return compare(
-        ptrOffset(arr, index1, size),
-        ptrOffset(arr, index2, size)
-    );
+    return compare(ptrOffset(arr, index1, size), ptrOffset(arr, index2, size));
 }
 
 inline bool arrCompareSwap(
