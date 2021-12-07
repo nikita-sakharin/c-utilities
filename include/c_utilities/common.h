@@ -49,7 +49,7 @@ inline void *arrSwap(
     register const size_t index2,
     register const size_t size
 ) {
-    assert(arr != NULL && size > 0U && size <= PTRDIFF_MAX &&
+    assert(arr != NULL && size > 0U && size <= PTRDIFF_MAX && index1 != index2 &&
         max(index1, index2) + 1U <= PTRDIFF_MAX / size && compare != NULL
     );
     return memSwap(ptrOffset(arr, index1, size), ptrOffset(arr, index2, size));
