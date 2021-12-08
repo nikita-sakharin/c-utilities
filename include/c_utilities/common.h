@@ -3,8 +3,9 @@
 
 #include <assert.h> // assert
 #include <stdalign.h> // alignas
-#include <stdbool.h> // bool
-#include <stddef.h> // ptrdiff_t, size_t
+#include <stdbool.h> // bool, false, true
+#include <stddef.h> // NULL, ptrdiff_t, size_t
+#include <stdint.h> // PTRDIFF_MAX
 #include <string.h> // memcpy
 
 #include <c_utilities/arithmetic.h> // max
