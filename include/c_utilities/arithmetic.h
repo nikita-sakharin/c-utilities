@@ -15,34 +15,86 @@
 #define MAX(x, y) ((x) < (y) ? (y) : (x))
 #define MIN(x, y) ((y) < (x) ? (y) : (x))
 
-inline int clamp(
-    register const int x,
-    register const int a,
-    register const int b
-) {
+inline int clamp(register const int x, register const int y) {
     assert(a <= b);
-    return CLAMP(x, a, b);
+    return CLAMP(x, y);
 }
 
-inline uint uclamp(
-    register const uint x,
-    register const uint a,
-    register const uint b
-) {
+inline uint uclamp(register const uint x, register const uint y) {
     assert(a <= b);
-    return CLAMP(x, a, b);
+    return CLAMP(x, y);
 }
 
-inline int dim(
-    register const int x,
-    register const int y
+inline long lclamp(register const long x, register const long y) {
+    assert(a <= b);
+    return CLAMP(x, y);
+}
+
+inline ulong ulclamp(register const ulong x, register const ulong y) {
+    assert(a <= b);
+    return CLAMP(x, y);
+}
+
+inline llong llclamp(register const llong x, register const llong y) {
+    assert(a <= b);
+    return CLAMP(x, y);
+}
+
+inline ullong ullclamp(register const ullong x, register const ullong y) {
+    assert(a <= b);
+    return CLAMP(x, y);
+}
+
+inline intmax_t imaxclamp(
+    register const intmax_t x,
+    register const intmax_t y
+) {
+    assert(a <= b);
+    return CLAMP(x, y);
+}
+
+inline uintmax_t umaxclamp(
+    register const uintmax_t x,
+    register const uintmax_t y
+) {
+    assert(a <= b);
+    return CLAMP(x, y);
+}
+
+inline int dim(register const int x, register const int y) {
+    return DIM(x, y);
+}
+
+inline uint udim(register const uint x, register const uint y) {
+    return DIM(x, y);
+}
+
+inline long ldim(register const long x, register const long y) {
+    return DIM(x, y);
+}
+
+inline ulong uldim(register const ulong x, register const ulong y) {
+    return DIM(x, y);
+}
+
+inline llong lldim(register const llong x, register const llong y) {
+    return DIM(x, y);
+}
+
+inline ullong ulldim(register const ullong x, register const ullong y) {
+    return DIM(x, y);
+}
+
+inline intmax_t imaxdim(
+    register const intmax_t x,
+    register const intmax_t y
 ) {
     return DIM(x, y);
 }
 
-inline uint udim(
-    register const uint x,
-    register const uint y
+inline uintmax_t umaxdim(
+    register const uintmax_t x,
+    register const uintmax_t y
 ) {
     return DIM(x, y);
 }
