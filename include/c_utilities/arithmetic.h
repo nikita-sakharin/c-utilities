@@ -15,50 +15,76 @@
 #define MAX(x, y) ((x) < (y) ? (y) : (x))
 #define MIN(x, y) ((y) < (x) ? (y) : (x))
 
-inline int clamp(register const int x, register const int y) {
+inline int clamp(
+    register const int x,
+    register const int a,
+    register const int b
+) {
     assert(a <= b);
-    return CLAMP(x, y);
+    return CLAMP(x, a, b);
 }
 
-inline uint uclamp(register const uint x, register const uint y) {
+inline uint uclamp(
+    register const uint x,
+    register const uint a,
+    register const uint b
+) {
     assert(a <= b);
-    return CLAMP(x, y);
+    return CLAMP(x, a, b);
 }
 
-inline long lclamp(register const long x, register const long y) {
+inline long lclamp(
+    register const long x,
+    register const long a,
+    register const long b
+) {
     assert(a <= b);
-    return CLAMP(x, y);
+    return CLAMP(x, a, b);
 }
 
-inline ulong ulclamp(register const ulong x, register const ulong y) {
+inline ulong ulclamp(
+    register const ulong x,
+    register const ulong a,
+    register const ulong b
+) {
     assert(a <= b);
-    return CLAMP(x, y);
+    return CLAMP(x, a, b);
 }
 
-inline llong llclamp(register const llong x, register const llong y) {
+inline llong llclamp(
+    register const llong x,
+    register const llong a,
+    register const llong b
+) {
     assert(a <= b);
-    return CLAMP(x, y);
+    return CLAMP(x, a, b);
 }
 
-inline ullong ullclamp(register const ullong x, register const ullong y) {
+inline ullong ullclamp(
+    register const ullong x,
+    register const ullong a,
+    register const ullong b
+) {
     assert(a <= b);
-    return CLAMP(x, y);
+    return CLAMP(x, a, b);
 }
 
 inline intmax_t imaxclamp(
     register const intmax_t x,
-    register const intmax_t y
+    register const intmax_t a,
+    register const intmax_t b
 ) {
     assert(a <= b);
-    return CLAMP(x, y);
+    return CLAMP(x, a, b);
 }
 
 inline uintmax_t umaxclamp(
-    register const uintmax_t x,
-    register const uintmax_t y
+    register const intmax_t x,
+    register const intmax_t a,
+    register const intmax_t b
 ) {
     assert(a <= b);
-    return CLAMP(x, y);
+    return CLAMP(x, a, b);
 }
 
 inline int dim(register const int x, register const int y) {
