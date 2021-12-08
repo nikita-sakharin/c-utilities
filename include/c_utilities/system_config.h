@@ -6,6 +6,12 @@
 #include <stddef.h> // max_align_t, ptrdiff_t
 #include <stdint.h> // PTRDIFF_MAX
 
+#ifdef _WIN32
+#include <sysinfoapi.h> // GetSystemInfo, SYSTEM_INFO
+#else
+#include <unistd.h> // _SC_NPROCESSORS_ONLN, sysconf
+#endif // _WIN32
+
 #include <c_utilities/bit.h> // HAS_SINGLE_BIT
 
 #ifndef LEVEL1_DCACHE_LINESIZE
@@ -68,5 +74,27 @@ static_assert(
     "if LEVEL3_CACHE_LINESIZE is equal to 0, "
     "then LEVEL4_CACHE_LINESIZE must be equal to 0 too"
 );
+
+inline size_t nprocessorssConf(void) {
+#ifdef _WIN32
+    SYSTEM_INFO systemInfo;
+    GetSystemInfo(&systemInfo);
+    return (size_t) systemInfo.dwNumberOfProcessors;
+#else
+    register const long returns = sysconf(_SC_NPROCESSORS_CONF);
+    return returns < 0 ? 0U : (size_t) returns;
+#endif
+}
+
+inline size_t nprocessorsOnln(void) {
+#ifdef _WIN32
+    SYSTEM_INFO systemInfo;
+    GetSystemInfo(&systemInfo);
+    return (size_t) systemInfo.dwNumberOfProcessors;
+#else
+    register const long returns = sysconf(_SC_NPROCESSORS_ONLN);
+    return returns < 0 ? 0U : (size_t) returns;
+#endif
+}
 
 #endif // C_UTILITIES_SYSTEM_CONFIG_H
