@@ -3,7 +3,7 @@
 
 #include <assert.h> // static_assert
 #include <stdalign.h> // alignof
-#include <stddef.h> // max_align_t, ptrdiff_t
+#include <stddef.h> // max_align_t, ptrdiff_t, size_t
 #include <stdint.h> // PTRDIFF_MAX
 
 #ifdef _WIN32
