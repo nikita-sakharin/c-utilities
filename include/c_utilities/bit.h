@@ -1,9 +1,9 @@
 #ifndef C_UTILITIES_BIT_H
 #define C_UTILITIES_BIT_H
 
-#include <stdint.h> // intmax_t, uintmax_t
+#include <stdint.h> // uintmax_t
 
-#include <c_utilities/types.h> // llong, uint, ullong, ulong
+#include <c_utilities/types.h> // uint, ullong, ulong
 
 #define HAS_SINGLE_BIT(x) ((x) != 0 && ((x) & ((x) - 1)) == 0)
 
