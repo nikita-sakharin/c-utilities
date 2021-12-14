@@ -10,7 +10,7 @@
 
 #ifndef LEVEL1_DCACHE_LINESIZE
 #define LEVEL1_DCACHE_LINESIZE ((size_t) 64U)
-#endif
+#endif // LEVEL1_DCACHE_LINESIZE
 static_assert(
     LEVEL1_DCACHE_LINESIZE >= (ptrdiff_t) alignof(max_align_t) &&
         LEVEL1_DCACHE_LINESIZE <= PTRDIFF_MAX &&
@@ -21,7 +21,7 @@ static_assert(
 
 #ifndef LEVEL1_ICACHE_LINESIZE
 #define LEVEL1_ICACHE_LINESIZE ((size_t) 64U)
-#endif
+#endif // LEVEL1_ICACHE_LINESIZE
 static_assert(
     LEVEL1_ICACHE_LINESIZE >= (ptrdiff_t) alignof(max_align_t) &&
         LEVEL1_ICACHE_LINESIZE <= PTRDIFF_MAX &&
@@ -32,7 +32,7 @@ static_assert(
 
 #ifndef LEVEL2_CACHE_LINESIZE
 #define LEVEL2_CACHE_LINESIZE ((size_t) 64U)
-#endif
+#endif // LEVEL2_CACHE_LINESIZE
 static_assert(
     LEVEL2_CACHE_LINESIZE >= (ptrdiff_t) alignof(max_align_t) &&
         LEVEL2_CACHE_LINESIZE <= PTRDIFF_MAX &&
@@ -43,7 +43,7 @@ static_assert(
 
 #ifndef LEVEL3_CACHE_LINESIZE
 #define LEVEL3_CACHE_LINESIZE ((size_t) 64U)
-#endif
+#endif // LEVEL3_CACHE_LINESIZE
 static_assert(
     LEVEL3_CACHE_LINESIZE == 0U || (
         LEVEL3_CACHE_LINESIZE >= (ptrdiff_t) alignof(max_align_t) &&
@@ -56,7 +56,7 @@ static_assert(
 
 #ifndef LEVEL4_CACHE_LINESIZE
 #define LEVEL4_CACHE_LINESIZE ((size_t) 0U)
-#endif
+#endif // LEVEL4_CACHE_LINESIZE
 static_assert(
     LEVEL4_CACHE_LINESIZE == 0U || (LEVEL3_CACHE_LINESIZE > 0U &&
         LEVEL4_CACHE_LINESIZE >= (ptrdiff_t) alignof(max_align_t) &&
@@ -65,7 +65,7 @@ static_assert(
     ),
     "LEVEL4_CACHE_LINESIZE shall either be equal to 0 or be a power of 2, "
     "not less than alignof(max_align_t) and not greater than PTRDIFF_MAX. "
-    "if LEVEL3_CACHE_LINESIZE is equal to 0, "
+    "If LEVEL3_CACHE_LINESIZE is equal to 0, "
     "then LEVEL4_CACHE_LINESIZE shall be equal to 0 too"
 );
 
