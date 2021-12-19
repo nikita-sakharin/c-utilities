@@ -71,9 +71,10 @@ static_assert(
 );
 
 // extern ???
-// size_t or uint ???
+// int or uint ???
 extern uint nprocessorsConf(void);
 extern uint nprocessorsOnln(void);
+// ptrdiff_t or size_t ???
 extern size_t pageSize(void);
 
 #endif // C_UTILITIES_SYSTEM_CONFIG_H
