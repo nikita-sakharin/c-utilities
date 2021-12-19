@@ -79,9 +79,9 @@ inline intmax_t imaxclamp(
 }
 
 inline uintmax_t umaxclamp(
-    register const intmax_t x,
-    register const intmax_t a,
-    register const intmax_t b
+    register const uintmax_t x,
+    register const uintmax_t a,
+    register const uintmax_t b
 ) {
     assert(a <= b);
     return CLAMP(x, a, b);
