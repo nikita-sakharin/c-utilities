@@ -24,7 +24,6 @@ inline uintmax_t umaxhasSingleBit(register const uintmax_t x) {
     return HAS_SINGLE_BIT(x);
 }
 
-#define hasSingleBit(x) \
-    TYPE_GENERIC_UNSIGNED_INTEGER_MACRO_1(hasSingleBit, x)
+#define hasSingleBit(x) TYPE_GENERIC_UNSIGNED_INTEGER_MACRO_1(hasSingleBit, x)
 
 #endif // C_UTILITIES_BIT_H
