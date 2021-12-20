@@ -1,5 +1,6 @@
 #include <assert.h> // assert
-#include <stddef.h> // size_t
+#include <stdalign.h> // alignof
+#include <stddef.h> // max_align_t, ptrdiff_t, size_t
 #include <stdint.h> // SIZE_MAX
 
 #ifdef _WIN32
@@ -9,11 +10,11 @@
 #endif // _WIN32
 
 #include <c_utilities/bit.h> // hasSingleBit
-#include <c_utilities/system_config.h> // ???
-#include <c_utilities/types.h> // uint
+#include <c_utilities/system_config.h> // nprocessors*,
+#include <c_utilities/types.h> // uint, ulong
 
 // int or uint ???
-uint nprocessorssConf(void) {
+extern uint nprocessorsConf(void) {
     // static uint returns = 0U;
 #ifdef _WIN32
     SYSTEM_INFO systemInfo;
@@ -25,7 +26,7 @@ uint nprocessorssConf(void) {
 #endif
 }
 
-uint nprocessorsOnln(void) {
+extern uint nprocessorsOnln(void) {
     // static uint returns = 0U;
 #ifdef _WIN32
     SYSTEM_INFO systemInfo;
@@ -37,17 +38,16 @@ uint nprocessorsOnln(void) {
 #endif
 }
 
-// ptrdiff_t or size_t
 // pagesize ???
-size_t pageSize(void) {
+extern size_t pageSize(void) {
     static size_t returns = 0U;
     if (returns != 0)
         return returns;
 #ifdef _WIN32
 #else
     register const long value = sysconf(_SC_PAGESIZE); // _SC_PAGE_SIZE ???
-    assert((value >= 1 && value <= SIZE_MAX && hasSingleBit(value)) ||
-        value == -1
+    assert(value >= (ptrdiff_t) alignof(max_align_t) &&
+        (ulong) value <= SIZE_MAX && hasSingleBit((ulong) value)
     );
     returns = value < 0 ? 0U : (size_t) value;
 #endif // _WIN32
