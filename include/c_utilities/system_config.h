@@ -70,7 +70,6 @@ static_assert(
     "then LEVEL4_CACHE_LINESIZE shall be equal to 0 too"
 );
 
-// extern ???
 // int or uint ???
 extern uint nprocessorsConf(void);
 extern uint nprocessorsOnln(void);
