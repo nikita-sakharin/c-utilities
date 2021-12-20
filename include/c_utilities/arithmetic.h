@@ -6,7 +6,7 @@
 #include <stdint.h> // intmax_t, uintmax_t
 #include <stdlib.h> // abs, div, labs, ldiv, llabs, lldiv
 
-#include <c_utilities/type_generic.h> // TYPE_GENERIC_*INTEGER_FUNCTION_*
+#include <c_utilities/type_generic.h> // TYPE_GENERIC_*INTEGER_MACRO_*
 #include <c_utilities/types.h> // llong, uint, ullong, ulong
 
 #define ABS(x) ((x) < 0 ? -(x) : (x))
@@ -201,11 +201,11 @@ inline uintmax_t umaxmin(
     return MIN(x, y);
 }
 
-#define abs(x) TYPE_GENERIC_SIGNED_INTEGER_FUNCTION_1(abs, x)
-#define div(x, y) TYPE_GENERIC_SIGNED_INTEGER_FUNCTION_2(div, x, y)
-#define clamp(x, a, b) TYPE_GENERIC_INTEGER_FUNCTION_3(clamp, x, a, b)
-#define dim(x, y) TYPE_GENERIC_INTEGER_FUNCTION_2(dim, x, y)
-#define max(x, y) TYPE_GENERIC_INTEGER_FUNCTION_2(max, x, y)
-#define min(x, y) TYPE_GENERIC_INTEGER_FUNCTION_2(min, x, y)
+#define abs(x) TYPE_GENERIC_SIGNED_INTEGER_MACRO_1(abs, x)
+#define div(x, y) TYPE_GENERIC_SIGNED_INTEGER_MACRO_2(div, x, y)
+#define clamp(x, a, b) TYPE_GENERIC_INTEGER_MACRO_3(clamp, x, a, b)
+#define dim(x, y) TYPE_GENERIC_INTEGER_MACRO_2(dim, x, y)
+#define max(x, y) TYPE_GENERIC_INTEGER_MACRO_2(max, x, y)
+#define min(x, y) TYPE_GENERIC_INTEGER_MACRO_2(min, x, y)
 
 #endif // C_UTILITIES_ARITHMETIC_H
