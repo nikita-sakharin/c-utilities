@@ -10,7 +10,7 @@
 #endif // _WIN32
 
 #include <c_utilities/bit.h> // hasSingleBit
-#include <c_utilities/system_config.h> // nprocessors*,
+#include <c_utilities/system_config.h> // nprocessors*
 #include <c_utilities/types.h> // uint, ulong
 
 // int or uint ???
