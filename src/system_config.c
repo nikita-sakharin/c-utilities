@@ -40,7 +40,7 @@ extern uint nprocessorsOnln(void) {
 #   else
     register const long returns = sysconf(_SC_NPROCESSORS_ONLN);
     return returns < 0 ? 0U : (uint) returns;
-#   endif
+#   endif // _WIN32
 }
 
 // pagesize ???
