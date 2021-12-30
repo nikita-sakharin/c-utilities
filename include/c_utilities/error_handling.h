@@ -5,7 +5,6 @@
 #include <stdio.h> // fprintf, perror, stderr
 #include <stdlib.h> // EXIT_FAILURE, exit
 
-// (condition) or condition ???
 #define EXIT_IF(condition, message) \
     do { \
         if ((condition)) { \
