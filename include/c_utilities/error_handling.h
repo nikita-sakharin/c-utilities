@@ -10,7 +10,7 @@
     do { \
         if ((condition)) { \
             fprintf(stderr, "%s:%d: ", __FILE__, __LINE__); \
-            perror(message); \
+            perror((message)); \
             exit(EXIT_FAILURE); \
         } \
     } while (false)
