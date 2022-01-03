@@ -62,8 +62,7 @@ inline void *memSwap(
     register size_t n
 ) {
     assert(s1 != NULL && s2 != NULL && n <= PTRDIFF_MAX &&
-        (uchar *) s1 < (uchar *) s1 + n + 1U &&
-        (uchar *) s2 < (uchar *) s2 + n + 1U &&
+        (uchar *) s1 <= (uchar *) s1 + n && (uchar *) s2 <= (uchar *) s2 + n &&
         ((uchar *) s1 >= (uchar *) s2 + n || (uchar *) s2 >= (uchar *) s1 + n)
     );
 #   ifdef NDEBUG

@@ -186,7 +186,7 @@
 
 #endif // LLONG_MAX < INTMAX_MAX
 
-#define TYPE_GENERIC_FLOATING_MACRO_1(func, x) _Generic( \
+#define TYPE_GENERIC_REAL_FLOATING_MACRO_1(func, x) _Generic( \
     (x), \
     flt: func##f, \
     dbl: func, \
@@ -194,7 +194,7 @@
     default: func \
 )(x)
 
-#define TYPE_GENERIC_FLOATING_MACRO_2(func, x, y) _Generic( \
+#define TYPE_GENERIC_REAL_FLOATING_MACRO_2(func, x, y) _Generic( \
     (x) + (y), \
     flt: func##f, \
     dbl: func, \
@@ -202,7 +202,7 @@
     default: func \
 )(x, y)
 
-#define TYPE_GENERIC_FLOATING_MACRO_3(func, x, y, z) _Generic( \
+#define TYPE_GENERIC_REAL_FLOATING_MACRO_3(func, x, y, z) _Generic( \
     (x) + (y) + (z), \
     flt: func##f, \
     dbl: func, \
