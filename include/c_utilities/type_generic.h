@@ -8,7 +8,7 @@
 
 #if LLONG_MAX < INTMAX_MAX
 
-#define TYPE_GENERIC_INTEGER_MACRO_1(func, x) _Generic( \
+#define TYPE_GENERIC_INTEGER_MACRO(func, x) _Generic( \
     (x), \
     int: func, \
     uint: u##func, \
@@ -21,7 +21,7 @@
     default: func \
 )(x)
 
-#define TYPE_GENERIC_SIGNED_INTEGER_MACRO_1(func, x) _Generic( \
+#define TYPE_GENERIC_SIGNED_INTEGER_MACRO(func, x) _Generic( \
     (x), \
     int: func, \
     long: l##func, \
@@ -30,7 +30,7 @@
     default: func \
 )(x)
 
-#define TYPE_GENERIC_UNSIGNED_INTEGER_MACRO_1(func, x) _Generic( \
+#define TYPE_GENERIC_UNSIGNED_INTEGER_MACRO(func, x) _Generic( \
     (x), \
     uint: u##func, \
     ulong: ul##func, \
@@ -41,7 +41,7 @@
 
 #else
 
-#define TYPE_GENERIC_INTEGER_MACRO_1(func, x) _Generic( \
+#define TYPE_GENERIC_INTEGER_MACRO(func, x) _Generic( \
     (x), \
     int: func, \
     uint: u##func, \
@@ -52,7 +52,7 @@
     default: func \
 )(x)
 
-#define TYPE_GENERIC_SIGNED_INTEGER_MACRO_1(func, x) _Generic( \
+#define TYPE_GENERIC_SIGNED_INTEGER_MACRO(func, x) _Generic( \
     (x), \
     int: func, \
     long: l##func, \
@@ -60,7 +60,7 @@
     default: func \
 )(x)
 
-#define TYPE_GENERIC_UNSIGNED_INTEGER_MACRO_1(func, x) _Generic( \
+#define TYPE_GENERIC_UNSIGNED_INTEGER_MACRO(func, x) _Generic( \
     (x), \
     uint: u##func, \
     ulong: ul##func, \
@@ -70,7 +70,7 @@
 
 #endif // LLONG_MAX < INTMAX_MAX
 
-#define TYPE_GENERIC_REAL_FLOATING_MACRO_1(func, x) _Generic( \
+#define TYPE_GENERIC_REAL_FLOATING_MACRO(func, x) _Generic( \
     (x), \
     flt: func##f, \
     dbl: func, \
