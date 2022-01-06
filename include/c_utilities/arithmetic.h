@@ -201,11 +201,11 @@ inline uintmax_t umaxmin(
     return MIN(x, y);
 }
 
-#define abs(x) TYPE_GENERIC_SIGNED_INTEGER_MACRO_1(abs, x)
-#define div(x, y) TYPE_GENERIC_SIGNED_INTEGER_MACRO_2(div, x, y)
-#define clamp(x, a, b) TYPE_GENERIC_INTEGER_MACRO_3(clamp, x, a, b)
-#define dim(x, y) TYPE_GENERIC_INTEGER_MACRO_2(dim, x, y)
-#define max(x, y) TYPE_GENERIC_INTEGER_MACRO_2(max, x, y)
-#define min(x, y) TYPE_GENERIC_INTEGER_MACRO_2(min, x, y)
+#define abs(x) TYPE_GENERIC_SIGNED_INTEGER_MACRO(abs, (x), x)
+#define div(x, y) TYPE_GENERIC_SIGNED_INTEGER_MACRO(div, (x) + (y), x, y)
+#define clamp(x, a, b) TYPE_GENERIC_INTEGER_MACRO(clamp, (x) + (a) + (b), x, a, b)
+#define dim(x, y) TYPE_GENERIC_INTEGER_MACRO(dim, (x) + (y), x, y)
+#define max(x, y) TYPE_GENERIC_INTEGER_MACRO(max, (x) + (y), x, y)
+#define min(x, y) TYPE_GENERIC_INTEGER_MACRO(min, (x) + (y), x, y)
 
 #endif // C_UTILITIES_ARITHMETIC_H
