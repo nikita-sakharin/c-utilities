@@ -8,8 +8,7 @@
 
 #if LLONG_MAX < INTMAX_MAX
 
-#define TYPE_GENERIC_INTEGER_MACRO(func, x) _Generic( \
-    (x), \
+#define TYPE_GENERIC_INTEGER_MACRO(func, expr, ...) _Generic((expr), \
     int: func, \
     uint: u##func, \
     long: l##func, \
@@ -19,30 +18,27 @@
     intmax_t: imax##func, \
     uintmax_t: umax##func, \
     default: func \
-)(x)
+)(__VA_ARGS__)
 
-#define TYPE_GENERIC_SIGNED_INTEGER_MACRO(func, x) _Generic( \
-    (x), \
+#define TYPE_GENERIC_SIGNED_INTEGER_MACRO(func, expr, ...) _Generic((expr), \
     int: func, \
     long: l##func, \
     llong: ll##func, \
     intmax_t: imax##func, \
     default: func \
-)(x)
+)(__VA_ARGS__)
 
-#define TYPE_GENERIC_UNSIGNED_INTEGER_MACRO(func, x) _Generic( \
-    (x), \
+#define TYPE_GENERIC_UNSIGNED_INTEGER_MACRO(func, expr, ...) _Generic((expr), \
     uint: u##func, \
     ulong: ul##func, \
     ullong: ull##func, \
     uintmax_t: umax##func, \
     default: u##func \
-)(x)
+)(__VA_ARGS__)
 
 #else
 
-#define TYPE_GENERIC_INTEGER_MACRO(func, x) _Generic( \
-    (x), \
+#define TYPE_GENERIC_INTEGER_MACRO(func, expr, ...) _Generic((expr), \
     int: func, \
     uint: u##func, \
     long: l##func, \
@@ -50,32 +46,29 @@
     llong: ll##func, \
     ullong: ull##func, \
     default: func \
-)(x)
+)(__VA_ARGS__)
 
-#define TYPE_GENERIC_SIGNED_INTEGER_MACRO(func, x) _Generic( \
-    (x), \
+#define TYPE_GENERIC_SIGNED_INTEGER_MACRO(func, expr, ...) _Generic((expr), \
     int: func, \
     long: l##func, \
     llong: ll##func, \
     default: func \
-)(x)
+)(__VA_ARGS__)
 
-#define TYPE_GENERIC_UNSIGNED_INTEGER_MACRO(func, x) _Generic( \
-    (x), \
+#define TYPE_GENERIC_UNSIGNED_INTEGER_MACRO(func, expr, ...) _Generic((expr), \
     uint: u##func, \
     ulong: ul##func, \
     ullong: ull##func, \
     default: u##func \
-)(x)
+)(__VA_ARGS__)
 
 #endif // LLONG_MAX < INTMAX_MAX
 
-#define TYPE_GENERIC_REAL_FLOATING_MACRO(func, x) _Generic( \
-    (x), \
+#define TYPE_GENERIC_REAL_FLOATING_MACRO(func, expr, ...) _Generic((expr), \
     flt: func##f, \
     dbl: func, \
     ldbl: func##l, \
     default: func \
-)(x)
+)(__VA_ARGS__)
 
 #endif // C_UTILITIES_TYPE_GENERIC_H
