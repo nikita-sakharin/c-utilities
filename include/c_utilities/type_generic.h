@@ -64,6 +64,13 @@
 
 #endif // LLONG_MAX < INTMAX_MAX
 
+#define TYPE_GENERIC_REAL_FLOATING(func, expr, ...) _Generic((expr), \
+    flt: func##f, \
+    dbl: func, \
+    ldbl: func##l, \
+    default: func \
+)(__VA_ARGS__)
+
 #define TYPE_GENERIC_INTEGER_1(func, x, ...) \
     TYPE_GENERIC_INTEGER( \
         func, (x), x __VA_OPT__(,) __VA_ARGS__ \
@@ -108,13 +115,6 @@
     TYPE_GENERIC_UNSIGNED_INTEGER( \
         func, (x) + (y) + (z), x, y, z __VA_OPT__(,) __VA_ARGS__ \
     )
-
-#define TYPE_GENERIC_REAL_FLOATING(func, expr, ...) _Generic((expr), \
-    flt: func##f, \
-    dbl: func, \
-    ldbl: func##l, \
-    default: func \
-)(__VA_ARGS__)
 
 #define TYPE_GENERIC_REAL_FLOATING_1(func, x, ...) \
     TYPE_GENERIC_REAL_FLOATING( \
