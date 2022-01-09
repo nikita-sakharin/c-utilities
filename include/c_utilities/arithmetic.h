@@ -6,7 +6,7 @@
 #include <stdint.h> // intmax_t, uintmax_t
 #include <stdlib.h> // abs, div, labs, ldiv, llabs, lldiv
 
-#include <c_utilities/type_generic.h> // TYPE_GENERIC_*INTEGER_MACRO_*
+#include <c_utilities/type_generic.h> // TYPE_GENERIC_*INTEGER_*
 #include <c_utilities/types.h> // llong, uint, ullong, ulong
 
 #define ABS(x) ((x) < 0 ? -(x) : (x))
