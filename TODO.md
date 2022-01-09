@@ -40,8 +40,8 @@ random
 arithmetic.h:<br/>
 multiplyHigth (mulh), ipow, isqrt, floorDiv, floorMod, floorDivMod
 
-dim, max, min, minmax<br/>
-clamp, lclamp, llclamp, imaxclamp, fclampf, fclamp, fclampl
+minmax<br/>
+fclampf, fclamp, fclampl
 
 Неправильный вариант:<br/>
 clampi(clamp), clampu, clampl, clampul, clampll, clampull, clampimax, clampumax, clampf, clampd, clampld
