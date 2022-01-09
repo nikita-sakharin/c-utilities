@@ -28,15 +28,6 @@ dir: cannot access '42': No such file or directory<br/>
 Есть ОЧЕНЬ плохой вариант DO_GOTO_IF с выполнением произвольного блока. Но данный вариант категорически ошибкоопасен и отвергается по понятным причинам.
 
 
-math.h:<br/>
-lerp<br/>
-degrees, radians<br/>
-DBL_E, DBL_LN2, DBL_PI, DBL_SQRT2<br/>
-comb, factorial, perm<br/>
-ulp, nextDown, nextUp, union { uint32_t u32; flt f; }<br/>
-random
-
-
 arithmetic.h:<br/>
 multiplyHigth (mulh), ipow, isqrt, floorDiv, floorMod, floorDivMod
 
@@ -45,6 +36,21 @@ fclampf, fclamp, fclampl
 
 Неправильный вариант:<br/>
 clampi(clamp), clampu, clampl, clampul, clampll, clampull, clampimax, clampumax, clampf, clampd, clampld
+
+
+bit.h:<br/>
+{bitCount|popCount}
+hasSingleBit -> {isPowOf2|isPowOfTwo}
+rotateLeft, rotateRight
+
+
+math.h:<br/>
+lerp<br/>
+degrees, radians<br/>
+DBL_E, DBL_LN2, DBL_PI, DBL_SQRT2<br/>
+comb, factorial, perm<br/>
+ulp, nextDown, nextUp, union { uint32_t u32; flt f; }<br/>
+random
 
 
 numeric.h:<br/>
