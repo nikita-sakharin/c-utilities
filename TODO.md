@@ -38,7 +38,7 @@ random
 
 
 arithmetic.h:<br/>
-abs, div, multiplyHigth (mulh), ipow, isqrt, floorDiv, floorMod, floorDivMod
+multiplyHigth (mulh), ipow, isqrt, floorDiv, floorMod, floorDivMod
 
 dim, max, min, minmax<br/>
 clamp, lclamp, llclamp, imaxclamp, fclampf, fclamp, fclampl
@@ -52,16 +52,3 @@ gcd, lcm, midpoint, fmidpoint, isqrt(?)
 
 Неправильный вариант:<br/>
 imidpoint, fmidpoint
-
-
-type_generic.h:<br/>
-Возможно, укоротить названия (убрать префикс TYPE_). Добавить дополнительные макросы с цифрами на конце. Они будут с переменным числом аргументов:<br/>
-\#define TYPE_GENERIC_UNSIGNED_INTEGER_MACRO_2(func, x, y, ...) \_Generic( \\
-    (x) + (y), \\
-    uint: u##func, \\
-    ulong: ul##func, \\
-    ullong: ull##func, \\
-    default: u##func \\
-)(x, y \_\_VA_OPT\_\_(,) \_\_VA_ARGS\_\_)
-
-Или использовать (x, y, ##\_\_VA_ARGS\_\_)
