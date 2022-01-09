@@ -8,8 +8,7 @@
 
 #if LLONG_MAX < INTMAX_MAX
 
-#define TYPE_GENERIC_INTEGER_MACRO_1(func, x) _Generic( \
-    (x), \
+#define TYPE_GENERIC_INTEGER(func, expr, ...) _Generic((expr), \
     int: func, \
     uint: u##func, \
     long: l##func, \
@@ -19,92 +18,27 @@
     intmax_t: imax##func, \
     uintmax_t: umax##func, \
     default: func \
-)(x)
+)(__VA_ARGS__)
 
-#define TYPE_GENERIC_INTEGER_MACRO_2(func, x, y) _Generic( \
-    (x) + (y), \
-    int: func, \
-    uint: u##func, \
-    long: l##func, \
-    ulong: ul##func, \
-    llong: ll##func, \
-    ullong: ull##func, \
-    intmax_t: imax##func, \
-    uintmax_t: umax##func, \
-    default: func \
-)(x, y)
-
-#define TYPE_GENERIC_INTEGER_MACRO_3(func, x, y, z) _Generic( \
-    (x) + (y) + (z), \
-    int: func, \
-    uint: u##func, \
-    long: l##func, \
-    ulong: ul##func, \
-    llong: ll##func, \
-    ullong: ull##func, \
-    intmax_t: imax##func, \
-    uintmax_t: umax##func, \
-    default: func \
-)(x, y, z)
-
-#define TYPE_GENERIC_SIGNED_INTEGER_MACRO_1(func, x) _Generic( \
-    (x), \
+#define TYPE_GENERIC_SIGNED_INTEGER(func, expr, ...) _Generic((expr), \
     int: func, \
     long: l##func, \
     llong: ll##func, \
     intmax_t: imax##func, \
     default: func \
-)(x)
+)(__VA_ARGS__)
 
-#define TYPE_GENERIC_SIGNED_INTEGER_MACRO_2(func, x, y) _Generic( \
-    (x) + (y), \
-    int: func, \
-    long: l##func, \
-    llong: ll##func, \
-    intmax_t: imax##func, \
-    default: func \
-)(x, y)
-
-#define TYPE_GENERIC_SIGNED_INTEGER_MACRO_3(func, x, y, z) _Generic( \
-    (x) + (y) + (z), \
-    int: func, \
-    long: l##func, \
-    llong: ll##func, \
-    intmax_t: imax##func, \
-    default: func \
-)(x, y, z)
-
-#define TYPE_GENERIC_UNSIGNED_INTEGER_MACRO_1(func, x) _Generic( \
-    (x), \
+#define TYPE_GENERIC_UNSIGNED_INTEGER(func, expr, ...) _Generic((expr), \
     uint: u##func, \
     ulong: ul##func, \
     ullong: ull##func, \
     uintmax_t: umax##func, \
     default: u##func \
-)(x)
-
-#define TYPE_GENERIC_UNSIGNED_INTEGER_MACRO_2(func, x, y) _Generic( \
-    (x) + (y), \
-    uint: u##func, \
-    ulong: ul##func, \
-    ullong: ull##func, \
-    uintmax_t: umax##func, \
-    default: u##func \
-)(x, y)
-
-#define TYPE_GENERIC_UNSIGNED_INTEGER_MACRO_3(func, x, y, z) _Generic( \
-    (x) + (y) + (z), \
-    uint: u##func, \
-    ulong: ul##func, \
-    ullong: ull##func, \
-    uintmax_t: umax##func, \
-    default: u##func \
-)(x, y, z)
+)(__VA_ARGS__)
 
 #else
 
-#define TYPE_GENERIC_INTEGER_MACRO_1(func, x) _Generic( \
-    (x), \
+#define TYPE_GENERIC_INTEGER(func, expr, ...) _Generic((expr), \
     int: func, \
     uint: u##func, \
     long: l##func, \
@@ -112,102 +46,89 @@
     llong: ll##func, \
     ullong: ull##func, \
     default: func \
-)(x)
+)(__VA_ARGS__)
 
-#define TYPE_GENERIC_INTEGER_MACRO_2(func, x, y) _Generic( \
-    (x) + (y), \
-    int: func, \
-    uint: u##func, \
-    long: l##func, \
-    ulong: ul##func, \
-    llong: ll##func, \
-    ullong: ull##func, \
-    default: func \
-)(x, y)
-
-#define TYPE_GENERIC_INTEGER_MACRO_3(func, x, y, z) _Generic( \
-    (x) + (y) + (z), \
-    int: func, \
-    uint: u##func, \
-    long: l##func, \
-    ulong: ul##func, \
-    llong: ll##func, \
-    ullong: ull##func, \
-    default: func \
-)(x, y, z)
-
-#define TYPE_GENERIC_SIGNED_INTEGER_MACRO_1(func, x) _Generic( \
-    (x), \
+#define TYPE_GENERIC_SIGNED_INTEGER(func, expr, ...) _Generic((expr), \
     int: func, \
     long: l##func, \
     llong: ll##func, \
     default: func \
-)(x)
+)(__VA_ARGS__)
 
-#define TYPE_GENERIC_SIGNED_INTEGER_MACRO_2(func, x, y) _Generic( \
-    (x) + (y), \
-    int: func, \
-    long: l##func, \
-    llong: ll##func, \
-    default: func \
-)(x, y)
-
-#define TYPE_GENERIC_SIGNED_INTEGER_MACRO_3(func, x, y, z) _Generic( \
-    (x) + (y) + (z), \
-    int: func, \
-    long: l##func, \
-    llong: ll##func, \
-    default: func \
-)(x, y, z)
-
-#define TYPE_GENERIC_UNSIGNED_INTEGER_MACRO_1(func, x) _Generic( \
-    (x), \
+#define TYPE_GENERIC_UNSIGNED_INTEGER(func, expr, ...) _Generic((expr), \
     uint: u##func, \
     ulong: ul##func, \
     ullong: ull##func, \
     default: u##func \
-)(x)
-
-#define TYPE_GENERIC_UNSIGNED_INTEGER_MACRO_2(func, x, y) _Generic( \
-    (x) + (y), \
-    uint: u##func, \
-    ulong: ul##func, \
-    ullong: ull##func, \
-    default: u##func \
-)(x, y)
-
-#define TYPE_GENERIC_UNSIGNED_INTEGER_MACRO_3(func, x, y, z) _Generic( \
-    (x) + (y) + (z), \
-    uint: u##func, \
-    ulong: ul##func, \
-    ullong: ull##func, \
-    default: u##func \
-)(x, y, z)
+)(__VA_ARGS__)
 
 #endif // LLONG_MAX < INTMAX_MAX
 
-#define TYPE_GENERIC_REAL_FLOATING_MACRO_1(func, x) _Generic( \
-    (x), \
+#define TYPE_GENERIC_REAL_FLOATING(func, expr, ...) _Generic((expr), \
     flt: func##f, \
     dbl: func, \
     ldbl: func##l, \
     default: func \
-)(x)
+)(__VA_ARGS__)
 
-#define TYPE_GENERIC_REAL_FLOATING_MACRO_2(func, x, y) _Generic( \
-    (x) + (y), \
-    flt: func##f, \
-    dbl: func, \
-    ldbl: func##l, \
-    default: func \
-)(x, y)
+#define TYPE_GENERIC_INTEGER_1(func, x, ...) \
+    TYPE_GENERIC_INTEGER( \
+        func, (x), x __VA_OPT__(,) __VA_ARGS__ \
+    )
 
-#define TYPE_GENERIC_REAL_FLOATING_MACRO_3(func, x, y, z) _Generic( \
-    (x) + (y) + (z), \
-    flt: func##f, \
-    dbl: func, \
-    ldbl: func##l, \
-    default: func \
-)(x, y, z)
+#define TYPE_GENERIC_INTEGER_2(func, x, y, ...) \
+    TYPE_GENERIC_INTEGER( \
+        func, (x) + (y), x, y __VA_OPT__(,) __VA_ARGS__ \
+    )
+
+#define TYPE_GENERIC_INTEGER_3(func, x, y, z, ...) \
+    TYPE_GENERIC_INTEGER( \
+        func, (x) + (y) + (z), x, y, z __VA_OPT__(,) __VA_ARGS__ \
+    )
+
+#define TYPE_GENERIC_SIGNED_INTEGER_1(func, x, ...) \
+    TYPE_GENERIC_SIGNED_INTEGER( \
+        func, (x), x __VA_OPT__(,) __VA_ARGS__ \
+    )
+
+#define TYPE_GENERIC_SIGNED_INTEGER_2(func, x, y, ...) \
+    TYPE_GENERIC_SIGNED_INTEGER( \
+        func, (x) + (y), x, y __VA_OPT__(,) __VA_ARGS__ \
+    )
+
+#define TYPE_GENERIC_SIGNED_INTEGER_3(func, x, y, z, ...) \
+    TYPE_GENERIC_SIGNED_INTEGER( \
+        func, (x) + (y) + (z), x, y, z __VA_OPT__(,) __VA_ARGS__ \
+    )
+
+#define TYPE_GENERIC_UNSIGNED_INTEGER_1(func, x, ...) \
+    TYPE_GENERIC_UNSIGNED_INTEGER( \
+        func, (x), x __VA_OPT__(,) __VA_ARGS__ \
+    )
+
+#define TYPE_GENERIC_UNSIGNED_INTEGER_2(func, x, y, ...) \
+    TYPE_GENERIC_UNSIGNED_INTEGER( \
+        func, (x) + (y), x, y __VA_OPT__(,) __VA_ARGS__ \
+    )
+
+#define TYPE_GENERIC_UNSIGNED_INTEGER_3(func, x, y, z, ...) \
+    TYPE_GENERIC_UNSIGNED_INTEGER( \
+        func, (x) + (y) + (z), x, y, z __VA_OPT__(,) __VA_ARGS__ \
+    )
+
+#define TYPE_GENERIC_REAL_FLOATING_1(func, x, ...) \
+    TYPE_GENERIC_REAL_FLOATING( \
+        func, (x), x __VA_OPT__(,) __VA_ARGS__ \
+    )
+
+#define TYPE_GENERIC_REAL_FLOATING_2(func, x, y, ...) \
+    TYPE_GENERIC_REAL_FLOATING( \
+        func, (x) + (y), x, y __VA_OPT__(,) __VA_ARGS__ \
+    )
+
+#define TYPE_GENERIC_REAL_FLOATING_3(func, x, y, z, ...) \
+    TYPE_GENERIC_REAL_FLOATING( \
+        func, (x) + (y) + (z), x, y, z __VA_OPT__(,) __VA_ARGS__ \
+    )
 
 #endif // C_UTILITIES_TYPE_GENERIC_H
