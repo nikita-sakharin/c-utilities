@@ -23,7 +23,7 @@ static inline void *memSwap(
     return s1;
 }
 
-#define SIZE (1ULL << 8)
+#define SIZE (1ULL << 30)
 
 int main(void) {
     void * const restrict first = malloc(SIZE),
