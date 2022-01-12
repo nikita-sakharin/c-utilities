@@ -15,7 +15,7 @@ static inline void *memSwap(
 ) {
     for (register uchar
         * restrict ptr1 = (uchar *) s1, * restrict ptr2 = (uchar *) s2;
-        n > 0; --n, s2 = (uchar *) s2 + 1, s2 = (uchar *) s2 + 1
+        n > 0; --n, ++ptr1, ++ptr2
     ) {
         register const uchar buffer = *ptr1;
         *ptr1 = *ptr2;
