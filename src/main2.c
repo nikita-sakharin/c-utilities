@@ -9,17 +9,14 @@
 
 // ???
 static inline void *memSwap(
-    void * const restrict s1,
-    void * const restrict s2,
+    register void * restrict s1,
+    register void * restrict s2,
     register size_t n
 ) {
-    for (register uchar
-        * restrict ptr1 = (uchar *) s1, * restrict ptr2 = (uchar *) s2;
-        n > 0; --n, ++ptr1, ++ptr2
-    ) {
-        const uchar buffer = *ptr1;
-        *ptr1 = *ptr2;
-        *ptr2 = buffer;
+    for (; n > 0; --n, s1 = (uchar *) s1 + 1, s2 = (uchar *) s2 + 1) {
+        register const uchar buffer = *(const uchar *) s1;
+        *(uchar *) s1 = *(const uchar *) s2;
+        *(uchar *) s2 = buffer;
     }
     return s1;
 }
