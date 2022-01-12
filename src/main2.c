@@ -13,12 +13,13 @@ static inline void *memSwap(
     register void * restrict s2,
     register size_t n
 ) {
+    register const void * const ptr1 = s1;
     for (; n > 0; --n, s1 = (uchar *) s1 + 1, s2 = (uchar *) s2 + 1) {
         register const uchar buffer = *(const uchar *) s1;
         *(uchar *) s1 = *(const uchar *) s2;
         *(uchar *) s2 = buffer;
     }
-    return s1;
+    return ptr1;
 }
 
 #define SIZE (1ULL << 30)
