@@ -7,7 +7,7 @@
 #include <c_utilities/error_handling.h> // EXIT_IF
 #include <c_utilities/types.h> // uchar
 
-// ???
+// 2382572204
 static inline void *memSwap(
     register void * restrict s1,
     register void * restrict s2,
