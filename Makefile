@@ -13,13 +13,13 @@ CFLAGS=-Wall -Walloc-zero -Walloca -Wanalyzer-too-complex -Warith-conversion \
     -Wstrict-overflow=5 -Wstrict-prototypes -Wstringop-overflow=4 \
     -Wswitch-default -Wswitch-enum -Wundef -Wunreachable-code \
     -Wunused-const-variable=2 -Wunused-macros -Wvector-operation-performance \
-    -Wvla -Wwrite-strings -fanalyzer -pedantic-errors -std=c18
+    -Wvla -Wwrite-strings -fanalyzer -pedantic-errors -std=c18 -Iinclude/
 # -Wattribute-alias=2 -Wsync-nand -Wunused
 LDFLAGS=
 LDLIBS=-lm
-SOURCES=main.c
+SOURCES=src/main1.c
 OBJECTS=$(SOURCES:.c=.o)
-EXECUTABLE=main
+EXECUTABLE=main1
 
 all: $(SOURCES) $(EXECUTABLE)
 
