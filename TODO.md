@@ -36,11 +36,11 @@ minmax<br/>
 fclampf, fclamp, fclampl
 
 Неправильный вариант:<br/>
-clampi(clamp), clampu, clampl, clampul, clampll, clampull, clampimax, clampumax, clampf, clampd, clampld<br/>
+clampi(clamp), clampu, clampl, clampul, clampll, clampull, clampimax, clampumax, clampf, clampd, clampld
+
 http://www.open-std.org/jtc1/sc22/wg11/docs/n462.pdf<br/>
 http://www.open-std.org/jtc1/sc22/wg11/docs/n497.pdf<br/>
 http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
-
 
 
 bit.h:<br/>
