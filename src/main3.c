@@ -7,7 +7,8 @@
 #include <c_utilities/error_handling.h> // EXIT_IF
 #include <c_utilities/types.h> // uchar
 
-// ???
+//  21178727
+// 167979367
 static inline void *memSwap(
     void * const restrict s1,
     void * const restrict s2,
@@ -25,7 +26,7 @@ static inline void *memSwap(
     return s1;
 }
 
-#define SIZE (1ULL << 30)
+#define SIZE (1ULL << 24)
 
 int main(void) {
     void * const restrict first = malloc(SIZE),

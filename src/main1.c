@@ -7,7 +7,8 @@
 #include <c_utilities/error_handling.h> // EXIT_IF
 #include <c_utilities/types.h> // uchar
 
-// 2382572204
+//  23275874
+// 184756578
 static inline void *memSwap(
     void * const restrict s1,
     void * const restrict s2,
