@@ -5,7 +5,7 @@ arraySwap - поменять местами в массиве два элеме�
 ptrDifference - вычислить разницу между двумя указателями как число элементов.<br/>
 ptrOffset - вычислить указатель на элемент в массиве по индексу.
 
-Поставить точку в вопросе memSwap. Имеет место 4 варианта - можно использовать или не использовать n в цикле, и независимо от этого использовать указатели на void, либо объявлять дополнительно указатели на uchar. В данном случае использование uchar неоспоримо - по аналогии с определением memset, memcmp.<br/>
+Финализировать memSwap. При реализации следует использовать не char, а uchar по аналогии с определением в стандарте функций memchr, memcmp, memset.<br/>
 http://www.open-std.org/jtc1/sc22/wg14/www/docs/n2484.htm<br/>
 https://www.lysator.liu.se/c/restrict.html<br/>
 https://cellperformance.beyond3d.com/articles/2006/06/understanding-strict-aliasing.html<br/>
@@ -31,13 +31,16 @@ dir: cannot access '42': No such file or directory<br/>
 
 
 arithmetic.h:<br/>
-multiplyHigth (mulh), ipow, isqrt, floorDiv, floorMod, floorDivMod
-
+multiplyHigth (mulh), ipow, isqrt, floorDiv, floorMod, floorDivMod<br/>
 minmax<br/>
 fclampf, fclamp, fclampl
 
 Неправильный вариант:<br/>
-clampi(clamp), clampu, clampl, clampul, clampll, clampull, clampimax, clampumax, clampf, clampd, clampld
+clampi(clamp), clampu, clampl, clampul, clampll, clampull, clampimax, clampumax, clampf, clampd, clampld<br/>
+http://www.open-std.org/jtc1/sc22/wg11/docs/n462.pdf<br/>
+http://www.open-std.org/jtc1/sc22/wg11/docs/n497.pdf<br/>
+http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
+
 
 
 bit.h:<br/>
