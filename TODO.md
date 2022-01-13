@@ -11,10 +11,8 @@ https://www.lysator.liu.se/c/restrict.html<br/>
 https://cellperformance.beyond3d.com/articles/2006/06/understanding-strict-aliasing.html<br/>
 https://gustedt.wordpress.com/2010/08/17/a-common-misconsception-the-register-keyword
 
-
 error_handling.h:<br/>
 Макрос EXIT_IF можно использовать в следующей ситуации: было выделено несколько ресурсов, далее произошла ошибка, GOTO_IF перекинул в место, где выделенные ресурсы освобождаются. Когда вызываем функцию для освобождения ресурса, то возвращаемое значение проверяем уже с помощью EXIT_IF, а не с помощью GOTO_IF. В данном случае напрашивается аналогия с C++ std::terminate, которая вызывается, если при обработке исключения, было выброшено еще одно. Возможно, в рамках данной аналогии, имеет смысл вместо фунеции exit, использовать \_Exit, или даже abort. Но вариант, просто exit видится более органичным, более интуитивным, так как в точности копирует 'return' в main (вызывает atexit и закрывает файловые дискрипторы). С другой стороны вариант с функцией abort ближе по семантике к std::terminate. Вариант при котором будет отдельно макрос с abort и отдельно с exit кажется откровенно спорным.
-
 
 Так же имеет смысл рассмотреть макрос для вывода сообщений об ошибках в формате POSIX. Например:
 dir: cannot access '42': No such file or directory<br/>
@@ -29,7 +27,6 @@ dir: cannot access '42': No such file or directory<br/>
 
 Есть ОЧЕНЬ плохой вариант DO_GOTO_IF с выполнением произвольного блока. Но данный вариант категорически ошибкоопасен и отвергается по понятным причинам.
 
-
 arithmetic.h:<br/>
 multiplyHigth (mulh), ipow, isqrt, floorDiv, floorMod, floorDivMod<br/>
 minmax<br/>
@@ -42,12 +39,10 @@ http://www.open-std.org/jtc1/sc22/wg11/docs/n462.pdf<br/>
 http://www.open-std.org/jtc1/sc22/wg11/docs/n497.pdf<br/>
 http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
 
-
 bit.h:<br/>
 {bitCount|popCount}
 hasSingleBit -> {isPowOf2|isPowOfTwo}
 rotateLeft, rotateRight
-
 
 math.h:<br/>
 lerp<br/>
@@ -56,7 +51,6 @@ DBL_E, DBL_LN2, DBL_PI, DBL_SQRT2<br/>
 comb, factorial, perm<br/>
 ulp, nextDown, nextUp, union { uint32_t u32; flt f; }<br/>
 random
-
 
 numeric.h:<br/>
 gcd, lcm, midpoint, fmidpoint, isqrt(?)
