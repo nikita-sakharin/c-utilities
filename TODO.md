@@ -6,8 +6,10 @@ ptrDifference - вычислить разницу между двумя указ
 ptrOffset - вычислить указатель на элемент в массиве по индексу.
 
 Поставить точку в вопросе memSwap. Имеет место 4 варианта - можно использовать или не использовать n в цикле, и независимо от этого использовать указатели на void, либо объявлять дополнительно указатели на uchar. В данном случае использование uchar неоспоримо - по аналогии с определением memset, memcmp.<br/>
-https://stackoverflow.com/questions/21628002/counting-machine-instructions-using-gdb<br/>
-https://stackoverflow.com/questions/52024529/whats-the-difference-between-nexti-and-stepi-in-gdb
+http://www.open-std.org/jtc1/sc22/wg14/www/docs/n2484.htm<br/>
+https://www.lysator.liu.se/c/restrict.html<br/>
+https://cellperformance.beyond3d.com/articles/2006/06/understanding-strict-aliasing.html<br/>
+https://gustedt.wordpress.com/2010/08/17/a-common-misconsception-the-register-keyword
 
 
 error_handling.h:<br/>
