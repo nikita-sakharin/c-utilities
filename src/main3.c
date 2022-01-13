@@ -10,9 +10,9 @@
 //  21178727
 // 167979367
 static inline void *memSwap(
-    void * const restrict s1,
-    void * const restrict s2,
-    const size_t n
+    register void * const restrict s1,
+    register void * const restrict s2,
+    register const size_t n
 ) {
     register const uchar * const end1 = (const uchar *) s1 + n;
     for (register uchar
