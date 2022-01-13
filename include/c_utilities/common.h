@@ -57,8 +57,8 @@ inline void *arrSwap(
 }
 
 inline void *memSwap(
-    void * const restrict s1,
-    void * const restrict s2,
+    register void * const restrict s1,
+    register void * const restrict s2,
     register size_t n
 ) {
     assert(s1 != NULL && s2 != NULL && n <= PTRDIFF_MAX &&
