@@ -12,7 +12,7 @@
 static inline void *memSwap(
     register void * restrict s1,
     register void * restrict s2,
-    const size_t n
+    register const size_t n
 ) {
     for (register const void * const end1 = (const uchar *) s1 + n;
         s1 < end1; s1 = (uchar *) s1 + 1, s2 = (uchar *) s2 + 1
