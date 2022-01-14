@@ -62,7 +62,12 @@ https://gustedt.wordpress.com/2010/08/17/a-common-misconsception-the-register-ke
 `types.h`:<br/>
 `fltCmplx`, `dblCmplx`, `ldblCmplx` - это `typedef` для `float complex`, `double complex`, `long double complex`, соответственно.<br/>
 <ol>
-  <li>`complex` (или сокращение) должен быть префиксом или суффиксом?</li>
+  <li>Префикс или суффикс?
+    <ol>
+      <li>Аналогия с `atomic` не подходит, так как это квалификатор типа, но `complex` - это спецификатор типа.</li>
+      <li>В стандарте `complex` используется после.</li>
+    </ol>
+  </li>
   <li>Полностью или сокращение?
     <ol>
       <li>`c` - слишком коротко. В таком случае `float` должен быть сокращен до `f`, а `long double` до `ld`;</li>
