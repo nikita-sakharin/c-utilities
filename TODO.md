@@ -70,7 +70,7 @@ https://gustedt.wordpress.com/2010/08/17/a-common-misconsception-the-register-ke
   </li>
   <li>Полностью или сокращение?
     <ol>
-      <li>`c` - слишком коротко. В таком случае `float` должен быть сокращен до `f`, а `long double` до `ld`;</li>
+      <li>`c` - слишком коротко. В таком случае ``float`` должен быть сокращен до `f`, а `long double` до `ld`;</li>
       <li>`cmplx` - оптимально, по аналогии с макросом из `CMPLXF` стандартной библиотеки </li>
       <li>`complex` - слишком длинное название. В таком случае `float` и `long double` не должны быть сокращены вообще.</li>
     </ol>
