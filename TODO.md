@@ -65,7 +65,7 @@ https://gustedt.wordpress.com/2010/08/17/a-common-misconsception-the-register-ke
   <li>Префикс или суффикс?
     <ol>
       <li>Аналогия с <code>atomic</code> не подходит, так как это квалификатор типа, но <code>complex</code> - это спецификатор типа.</li>
-      <li>В стандарте <code>complex</code> используется после.</li>
+      <li>В стандарте <code>complex</code> используется после <code>float</code>, <code>double</code>, <code>long double</code>.</li>
     </ol>
   </li>
   <li>Полностью или сокращение?
