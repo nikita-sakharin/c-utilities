@@ -64,15 +64,15 @@ https://gustedt.wordpress.com/2010/08/17/a-common-misconsception-the-register-ke
 <ol>
   <li>Префикс или суффикс?
     <ol>
-      <li>Аналогия с `atomic` не подходит, так как это квалификатор типа, но `complex` - это спецификатор типа.</li>
-      <li>В стандарте `complex` используется после.</li>
+      <li>Аналогия с <code>atomic</code> не подходит, так как это квалификатор типа, но <code>complex</code> - это спецификатор типа.</li>
+      <li>В стандарте <code>complex</code> используется после.</li>
     </ol>
   </li>
   <li>Полностью или сокращение?
     <ol>
-      <li>`c` - слишком коротко. В таком случае <code>float</code> должен быть сокращен до `f`, а `long double` до `ld`;</li>
-      <li>`cmplx` - оптимально, по аналогии с макросом из `CMPLXF` стандартной библиотеки </li>
-      <li>`complex` - слишком длинное название. В таком случае `float` и `long double` не должны быть сокращены вообще.</li>
+      <li><code>c</code> - слишком коротко. В таком случае <code>float</code> должен быть сокращен до <code>f</code>, а <code>long double</code> до <code>ld</code>;</li>
+      <li><code>cmplx</code> - оптимально, по аналогии с макросом из <code>CMPLXF</code> стандартной библиотеки;</li>
+      <li><code>complex</code> - слишком длинное название. В таком случае <code>float</code> и <code>long double</code> не должны быть сокращены вообще.</li>
     </ol>
   </li>
 </ol>
