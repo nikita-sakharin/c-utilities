@@ -1,3 +1,20 @@
+`arithmetic.h`:<br/>
+`multiplyHigth` (`mulh`), `ipow`, `isqrt`, `floorDiv`, `floorMod`, `floorDivMod`<br/>
+`minmax`<br/>
+`fclampf`, `fclamp`, `fclampl`
+
+Неправильный вариант:<br/>
+`clampi` (`clamp`), `clampu`, `clampl`, `clampul`, `clampll`, `clampull`, `clampimax`, `clampumax`, `clampf`, `clampd`, `clampld`
+
+http://www.open-std.org/jtc1/sc22/wg11/docs/n462.pdf<br/>
+http://www.open-std.org/jtc1/sc22/wg11/docs/n497.pdf<br/>
+http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
+
+`bit.h`:<br/>
+{`bitCount`|`popCount`}<br/>
+`hasSingleBit` -> {`isPowOf2`|`isPowOfTwo`}<br/>
+`rotateLeft`, `rotateRight`
+
 `common.h`:<br/>
 `arrayCompare` - сравнить в массиве два элемента, используя компаратор.<br/>
 `arrayCompareSwap` - сравнить в массиве два элемента и поменять их местами в том случае, если элемент по первому индексу строго больше (используя компаратор), чем по второму.<br/>
@@ -27,23 +44,6 @@ https://gustedt.wordpress.com/2010/08/17/a-common-misconsception-the-register-ke
 Для `GOTO_IF` добавить вариант (или изменить имеющийся макрос?) который записывает текущее значение `errno` в lvalue (или по указателю?) переданное в макрос, затем зануляет errno (или просто оставляет без изменений?). Переданное lvalue может содержать side-effect.
 
 Есть ОЧЕНЬ плохой вариант `DO_GOTO_IF` с выполнением произвольного блока. Но данный вариант категорически ошибкоопасен и отвергается по понятным причинам.
-
-`arithmetic.h`:<br/>
-`multiplyHigth` (`mulh`), `ipow`, `isqrt`, `floorDiv`, `floorMod`, `floorDivMod`<br/>
-`minmax`<br/>
-`fclampf`, `fclamp`, `fclampl`
-
-Неправильный вариант:<br/>
-`clampi` (`clamp`), `clampu`, `clampl`, `clampul`, `clampll`, `clampull`, `clampimax`, `clampumax`, `clampf`, `clampd`, `clampld`
-
-http://www.open-std.org/jtc1/sc22/wg11/docs/n462.pdf<br/>
-http://www.open-std.org/jtc1/sc22/wg11/docs/n497.pdf<br/>
-http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
-
-`bit.h`:<br/>
-{`bitCount`|`popCount`}<br/>
-`hasSingleBit` -> {`isPowOf2`|`isPowOfTwo`}<br/>
-`rotateLeft`, `rotateRight`
 
 `math.h`:<br/>
 `lerp`<br/>
