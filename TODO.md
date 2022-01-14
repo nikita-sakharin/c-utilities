@@ -41,8 +41,8 @@ http://www.open-std.org/jtc1/sc22/wg11/docs/n497.pdf<br/>
 http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
 
 `bit.h`:<br/>
-{`bitCount`|`popCount`}
-`hasSingleBit` -> {`isPowOf2`|`isPowOfTwo`}
+{`bitCount`|`popCount`}<br/>
+`hasSingleBit` -> {`isPowOf2`|`isPowOfTwo`}<br/>
 `rotateLeft`, `rotateRight`
 
 `math.h`:<br/>
