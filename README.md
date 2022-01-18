@@ -47,7 +47,7 @@ https://gustedt.wordpress.com/2010/08/17/a-common-misconsception-the-register-ke
 
 `math.h`:<br/>
 `lerp`<br/>
-`degrees`, `radians`<br/>
+`toDegrees`, `toRadians`<br/>
 `DBL_E`, `DBL_LN2`, `DBL_PI`, `DBL_SQRT2`<br/>
 `comb`, `factorial`, `perm`<br/>
 `ulp`, `nextDown`, `nextUp`, `union { uint32_t u32; flt f; }`<br/>
@@ -58,21 +58,3 @@ https://gustedt.wordpress.com/2010/08/17/a-common-misconsception-the-register-ke
 
 Неправильный вариант:<br/>
 `imidpoint`, `fmidpoint`
-
-`types.h`:<br/>
-`fltCmplx`, `dblCmplx`, `ldblCmplx` - это `typedef` для `float complex`, `double complex`, `long double complex`, соответственно.<br/>
-<ol>
-  <li>Префикс или суффикс?
-    <ol>
-      <li>Аналогия с <code>atomic</code> не подходит, так как это квалификатор типа, но <code>complex</code> - это спецификатор типа;</li>
-      <li>В стандарте <code>complex</code> используется после <code>float</code>, <code>double</code>, <code>long double</code>.</li>
-    </ol>
-  </li>
-  <li>Полностью или сокращение?
-    <ol>
-      <li><code>c</code> - слишком коротко. В таком случае <code>float</code> должен быть сокращен до <code>f</code>, а <code>long double</code> до <code>ld</code>;</li>
-      <li><code>cmplx</code> - оптимально, по аналогии с макросом из <code>CMPLXF</code> стандартной библиотеки;</li>
-      <li><code>complex</code> - слишком длинное название. В таком случае <code>float</code> и <code>long double</code> не должны быть сокращены вообще.</li>
-    </ol>
-  </li>
-</ol>
