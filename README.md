@@ -29,25 +29,6 @@ https://cellperformance.beyond3d.com/articles/2006/05/demystifying-the-restrict-
 https://cellperformance.beyond3d.com/articles/2006/06/understanding-strict-aliasing.html<br/>
 https://gustedt.wordpress.com/2010/08/17/a-common-misconsception-the-register-keyword
 
-`complex.h`:<br/>
-`fltCmplx`, `dblCmplx`, `ldblCmplx` - это `typedef` для `float complex`, `double complex`, `long double complex`, соответственно.<br/>
-<ol>
-  <li>Каков взаимный порядок <code>#ifndef C_UTILITIES_COMPLEX_H</code> и <code>#ifndef __STDC_NO_COMPLEX__</code>?</li>
-  <li>Префикс или суффикс?
-    <ol>
-      <li>Аналогия с <code>atomic</code> не подходит, так как это квалификатор типа, но <code>complex</code> - это спецификатор типа;</li>
-      <li>В стандарте <code>complex</code> используется после <code>float</code>, <code>double</code>, <code>long double</code>.</li>
-    </ol>
-  </li>
-  <li>Полностью или сокращение?
-    <ol>
-      <li><code>c</code> - слишком коротко. В таком случае <code>float</code> должен быть сокращен до <code>f</code>, а <code>long double</code> до <code>ld</code>;</li>
-      <li><code>cmplx</code> - оптимально, по аналогии с макросом из <code>CMPLXF</code> стандартной библиотеки;</li>
-      <li><code>complex</code> - слишком длинное название. В таком случае <code>float</code> и <code>long double</code> не должны быть сокращены вообще.</li>
-    </ol>
-  </li>
-</ol>
-
 `error_handling.h`:<br/>
 Макрос `EXIT_IF` можно использовать в следующей ситуации: было выделено несколько ресурсов, далее произошла ошибка, `GOTO_IF` перекинул в место, где выделенные ресурсы освобождаются. Когда вызываем функцию для освобождения ресурса, то возвращаемое значение проверяем уже с помощью `EXIT_IF`, а не с помощью `GOTO_IF`. В данном случае напрашивается аналогия с C++ `std::terminate`, которая вызывается, если при обработке исключения, было выброшено еще одно. Возможно, в рамках данной аналогии, имеет смысл вместо функции `exit`, использовать `_Exit`, или даже `abort`. Но вариант, просто `exit` видится более органичным, более интуитивным, так как в точности копирует `return` в `main` (вызывает `atexit` и закрывает файловые дискрипторы). С другой стороны вариант с функцией `abort` ближе по семантике к `std::terminate`. Вариант при котором будет отдельно макрос с `abort` и отдельно с `exit` кажется откровенно спорным.
 

@@ -66,4 +66,4 @@ typedef long double complex ldblCmplx;
 
 #endif // __STDC_NO_COMPLEX__
 
-#endif // C_UTILITIES_TYPES_H
+#endif // C_UTILITIES_COMPLEX_H
