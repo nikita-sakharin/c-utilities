@@ -17,8 +17,8 @@ static inline void *memSwap(
     for (register const void * const end1 = (const uchar *) s1 + n;
         s1 < end1; s1 = (uchar *) s1 + 1, s2 = (uchar *) s2 + 1
     ) {
-        register const uchar buffer = *(uchar *) s1;
-        *(uchar *) s1 = *(uchar *) s2;
+        register const uchar buffer = *(const uchar *) s1;
+        *(uchar *) s1 = *(const uchar *) s2;
         *(uchar *) s2 = buffer;
     }
     return (uchar *) s1 - n;
