@@ -8,7 +8,7 @@
 #include <stdint.h> // PTRDIFF_MAX
 #include <string.h> // memcpy
 
-#include <c_utilities/arithmetic.h> // max
+#include <c_utilities/arithmetic.h> // max, min
 #include <c_utilities/system_config.h> // LEVEL1_DCACHE_LINESIZE
 #include <c_utilities/types.h> // uchar
 // arr_compare_max or arr_max
@@ -92,7 +92,6 @@ inline void *memSwap(
     return s1;
 }
 
-// restrict ???
 inline ptrdiff_t ptrDifference(
     register const void * const ptr1,
     register const void * const ptr2,
