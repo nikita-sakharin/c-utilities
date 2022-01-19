@@ -59,16 +59,17 @@ inline void *arrSwap(
 inline void *memSwap(
     register void * const restrict s1,
     register void * const restrict s2,
-    register size_t n
+    register const size_t n
 ) {
     assert(s1 != NULL && s2 != NULL && n <= PTRDIFF_MAX &&
         (uchar *) s1 <= (uchar *) s1 + n && (uchar *) s2 <= (uchar *) s2 + n &&
         ((uchar *) s1 >= (uchar *) s2 + n || (uchar *) s2 >= (uchar *) s1 + n)
     );
 #   ifdef NDEBUG
+    register const uchar * const end1 = (uchar *) s1 + n;
     for (register uchar
         * restrict ptr1 = (uchar *) s1, * restrict ptr2 = (uchar *) s2;
-        n > 0; --n, ++ptr1, ++ptr2
+        ptr1 < end1; ++ptr1, ++ptr2
     ) {
         register const uchar buffer = *ptr1;
         *ptr1 = *ptr2;
