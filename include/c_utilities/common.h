@@ -110,7 +110,8 @@ inline void *ptrOffset(
     register const size_t size
 ) {
     assert((ptr != NULL || index == 0U) && size > 0U && size <= PTRDIFF_MAX &&
-        index <= PTRDIFF_MAX / size && (const char *) ptr <= (const char *) ptr + index * size
+        index <= PTRDIFF_MAX / size &&
+        (const char *) ptr <= (const char *) ptr + index * size
     );
 #   if defined(__clang__)
 #   pragma clang diagnostic push
