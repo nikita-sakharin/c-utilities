@@ -92,7 +92,6 @@ inline void *memSwap(
     return s1;
 }
 
-// restrict ???
 inline ptrdiff_t ptrDifference(
     register const void * const ptr1,
     register const void * const ptr2,
