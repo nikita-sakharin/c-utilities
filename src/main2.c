@@ -7,20 +7,27 @@
 #include <c_utilities/error_handling.h> // EXIT_IF
 #include <c_utilities/types.h> // uchar
 
-//  23275870
-// 184756574
+// ???
+// ???
 static inline void *memSwap(
-    register void * restrict s1,
-    register void * restrict s2,
+    register void * const restrict s1,
+    register void * const restrict s2,
     register size_t n
 ) {
-    register void * const ptr1 = s1;
-    for (; n > 0; --n, s1 = (uchar *) s1 + 1, s2 = (uchar *) s2 + 1) {
-        register const uchar buffer = *(const uchar *) s1;
-        *(uchar *) s1 = *(const uchar *) s2;
-        *(uchar *) s2 = buffer;
+    for (register uchar
+        * restrict ptr1 = (uchar *) s1, * restrict ptr2 = (uchar *) s2;
+        n > 0;
+    ) {
+        alignas(LEVEL1_DCACHE_LINESIZE) uchar buffer[LEVEL1_DCACHE_LINESIZE];
+        register const size_t offset = min(LEVEL1_DCACHE_LINESIZE, n);
+        memcpy(buffer, ptr1, offset);
+        memcpy(ptr1, ptr2, offset);
+        memcpy(ptr2, buffer, offset);
+        n -= offset;
+        ptr1 += offset;
+        ptr2 += offset;
     }
-    return ptr1;
+    return s1;
 }
 
 #define SIZE (1ULL << 30)
@@ -32,6 +39,7 @@ int main(void) {
 
     const time_t now = time(NULL);
     EXIT_IF(now == (time_t) -1, "time");
+    srand((uint) now);
 
     memset(first, rand(), SIZE);
     memset(second, rand(), SIZE);
