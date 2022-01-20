@@ -1,3 +1,4 @@
+#include <stdalign.h> // alignas
 #include <stddef.h> // size_t
 #include <stdio.h> // printf
 #include <stdlib.h> // free, malloc, rand, srand
@@ -6,6 +7,12 @@
 
 #include <c_utilities/error_handling.h> // EXIT_IF
 #include <c_utilities/types.h> // uchar
+
+#define LEVEL1_DCACHE_LINESIZE ((size_t) 64U)
+
+static inline size_t min(register const size_t x, register const size_t y) {
+    return y < x ? y : x;
+}
 
 // ???
 // ???
@@ -20,7 +27,8 @@ static inline void *memSwap(
         ptr1 < end1;
     ) {
         alignas(LEVEL1_DCACHE_LINESIZE) uchar buffer[LEVEL1_DCACHE_LINESIZE];
-        register const size_t offset = min(LEVEL1_DCACHE_LINESIZE, end1 - ptr1);
+        register const size_t offset =
+            min(LEVEL1_DCACHE_LINESIZE, (size_t) (end1 - ptr1));
         memcpy(buffer, ptr1, offset);
         memcpy(ptr1, ptr2, offset);
         memcpy(ptr2, buffer, offset);

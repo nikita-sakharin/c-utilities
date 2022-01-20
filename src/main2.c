@@ -1,3 +1,4 @@
+#include <stdalign.h> // alignas
 #include <stddef.h> // size_t
 #include <stdio.h> // printf
 #include <stdlib.h> // free, malloc, rand, srand
@@ -6,6 +7,12 @@
 
 #include <c_utilities/error_handling.h> // EXIT_IF
 #include <c_utilities/types.h> // uchar
+
+#define LEVEL1_DCACHE_LINESIZE ((size_t) 64U)
+
+static inline size_t min(register const size_t x, register const size_t y) {
+    return y < x ? y : x;
+}
 
 // ???
 // ???
