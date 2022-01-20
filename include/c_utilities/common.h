@@ -11,8 +11,8 @@
 #include <c_utilities/arithmetic.h> // max, min
 #include <c_utilities/system_config.h> // LEVEL1_DCACHE_LINESIZE
 #include <c_utilities/types.h> // uchar
-// arr_compare_max or arr_max
-// ptr_compare_max or ptr_max
+// arrCompareMax or arrMax
+// ptrCompareMax or ptrMax
 
 // restrict ???
 inline int arrCompare(
@@ -23,7 +23,7 @@ inline int arrCompare(
     register int (* const compare)(const void *, const void *)
 ) {
     assert(arr != NULL && size > 0U && size <= PTRDIFF_MAX &&
-        max(index1, index2) + 1U <= PTRDIFF_MAX / size && compare != NULL
+        max(index1, index2) <= PTRDIFF_MAX / size - 1U && compare != NULL
     );
     return compare(ptrOffset(arr, index1, size), ptrOffset(arr, index2, size));
 }
@@ -36,7 +36,7 @@ inline bool arrCompareSwap(
     register int (* const compare)(const void *, const void *)
 ) {
     assert(arr != NULL && size > 0U && size <= PTRDIFF_MAX &&
-        max(index1, index2) + 1U <= PTRDIFF_MAX / size && compare != NULL
+        max(index1, index2) <= PTRDIFF_MAX / size - 1U && compare != NULL
     );
     if (arrCompare(arr, index1, index2, size, compare) <= 0)
         return false;
@@ -51,7 +51,7 @@ inline void *arrSwap(
     register const size_t size
 ) {
     assert(arr != NULL && index1 != index2 && size > 0U &&
-        size <= PTRDIFF_MAX && max(index1, index2) + 1U <= PTRDIFF_MAX / size
+        size <= PTRDIFF_MAX && max(index1, index2) <= PTRDIFF_MAX / size - 1U
     );
     return memSwap(ptrOffset(arr, index1, size), ptrOffset(arr, index2, size));
 }
@@ -59,16 +59,17 @@ inline void *arrSwap(
 inline void *memSwap(
     register void * const restrict s1,
     register void * const restrict s2,
-    register size_t n
+    register const size_t n
 ) {
     assert(s1 != NULL && s2 != NULL && n <= PTRDIFF_MAX &&
         (uchar *) s1 <= (uchar *) s1 + n && (uchar *) s2 <= (uchar *) s2 + n &&
         ((uchar *) s1 >= (uchar *) s2 + n || (uchar *) s2 >= (uchar *) s1 + n)
     );
 #   ifdef NDEBUG
+    register const uchar * const end1 = (uchar *) s1 + n;
     for (register uchar
         * restrict ptr1 = (uchar *) s1, * restrict ptr2 = (uchar *) s2;
-        n > 0; --n, ++ptr1, ++ptr2
+        ptr1 < end1; ++ptr1, ++ptr2
     ) {
         register const uchar buffer = *ptr1;
         *ptr1 = *ptr2;
@@ -109,7 +110,8 @@ inline void *ptrOffset(
     register const size_t size
 ) {
     assert((ptr != NULL || index == 0U) && size > 0U && size <= PTRDIFF_MAX &&
-        index <= PTRDIFF_MAX / size && (const char *) ptr <= (const char *) ptr + index * size
+        index <= PTRDIFF_MAX / size &&
+        (const char *) ptr <= (const char *) ptr + index * size
     );
 #   if defined(__clang__)
 #   pragma clang diagnostic push
