@@ -14,7 +14,7 @@ static inline size_t min(register const size_t x, register const size_t y) {
 }
 
 // 4781714586
-// ???
+//   74919086
 static inline void *memSwap(
     register void * restrict s1,
     register void * restrict s2,
