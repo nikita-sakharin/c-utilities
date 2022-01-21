@@ -1,9 +1,8 @@
 #include <stdalign.h> // alignas
 #include <stddef.h> // size_t
 #include <stdio.h> // printf
-#include <stdlib.h> // free, malloc, rand, srand
+#include <stdlib.h> // free, malloc, rand
 #include <string.h> // memset
-#include <time.h> // time, time_t
 
 #include <c_utilities/error_handling.h> // EXIT_IF
 #include <c_utilities/types.h> // uchar
@@ -43,10 +42,6 @@ int main(void) {
     void * const restrict first = malloc(SIZE),
         * const restrict second = malloc(SIZE);
     EXIT_IF(first == NULL || second == NULL, "malloc");
-
-    const time_t now = time(NULL);
-    EXIT_IF(now == (time_t) -1, "time");
-    srand((uint) now);
 
     memset(first, rand(), SIZE);
     memset(second, rand(), SIZE);
