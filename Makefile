@@ -17,9 +17,9 @@ CFLAGS=-Wall -Walloc-zero -Walloca -Wanalyzer-too-complex -Warith-conversion \
 # -Wattribute-alias=2 -Wsync-nand -Wunused
 LDFLAGS=
 LDLIBS=-lm
-SOURCES=src/main3.c
+SOURCES=main.c
 OBJECTS=$(SOURCES:.c=.o)
-EXECUTABLE=main3
+EXECUTABLE=main
 
 all: $(SOURCES) $(EXECUTABLE)
 

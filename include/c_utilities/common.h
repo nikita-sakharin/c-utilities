@@ -14,46 +14,45 @@
 // arrCompareMax or arrMax
 // ptrCompareMax or ptrMax
 
-// restrict ???
 inline int arrCompare(
     register const void * const restrict arr,
-    register const size_t index1,
-    register const size_t index2,
+    register const size_t idx1,
+    register const size_t idx2,
     register const size_t size,
     register int (* const compare)(const void *, const void *)
 ) {
     assert(arr != NULL && size > 0U && size <= PTRDIFF_MAX &&
-        max(index1, index2) <= PTRDIFF_MAX / size - 1U && compare != NULL
+        max(idx1, idx2) <= PTRDIFF_MAX / size - 1U && compare != NULL
     );
-    return compare(ptrOffset(arr, index1, size), ptrOffset(arr, index2, size));
+    return compare(ptrOffset(arr, idx1, size), ptrOffset(arr, idx2, size));
 }
 
 inline bool arrCompareSwap(
     register void * const restrict arr,
-    register const size_t index1,
-    register const size_t index2,
+    register const size_t idx1,
+    register const size_t idx2,
     register const size_t size,
     register int (* const compare)(const void *, const void *)
 ) {
     assert(arr != NULL && size > 0U && size <= PTRDIFF_MAX &&
-        max(index1, index2) <= PTRDIFF_MAX / size - 1U && compare != NULL
+        max(idx1, idx2) <= PTRDIFF_MAX / size - 1U && compare != NULL
     );
-    if (arrCompare(arr, index1, index2, size, compare) <= 0)
+    if (arrCompare(arr, idx1, idx2, size, compare) <= 0)
         return false;
-    arrSwap(arr, index1, index2, size);
+    arrSwap(arr, idx1, idx2, size);
     return true;
 }
 
 inline void *arrSwap(
     register void * const restrict arr,
-    register const size_t index1,
-    register const size_t index2,
+    register const size_t idx1,
+    register const size_t idx2,
     register const size_t size
 ) {
-    assert(arr != NULL && index1 != index2 && size > 0U &&
-        size <= PTRDIFF_MAX && max(index1, index2) <= PTRDIFF_MAX / size - 1U
+    assert(arr != NULL && idx1 != idx2 && size > 0U && size <= PTRDIFF_MAX &&
+        max(idx1, idx2) <= PTRDIFF_MAX / size - 1U
     );
-    return memSwap(ptrOffset(arr, index1, size), ptrOffset(arr, index2, size));
+    return memSwap(ptrOffset(arr, idx1, size), ptrOffset(arr, idx2, size));
 }
 
 inline void *memSwap(
@@ -102,7 +101,7 @@ inline ptrdiff_t ptrDifference(
     register const void * const ptr2,
     register const size_t size
 ) {
-    assert(ptr1 != NULL == (ptr2 != NULL) && size > 0U && size <= PTRDIFF_MAX &&
+    assert(ptr1 == NULL == (ptr2 == NULL) && size > 0U && size <= PTRDIFF_MAX &&
         ((const char *) ptr1 - (const char *) ptr2) % (ptrdiff_t) size == 0
     );
     return ((const char *) ptr1 - (const char *) ptr2) / (ptrdiff_t) size;
@@ -110,12 +109,12 @@ inline ptrdiff_t ptrDifference(
 
 inline void *ptrOffset(
     register const void * const ptr,
-    register const size_t index,
+    register const size_t idx,
     register const size_t size
 ) {
-    assert((ptr != NULL || index == 0U) && size > 0U && size <= PTRDIFF_MAX &&
-        index <= PTRDIFF_MAX / size &&
-        (const char *) ptr <= (const char *) ptr + index * size
+    assert((ptr != NULL || idx == 0U) && size > 0U && size <= PTRDIFF_MAX &&
+        idx <= PTRDIFF_MAX / size &&
+        (const char *) ptr <= (const char *) ptr + idx * size
     );
 #   if defined(__clang__)
 #   pragma clang diagnostic push
@@ -124,7 +123,7 @@ inline void *ptrOffset(
 #   pragma GCC diagnostic push
 #   pragma GCC diagnostic ignored "-Wcast-qual"
 #   endif
-    return (char *) ptr + index * size;
+    return (char *) ptr + idx * size;
 #   if defined(__clang__)
 #   pragma clang diagnostic pop
 #   elif defined(__GNUC__)
