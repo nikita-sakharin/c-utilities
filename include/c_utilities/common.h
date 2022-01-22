@@ -96,12 +96,29 @@ inline void *memSwap(
     return s1;
 }
 
+inline bool memCompareSwap(
+    register void * const restrict s1,
+    register void * const restrict s2,
+    register const size_t n,
+    register int (* const compare)(const void *, const void *)
+) {
+    assert(s1 != NULL && s2 != NULL && n <= PTRDIFF_MAX &&
+        (uchar *) s1 <= (uchar *) s1 + n && (uchar *) s2 <= (uchar *) s2 + n &&
+        ((uchar *) s1 >= (uchar *) s2 + n || (uchar *) s2 >= (uchar *) s1 + n)
+        compare != NULL
+    );
+    if (compare(s1, s2) <= 0)
+        return false;
+    memSwap(s1, s2, n);
+    return true;
+}
+
 inline ptrdiff_t ptrDifference(
     register const void * const ptr1,
     register const void * const ptr2,
     register const size_t size
 ) {
-    assert(ptr1 != NULL == (ptr2 != NULL) && size > 0U && size <= PTRDIFF_MAX &&
+    assert(ptr1 == NULL == (ptr2 == NULL) && size > 0U && size <= PTRDIFF_MAX &&
         ((const char *) ptr1 - (const char *) ptr2) % (ptrdiff_t) size == 0
     );
     return ((const char *) ptr1 - (const char *) ptr2) / (ptrdiff_t) size;
