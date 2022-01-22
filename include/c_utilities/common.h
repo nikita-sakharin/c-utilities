@@ -59,7 +59,11 @@ inline void *arrSwap(
 inline void *memSwap(
     register void * const restrict s1,
     register void * const restrict s2,
+#   ifdef NDEBUG
     register const size_t n
+#   else
+    register size_t n
+#   endif
 ) {
     assert(s1 != NULL && s2 != NULL && n <= PTRDIFF_MAX &&
         (uchar *) s1 <= (uchar *) s1 + n && (uchar *) s2 <= (uchar *) s2 + n &&
