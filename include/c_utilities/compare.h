@@ -3,22 +3,35 @@
 
 #include <assert.h> // assert
 #include <stdbool.h> // bool
+#include <stddef.h> // NULL
+
+#define GREATER(x, y) ((y) > (x) - (x) > (y))
+#define LESS(x, y) ((y) < (x) - (x) < (y))
 
 // naming convention ???
-inline bool compareEqualInt(const void * const s1, const void * const s2) {
+inline bool compareEqualInt(
+    register const void * const s1,
+    register const void * const s2
+) {
     assert(s1 != NULL && s2 != NULL);
     return *(const int *) s1 == *(const int *) s2;
 }
 
-inline int compareGreaterInt(const void * const s1, const void * const s2) {
+inline int compareGreaterInt(
+    register const void * const s1,
+    register const void * const s2
+) {
     assert(s1 != NULL && s2 != NULL);
-    const int x = *(const int *) s1, y = *(const int *) s2;
+    register const int x = *(const int *) s1, y = *(const int *) s2;
     return (y > x) - (x > y);
 }
 
-inline int compareLessInt(const void * const s1, const void * const s2) {
+inline int compareLessInt(
+    register const void * const s1,
+    register const void * const s2
+) {
     assert(s1 != NULL && s2 != NULL);
-    const int x = *(const int *) s1, y = *(const int *) s2;
+    register const int x = *(const int *) s1, y = *(const int *) s2;
     return (y < x) - (x < y);
 }
 
