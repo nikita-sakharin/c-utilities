@@ -5,8 +5,8 @@
 #include <stdbool.h> // bool
 #include <stddef.h> // NULL
 
-#define GREATER(x, y) ((y) > (x) - (x) > (y))
-#define LESS(x, y) ((y) < (x) - (x) < (y))
+#define GREATER(x, y) (((y) > (x)) - ((x) > (y)))
+#define LESS(x, y) (((y) < (x)) - ((x) < (y)))
 
 // naming convention ???
 inline bool compareEqualInt(
@@ -23,7 +23,7 @@ inline int compareGreaterInt(
 ) {
     assert(s1 != NULL && s2 != NULL);
     register const int x = *(const int *) s1, y = *(const int *) s2;
-    return (y > x) - (x > y);
+    return GREATER(x, y);
 }
 
 inline int compareLessInt(
@@ -32,7 +32,7 @@ inline int compareLessInt(
 ) {
     assert(s1 != NULL && s2 != NULL);
     register const int x = *(const int *) s1, y = *(const int *) s2;
-    return (y < x) - (x < y);
+    return LESS(x, y);
 }
 
 #endif // C_UTILITIES_COMPARE_H
