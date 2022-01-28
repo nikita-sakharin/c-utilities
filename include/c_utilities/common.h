@@ -118,7 +118,7 @@ inline ptrdiff_t ptrDifference(
     register const size_t size
 ) {
     assert(ptr1 == NULL == (ptr2 == NULL) && size > 0U && size <= PTRDIFF_MAX &&
-        // LESS(ptr1, ptr2) == clamp((const char *) ptr1 - (const char *) ptr2, -1, 1) &&
+        // COMPARE_LESS(ptr1, ptr2) == clamp((const char *) ptr1 - (const char *) ptr2, -1, 1) &&
         (ptr1 <= ptr2 || (const char *) ptr1 - (const char *) ptr2 >= 0) &&
         (ptr1 >= ptr2 || (const char *) ptr1 - (const char *) ptr2 <= 0) &&
         ((const char *) ptr1 - (const char *) ptr2) % (ptrdiff_t) size == 0
