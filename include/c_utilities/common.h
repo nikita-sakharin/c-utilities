@@ -101,10 +101,9 @@ inline bool memCompareSwap(
     register const size_t n,
     register int (* const cmp)(const void *, const void *)
 ) {
-    assert(s1 != NULL && s2 != NULL && n <= PTRDIFF_MAX &&
+    assert(s1 != NULL && s2 != NULL && n <= PTRDIFF_MAX && cmp != NULL &&
         (char *) s1 <= (char *) s1 + n && (char *) s2 <= (char *) s2 + n &&
-        ((char *) s1 >= (char *) s2 + n || (char *) s2 >= (char *) s1 + n)
-        cmp != NULL
+        ((char *) s1 >= (char *) s2 + n || (char *) s2 >= (char *) s1 + n) &&
     );
     if (cmp(s1, s2) <= 0)
         return false;
