@@ -37,10 +37,9 @@ inline bool arrCompareSwap(
     assert(arr != NULL && size > 0U && size <= PTRDIFF_MAX &&
         max(idx1, idx2) <= PTRDIFF_MAX / size - 1U && compare != NULL
     );
-    if (arrCompare(arr, idx1, idx2, size, compare) <= 0)
-        return false;
-    arrSwap(arr, idx1, idx2, size);
-    return true;
+    return memCompareSwap(
+        ptrOffset(arr, idx1, size), ptrOffset(arr, idx2, size), compare
+    );
 }
 
 inline void *arrSwap(
