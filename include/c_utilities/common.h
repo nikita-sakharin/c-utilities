@@ -19,12 +19,12 @@ inline int arrCompare(
     register const size_t idx1,
     register const size_t idx2,
     register const size_t size,
-    register int (* const compare)(const void *, const void *)
+    register int (* const cmp)(const void *, const void *)
 ) {
     assert(arr != NULL && size > 0U && size <= PTRDIFF_MAX &&
-        max(idx1, idx2) <= PTRDIFF_MAX / size - 1U && compare != NULL
+        max(idx1, idx2) <= PTRDIFF_MAX / size - 1U && cmp != NULL
     );
-    return compare(ptrOffset(arr, idx1, size), ptrOffset(arr, idx2, size));
+    return cmp(ptrOffset(arr, idx1, size), ptrOffset(arr, idx2, size));
 }
 
 inline bool arrCompareSwap(
@@ -32,13 +32,13 @@ inline bool arrCompareSwap(
     register const size_t idx1,
     register const size_t idx2,
     register const size_t size,
-    register int (* const compare)(const void *, const void *)
+    register int (* const cmp)(const void *, const void *)
 ) {
     assert(arr != NULL && size > 0U && size <= PTRDIFF_MAX &&
-        max(idx1, idx2) <= PTRDIFF_MAX / size - 1U && compare != NULL
+        max(idx1, idx2) <= PTRDIFF_MAX / size - 1U && cmp != NULL
     );
     return memCompareSwap(
-        ptrOffset(arr, idx1, size), ptrOffset(arr, idx2, size), compare
+        ptrOffset(arr, idx1, size), ptrOffset(arr, idx2, size), cmp
     );
 }
 
@@ -99,14 +99,14 @@ inline bool memCompareSwap(
     register void * const restrict s1,
     register void * const restrict s2,
     register const size_t n,
-    register int (* const compare)(const void *, const void *)
+    register int (* const cmp)(const void *, const void *)
 ) {
     assert(s1 != NULL && s2 != NULL && n <= PTRDIFF_MAX &&
         (char *) s1 <= (char *) s1 + n && (char *) s2 <= (char *) s2 + n &&
         ((char *) s1 >= (char *) s2 + n || (char *) s2 >= (char *) s1 + n)
-        compare != NULL
+        cmp != NULL
     );
-    if (compare(s1, s2) <= 0)
+    if (cmp(s1, s2) <= 0)
         return false;
     memSwap(s1, s2, n);
     return true;
