@@ -15,20 +15,6 @@ http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
 `hasSingleBit` -> {`isPowOf2`|`isPowOfTwo`}<br/>
 `rotateLeft`, `rotateRight`
 
-`common.h`:<br/>
-`arrayCompare` - сравнить в массиве два элемента, используя компаратор.<br/>
-`arrayCompareSwap` - сравнить в массиве два элемента и поменять их местами в том случае, если элемент по первому индексу строго больше (используя компаратор), чем по второму.<br/>
-`arraySwap` - поменять местами в массиве два элемента.<br/>
-`ptrDifference` - вычислить разницу между двумя указателями как число элементов.<br/>
-`ptrOffset` - вычислить указатель на элемент в массиве по индексу.
-
-Финализировать `memSwap`. При реализации следует использовать не `char`, а `uchar` по аналогии с определением в стандарте функций `memchr`, `memcmp`, `memset`.<br/>
-http://www.open-std.org/jtc1/sc22/wg14/www/docs/n2658.htm<br/>
-https://www.lysator.liu.se/c/restrict.html<br/>
-https://cellperformance.beyond3d.com/articles/2006/05/demystifying-the-restrict-keyword.html<br/>
-https://cellperformance.beyond3d.com/articles/2006/06/understanding-strict-aliasing.html<br/>
-https://gustedt.wordpress.com/2010/08/17/a-common-misconsception-the-register-keyword
-
 `error_handling.h`:<br/>
 Макрос `EXIT_IF` можно использовать в следующей ситуации: было выделено несколько ресурсов, далее произошла ошибка, `GOTO_IF` перекинул в место, где выделенные ресурсы освобождаются. Когда вызываем функцию для освобождения ресурса, то возвращаемое значение проверяем уже с помощью `EXIT_IF`, а не с помощью `GOTO_IF`. В данном случае напрашивается аналогия с C++ `std::terminate`, которая вызывается, если при обработке исключения, было выброшено еще одно. Возможно, в рамках данной аналогии, имеет смысл вместо функции `exit`, использовать `_Exit`, или даже `abort`. Но вариант, просто `exit` видится более органичным, более интуитивным, так как в точности копирует `return` в `main` (вызывает `atexit` и закрывает файловые дискрипторы). С другой стороны вариант с функцией `abort` ближе по семантике к `std::terminate`. Вариант при котором будет отдельно макрос с `abort` и отдельно с `exit` кажется откровенно спорным.
 
