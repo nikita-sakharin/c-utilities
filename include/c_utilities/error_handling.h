@@ -3,7 +3,16 @@
 
 #include <stdbool.h> // false
 #include <stdio.h> // fprintf, perror, stderr
-#include <stdlib.h> // EXIT_FAILURE, exit
+#include <stdlib.h> // EXIT_FAILURE, abort, exit
+
+#define ABORT_IF(condition) \
+    do { \
+        if ((condition)) { \
+            fprintf(stderr, "%s:%d: ", __FILE__, __LINE__); \
+            perror(__func__); \
+            abort(); \
+        } \
+    } while (false)
 
 #define EXIT_IF(condition) \
     do { \
