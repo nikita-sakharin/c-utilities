@@ -10,15 +10,6 @@
 
 // The function name contains "compare" only if it returns int (not bool)
 // suffixes ???
-// equal or equalTo or isEqual or isEqualTo ???
-inline bool equalInt(
-    register const void * const s1,
-    register const void * const s2
-) {
-    assert(s1 != NULL && s2 != NULL);
-    return *(const int *) s1 == *(const int *) s2;
-}
-
 inline int compareGreaterInt(
     register const void * const s1,
     register const void * const s2
@@ -35,6 +26,15 @@ inline int compareLessInt(
     assert(s1 != NULL && s2 != NULL);
     register const int x = *(const int *) s1, y = *(const int *) s2;
     return COMPARE_LESS(x, y);
+}
+
+// equal or equalTo or isEqual or isEqualTo ???
+inline bool equalInt(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const int *) s1 == *(const int *) s2;
 }
 
 #endif // C_UTILITIES_COMPARE_H
