@@ -37,6 +37,15 @@ inline bool equalInt(
     return *(const int *) s1 == *(const int *) s2;
 }
 
+// notEqual or notEqualTo or isNotEqual or isNotEqualTo ???
+inline bool notEqualInt(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const int *) s1 != *(const int *) s2;
+}
+
 // greater or isGreater ???
 inline bool greaterInt(
     register const void * const s1,
