@@ -46,4 +46,31 @@ inline bool lessInt(
     return *(const int *) s1 < *(const int *) s2;
 }
 
+// lessEqual or isLessEqual ???
+inline bool lessEqualInt(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const int *) s1 <= *(const int *) s2;
+}
+
+// greater or isGreater ???
+inline bool greaterInt(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const int *) s1 > *(const int *) s2;
+}
+
+// greaterEqual or isGreaterEqual ???
+inline bool greaterEqualInt(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const int *) s1 >= *(const int *) s2;
+}
+
 #endif // C_UTILITIES_COMPARE_H
