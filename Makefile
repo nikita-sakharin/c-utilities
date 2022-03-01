@@ -12,9 +12,9 @@ CFLAGS=-Wall -Walloc-zero -Walloca -Wanalyzer-too-complex -Warith-conversion \
     -Wpadded -Wpedantic -Wredundant-decls -Wshadow=global -Wshift-overflow=2 \
     -Wstrict-overflow=5 -Wstrict-prototypes -Wstringop-overflow=4 \
     -Wswitch-default -Wswitch-enum -Wundef -Wunreachable-code \
-    -Wunused-const-variable=2 -Wunused-macros -Wvector-operation-performance \
-    -Wvla -Wwrite-strings -fanalyzer -pedantic-errors -std=c18 \
-    --include-directory=./include
+    -Wunsafe-loop-optimizations -Wunused-const-variable=2 -Wunused-macros \
+    -Wvector-operation-performance -Wvla -Wwrite-strings -fanalyzer \
+    -pedantic-errors -std=c18 --include-directory=./include
 # -Wattribute-alias=2 -Wstack-protector -Wtrampolines
 # -Waggregate-return -Wtraditional -Wtraditional-conversion -Wunsuffixed-float-constants
 LDFLAGS=
