@@ -7,4 +7,5 @@
 *.o
 *.obj
 *.out
+*.pch
 *.so
