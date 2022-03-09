@@ -3,6 +3,7 @@
 *.dll
 *.dylib
 *.exe
+*.gch
 *.lib
 *.o
 *.obj
