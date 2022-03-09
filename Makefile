@@ -15,8 +15,10 @@ CFLAGS=-Wall -Walloc-zero -Walloca -Wanalyzer-too-complex -Warith-conversion \
     -Wunsafe-loop-optimizations -Wunused-const-variable=2 -Wunused-macros \
     -Wvector-operation-performance -Wvla -Wwrite-strings -fanalyzer \
     -pedantic-errors -std=c18 --include-directory=./include
-# -Wattribute-alias=2 -Wstack-protector -Wtrampolines
-# -Waggregate-return -Wtraditional -Wtraditional-conversion -Wunsuffixed-float-constants
+# -Wattribute-alias=2 -Wnormalized -Wopenacc-parallelism -Wstack-protector \
+# -Wtrampolines
+# -Waggregate-return -Wdeclaration-after-statement -Wsystem-headers \
+# -Wtraditional -Wtraditional-conversion -Wunsuffixed-float-constants
 LDFLAGS=
 LDLIBS=-lm
 SOURCES=main.c
