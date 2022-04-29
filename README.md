@@ -12,7 +12,6 @@ http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
 
 `bit.h`:<br/>
 {`bitCount`|`popCount`}<br/>
-`hasSingleBit` -> {`isPowOf2`|`isPowOfTwo`}<br/>
 `rotateLeft`, `rotateRight`
 
 `error_handling.h`:<br/>
