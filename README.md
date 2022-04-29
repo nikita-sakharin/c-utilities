@@ -12,7 +12,6 @@ http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
 
 `bit.h`:<br/>
 {`bitCount`|`popCount`}<br/>
-`hasSingleBit` -> {`isPowOf2`|`isPowOfTwo`}<br/>
 `rotateLeft`, `rotateRight`
 
 `error_handling.h`:<br/>
@@ -35,7 +34,7 @@ www.open-std.org/jtc1/sc22/wg23/docs/ISO-IECJTC1-SC22-WG23_N0453-baseline-wd-pdt
 `math.h`:<br/>
 `lerp`<br/>
 `toDegrees`, `toRadians`<br/>
-`DBL_E`, `DBL_LN2`, `DBL_PI`, `DBL_SQRT2`<br/>
+`DBL_1_PI`, `DBL_2_PI`, `DBL_2_SQRTPI`, `DBL_E`, `DBL_LN10`, `DBL_LN2`, `DBL_LOG10E`, `DBL_LOG2E`, `DBL_PI`, `DBL_PI_2`, `DBL_PI_4`, `DBL_SQRT1_2`, `DBL_SQRT2`<br/>
 `comb`, `factorial`, `perm`<br/>
 `ulp`, `nextDown`, `nextUp`, `union { uint32_t u32; flt f; }`<br/>
 `random`

@@ -7,24 +7,24 @@
 #include <c_utilities/type_generic.h> // TYPE_GENERIC_UNSIGNED_INTEGER_1
 #include <c_utilities/types.h> // uint, ullong, ulong
 
-#define HAS_SINGLE_BIT(x) ((x) != 0 && ((x) & ((x) - 1)) == 0)
+#define IS_POWER_OF_TWO(x) ((x) != 0 && ((x) & ((x) - 1)) == 0)
 
-inline bool uhasSingleBit(register const uint x) {
-    return HAS_SINGLE_BIT(x);
+inline bool uisPowerOfTwo(register const uint x) {
+    return IS_POWER_OF_TWO(x);
 }
 
-inline bool ulhasSingleBit(register const ulong x) {
-    return HAS_SINGLE_BIT(x);
+inline bool ulisPowerOfTwo(register const ulong x) {
+    return IS_POWER_OF_TWO(x);
 }
 
-inline bool ullhasSingleBit(register const ullong x) {
-    return HAS_SINGLE_BIT(x);
+inline bool ullisPowerOfTwo(register const ullong x) {
+    return IS_POWER_OF_TWO(x);
 }
 
-inline bool umaxhasSingleBit(register const uintmax_t x) {
-    return HAS_SINGLE_BIT(x);
+inline bool umaxisPowerOfTwo(register const uintmax_t x) {
+    return IS_POWER_OF_TWO(x);
 }
 
-#define hasSingleBit(x) TYPE_GENERIC_UNSIGNED_INTEGER_1(hasSingleBit, x)
+#define isPowerOfTwo(x) TYPE_GENERIC_UNSIGNED_INTEGER_1(isPowerOfTwo, x)
 
 #endif // C_UTILITIES_BIT_H
