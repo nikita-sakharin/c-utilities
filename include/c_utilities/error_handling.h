@@ -1,7 +1,6 @@
 #ifndef C_UTILITIES_ERROR_HANDLING_H
 #define C_UTILITIES_ERROR_HANDLING_H
 
-#include <errno.h> // errno
 #include <stdbool.h> // false
 #include <stdio.h> // fflush, fprintf, perror, stderr
 #include <stdlib.h> // EXIT_FAILURE, abort, exit
@@ -17,12 +16,12 @@
         } \
     } while (false)
 
-#define EXIT_IF(condition, argv0, ...) \
+#define EXIT_IF(condition, argv0, error, ...) \
     do { \
         if ((condition)) { \
             fprintf(stderr, "%s: ", argv0); \
             fprintf(stderr, __VA_ARGS__); \
-            fprintf(stderr, ": %s\n", strerror(errno)); \
+            fprintf(stderr, ": %s\n", strerror(error)); \
             exit(EXIT_FAILURE); \
         } \
     } while (false)
