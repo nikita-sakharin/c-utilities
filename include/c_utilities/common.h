@@ -82,7 +82,7 @@ inline void *memSwap(
     }
 #   else
     for (register uchar
-        * restrict ptr1 = (uchar *) s1, * restrict ptr2 = (uchar *) s2; n > 0;
+        * restrict ptr1 = (uchar *) s1, * restrict ptr2 = (uchar *) s2; n > 0U;
     ) {
         alignas(LEVEL1_DCACHE_LINESIZE) uchar buffer[LEVEL1_DCACHE_LINESIZE];
         register const size_t offset = min(LEVEL1_DCACHE_LINESIZE, n);
