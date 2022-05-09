@@ -12,7 +12,7 @@
 #include <c_utilities/system_config.h> // LEVEL1_DCACHE_LINESIZE
 #include <c_utilities/types.h> // uchar
 // arrCompareMax or arrMax
-// (mem|ptr)CompareMax or (mem|ptr)Max
+// memCompareMax or memMax
 
 inline int arrCompare(
     register const void * const restrict arr,
