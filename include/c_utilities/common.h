@@ -34,7 +34,7 @@ inline bool arrCompareSwap(
     register const size_t size,
     register int (* const cmp)(const void *, const void *)
 ) {
-    assert(arr != NULL && size > 0U && size <= PTRDIFF_MAX && // idx1 != idx2
+    assert(arr != NULL && idx1 != idx2 && size > 0U && size <= PTRDIFF_MAX &&
         max(idx1, idx2) <= PTRDIFF_MAX / size - 1U && cmp != NULL &&
         (char *) arr <= (char *) arr + (max(idx1, idx2) + 1U) * size
     );
