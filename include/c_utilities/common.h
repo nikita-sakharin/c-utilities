@@ -56,6 +56,24 @@ inline void *arrSwap(
     return memSwap(ptrOffset(arr, idx1, size), ptrOffset(arr, idx2, size));
 }
 
+inline void *memCompareMax(
+    register const void * const s1,
+    register const void * const s2,
+    register int (* const cmp)(const void *, const void *)
+) {
+    assert(s1 != NULL && s2 != NULL && cmp != NULL);
+    return cmp(s1, s2) >= 0 ? s1 : s2;
+}
+
+inline void *memCompareMin(
+    register const void * const s1,
+    register const void * const s2,
+    register int (* const cmp)(const void *, const void *)
+) {
+    assert(s1 != NULL && s2 != NULL && cmp != NULL);
+    return cmp(s1, s2) <= 0 ? s1 : s2;
+}
+
 inline void *memSwap(
     register void * const restrict s1,
     register void * const restrict s2,
