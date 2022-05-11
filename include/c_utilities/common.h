@@ -11,8 +11,7 @@
 #include <c_utilities/arithmetic.h> // clamp, max, min
 #include <c_utilities/system_config.h> // LEVEL1_DCACHE_LINESIZE
 #include <c_utilities/types.h> // uchar
-// arrCompareMax or arrMax
-// memCompareMax or memMax
+// arrCompareMax, arrCompareMin, memCompareMax, memCompareMin
 
 inline int arrCompare(
     register const void * const restrict arr,
@@ -35,7 +34,7 @@ inline bool arrCompareSwap(
     register const size_t size,
     register int (* const cmp)(const void *, const void *)
 ) {
-    assert(arr != NULL && size > 0U && size <= PTRDIFF_MAX &&
+    assert(arr != NULL && size > 0U && size <= PTRDIFF_MAX && // idx1 != idx2
         max(idx1, idx2) <= PTRDIFF_MAX / size - 1U && cmp != NULL &&
         (char *) arr <= (char *) arr + (max(idx1, idx2) + 1U) * size
     );
@@ -120,8 +119,8 @@ inline ptrdiff_t ptrDifference(
 ) {
     assert((ptr1 == NULL) == (ptr2 == NULL) && size > 0U && size <= PTRDIFF_MAX &&
         // COMPARE_LESS(ptr1, ptr2) == clamp((const char *) ptr1 - (const char *) ptr2, -1, 1) &&
-        (ptr1 < ptr2 || (const char *) ptr1 - (const char *) ptr2 >= 0) &&
-        (ptr1 > ptr2 || (const char *) ptr1 - (const char *) ptr2 <= 0) &&
+        (ptr1 <= ptr2 || (const char *) ptr1 - (const char *) ptr2 > 0) &&
+        (ptr1 >= ptr2 || (const char *) ptr1 - (const char *) ptr2 < 0) &&
         ((const char *) ptr1 - (const char *) ptr2) % (ptrdiff_t) size == 0
     );
     return ((const char *) ptr1 - (const char *) ptr2) / (ptrdiff_t) size;
@@ -149,6 +148,20 @@ inline void *ptrOffset(
 #   elifdef __GNUC__
 #   pragma GCC diagnostic pop
 #   endif
+}
+
+inline void *ptrMidpoint(
+    register const void * const ptr1,
+    register const void * const ptr2,
+    register const size_t size
+) {
+    assert((ptr1 == NULL) == (ptr2 == NULL) && size > 0U && size <= PTRDIFF_MAX &&
+        // COMPARE_LESS(ptr1, ptr2) == clamp((const char *) ptr1 - (const char *) ptr2, -1, 1) &&
+        (ptr1 <= ptr2 || (const char *) ptr1 - (const char *) ptr2 > 0) &&
+        (ptr1 >= ptr2 || (const char *) ptr1 - (const char *) ptr2 < 0) &&
+        ((const char *) ptr1 - (const char *) ptr2) % (ptrdiff_t) size == 0
+    );
+    return ptrOffset(ptr1, ptrDifference(ptr2, ptr1, size) / 2U, size);
 }
 
 #endif // C_UTILITIES_COMMON_H
