@@ -9,7 +9,7 @@
 #define ABORT_IF(condition) \
     do { \
         if ((condition)) { \
-            fprintf(stderr, "%s:%d: ", __FILE__, __LINE__); \
+            fprintf(stderr, "%s:%d: ", __FILE__, __LINE__); /* error ??? */ \
             perror(__func__); \
             fflush(stderr); \
             abort(); \
@@ -36,7 +36,7 @@
 #define GOTO_IF(condition, label) \
     do { \
         if ((condition)) { \
-            fprintf(stderr, "%s:%d: ", __FILE__, __LINE__); \
+            fprintf(stderr, "%s:%d: ", __FILE__, __LINE__); /* error ??? */ \
             perror(__func__); \
             goto label; \
         } \
