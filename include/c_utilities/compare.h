@@ -37,15 +37,6 @@ inline bool isEqualInt(
     return *(const int *) s1 == *(const int *) s2;
 }
 
-// notEqual or notEqualTo or isNotEqual or isNotEqualTo ???
-inline bool isNotEqualInt(
-    register const void * const s1,
-    register const void * const s2
-) {
-    assert(s1 != NULL && s2 != NULL);
-    return *(const int *) s1 != *(const int *) s2;
-}
-
 // greater or isGreater ???
 inline bool isGreaterInt(
     register const void * const s1,
@@ -80,6 +71,15 @@ inline bool isLessEqualInt(
 ) {
     assert(s1 != NULL && s2 != NULL);
     return *(const int *) s1 <= *(const int *) s2;
+}
+
+// notEqual or notEqualTo or isNotEqual or isNotEqualTo ???
+inline bool isNotEqualInt(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const int *) s1 != *(const int *) s2;
 }
 
 #endif // C_UTILITIES_COMPARE_H
