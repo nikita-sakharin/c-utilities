@@ -29,7 +29,7 @@ inline int compareLessInt(
 }
 
 // equal or equalTo or isEqual or isEqualTo ???
-inline bool equalInt(
+inline bool isEqualInt(
     register const void * const s1,
     register const void * const s2
 ) {
@@ -38,7 +38,7 @@ inline bool equalInt(
 }
 
 // notEqual or notEqualTo or isNotEqual or isNotEqualTo ???
-inline bool notEqualInt(
+inline bool isNotEqualInt(
     register const void * const s1,
     register const void * const s2
 ) {
@@ -47,7 +47,7 @@ inline bool notEqualInt(
 }
 
 // greater or isGreater ???
-inline bool greaterInt(
+inline bool isGreaterInt(
     register const void * const s1,
     register const void * const s2
 ) {
@@ -56,7 +56,7 @@ inline bool greaterInt(
 }
 
 // greaterEqual or isGreaterEqual ???
-inline bool greaterEqualInt(
+inline bool isGreaterEqualInt(
     register const void * const s1,
     register const void * const s2
 ) {
@@ -65,7 +65,7 @@ inline bool greaterEqualInt(
 }
 
 // less or isLess ???
-inline bool lessInt(
+inline bool isLessInt(
     register const void * const s1,
     register const void * const s2
 ) {
@@ -74,7 +74,7 @@ inline bool lessInt(
 }
 
 // lessEqual or isLessEqual ???
-inline bool lessEqualInt(
+inline bool isLessEqualInt(
     register const void * const s1,
     register const void * const s2
 ) {
