@@ -12,6 +12,7 @@
 #define ABS(x) ((x) < 0 ? -(x) : (x))
 #define CLAMP(x, a, b) ((x) < (a) ? (a) : (b) < (x) ? (b) : (x))
 #define DIM(x, y) ((y) < (x) ? (x) - (y) : 0)
+#define IN_RANGE(x, a, b) ((x) >= (a) && (x) <= (b))
 #define MAX(x, y) ((x) < (y) ? (y) : (x))
 #define MIN(x, y) ((y) < (x) ? (y) : (x))
 
@@ -125,6 +126,78 @@ inline uintmax_t umaxdim(
     return DIM(x, y);
 }
 
+inline bool inRange(
+    register const int x,
+    register const int a,
+    register const int b
+) {
+    assert(a <= b);
+    return IN_RANGE(x, a, b);
+}
+
+inline bool uinRange(
+    register const uint x,
+    register const uint a,
+    register const uint b
+) {
+    assert(a <= b);
+    return IN_RANGE(x, a, b);
+}
+
+inline bool linRange(
+    register const long x,
+    register const long a,
+    register const long b
+) {
+    assert(a <= b);
+    return IN_RANGE(x, a, b);
+}
+
+inline bool ulinRange(
+    register const ulong x,
+    register const ulong a,
+    register const ulong b
+) {
+    assert(a <= b);
+    return IN_RANGE(x, a, b);
+}
+
+inline bool llinRange(
+    register const llong x,
+    register const llong a,
+    register const llong b
+) {
+    assert(a <= b);
+    return IN_RANGE(x, a, b);
+}
+
+inline bool ullinRange(
+    register const ullong x,
+    register const ullong a,
+    register const ullong b
+) {
+    assert(a <= b);
+    return IN_RANGE(x, a, b);
+}
+
+inline bool imaxinRange(
+    register const intmax_t x,
+    register const intmax_t a,
+    register const intmax_t b
+) {
+    assert(a <= b);
+    return IN_RANGE(x, a, b);
+}
+
+inline bool umaxinRange(
+    register const uintmax_t x,
+    register const uintmax_t a,
+    register const uintmax_t b
+) {
+    assert(a <= b);
+    return IN_RANGE(x, a, b);
+}
+
 inline int max(register const int x, register const int y) {
     return MAX(x, y);
 }
@@ -202,9 +275,10 @@ inline uintmax_t umaxmin(
 }
 
 #define abs(x) TYPE_GENERIC_SIGNED_INTEGER_1(abs, x)
-#define div(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(div, x, y)
 #define clamp(x, a, b) TYPE_GENERIC_INTEGER_3(clamp, x, a, b)
 #define dim(x, y) TYPE_GENERIC_INTEGER_2(dim, x, y)
+#define div(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(div, x, y)
+#define inRange(x, a, b) TYPE_GENERIC_INTEGER_3(inRange, x, a, b)
 #define max(x, y) TYPE_GENERIC_INTEGER_2(max, x, y)
 #define min(x, y) TYPE_GENERIC_INTEGER_2(min, x, y)
 
