@@ -3,6 +3,7 @@
 
 #include <assert.h> // assert
 #include <inttypes.h> // imaxabs, imaxdiv
+#include <stdbool.h> // bool
 #include <stdint.h> // intmax_t, uintmax_t
 #include <stdlib.h> // abs, div, labs, ldiv, llabs, lldiv
 
