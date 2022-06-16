@@ -8,7 +8,7 @@
 #include <stdint.h> // PTRDIFF_MAX
 #include <string.h> // memcpy
 
-#include <c_utilities/arithmetic.h> // clamp, max, min
+#include <c_utilities/arithmetic.h> // clamp, inRange, max, min
 #include <c_utilities/system_config.h> // LEVEL1_DCACHE_LINESIZE
 #include <c_utilities/types.h> // uchar
 // arrCompareMax, arrCompareMin
@@ -20,7 +20,7 @@ inline int arrCompare(
     register const size_t size,
     register int (* const cmp)(const void *, const void *)
 ) {
-    assert(arr != NULL && size > 0U && size <= PTRDIFF_MAX &&
+    assert(arr != NULL && inRange(size, 1U, PTRDIFF_MAX) &&
         max(idx1, idx2) <= PTRDIFF_MAX / size - 1U && cmp != NULL &&
         (const char *) arr <= (const char *) arr + (max(idx1, idx2) + 1U) * size
     );
@@ -34,7 +34,7 @@ inline bool arrCompareSwap(
     register const size_t size,
     register int (* const cmp)(const void *, const void *)
 ) {
-    assert(arr != NULL && idx1 != idx2 && size > 0U && size <= PTRDIFF_MAX &&
+    assert(arr != NULL && idx1 != idx2 && inRange(size, 1U, PTRDIFF_MAX) &&
         max(idx1, idx2) <= PTRDIFF_MAX / size - 1U && cmp != NULL &&
         (char *) arr <= (char *) arr + (max(idx1, idx2) + 1U) * size
     );
@@ -49,7 +49,7 @@ inline void *arrSwap(
     register const size_t idx2,
     register const size_t size
 ) {
-    assert(arr != NULL && idx1 != idx2 && size > 0U && size <= PTRDIFF_MAX &&
+    assert(arr != NULL && idx1 != idx2 && inRange(size, 1U, PTRDIFF_MAX) &&
         max(idx1, idx2) <= PTRDIFF_MAX / size - 1U &&
         (char *) arr <= (char *) arr + (max(idx1, idx2) + 1U) * size
     );
@@ -135,7 +135,7 @@ inline ptrdiff_t ptrDifference(
     register const void * const ptr2,
     register const size_t size
 ) {
-    assert((ptr1 == NULL) == (ptr2 == NULL) && size > 0U && size <= PTRDIFF_MAX &&
+    assert((ptr1 == NULL) == (ptr2 == NULL) && inRange(size, 1U, PTRDIFF_MAX) &&
         // COMPARE_LESS(ptr1, ptr2) == clamp((const char *) ptr1 - (const char *) ptr2, -1, 1) &&
         (ptr1 <= ptr2 || (const char *) ptr1 - (const char *) ptr2 > 0) &&
         (ptr1 >= ptr2 || (const char *) ptr1 - (const char *) ptr2 < 0) &&
@@ -149,7 +149,7 @@ inline void *ptrOffset(
     register const size_t idx,
     register const size_t size
 ) {
-    assert((ptr != NULL || idx == 0U) && size > 0U && size <= PTRDIFF_MAX &&
+    assert((ptr != NULL || idx == 0U) && inRange(size, 1U, PTRDIFF_MAX) &&
         idx <= PTRDIFF_MAX / size &&
         (const char *) ptr <= (const char *) ptr + idx * size
     );
@@ -173,7 +173,7 @@ inline void *ptrMidpoint(
     register const void * const ptr2,
     register const size_t size
 ) {
-    assert((ptr1 == NULL) == (ptr2 == NULL) && size > 0U && size <= PTRDIFF_MAX &&
+    assert((ptr1 == NULL) == (ptr2 == NULL) && inRange(size, 1U, PTRDIFF_MAX) &&
         // COMPARE_LESS(ptr1, ptr2) == clamp((const char *) ptr1 - (const char *) ptr2, -1, 1) &&
         (ptr1 <= ptr2 || (const char *) ptr1 - (const char *) ptr2 > 0) &&
         (ptr1 >= ptr2 || (const char *) ptr1 - (const char *) ptr2 < 0) &&
