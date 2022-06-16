@@ -21,6 +21,15 @@ extern inline ullong ulldim(ullong, ullong);
 extern inline intmax_t imaxdim(intmax_t, intmax_t);
 extern inline uintmax_t umaxdim(uintmax_t, uintmax_t);
 
+extern inline bool (inRange)(int, int, int);
+extern inline bool uinRange(uint, uint, uint);
+extern inline bool linRange(long, long, long);
+extern inline bool ulinRange(ulong, ulong, ulong);
+extern inline bool llinRange(llong, llong, llong);
+extern inline bool ullinRange(ullong, ullong, ullong);
+extern inline bool imaxinRange(intmax_t, intmax_t, intmax_t);
+extern inline bool umaxinRange(uintmax_t, uintmax_t, uintmax_t);
+
 extern inline int (max)(int, int);
 extern inline uint umax(uint, uint);
 extern inline long lmax(long, long);
