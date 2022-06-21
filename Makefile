@@ -21,7 +21,7 @@ CFLAGS=-Wall -Walloc-zero -Walloca -Wanalyzer-too-complex -Warith-conversion \
 # -Wtraditional -Wtraditional-conversion -Wunsuffixed-float-constants
 LDFLAGS=
 LDLIBS=-lm
-SOURCES=./src/main.c
+SOURCES=$(shell find ./src -name *.c -type f -print)
 OBJECTS=$(SOURCES:.c=.o)
 EXECUTABLE=main
 
