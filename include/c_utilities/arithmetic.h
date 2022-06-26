@@ -3,6 +3,7 @@
 
 #include <assert.h> // assert
 #include <inttypes.h> // imaxabs, imaxdiv
+#include <stdbool.h> // bool
 #include <stdint.h> // intmax_t, uintmax_t
 #include <stdlib.h> // abs, div, labs, ldiv, llabs, lldiv
 
@@ -12,7 +13,7 @@
 #define ABS(x) ((x) < 0 ? -(x) : (x))
 #define CLAMP(x, a, b) ((x) < (a) ? (a) : (b) < (x) ? (b) : (x))
 #define DIM(x, y) ((y) < (x) ? (x) - (y) : 0)
-#define IN_RANGE(x, a, b) ((x) >= (a) && (x) <= (b))
+#define IN_RANGE(x, a, b) ((x) >= (a) && (b) >= (x))
 #define MAX(x, y) ((x) < (y) ? (y) : (x))
 #define MIN(x, y) ((y) < (x) ? (y) : (x))
 
