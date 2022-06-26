@@ -7,7 +7,7 @@
 #include <c_utilities/type_generic.h> // TYPE_GENERIC_UNSIGNED_INTEGER_1
 #include <c_utilities/types.h> // uint, ullong, ulong
 
-#define IS_POWER_OF_TWO(x) ((x) != 0 && ((x) & ((x) - 1)) == 0)
+#define IS_POWER_OF_TWO(x) ((x) > 0 && ((x) & ((x) - 1)) == 0)
 
 inline bool uisPowerOfTwo(register const uint x) {
     return IS_POWER_OF_TWO(x);
