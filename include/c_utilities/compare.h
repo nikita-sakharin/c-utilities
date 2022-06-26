@@ -8,7 +8,6 @@
 #define COMPARE_GREATER(x, y) (((y) > (x)) - ((x) > (y)))
 #define COMPARE_LESS(x, y) (((y) < (x)) - ((x) < (y)))
 
-// The function name contains "compare" only if it returns int (not bool)
 // suffixes ???
 inline int compareGreaterInt(
     register const void * const s1,
