@@ -4,11 +4,15 @@
 #include <assert.h> // assert
 #include <stdbool.h> // bool
 #include <stddef.h> // NULL
+#include <stdint.h> // intmax_t, uintmax_t
+
+#include <c_utilities/types.h> // llong, uint, ullong, ulong
 
 #define COMPARE_GREATER(x, y) (((y) > (x)) - ((x) > (y)))
 #define COMPARE_LESS(x, y) (((y) < (x)) - ((x) < (y)))
 
-// suffixes ???
+// short or shrt, ushort or ushrt ???
+// cmp or compare ???
 inline int compareGreaterInt(
     register const void * const s1,
     register const void * const s2
@@ -27,7 +31,7 @@ inline int compareLessInt(
     return COMPARE_LESS(x, y);
 }
 
-// equal or equalTo or isEqual or isEqualTo ???
+// isEqual or isEqualTo ???
 inline bool isEqualInt(
     register const void * const s1,
     register const void * const s2
@@ -36,7 +40,6 @@ inline bool isEqualInt(
     return *(const int *) s1 == *(const int *) s2;
 }
 
-// greater or isGreater ???
 inline bool isGreaterInt(
     register const void * const s1,
     register const void * const s2
@@ -45,7 +48,6 @@ inline bool isGreaterInt(
     return *(const int *) s1 > *(const int *) s2;
 }
 
-// greaterEqual or isGreaterEqual ???
 inline bool isGreaterEqualInt(
     register const void * const s1,
     register const void * const s2
@@ -54,7 +56,6 @@ inline bool isGreaterEqualInt(
     return *(const int *) s1 >= *(const int *) s2;
 }
 
-// less or isLess ???
 inline bool isLessInt(
     register const void * const s1,
     register const void * const s2
@@ -63,7 +64,6 @@ inline bool isLessInt(
     return *(const int *) s1 < *(const int *) s2;
 }
 
-// lessEqual or isLessEqual ???
 inline bool isLessEqualInt(
     register const void * const s1,
     register const void * const s2
@@ -72,7 +72,7 @@ inline bool isLessEqualInt(
     return *(const int *) s1 <= *(const int *) s2;
 }
 
-// notEqual or notEqualTo or isNotEqual or isNotEqualTo ???
+// isNotEqual or isNotEqualTo ???
 inline bool isNotEqualInt(
     register const void * const s1,
     register const void * const s2
