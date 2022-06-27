@@ -6,9 +6,11 @@
 #include <stddef.h> // max_align_t, ptrdiff_t, size_t
 #include <stdint.h> // PTRDIFF_MAX
 
+#include <c_utilities/arithmetic.h> // IN_RANGE ???
 #include <c_utilities/bit.h> // IS_POWER_OF_TWO
 #include <c_utilities/types.h> // uint
 
+// ~LEVEL1_DCACHE_LINESIZE > 0 ???
 #ifndef LEVEL1_DCACHE_LINESIZE
 #define LEVEL1_DCACHE_LINESIZE ((size_t) 64U)
 #endif // LEVEL1_DCACHE_LINESIZE
@@ -59,7 +61,7 @@ static_assert(
 #define LEVEL4_CACHE_LINESIZE ((size_t) 0U)
 #endif // LEVEL4_CACHE_LINESIZE
 static_assert(
-    LEVEL4_CACHE_LINESIZE == 0U || (LEVEL3_CACHE_LINESIZE > 0U &&
+    LEVEL4_CACHE_LINESIZE == 0U || (LEVEL3_CACHE_LINESIZE > 0U && // != 0U ???
         LEVEL4_CACHE_LINESIZE >= (ptrdiff_t) alignof(max_align_t) &&
         LEVEL4_CACHE_LINESIZE <= PTRDIFF_MAX &&
         IS_POWER_OF_TWO(LEVEL4_CACHE_LINESIZE)
