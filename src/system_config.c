@@ -10,7 +10,7 @@
 #include <unistd.h> // _SC_NPROCESSORS_*, _SC_PAGESIZE, sysconf
 #endif // _WIN32
 
-#include <c_utilities/bit.h> // hasSingleBit
+#include <c_utilities/bit.h> // isPowerOfTwo
 #include <c_utilities/system_config.h> // nprocessors*, ???
 #include <c_utilities/types.h> // uint, ulong
 
@@ -52,7 +52,7 @@ extern size_t pageSize(void) {
 #   else
     register const long value = sysconf(_SC_PAGESIZE); // _SC_PAGE_SIZE ???
     assert(value >= (ptrdiff_t) alignof(max_align_t) &&
-        (ulong) value <= SIZE_MAX && hasSingleBit((ulong) value)
+        (ulong) value <= SIZE_MAX && isPowerOfTwo((ulong) value)
     );
     returns = value < 0 ? 0U : (size_t) value;
 #   endif // _WIN32
