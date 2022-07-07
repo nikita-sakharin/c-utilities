@@ -8,30 +8,29 @@
 
 #include <c_utilities/types.h> // llong, uint, ullong, ulong
 
-#define COMPARE_GREATER(x, y) (((y) > (x)) - ((x) > (y)))
-#define COMPARE_LESS(x, y) (((y) < (x)) - ((x) < (y)))
+#define CMP_GREATER(x, y) (((y) > (x)) - ((x) > (y)))
+#define CMP_LESS(x, y) (((y) < (x)) - ((x) < (y)))
 
 // short or shrt, ushort or ushrt ???
 // cmp or compare ???
-inline int compareGreaterInt(
+inline int cmpGreaterInt(
     register const void * const s1,
     register const void * const s2
 ) {
     assert(s1 != NULL && s2 != NULL);
     register const int x = *(const int *) s1, y = *(const int *) s2;
-    return COMPARE_GREATER(x, y);
+    return CMP_GREATER(x, y);
 }
 
-inline int compareLessInt(
+inline int cmpLessInt(
     register const void * const s1,
     register const void * const s2
 ) {
     assert(s1 != NULL && s2 != NULL);
     register const int x = *(const int *) s1, y = *(const int *) s2;
-    return COMPARE_LESS(x, y);
+    return CMP_LESS(x, y);
 }
 
-// isEqual or isEqualTo ???
 inline bool isEqualInt(
     register const void * const s1,
     register const void * const s2
@@ -72,7 +71,6 @@ inline bool isLessEqualInt(
     return *(const int *) s1 <= *(const int *) s2;
 }
 
-// isNotEqual or isNotEqualTo ???
 inline bool isNotEqualInt(
     register const void * const s1,
     register const void * const s2
