@@ -12,7 +12,6 @@
 #define CMP_LESS(x, y) (((y) < (x)) - ((x) < (y)))
 
 // short or shrt, ushort or ushrt ???
-// cmp or compare ???
 inline int cmpGreaterInt(
     register const void * const s1,
     register const void * const s2
