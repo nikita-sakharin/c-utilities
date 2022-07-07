@@ -11,7 +11,6 @@
 #include <c_utilities/arithmetic.h> // clamp, inRange, max, min
 #include <c_utilities/system_config.h> // LEVEL1_DCACHE_LINESIZE
 #include <c_utilities/types.h> // uchar
-// arrCompareMax, arrCompareMin
 
 inline void *memCompareMax(
     register const void * const s1,
@@ -139,6 +138,7 @@ inline void *ptrMidpoint(
     return ptrOffset(ptr1, ptrDifference(ptr2, ptr1, size) / 2U, size);
 }
 
+// arrCompareMax, arrCompareMin
 inline int arrCompare(
     register const void * const restrict arr,
     register const size_t idx1,
