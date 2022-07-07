@@ -13,49 +13,6 @@
 #include <c_utilities/types.h> // uchar
 // arrCompareMax, arrCompareMin
 
-inline int arrCompare(
-    register const void * const restrict arr,
-    register const size_t idx1,
-    register const size_t idx2,
-    register const size_t size,
-    register int (* const cmp)(const void *, const void *)
-) {
-    assert(arr != NULL && inRange(size, 1U, PTRDIFF_MAX) &&
-        max(idx1, idx2) <= PTRDIFF_MAX / size - 1U && cmp != NULL &&
-        (const char *) arr <= (const char *) arr + (max(idx1, idx2) + 1U) * size
-    );
-    return cmp(ptrOffset(arr, idx1, size), ptrOffset(arr, idx2, size));
-}
-
-inline bool arrCompareSwap(
-    register void * const restrict arr,
-    register const size_t idx1,
-    register const size_t idx2,
-    register const size_t size,
-    register int (* const cmp)(const void *, const void *)
-) {
-    assert(arr != NULL && idx1 != idx2 && inRange(size, 1U, PTRDIFF_MAX) &&
-        max(idx1, idx2) <= PTRDIFF_MAX / size - 1U && cmp != NULL &&
-        (char *) arr <= (char *) arr + (max(idx1, idx2) + 1U) * size
-    );
-    return memCompareSwap(
-        ptrOffset(arr, idx1, size), ptrOffset(arr, idx2, size), cmp
-    );
-}
-
-inline void *arrSwap(
-    register void * const restrict arr,
-    register const size_t idx1,
-    register const size_t idx2,
-    register const size_t size
-) {
-    assert(arr != NULL && idx1 != idx2 && inRange(size, 1U, PTRDIFF_MAX) &&
-        max(idx1, idx2) <= PTRDIFF_MAX / size - 1U &&
-        (char *) arr <= (char *) arr + (max(idx1, idx2) + 1U) * size
-    );
-    return memSwap(ptrOffset(arr, idx1, size), ptrOffset(arr, idx2, size));
-}
-
 inline void *memCompareMax(
     register const void * const s1,
     register const void * const s2,
@@ -180,6 +137,49 @@ inline void *ptrMidpoint(
         ((const char *) ptr1 - (const char *) ptr2) % (ptrdiff_t) size == 0
     );
     return ptrOffset(ptr1, ptrDifference(ptr2, ptr1, size) / 2U, size);
+}
+
+inline int arrCompare(
+    register const void * const restrict arr,
+    register const size_t idx1,
+    register const size_t idx2,
+    register const size_t size,
+    register int (* const cmp)(const void *, const void *)
+) {
+    assert(arr != NULL && inRange(size, 1U, PTRDIFF_MAX) &&
+        max(idx1, idx2) <= PTRDIFF_MAX / size - 1U && cmp != NULL &&
+        (const char *) arr <= (const char *) arr + (max(idx1, idx2) + 1U) * size
+    );
+    return cmp(ptrOffset(arr, idx1, size), ptrOffset(arr, idx2, size));
+}
+
+inline bool arrCompareSwap(
+    register void * const restrict arr,
+    register const size_t idx1,
+    register const size_t idx2,
+    register const size_t size,
+    register int (* const cmp)(const void *, const void *)
+) {
+    assert(arr != NULL && idx1 != idx2 && inRange(size, 1U, PTRDIFF_MAX) &&
+        max(idx1, idx2) <= PTRDIFF_MAX / size - 1U && cmp != NULL &&
+        (char *) arr <= (char *) arr + (max(idx1, idx2) + 1U) * size
+    );
+    return memCompareSwap(
+        ptrOffset(arr, idx1, size), ptrOffset(arr, idx2, size), cmp
+    );
+}
+
+inline void *arrSwap(
+    register void * const restrict arr,
+    register const size_t idx1,
+    register const size_t idx2,
+    register const size_t size
+) {
+    assert(arr != NULL && idx1 != idx2 && inRange(size, 1U, PTRDIFF_MAX) &&
+        max(idx1, idx2) <= PTRDIFF_MAX / size - 1U &&
+        (char *) arr <= (char *) arr + (max(idx1, idx2) + 1U) * size
+    );
+    return memSwap(ptrOffset(arr, idx1, size), ptrOffset(arr, idx2, size));
 }
 
 #endif // C_UTILITIES_COMMON_H
