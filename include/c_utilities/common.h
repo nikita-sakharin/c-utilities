@@ -18,7 +18,7 @@ inline void *memCompareMax(
     register int (* const cmp)(const void *, const void *)
 ) {
     assert(s1 != NULL && s2 != NULL && cmp != NULL);
-    return cmp(s1, s2) >= 0 ? s1 : s2;
+    return cmp(s1, s2) < 0 ? s2 : s1;
 }
 
 inline void *memCompareMin(
@@ -27,7 +27,7 @@ inline void *memCompareMin(
     register int (* const cmp)(const void *, const void *)
 ) {
     assert(s1 != NULL && s2 != NULL && cmp != NULL);
-    return cmp(s1, s2) <= 0 ? s1 : s2;
+    return cmp(s1, s2) > 0 ? s2 : s1;
 }
 
 inline void *memSwap(
