@@ -147,7 +147,7 @@ inline int arrCompare(
 ) {
     assert(arr != NULL && inRange(size, 1U, PTRDIFF_MAX) &&
         max(idx1, idx2) < PTRDIFF_MAX / size && cmp != NULL &&
-        (const char *) arr <= (const char *) arr + (max(idx1, idx2) + 1U) * size
+        (const char *) arr < (const char *) arr + (max(idx1, idx2) + 1U) * size
     );
     return cmp(ptrOffset(arr, idx1, size), ptrOffset(arr, idx2, size));
 }
@@ -161,7 +161,7 @@ inline void *arrCompareMax(
 ) {
     assert(arr != NULL && inRange(size, 1U, PTRDIFF_MAX) &&
         max(idx1, idx2) < PTRDIFF_MAX / size && cmp != NULL &&
-        (const char *) arr <= (const char *) arr + (max(idx1, idx2) + 1U) * size
+        (const char *) arr < (const char *) arr + (max(idx1, idx2) + 1U) * size
     );
     return memCompareMax(
         ptrOffset(arr, idx1, size), ptrOffset(arr, idx2, size), cmp
@@ -177,7 +177,7 @@ inline void *arrCompareMin(
 ) {
     assert(arr != NULL && inRange(size, 1U, PTRDIFF_MAX) &&
         max(idx1, idx2) < PTRDIFF_MAX / size && cmp != NULL &&
-        (const char *) arr <= (const char *) arr + (max(idx1, idx2) + 1U) * size
+        (const char *) arr < (const char *) arr + (max(idx1, idx2) + 1U) * size
     );
     return memCompareMin(
         ptrOffset(arr, idx1, size), ptrOffset(arr, idx2, size), cmp
@@ -193,7 +193,7 @@ inline bool arrCompareSwap(
 ) {
     assert(arr != NULL && idx1 != idx2 && inRange(size, 1U, PTRDIFF_MAX) &&
         max(idx1, idx2) < PTRDIFF_MAX / size && cmp != NULL &&
-        (char *) arr <= (char *) arr + (max(idx1, idx2) + 1U) * size
+        (char *) arr < (char *) arr + (max(idx1, idx2) + 1U) * size
     );
     return memCompareSwap(
         ptrOffset(arr, idx1, size), ptrOffset(arr, idx2, size), cmp
@@ -208,7 +208,7 @@ inline void *arrSwap(
 ) {
     assert(arr != NULL && idx1 != idx2 && inRange(size, 1U, PTRDIFF_MAX) &&
         max(idx1, idx2) < PTRDIFF_MAX / size &&
-        (char *) arr <= (char *) arr + (max(idx1, idx2) + 1U) * size
+        (char *) arr < (char *) arr + (max(idx1, idx2) + 1U) * size
     );
     return memSwap(ptrOffset(arr, idx1, size), ptrOffset(arr, idx2, size));
 }
