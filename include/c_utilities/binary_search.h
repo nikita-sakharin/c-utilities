@@ -14,7 +14,7 @@ inline void *binary_search(
 ) {
     while (count != 0U) {
         register const size_t step = count / 2U;
-        register const void * const midpoint = ptrOffset(array, step, size);
+        register void * const midpoint = ptrOffset(array, step, size);
         register const int result = cmp(key, midpoint);
         if (result < 0)
             count = step;
