@@ -102,7 +102,7 @@ inline ptrdiff_t ptrDifference(
 
 inline void *ptrOffset(
     register const void * const ptr,
-    register const size_t idx,
+    register const size_t idx, // ptrdiff_t ???
     register const size_t size
 ) {
     assert((ptr != NULL || idx == 0U) && inRange(size, 1U, PTRDIFF_MAX) &&
