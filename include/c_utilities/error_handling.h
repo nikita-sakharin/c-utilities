@@ -42,5 +42,6 @@
         } \
     } while (false)
 #endif // NDEBUG
+// WRITE_ERRNO_GOTO_IF
 
 #endif // C_UTILITIES_ERROR_HANDLING_H
