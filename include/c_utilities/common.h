@@ -138,6 +138,7 @@ inline void *ptrMidpoint(
     return ptrOffset(ptr1, ptrDifference(ptr2, ptr1, size) / 2U, size);
 }
 
+// arr -> elem, elemAt ???
 inline int arrCompare(
     register const void * const restrict arr,
     register const size_t idx1,
@@ -199,6 +200,17 @@ inline bool arrCompareSwap(
         ptrOffset(arr, idx1, size), ptrOffset(arr, idx2, size), cmp
     );
 }
+/* inline void *arrMidpoint(
+    register const void * const restrict arr,
+    register const size_t n, // ???
+    register const size_t size
+) { // assert n > 0 ???
+    assert(arr != NULL && n < PTRDIFF_MAX && inRange(size, 1U, PTRDIFF_MAX) &&
+        n <= PTRDIFF_MAX / size &&
+        (const char *) arr <= (const char *) arr + n * size
+    );
+    return ptrOffset(arr, n / 2U, size);
+} */
 
 inline void *arrSwap(
     register void * const restrict arr,
