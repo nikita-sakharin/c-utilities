@@ -8,7 +8,7 @@
 #include <stdint.h> // PTRDIFF_MAX
 #include <string.h> // memcpy
 
-#include <c_utilities/arithmetic.h> // clamp, inRange, max, min
+#include <c_utilities/arithmetic.h> // inRange, max, min, sign
 #include <c_utilities/system_config.h> // LEVEL1_DCACHE_LINESIZE
 #include <c_utilities/types.h> // uchar
 
