@@ -9,7 +9,7 @@
 #include <c_utilities/bit.h> // IS_POWER_OF_TWO
 
 #ifndef LEVEL1_DCACHE_LINESIZE
-#define LEVEL1_DCACHE_LINESIZE (SIZE_MAX & 64U)
+#define LEVEL1_DCACHE_LINESIZE (64U & SIZE_MAX)
 #endif // LEVEL1_DCACHE_LINESIZE
 static_assert(
     LEVEL1_DCACHE_LINESIZE >= (ptrdiff_t) alignof(max_align_t) &&
@@ -20,7 +20,7 @@ static_assert(
 );
 
 #ifndef LEVEL1_ICACHE_LINESIZE
-#define LEVEL1_ICACHE_LINESIZE (SIZE_MAX & 64U)
+#define LEVEL1_ICACHE_LINESIZE (64U & SIZE_MAX)
 #endif // LEVEL1_ICACHE_LINESIZE
 static_assert(
     LEVEL1_ICACHE_LINESIZE >= (ptrdiff_t) alignof(max_align_t) &&
@@ -31,7 +31,7 @@ static_assert(
 );
 
 #ifndef LEVEL2_CACHE_LINESIZE
-#define LEVEL2_CACHE_LINESIZE (SIZE_MAX & 64U)
+#define LEVEL2_CACHE_LINESIZE (64U & SIZE_MAX)
 #endif // LEVEL2_CACHE_LINESIZE
 static_assert(
     LEVEL2_CACHE_LINESIZE >= (ptrdiff_t) alignof(max_align_t) &&
@@ -42,7 +42,7 @@ static_assert(
 );
 
 #ifndef LEVEL3_CACHE_LINESIZE
-#define LEVEL3_CACHE_LINESIZE (SIZE_MAX & 64U)
+#define LEVEL3_CACHE_LINESIZE (64U & SIZE_MAX)
 #endif // LEVEL3_CACHE_LINESIZE
 static_assert(
     LEVEL3_CACHE_LINESIZE == 0U || (
@@ -55,7 +55,7 @@ static_assert(
 );
 
 #ifndef LEVEL4_CACHE_LINESIZE
-#define LEVEL4_CACHE_LINESIZE (SIZE_MAX & 0U)
+#define LEVEL4_CACHE_LINESIZE (~SIZE_MAX)
 #endif // LEVEL4_CACHE_LINESIZE
 static_assert(
     LEVEL4_CACHE_LINESIZE == 0U || (LEVEL3_CACHE_LINESIZE != 0U &&
