@@ -135,11 +135,23 @@ inline void *ptrMidpoint(
         (ptr1 >= ptr2 || (const char *) ptr1 - (const char *) ptr2 < 0) &&
         ((const char *) ptr1 - (const char *) ptr2) % (ptrdiff_t) size == 0
     );
-    return ptrOffset(ptr1, ptrDifference(ptr2, ptr1, size) / 2U, size);
+    return ptrOffset(ptr1, ptrDifference(ptr2, ptr1, size) >> 1U, size);
 }
 
-// arr -> elem, elemAt ???
-inline int arrCompare(
+/* inline void *arrayMidpoint(
+    register const void * const restrict arr,
+    register const size_t n, // ???
+    register const size_t size
+) { // assert n > 0 ???
+    assert(arr != NULL && n < PTRDIFF_MAX && inRange(size, 1U, PTRDIFF_MAX) &&
+        n <= PTRDIFF_MAX / size &&
+        (const char *) arr <= (const char *) arr + n * size
+    );
+    return ptrOffset(arr, n >> 1U, size);
+} */
+
+// elemAt ???
+inline int elemCompare(
     register const void * const restrict arr,
     register const size_t idx1,
     register const size_t idx2,
@@ -153,7 +165,7 @@ inline int arrCompare(
     return cmp(ptrOffset(arr, idx1, size), ptrOffset(arr, idx2, size));
 }
 
-inline void *arrCompareMax(
+inline void *elemCompareMax(
     register const void * const restrict arr,
     register const size_t idx1,
     register const size_t idx2,
@@ -169,7 +181,7 @@ inline void *arrCompareMax(
     );
 }
 
-inline void *arrCompareMin(
+inline void *elemCompareMin(
     register const void * const restrict arr,
     register const size_t idx1,
     register const size_t idx2,
@@ -185,7 +197,7 @@ inline void *arrCompareMin(
     );
 }
 
-inline bool arrCompareSwap(
+inline bool elemCompareSwap(
     register void * const restrict arr,
     register const size_t idx1,
     register const size_t idx2,
@@ -200,19 +212,8 @@ inline bool arrCompareSwap(
         ptrOffset(arr, idx1, size), ptrOffset(arr, idx2, size), cmp
     );
 }
-/* inline void *arrMidpoint(
-    register const void * const restrict arr,
-    register const size_t n, // ???
-    register const size_t size
-) { // assert n > 0 ???
-    assert(arr != NULL && n < PTRDIFF_MAX && inRange(size, 1U, PTRDIFF_MAX) &&
-        n <= PTRDIFF_MAX / size &&
-        (const char *) arr <= (const char *) arr + n * size
-    );
-    return ptrOffset(arr, n / 2U, size);
-} */
 
-inline void *arrSwap(
+inline void *elemSwap(
     register void * const restrict arr,
     register const size_t idx1,
     register const size_t idx2,
