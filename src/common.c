@@ -22,5 +22,7 @@ extern inline bool memCompareSwap(void * restrict, void * restrict, size_t,
 );
 
 extern inline ptrdiff_t ptrDifference(const void *, const void *, size_t);
+extern inline void *ptrDecrement(const void *, size_t);
+extern inline void *ptrIncrement(const void *, size_t);
 extern inline void *ptrMidpoint(const void *, const void *, size_t);
 extern inline void *ptrOffset(const void *, size_t, size_t);

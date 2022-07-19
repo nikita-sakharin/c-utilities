@@ -102,7 +102,7 @@ inline ptrdiff_t ptrDifference(
 
 inline void *ptrOffset(
     register const void * const ptr,
-    register const size_t idx, // ptrdiff_t ???
+    register const size_t idx, // ptrdiff_t
     register const size_t size
 ) {
     assert((ptr != NULL || idx == 0U) && inRange(size, 1U, PTRDIFF_MAX) &&
@@ -122,6 +122,27 @@ inline void *ptrOffset(
 #   elifdef __GNUC__
 #   pragma GCC diagnostic pop
 #   endif
+}
+
+inline void *ptrDecrement(
+    register const void * const ptr,
+    register const size_t size
+) {
+    assert(ptr != NULL && inRange(size, 1U, PTRDIFF_MAX) &&
+        (const char *) ptr - size < (const char *) ptr &&
+        (const char *) ptr - size != NULL
+    );
+    return ptrOffset(ptr, -1, size);
+}
+
+inline void *ptrIncrement(
+    register const void * const ptr,
+    register const size_t size
+) {
+    assert(ptr != NULL && inRange(size, 1U, PTRDIFF_MAX) &&
+        (const char *) ptr < (const char *) ptr + size
+    );
+    return ptrOffset(ptr, 1, size);
 }
 
 inline void *ptrMidpoint(
