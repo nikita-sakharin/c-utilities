@@ -1,8 +1,8 @@
 #ifndef C_UTILITIES_ERROR_HANDLING_H
 #define C_UTILITIES_ERROR_HANDLING_H
 
-#include <stdbool.h> // false
 #include <stdarg.h> // va_end, va_list, va_start
+#include <stdbool.h> // false
 #include <stdio.h> // fflush, fprintf, perror, stderr, vfprintf
 #include <stdlib.h> // EXIT_FAILURE, abort, exit
 #include <string.h> // strerror
