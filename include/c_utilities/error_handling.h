@@ -2,6 +2,7 @@
 #define C_UTILITIES_ERROR_HANDLING_H
 
 #include <stdbool.h> // false
+#include <stdarg.h> // va_end, va_list, va_start
 #include <stdio.h> // fflush, fprintf, perror, stderr
 #include <stdlib.h> // EXIT_FAILURE, abort, exit
 #include <string.h> // strerror
@@ -19,9 +20,7 @@
 #define EXIT_IF(condition, argv0, error, ...) \
     do { \
         if ((condition)) { \
-            fprintf(stderr, "%s: ", argv0); \
-            fprintf(stderr, __VA_ARGS__); \
-            fprintf(stderr, ": %s\n", strerror(error)); \
+            printError(argv0, error, __VA_ARGS__); \
             exit(EXIT_FAILURE); \
         } \
     } while (false)
@@ -43,5 +42,19 @@
     } while (false)
 #endif // NDEBUG
 // WRITE_ERRNO_GOTO_IF
+
+inline void printError(
+    register const char * const argv0,
+    register const int error,
+    register const char * const format,
+    ...
+) {
+    fprintf(stderr, "%s: ", argv0);
+    va_list args;
+    va_start(args, format);
+    vfprintf(stderr, format, args);
+    va_end(args, format);
+    fprintf(stderr, ": %s\n", strerror(error));
+}
 
 #endif // C_UTILITIES_ERROR_HANDLING_H
