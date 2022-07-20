@@ -3,7 +3,7 @@
 
 #include <stdbool.h> // false
 #include <stdarg.h> // va_end, va_list, va_start
-#include <stdio.h> // fflush, fprintf, perror, stderr
+#include <stdio.h> // fflush, fprintf, perror, stderr, vfprintf
 #include <stdlib.h> // EXIT_FAILURE, abort, exit
 #include <string.h> // strerror
 
