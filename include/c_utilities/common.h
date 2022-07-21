@@ -8,7 +8,7 @@
 #include <stdint.h> // PTRDIFF_MAX
 #include <string.h> // memcpy
 
-#include <c_utilities/arithmetic.h> // inRange, max, min, sign
+#include <c_utilities/arithmetic.h> // inRange, max, min, signum
 #include <c_utilities/system_config.h> // LEVEL1_DCACHE_LINESIZE
 #include <c_utilities/types.h> // uchar
 
@@ -92,7 +92,7 @@ inline ptrdiff_t ptrDifference(
     register const size_t size
 ) {
     assert((ptr1 == NULL) == (ptr2 == NULL) && inRange(size, 1U, PTRDIFF_MAX) &&
-        // CMP_LESS(ptr1, ptr2) == sign((const char *) ptr1 - (const char *) ptr2) &&
+        // CMP_LESS(ptr1, ptr2) == signum((const char *) ptr1 - (const char *) ptr2) &&
         (ptr1 <= ptr2 || (const char *) ptr1 - (const char *) ptr2 > 0) &&
         (ptr1 >= ptr2 || (const char *) ptr1 - (const char *) ptr2 < 0) &&
         ((const char *) ptr1 - (const char *) ptr2) % (ptrdiff_t) size == 0
