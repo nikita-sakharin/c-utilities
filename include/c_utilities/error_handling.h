@@ -44,16 +44,16 @@
 // WRITE_ERRNO_GOTO_IF
 
 inline void printError(
-    register const char * const argv0,
+    register const char argv0[const static 1U],
     register const int error,
-    register const char * const format,
+    const char format[const static 1U],
     ...
 ) {
     fprintf(stderr, "%s: ", argv0);
     va_list args;
     va_start(args, format);
     vfprintf(stderr, format, args);
-    va_end(args, format);
+    va_end(args);
     fprintf(stderr, ": %s\n", strerror(error));
 }
 
