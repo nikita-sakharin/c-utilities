@@ -18,10 +18,10 @@
         } \
     } while (false)
 
-#define EXIT_IF(condition, argv0, error, ...) \
+#define EXIT_IF(condition, error, argv0, ...) \
     do { \
         if ((condition)) { \
-            printError(argv0, error, __VA_ARGS__); \
+            printError(error, argv0, __VA_ARGS__); \
             exit(EXIT_FAILURE); \
         } \
     } while (false)
@@ -45,8 +45,8 @@
 // WRITE_ERRNO_GOTO_IF
 
 inline void printError(
-    register const char argv0[const static 1U],
     register const int error,
+    register const char argv0[const static 1U],
     const char format[const static 1U],
     ...
 ) {
