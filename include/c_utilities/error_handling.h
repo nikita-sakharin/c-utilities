@@ -7,11 +7,12 @@
 #include <stdlib.h> // EXIT_FAILURE, abort, exit
 #include <string.h> // strerror
 
-#define ABORT_IF(condition) \
+#define ABORT_IF(condition, error) \
     do { \
         if ((condition)) { \
-            fprintf(stderr, "%s:%d: ", __FILE__, __LINE__); /* error ??? */ \
-            perror(__func__); \
+            fprintf(stderr, "%s:%d: %s: %s\n",
+                __FILE__, __LINE__, __func__, strerror(error)
+            ); \
             fflush(stderr); \
             abort(); \
         } \
