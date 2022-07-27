@@ -172,7 +172,7 @@ inline void *ptrMidpoint(
     return ptrOffset(arr, n >> 1U, size);
 } */
 
-// elemAt ???
+// elemAt or elemAtIndex ???
 inline int elemCompare(
     register const void * const restrict arr,
     register const size_t idx1,
