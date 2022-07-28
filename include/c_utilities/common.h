@@ -91,11 +91,11 @@ inline ptrdiff_t ptrDifference(
     register const void * const ptr2,
     register const size_t size
 ) {
-    // PTRDIFF_MIN ???
     assert((ptr1 == NULL) == (ptr2 == NULL) && inRange(size, 1U, PTRDIFF_MAX) &&
+        // (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN &&
         // CMP_LESS(ptr1, ptr2) == signum((const char *) ptr1 - (const char *) ptr2) &&
         (ptr1 <= ptr2 || (const char *) ptr1 - (const char *) ptr2 > 0) &&
-        (ptr1 >= ptr2 || (const char *) ptr1 - (const char *) ptr2 < 0) &&
+        (ptr2 <= ptr1 || (const char *) ptr2 - (const char *) ptr1 > 0) &&
         ((const char *) ptr1 - (const char *) ptr2) % (ptrdiff_t) size == 0
     );
     return ((const char *) ptr1 - (const char *) ptr2) / (ptrdiff_t) size;
