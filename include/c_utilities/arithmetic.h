@@ -6,6 +6,7 @@
 #include <stdbool.h> // bool
 #include <stdint.h> // intmax_t, uintmax_t
 #include <stdlib.h> // abs, div, labs, ldiv, llabs, lldiv
+#include <limits.h> // INTMAX_WIDTH, INT_WIDTH, LLONG_WIDTH, LONG_WIDTH
 
 #include <c_utilities/type_generic.h> // TYPE_GENERIC_*INTEGER_*
 #include <c_utilities/types.h> // llong, uint, ullong, ulong
@@ -275,6 +276,22 @@ inline uintmax_t umaxmin(
     return MIN(x, y);
 }
 
+inline int signum(register const int x) {
+    return (x >> (INT_WIDTH - 1U)) - (-x >> (INT_WIDTH - 1U));
+}
+
+inline long lsignum(register const long x) {
+    return (x >> (LONG_WIDTH - 1U)) - (-x >> (LONG_WIDTH - 1U));
+}
+
+inline llong llsignum(register const llong x) {
+    return (x >> (LLONG_WIDTH - 1U)) - (-x >> (LLONG_WIDTH - 1U));
+}
+
+inline intmax_t imaxsignum(register const intmax_t x) {
+    return (x >> (INTMAX_WIDTH - 1U)) - (-x >> (INTMAX_WIDTH - 1U));
+}
+
 #define abs(x) TYPE_GENERIC_SIGNED_INTEGER_1(abs, x)
 #define clamp(x, a, b) TYPE_GENERIC_INTEGER_3(clamp, x, a, b)
 #define dim(x, y) TYPE_GENERIC_INTEGER_2(dim, x, y)
@@ -282,5 +299,6 @@ inline uintmax_t umaxmin(
 #define inRange(x, a, b) TYPE_GENERIC_INTEGER_3(inRange, x, a, b)
 #define max(x, y) TYPE_GENERIC_INTEGER_2(max, x, y)
 #define min(x, y) TYPE_GENERIC_INTEGER_2(min, x, y)
+#define signum(x) TYPE_GENERIC_SIGNED_INTEGER_1(signum, x)
 
 #endif // C_UTILITIES_ARITHMETIC_H
