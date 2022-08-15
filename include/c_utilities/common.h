@@ -8,7 +8,7 @@
 #include <stdint.h> // PTRDIFF_MAX
 #include <string.h> // memcpy
 
-#include <c_utilities/arithmetic.h> // inRange, max, min, signum
+#include <c_utilities/arithmetic.h> // inRange, max, min, sign
 #include <c_utilities/system_config.h> // LEVEL1_DCACHE_LINESIZE
 #include <c_utilities/types.h> // uchar
 
@@ -93,7 +93,7 @@ inline ptrdiff_t ptrDifference(
 ) {
     assert((ptr1 == NULL) == (ptr2 == NULL) && inRange(size, 1U, PTRDIFF_MAX) &&
         // (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN &&
-        // signum((const char *) ptr1 - (const char *) ptr2) == CMP_LESS(ptr1, ptr2) &&
+        // sign((const char *) ptr1 - (const char *) ptr2) == CMP_LESS(ptr1, ptr2) &&
         (ptr1 <= ptr2 || (const char *) ptr1 - (const char *) ptr2 > 0) &&
         (ptr2 <= ptr1 || (const char *) ptr2 - (const char *) ptr1 > 0) &&
         ((const char *) ptr1 - (const char *) ptr2) % (ptrdiff_t) size == 0
@@ -103,12 +103,13 @@ inline ptrdiff_t ptrDifference(
 
 inline void *ptrOffset(
     register const void * const ptr,
-    register const size_t idx, // ptrdiff_t
+    register const ptrdiff_t idx,
     register const size_t size
 ) {
-    assert((ptr != NULL || idx == 0U) && inRange(size, 1U, PTRDIFF_MAX) &&
-        idx <= PTRDIFF_MAX / size &&
-        (const char *) ptr <= (const char *) ptr + idx * size
+    assert((ptr != NULL || idx == 0) && inRange(size, 1U, PTRDIFF_MAX) &&
+        // idx != PTRDIFF_MIN && abs(idx) <= PTRDIFF_MAX / (ptrdiff_t) size &&
+        inRange(idx, -PTRDIFF_MAX / (ptrdiff_t) size, PTRDIFF_MAX / (ptrdiff_t) size) &&
+        sign(idx) == CMP_LESS((const char *) ptr, (const char *) ptr + idx * size)
     );
 #   ifdef __clang__
 #   pragma clang diagnostic push
@@ -153,7 +154,7 @@ inline void *ptrMidpoint(
 ) {
     assert((ptr1 == NULL) == (ptr2 == NULL) && inRange(size, 1U, PTRDIFF_MAX) &&
         // (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN &&
-        // signum((const char *) ptr1 - (const char *) ptr2) == CMP_LESS(ptr1, ptr2) &&
+        // sign((const char *) ptr1 - (const char *) ptr2) == CMP_LESS(ptr1, ptr2) &&
         (ptr1 <= ptr2 || (const char *) ptr1 - (const char *) ptr2 > 0) &&
         (ptr1 >= ptr2 || (const char *) ptr1 - (const char *) ptr2 < 0) &&
         ((const char *) ptr1 - (const char *) ptr2) % (ptrdiff_t) size == 0
@@ -173,7 +174,20 @@ inline void *ptrMidpoint(
     return ptrOffset(arr, n >> 1U, size);
 } */
 
-// elemAt or elemAtIndex ???
+// elemAtIndex ???
+inline void *elemAt(
+    register const void * const arr,
+    register const size_t idx,
+    register const size_t size
+) {
+    // arr != NULL ???
+    assert((arr != NULL || idx == 0U) && inRange(size, 1U, PTRDIFF_MAX) &&
+        idx < PTRDIFF_MAX / size &&
+        (const char *) arr <= (const char *) arr + idx * size
+    );
+    return ptrOffset(arr, (ptrdiff_t) idx, size);
+}
+
 inline int elemCompare(
     register const void * const restrict arr,
     register const size_t idx1,
