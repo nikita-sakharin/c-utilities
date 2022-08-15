@@ -5,10 +5,11 @@
 #include <stdalign.h> // alignas
 #include <stdbool.h> // bool, false, true
 #include <stddef.h> // NULL, ptrdiff_t, size_t
-#include <stdint.h> // PTRDIFF_MAX
+#include <stdint.h> // PTRDIFF_MAX, PTRDIFF_MIN
 #include <string.h> // memcpy
 
 #include <c_utilities/arithmetic.h> // inRange, max, min, sign
+#include <c_utilities/compare.h> // CMP_LESS
 #include <c_utilities/system_config.h> // LEVEL1_DCACHE_LINESIZE
 #include <c_utilities/types.h> // uchar
 
