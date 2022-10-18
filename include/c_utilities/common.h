@@ -6,9 +6,10 @@
 #include <stdbool.h> // bool, false, true
 #include <stddef.h> // NULL, ptrdiff_t, size_t
 #include <stdint.h> // PTRDIFF_MAX, PTRDIFF_MIN
+// #include <stdlib.h> // abs ???
 #include <string.h> // memcpy
 
-#include <c_utilities/arithmetic.h> // inRange, max, min, sign
+#include <c_utilities/arithmetic.h> // abs, inRange, max, min, sign
 #include <c_utilities/compare.h> // CMP_LESS
 #include <c_utilities/system_config.h> // LEVEL1_DCACHE_LINESIZE
 #include <c_utilities/types.h> // uchar
@@ -93,10 +94,8 @@ inline ptrdiff_t ptrDifference(
     register const size_t size
 ) {
     assert((ptr1 == NULL) == (ptr2 == NULL) && inRange(size, 1U, PTRDIFF_MAX) &&
-        // (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN &&
-        // sign((const char *) ptr1 - (const char *) ptr2) == CMP_LESS(ptr1, ptr2) &&
-        (ptr1 <= ptr2 || (const char *) ptr1 - (const char *) ptr2 > 0) &&
-        (ptr2 <= ptr1 || (const char *) ptr2 - (const char *) ptr1 > 0) &&
+        (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN &&
+        sign((const char *) ptr1 - (const char *) ptr2) == CMP_LESS(ptr1, ptr2) &&
         ((const char *) ptr1 - (const char *) ptr2) % (ptrdiff_t) size == 0
     );
     return ((const char *) ptr1 - (const char *) ptr2) / (ptrdiff_t) size;
@@ -108,8 +107,7 @@ inline void *ptrOffset(
     register const size_t size
 ) {
     assert((ptr != NULL || idx == 0) && inRange(size, 1U, PTRDIFF_MAX) &&
-        // idx != PTRDIFF_MIN && abs(idx) <= PTRDIFF_MAX / (ptrdiff_t) size &&
-        inRange(idx, -PTRDIFF_MAX / (ptrdiff_t) size, PTRDIFF_MAX / (ptrdiff_t) size) &&
+        idx != PTRDIFF_MIN && abs(idx) <= PTRDIFF_MAX / (ptrdiff_t) size &&
         sign(idx) == CMP_LESS((const char *) ptr, (const char *) ptr + idx * size)
     );
 #   ifdef __clang__
@@ -154,10 +152,8 @@ inline void *ptrMidpoint(
     register const size_t size
 ) {
     assert((ptr1 == NULL) == (ptr2 == NULL) && inRange(size, 1U, PTRDIFF_MAX) &&
-        // (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN &&
-        // sign((const char *) ptr1 - (const char *) ptr2) == CMP_LESS(ptr1, ptr2) &&
-        (ptr1 <= ptr2 || (const char *) ptr1 - (const char *) ptr2 > 0) &&
-        (ptr2 <= ptr1 || (const char *) ptr2 - (const char *) ptr1 > 0) &&
+        (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN &&
+        sign((const char *) ptr1 - (const char *) ptr2) == CMP_LESS(ptr1, ptr2) &&
         ((const char *) ptr1 - (const char *) ptr2) % (ptrdiff_t) size == 0
     );
     return ptrOffset(ptr1, ptrDifference(ptr2, ptr1, size) >> 1U, size);
