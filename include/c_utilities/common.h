@@ -6,7 +6,7 @@
 #include <stdbool.h> // bool, false, true
 #include <stddef.h> // NULL, ptrdiff_t, size_t
 #include <stdint.h> // PTRDIFF_MAX, PTRDIFF_MIN
-// #include <stdlib.h> // abs ???
+#include <stdlib.h> // abs
 #include <string.h> // memcpy
 
 #include <c_utilities/arithmetic.h> // abs, inRange, max, min, sign
