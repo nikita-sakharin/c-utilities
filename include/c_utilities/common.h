@@ -165,21 +165,19 @@ inline void *ptrMidpoint(
     register const void * const restrict arr,
     register const size_t n, // ???
     register const size_t size
-) { // assert n > 0 ???
+) { // n != 0 ???
     assert(arr != NULL && n < PTRDIFF_MAX && inRange(size, 1U, PTRDIFF_MAX) &&
         n <= PTRDIFF_MAX / size &&
         (const char *) arr <= (const char *) arr + n * size
     );
-    return ptrOffset(arr, n >> 1U, size);
+    return elemAt(arr, n >> 1U, size);
 } */
 
-// elemAtIndex ???
-inline void *elemAt(
+inline void *elemAt( // elemAtIndex ???
     register const void * const arr,
     register const size_t idx,
     register const size_t size
-) {
-    // arr != NULL ???
+) { // arr != NULL ???
     assert((arr != NULL || idx == 0U) && inRange(size, 1U, PTRDIFF_MAX) &&
         idx < PTRDIFF_MAX / size &&
         (const char *) arr <= (const char *) arr + idx * size
