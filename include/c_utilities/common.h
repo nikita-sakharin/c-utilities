@@ -110,6 +110,7 @@ inline void *ptrOffset(
         idx != PTRDIFF_MIN && abs(idx) <= PTRDIFF_MAX / (ptrdiff_t) size &&
         sign(idx) == CMP_LESS((const char *) ptr, (const char *) ptr + idx * size) &&
         (ptr == NULL) == ((const char *) ptr + idx * size == NULL)
+        // (ptr == NULL || (const char *) ptr + idx * size != NULL)
     );
 #   ifdef __clang__
 #   pragma clang diagnostic push
