@@ -196,7 +196,7 @@ inline int elemCompare(
         max(idx1, idx2) < PTRDIFF_MAX / size && cmp != NULL &&
         (const char *) arr < (const char *) arr + (max(idx1, idx2) + 1U) * size
     );
-    return cmp(ptrOffset(arr, idx1, size), ptrOffset(arr, idx2, size));
+    return cmp(elemAt(arr, idx1, size), elemAt(arr, idx2, size));
 }
 
 inline void *elemCompareMax(
@@ -210,9 +210,7 @@ inline void *elemCompareMax(
         max(idx1, idx2) < PTRDIFF_MAX / size && cmp != NULL &&
         (const char *) arr < (const char *) arr + (max(idx1, idx2) + 1U) * size
     );
-    return memCompareMax(
-        ptrOffset(arr, idx1, size), ptrOffset(arr, idx2, size), cmp
-    );
+    return memCompareMax(elemAt(arr, idx1, size), elemAt(arr, idx2, size), cmp);
 }
 
 inline void *elemCompareMin(
@@ -226,9 +224,7 @@ inline void *elemCompareMin(
         max(idx1, idx2) < PTRDIFF_MAX / size && cmp != NULL &&
         (const char *) arr < (const char *) arr + (max(idx1, idx2) + 1U) * size
     );
-    return memCompareMin(
-        ptrOffset(arr, idx1, size), ptrOffset(arr, idx2, size), cmp
-    );
+    return memCompareMin(elemAt(arr, idx1, size), elemAt(arr, idx2, size), cmp);
 }
 
 inline bool elemCompareSwap(
@@ -243,7 +239,7 @@ inline bool elemCompareSwap(
         (char *) arr < (char *) arr + (max(idx1, idx2) + 1U) * size
     );
     return memCompareSwap(
-        ptrOffset(arr, idx1, size), ptrOffset(arr, idx2, size), cmp
+        elemAt(arr, idx1, size), elemAt(arr, idx2, size), cmp
     );
 }
 
@@ -257,7 +253,7 @@ inline void *elemSwap(
         max(idx1, idx2) < PTRDIFF_MAX / size &&
         (char *) arr < (char *) arr + (max(idx1, idx2) + 1U) * size
     );
-    return memSwap(ptrOffset(arr, idx1, size), ptrOffset(arr, idx2, size));
+    return memSwap(elemAt(arr, idx1, size), elemAt(arr, idx2, size));
 }
 
 #endif // C_UTILITIES_COMMON_H
