@@ -110,7 +110,6 @@ inline void *ptrOffset(
         idx != PTRDIFF_MIN && abs(idx) <= PTRDIFF_MAX / (ptrdiff_t) size &&
         sign(idx) == CMP_LESS((const char *) ptr, (const char *) ptr + idx * size) &&
         (ptr == NULL || (const char *) ptr + idx * size != NULL)
-        // (ptr == NULL) == ((const char *) ptr + idx * size == NULL)
     );
 #   ifdef __clang__
 #   pragma clang diagnostic push
@@ -177,10 +176,10 @@ inline void *elemAt( // elemAtIndex ???
     register const void * const arr,
     register const size_t idx,
     register const size_t size
-) { // arr != NULL ???
-    assert((arr != NULL || idx == 0U) && inRange(size, 1U, PTRDIFF_MAX) &&
+) {
+    assert(arr != NULL && inRange(size, 1U, PTRDIFF_MAX) &&
         idx < PTRDIFF_MAX / size &&
-        (const char *) arr <= (const char *) arr + idx * size
+        (const char *) arr < (const char *) arr + (idx + 1U) * size
     );
     return ptrOffset(arr, (ptrdiff_t) idx, size);
 }
