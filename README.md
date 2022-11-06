@@ -1,7 +1,6 @@
 `arithmetic.h`:<br/>
 `multiplyHigth` (`mulh`), `ipow`, `isqrt`, `floorDiv`, `floorMod`, `floorDivMod`<br/>
-`minmax`<br/>
-`fclampf`, `fclamp`, `fclampl`
+`minmax`
 
 http://www.open-std.org/jtc1/sc22/wg11/docs/n462.pdf<br/>
 http://www.open-std.org/jtc1/sc22/wg11/docs/n497.pdf<br/>
@@ -31,7 +30,7 @@ http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
 [Error Messages](www.gnu.org/software/libc/manual/html_node/Error-Messages.html)
 
 `math.h`:<br/>
-`lerp`<br/>
+`fclampf`, `fclamp`, `fclampl`, `lerp`<br/>
 `toDegrees`, `toRadians`<br/>
 `DBL_1_PI`, `DBL_2_PI`, `DBL_2_SQRTPI`, `DBL_E`, `DBL_LN10`, `DBL_LN2`, `DBL_LOG10E`, `DBL_LOG2E`, `DBL_PHI`, `DBL_PI`, `DBL_PI_2`, `DBL_PI_4`, `DBL_SQRT1_2`, `DBL_SQRT2`<br/>
 `comb`, `factorial`, `perm`<br/>
@@ -39,7 +38,7 @@ http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
 `random`
 
 `numeric.h`:<br/>
-`gcd`, `lcm`, `midpoint`, `fmidpoint`, `isqrt`(?)
+`gcd`, `lcm`, `midpoint`, `fmidpoint`, `isqrt`
 
 Неправильный вариант:<br/>
 `imidpoint`, `fmidpoint`
