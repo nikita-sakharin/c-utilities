@@ -6,8 +6,11 @@
 #include <stddef.h> // max_align_t, ptrdiff_t, size_t
 #include <stdint.h> // PTRDIFF_MAX, SIZE_MAX
 
+#include <c_utilities/arithmetic.h> // IN_RANGE
 #include <c_utilities/bit.h> // IS_POWER_OF_TWO
+#include <c_utilities/types.h> // uint
 
+// ~LEVEL1_DCACHE_LINESIZE > 0 ???
 #ifndef LEVEL1_DCACHE_LINESIZE
 #define LEVEL1_DCACHE_LINESIZE (64U & SIZE_MAX)
 #endif // LEVEL1_DCACHE_LINESIZE
@@ -68,5 +71,11 @@ static_assert(
     "If LEVEL3_CACHE_LINESIZE is equal to 0, "
     "then LEVEL4_CACHE_LINESIZE shall be equal to 0 too"
 );
+
+// int or uint ???
+extern uint nprocessorsConf(void);
+extern uint nprocessorsOnln(void);
+// ptrdiff_t or size_t ???
+extern size_t pageSize(void);
 
 #endif // C_UTILITIES_SYSTEM_CONFIG_H
