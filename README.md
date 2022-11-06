@@ -33,7 +33,7 @@ www.gnu.org/software/libc/manual/html_node/Error-Messages.html
 `math.h`:<br/>
 `lerp`<br/>
 `toDegrees`, `toRadians`<br/>
-`DBL_1_PI`, `DBL_2_PI`, `DBL_2_SQRTPI`, `DBL_E`, `DBL_LN10`, `DBL_LN2`, `DBL_LOG10E`, `DBL_LOG2E`, `DBL_PI`, `DBL_PI_2`, `DBL_PI_4`, `DBL_SQRT1_2`, `DBL_SQRT2`<br/>
+`DBL_1_PI`, `DBL_2_PI`, `DBL_2_SQRTPI`, `DBL_E`, `DBL_LN10`, `DBL_LN2`, `DBL_LOG10E`, `DBL_LOG2E`, `DBL_PHI`, `DBL_PI`, `DBL_PI_2`, `DBL_PI_4`, `DBL_SQRT1_2`, `DBL_SQRT2`<br/>
 `comb`, `factorial`, `perm`<br/>
 `ulp`, `nextDown`, `nextUp`, `union { uint32_t u32; flt f; }`<br/>
 `random`
