@@ -149,7 +149,7 @@ inline void *ptrIncrement(
 
 /* inline void *ptrMax(
     register const void * const ptr1,
-    register const void * const ptr2,
+    register const void * const ptr2
 ) {
     assert((ptr1 == NULL) == (ptr2 == NULL) &&
         (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN &&
@@ -160,7 +160,7 @@ inline void *ptrIncrement(
 
 inline void *ptrMin(
     register const void * const ptr1,
-    register const void * const ptr2,
+    register const void * const ptr2
 ) {
     assert((ptr1 == NULL) == (ptr2 == NULL) &&
         (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN &&
