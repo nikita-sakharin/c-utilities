@@ -25,10 +25,10 @@ http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
 
 Для `GOTO_IF` добавить вариант (или изменить имеющийся макрос?) который записывает текущее значение `errno` в lvalue (или по указателю?) переданное в макрос, затем зануляет errno (или просто оставляет без изменений?). Переданное lvalue может содержать side-effect. Есть ОЧЕНЬ плохой вариант `DO_GOTO_IF` с выполнением произвольного блока. Но данный вариант категорически ошибкоопасен и отвергается по понятным причинам.
 
-wiki.sei.cmu.edu/confluence/display/c/ERR04-C.+Choose+an+appropriate+termination+strategy<br/>
-www.open-std.org/jtc1/sc22/wg23/docs/ISO-IECJTC1-SC22-WG23_N0453-baseline-wd-pdtr-24772-2013-06.pdf<br/>
-www.gnu.org/prep/standards/html_node/Errors.html<br/>
-www.gnu.org/software/libc/manual/html_node/Error-Messages.html
+[ERR04-C. Choose an appropriate termination strategy](https://wiki.sei.cmu.edu/confluence/display/c/ERR04-C.+Choose+an+appropriate+termination+strategy)<br/>
+[Baseline for Ed 2 of TR 24772](www.open-std.org/jtc1/sc22/wg23/docs/ISO-IECJTC1-SC22-WG23_N0453-baseline-wd-pdtr-24772-2013-06.pdf)<br/>
+[Errors](www.gnu.org/prep/standards/html_node/Errors.html)<br/>
+[Error Messages](www.gnu.org/software/libc/manual/html_node/Error-Messages.html)
 
 `math.h`:<br/>
 `lerp`<br/>
