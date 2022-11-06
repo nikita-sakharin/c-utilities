@@ -48,3 +48,8 @@ extern inline llong llmin(llong, llong);
 extern inline ullong ullmin(ullong, ullong);
 extern inline intmax_t imaxmin(intmax_t, intmax_t);
 extern inline uintmax_t umaxmin(uintmax_t, uintmax_t);
+
+extern inline int (sign)(int);
+extern inline long lsign(long);
+extern inline llong llsign(llong);
+extern inline intmax_t imaxsign(intmax_t);

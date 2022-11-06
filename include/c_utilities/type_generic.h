@@ -33,7 +33,7 @@
     uintmax_t: umax##func \
 )(__VA_ARGS__)
 
-#else
+#else // LLONG_MAX == INTMAX_MAX
 
 #define TYPE_GENERIC_INTEGER(func, expr, ...) _Generic((expr), \
     default: func, \
@@ -56,7 +56,7 @@
     ullong: ull##func \
 )(__VA_ARGS__)
 
-#endif // LLONG_MAX < INTMAX_MAX
+#endif // LLONG_MAX == INTMAX_MAX
 
 #define TYPE_GENERIC_REAL_FLOATING(func, expr, ...) _Generic((expr), \
     flt: func##f, \

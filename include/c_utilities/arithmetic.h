@@ -3,6 +3,7 @@
 
 #include <assert.h> // assert
 #include <inttypes.h> // imaxabs, imaxdiv
+#include <limits.h> // INTMAX_WIDTH, INT_WIDTH, LLONG_WIDTH, LONG_WIDTH
 #include <stdbool.h> // bool
 #include <stdint.h> // intmax_t, uintmax_t
 #include <stdlib.h> // abs, div, labs, ldiv, llabs, lldiv
@@ -16,6 +17,8 @@
 #define IN_RANGE(x, a, b) ((x) >= (a) && (b) >= (x))
 #define MAX(x, y) ((x) < (y) ? (y) : (x))
 #define MIN(x, y) ((y) < (x) ? (y) : (x))
+#define SIGN(x) ((x) < 0 ? -1 : 0 < (x) ? 1 : 0)
+// #define SIGN(x) ((0 < (x)) - ((x) < 0))
 
 inline int clamp(
     register const int x,
@@ -275,6 +278,22 @@ inline uintmax_t umaxmin(
     return MIN(x, y);
 }
 
+inline int sign(register const int x) {
+    return (x >> (INT_WIDTH - 1U)) - (-x >> (INT_WIDTH - 1U));
+}
+
+inline long lsign(register const long x) {
+    return (x >> (LONG_WIDTH - 1U)) - (-x >> (LONG_WIDTH - 1U));
+}
+
+inline llong llsign(register const llong x) {
+    return (x >> (LLONG_WIDTH - 1U)) - (-x >> (LLONG_WIDTH - 1U));
+}
+
+inline intmax_t imaxsign(register const intmax_t x) {
+    return (x >> (INTMAX_WIDTH - 1U)) - (-x >> (INTMAX_WIDTH - 1U));
+}
+
 #define abs(x) TYPE_GENERIC_SIGNED_INTEGER_1(abs, x)
 #define clamp(x, a, b) TYPE_GENERIC_INTEGER_3(clamp, x, a, b)
 #define dim(x, y) TYPE_GENERIC_INTEGER_2(dim, x, y)
@@ -282,5 +301,6 @@ inline uintmax_t umaxmin(
 #define inRange(x, a, b) TYPE_GENERIC_INTEGER_3(inRange, x, a, b)
 #define max(x, y) TYPE_GENERIC_INTEGER_2(max, x, y)
 #define min(x, y) TYPE_GENERIC_INTEGER_2(min, x, y)
+#define sign(x) TYPE_GENERIC_SIGNED_INTEGER_1(sign, x)
 
 #endif // C_UTILITIES_ARITHMETIC_H
