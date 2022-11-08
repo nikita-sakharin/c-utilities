@@ -6,12 +6,12 @@
 #include <stddef.h> // NULL
 #include <stdint.h> // intmax_t, uintmax_t
 
-#include <c_utilities/types.h> // llong, uint, ullong, ulong
+#include <c_utilities/types.h> // *
 
 #define CMP_GREATER(x, y) (((y) > (x)) - ((x) > (y)))
 #define CMP_LESS(x, y) (((y) < (x)) - ((x) < (y)))
 
-// short or shrt, ushort or ushrt ???
+// short or shrt, str or string ???
 inline int cmpGreaterChar(
     register const void * const s1,
     register const void * const s2
@@ -126,6 +126,33 @@ inline int cmpGreaterUintmax(
 ) {
     assert(s1 != NULL && s2 != NULL);
     register const uintmax_t x = *(const uintmax_t *) s1, y = *(const uintmax_t *) s2;
+    return CMP_GREATER(x, y);
+}
+
+inline int cmpGreaterFlt(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    register const flt x = *(const flt *) s1, y = *(const flt *) s2;
+    return CMP_GREATER(x, y);
+}
+
+inline int cmpGreaterDbl(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    register const dbl x = *(const dbl *) s1, y = *(const dbl *) s2;
+    return CMP_GREATER(x, y);
+}
+
+inline int cmpGreaterLdbl(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    register const ldbl x = *(const ldbl *) s1, y = *(const ldbl *) s2;
     return CMP_GREATER(x, y);
 }
 
@@ -246,6 +273,33 @@ inline int cmpLessUintmax(
     return CMP_LESS(x, y);
 }
 
+inline int cmpLessFlt(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    register const flt x = *(const flt *) s1, y = *(const flt *) s2;
+    return CMP_LESS(x, y);
+}
+
+inline int cmpLessDbl(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    register const dbl x = *(const dbl *) s1, y = *(const dbl *) s2;
+    return CMP_LESS(x, y);
+}
+
+inline int cmpLessLdbl(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    register const ldbl x = *(const ldbl *) s1, y = *(const ldbl *) s2;
+    return CMP_LESS(x, y);
+}
+
 inline bool isEqualChar(
     register const void * const s1,
     register const void * const s2
@@ -348,6 +402,30 @@ inline bool isEqualUintmax(
 ) {
     assert(s1 != NULL && s2 != NULL);
     return *(const uintmax_t *) s1 == *(const uintmax_t *) s2;
+}
+
+inline bool isEqualFlt(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const flt *) s1 == *(const flt *) s2;
+}
+
+inline bool isEqualDbl(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const dbl *) s1 == *(const dbl *) s2;
+}
+
+inline bool isEqualLdbl(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const ldbl *) s1 == *(const ldbl *) s2;
 }
 
 inline bool isGreaterChar(
@@ -454,6 +532,30 @@ inline bool isGreaterUintmax(
     return *(const uintmax_t *) s1 > *(const uintmax_t *) s2;
 }
 
+inline bool isGreaterFlt(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const flt *) s1 > *(const flt *) s2;
+}
+
+inline bool isGreaterDbl(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const dbl *) s1 > *(const dbl *) s2;
+}
+
+inline bool isGreaterLdbl(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const ldbl *) s1 > *(const ldbl *) s2;
+}
+
 inline bool isGreaterEqualChar(
     register const void * const s1,
     register const void * const s2
@@ -556,6 +658,30 @@ inline bool isGreaterEqualUintmax(
 ) {
     assert(s1 != NULL && s2 != NULL);
     return *(const uintmax_t *) s1 >= *(const uintmax_t *) s2;
+}
+
+inline bool isGreaterEqualFlt(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const flt *) s1 >= *(const flt *) s2;
+}
+
+inline bool isGreaterEqualDbl(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const dbl *) s1 >= *(const dbl *) s2;
+}
+
+inline bool isGreaterEqualLdbl(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const ldbl *) s1 >= *(const ldbl *) s2;
 }
 
 inline bool isLessChar(
@@ -662,6 +788,30 @@ inline bool isLessUintmax(
     return *(const uintmax_t *) s1 < *(const uintmax_t *) s2;
 }
 
+inline bool isLessFlt(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const flt *) s1 < *(const flt *) s2;
+}
+
+inline bool isLessDbl(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const dbl *) s1 < *(const dbl *) s2;
+}
+
+inline bool isLessLdbl(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const ldbl *) s1 < *(const ldbl *) s2;
+}
+
 inline bool isLessEqualChar(
     register const void * const s1,
     register const void * const s2
@@ -766,6 +916,30 @@ inline bool isLessEqualUintmax(
     return *(const uintmax_t *) s1 <= *(const uintmax_t *) s2;
 }
 
+inline bool isLessEqualFlt(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const flt *) s1 <= *(const flt *) s2;
+}
+
+inline bool isLessEqualDbl(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const dbl *) s1 <= *(const dbl *) s2;
+}
+
+inline bool isLessEqualLdbl(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const ldbl *) s1 <= *(const ldbl *) s2;
+}
+
 inline bool isNotEqualChar(
     register const void * const s1,
     register const void * const s2
@@ -868,6 +1042,30 @@ inline bool isNotEqualUintmax(
 ) {
     assert(s1 != NULL && s2 != NULL);
     return *(const uintmax_t *) s1 != *(const uintmax_t *) s2;
+}
+
+inline bool isNotEqualFlt(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const flt *) s1 != *(const flt *) s2;
+}
+
+inline bool isNotEqualDbl(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const dbl *) s1 != *(const dbl *) s2;
+}
+
+inline bool isNotEqualLdbl(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const ldbl *) s1 != *(const ldbl *) s2;
 }
 
 #endif // C_UTILITIES_COMPARE_H
