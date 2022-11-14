@@ -14,7 +14,6 @@
 // #define CMP_LESS(x, y) (((y) < (x)) - ((x) < (y)))
 
 // short or shrt, str or string
-// ((uintptr) s1 & aligof(int) - 1) == 0 && ((uintptr) s2 & aligof(int) - 1) == 0
 // (((uintptr) s1 | (uintptr) s2) & aligof(int) - 1) == 0
 inline int cmpGreaterChar(
     register const void * const s1,
