@@ -13,6 +13,7 @@
 
 // IS_UNSIGNED(x) (((x) ^ ~(x)) >= 0)
 // IS_UNSIGNED(x) (((x) | ~(x)) >= 0)
+// IS_UNSIGNED(x) (~((x) - (x)) >= 0)
 // IS_UNSIGNED(x) (~((x) & 0) >= 0)
 // IS_UNSIGNED(x) (~((x) ^ (x)) >= 0)
 
