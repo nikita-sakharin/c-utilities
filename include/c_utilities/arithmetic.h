@@ -11,6 +11,11 @@
 #include <c_utilities/type_generic.h> // TYPE_GENERIC_*INTEGER_*
 #include <c_utilities/types.h> // llong, uint, ullong, ulong
 
+// IS_UNSIGNED(x) (((x) ^ ~(x)) >= 0)
+// IS_UNSIGNED(x) (((x) | ~(x)) >= 0)
+// IS_UNSIGNED(x) (~((x) & 0) >= 0)
+// IS_UNSIGNED(x) (~((x) ^ (x)) >= 0)
+
 #define ABS(x) ((x) < 0 ? -(x) : (x))
 #define CLAMP(x, a, b) ((x) < (a) ? (a) : (b) < (x) ? (b) : (x))
 #define DIM(x, y) ((y) < (x) ? (x) - (y) : 0)
