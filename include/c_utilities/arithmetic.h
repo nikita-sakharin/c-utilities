@@ -11,15 +11,6 @@
 #include <c_utilities/type_generic.h> // TYPE_GENERIC_*INTEGER_*
 #include <c_utilities/types.h> // llong, uint, ullong, ulong
 
-// #define ALL(x) ((x) ^ ~(x))
-// #define ALL(x) ((x) | ~(x))
-// #define ALL(x) (~NONE(x))
-// #define IS_UNSIGNED(x) (ALL(x) >= 0)
-// #define NONE(x) ((x) - (x))
-// #define NONE(x) ((x) & 0)
-// #define NONE(x) ((x) ^ (x))
-// #define NONE(x) (~ALL(x))
-
 #define ABS(x) ((x) < 0 ? -(x) : (x))
 #define CLAMP(x, a, b) ((x) < (a) ? (a) : (b) < (x) ? (b) : (x))
 #define DIM(x, y) ((y) < (x) ? (x) - (y) : 0)
