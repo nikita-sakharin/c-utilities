@@ -12,13 +12,13 @@
 #include <c_utilities/types.h> // llong, uint, ullong, ulong
 
 #define ABS(x) ((x) < 0 ? -(x) : (x))
-#define CEIL_DIV(x, y) ((x) / (y) + (((x) ^ (y)) >= 0 && (x) / (y) * (y) != (x)))
+#define CEIL_DIV(x, y) ((x) / (y) + (((x) ^ (y)) >= 0 && (x) % (y) != 0))
 // #define CEIL_MOD(x, y) ()
 #define CLAMP(x, a, b) ((x) < (a) ? (a) : (b) < (x) ? (b) : (x))
 #define DIM(x, y) ((y) < (x) ? (x) - (y) : 0)
 // #define EUCLID_DIV(x, y) ()
 // #define EUCLID_MOD(x, y) ()
-#define FLOOR_DIV(x, y) ((x) / (y) - (((x) ^ (y)) < 0 && (x) / (y) * (y) != (x)))
+#define FLOOR_DIV(x, y) ((x) / (y) - (((x) ^ (y)) < 0 && (x) % (y) != 0))
 // #define FLOOR_MOD(x, y) ()
 #define IN_RANGE(x, a, b) ((x) >= (a) && (b) >= (x))
 #define MAX(x, y) ((x) < (y) ? (y) : (x))
