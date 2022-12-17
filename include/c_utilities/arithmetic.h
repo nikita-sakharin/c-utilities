@@ -12,6 +12,7 @@
 #include <c_utilities/types.h> // llong, uint, ullong, ulong
 
 #define ABS(x) ((x) < 0 ? -(x) : (x))
+#define ABS_DIFF(x, y) ((y) < (x) ? (x) - (y) : (y) - (x))
 #define CEIL_DIV(x, y) ((x) / (y) + (((x) ^ (y)) >= 0 && (x) % (y) != 0))
 // #define CEIL_MOD(x, y) ()
 #define CLAMP(x, a, b) ((x) < (a) ? (a) : (b) < (x) ? (b) : (x))
