@@ -26,6 +26,44 @@
 #define MIN(x, y) ((y) < (x) ? (y) : (x))
 #define SIGN(x) ((x) < 0 ? -1 : 0 < (x) ? 1 : 0)
 
+inline int absDiff(register const int x, register const int y) {
+    return ABS_DIFF(x, y);
+}
+
+inline uint uabsDiff(register const uint x, register const uint y) {
+    return ABS_DIFF(x, y);
+}
+
+inline long labsDiff(register const long x, register const long y) {
+    return ABS_DIFF(x, y);
+}
+
+inline ulong ulabsDiff(register const ulong x, register const ulong y) {
+    return ABS_DIFF(x, y);
+}
+
+inline llong llabsDiff(register const llong x, register const llong y) {
+    return ABS_DIFF(x, y);
+}
+
+inline ullong ullabsDiff(register const ullong x, register const ullong y) {
+    return ABS_DIFF(x, y);
+}
+
+inline intmax_t imaxabsDiff(
+    register const intmax_t x,
+    register const intmax_t y
+) {
+    return ABS_DIFF(x, y);
+}
+
+inline uintmax_t umaxabsDiff(
+    register const uintmax_t x,
+    register const uintmax_t y
+) {
+    return ABS_DIFF(x, y);
+}
+
 inline int clamp(
     register const int x,
     register const int a,
@@ -301,6 +339,7 @@ inline intmax_t imaxsign(register const intmax_t x) {
 }
 
 #define abs(x) TYPE_GENERIC_SIGNED_INTEGER_1(abs, x)
+#define absDiff(x, y) TYPE_GENERIC_INTEGER_2(absDiff, x, y)
 #define clamp(x, a, b) TYPE_GENERIC_INTEGER_3(clamp, x, a, b)
 #define dim(x, y) TYPE_GENERIC_INTEGER_2(dim, x, y)
 #define div(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(div, x, y)
