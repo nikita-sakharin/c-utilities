@@ -1,8 +1,17 @@
 #include <stdbool.h> // bool
 #include <stdint.h> // intmax_t, uintmax_t
 
-#include <c_utilities/arithmetic.h> // *clamp, *dim, *max, *min
+#include <c_utilities/arithmetic.h> // *absDiff, *clamp, *dim, *max, *min
 #include <c_utilities/types.h> // llong, uint, ullong, ulong
+
+extern inline uint absDiff(int, int);
+extern inline uint uabsDiff(uint, uint);
+extern inline ulong labsDiff(long, long);
+extern inline ulong ulabsDiff(ulong, ulong);
+extern inline ullong llabsDiff(llong, llong);
+extern inline ullong ullabsDiff(ullong, ullong);
+extern inline untmax_t imaxabsDiff(intmax_t, intmax_t);
+extern inline uintmax_t umaxabsDiff(uintmax_t, uintmax_t);
 
 extern inline int (clamp)(int, int, int);
 extern inline uint uclamp(uint, uint, uint);
@@ -50,6 +59,6 @@ extern inline intmax_t imaxmin(intmax_t, intmax_t);
 extern inline uintmax_t umaxmin(uintmax_t, uintmax_t);
 
 extern inline int (sign)(int);
-extern inline long lsign(long);
-extern inline llong llsign(llong);
-extern inline intmax_t imaxsign(intmax_t);
+extern inline int lsign(long);
+extern inline int llsign(llong);
+extern inline int imaxsign(intmax_t);
