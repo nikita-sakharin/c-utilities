@@ -1,5 +1,5 @@
 `arithmetic.h`:<br/>
-`multiplyHigth` (`mulh`), `ipow`, `isqrt`, `floorDiv`, `floorMod`, `floorDivMod`<br/>
+`multiplyHigth` (`mulh`), `ipow`, `isqrt`, `ceilDivMod`, `euclidDivMod`, `floorDivMod`<br/>
 `minmax`
 
 http://www.open-std.org/jtc1/sc22/wg11/docs/n462.pdf<br/>
@@ -42,3 +42,6 @@ http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
 
 Неправильный вариант:<br/>
 `imidpoint`, `fmidpoint`
+
+`string.h`:<br/>
+`strFormat`, `strReverse`, `strNReverse`
