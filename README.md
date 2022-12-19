@@ -44,4 +44,4 @@ http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
 `imidpoint`, `fmidpoint`
 
 `string.h`:<br/>
-`strFormat`, `strReverse`, `strNReverse`
+`strFormat`, `strNFormat`, `strReverse`, `strNReverse`
