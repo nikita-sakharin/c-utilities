@@ -137,7 +137,7 @@ inline uintmax_t umaxclamp(
 }
 
 inline uint dim(register const int x, register const int y) {
-    return DIM(x, y);
+    return (uint) DIM(x, y);
 }
 
 inline uint udim(register const uint x, register const uint y) {
@@ -145,7 +145,7 @@ inline uint udim(register const uint x, register const uint y) {
 }
 
 inline ulong ldim(register const long x, register const long y) {
-    return DIM(x, y);
+    return (ulong) DIM(x, y);
 }
 
 inline ulong uldim(register const ulong x, register const ulong y) {
@@ -153,7 +153,7 @@ inline ulong uldim(register const ulong x, register const ulong y) {
 }
 
 inline ullong lldim(register const llong x, register const llong y) {
-    return DIM(x, y);
+    return (ullong) DIM(x, y);
 }
 
 inline ullong ulldim(register const ullong x, register const ullong y) {
@@ -164,7 +164,7 @@ inline uintmax_t imaxdim(
     register const intmax_t x,
     register const intmax_t y
 ) {
-    return DIM(x, y);
+    return (uintmax_t) DIM(x, y);
 }
 
 inline uintmax_t umaxdim(
