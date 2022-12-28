@@ -323,19 +323,19 @@ inline uintmax_t umaxmin(
 }
 
 inline int sign(register const int x) {
-    return (x >> (INT_WIDTH - 1U)) - (-x >> (INT_WIDTH - 1U));
+    return SIGN(x);
 }
 
 inline int lsign(register const long x) {
-    return (x >> (LONG_WIDTH - 1U)) - (-x >> (LONG_WIDTH - 1U));
+    return SIGN(x);
 }
 
 inline int llsign(register const llong x) {
-    return (x >> (LLONG_WIDTH - 1U)) - (-x >> (LLONG_WIDTH - 1U));
+    return SIGN(x);
 }
 
 inline int imaxsign(register const intmax_t x) {
-    return (x >> (INTMAX_WIDTH - 1U)) - (-x >> (INTMAX_WIDTH - 1U));
+    return SIGN(x);
 }
 
 #define abs(x) TYPE_GENERIC_SIGNED_INTEGER_1(abs, x)
