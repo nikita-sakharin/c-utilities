@@ -23,7 +23,7 @@
 #define IN_RANGE(x, a, b) ((x) >= (a) && (b) >= (x))
 #define MAX(x, y) ((x) < (y) ? (y) : (x))
 #define MIN(x, y) ((y) < (x) ? (y) : (x))
-#define SIGN(x) ((x) < 0 ? -1 : 0 < (x) ? 1 : 0)
+#define SIGN(x) ((x) < 0 ? -1 : 0 < (x))
 
 inline uint absDiff(register const int x, register const int y) {
     return ABS_DIFF(x, y);
