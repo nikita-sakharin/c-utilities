@@ -8,8 +8,8 @@
 
 #include <c_utilities/types.h> // *
 
-#define CMP_GREATER(x, y) ((x) > (y) ? -1 : (y) > (x) ? 1 : 0)
-#define CMP_LESS(x, y) ((x) < (y) ? -1 : (y) < (x) ? 1 : 0)
+#define CMP_GREATER(x, y) ((x) > (y) ? -1 : (y) > (x))
+#define CMP_LESS(x, y) ((x) < (y) ? -1 : (y) < (x))
 // #define CMP_GREATER(x, y) (((y) > (x)) - ((x) > (y)))
 // #define CMP_LESS(x, y) (((y) < (x)) - ((x) < (y)))
 
