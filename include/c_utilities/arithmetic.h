@@ -49,11 +49,11 @@ inline ullong ullabsDiff(register const ullong x, register const ullong y) {
     return ABS_DIFF(x, y);
 }
 
-inline untmax_t imaxabsDiff(
+inline uintmax_t imaxabsDiff(
     register const intmax_t x,
     register const intmax_t y
 ) {
-    return (untmax_t) ABS_DIFF(x, y);
+    return (uintmax_t) ABS_DIFF(x, y);
 }
 
 inline uintmax_t umaxabsDiff(
