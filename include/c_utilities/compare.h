@@ -10,8 +10,6 @@
 
 #define CMP_GREATER(x, y) ((x) > (y) ? -1 : (y) > (x))
 #define CMP_LESS(x, y) ((x) < (y) ? -1 : (y) < (x))
-// #define CMP_GREATER(x, y) (((y) > (x)) - ((x) > (y)))
-// #define CMP_LESS(x, y) (((y) < (x)) - ((x) < (y)))
 
 // short or shrt, str or string
 // (((uintptr) s1 | (uintptr) s2) & aligof(int) - 1) == 0
