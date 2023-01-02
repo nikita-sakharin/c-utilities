@@ -26,7 +26,7 @@
 #define SIGN(x) ((x) < 0 ? -1 : 0 < (x))
 
 inline uint absDiff(register const int x, register const int y) {
-    return ABS_DIFF(x, y);
+    return (uint) ABS_DIFF(x, y);
 }
 
 inline uint uabsDiff(register const uint x, register const uint y) {
@@ -34,7 +34,7 @@ inline uint uabsDiff(register const uint x, register const uint y) {
 }
 
 inline ulong labsDiff(register const long x, register const long y) {
-    return ABS_DIFF(x, y);
+    return (ulong) ABS_DIFF(x, y);
 }
 
 inline ulong ulabsDiff(register const ulong x, register const ulong y) {
@@ -42,7 +42,7 @@ inline ulong ulabsDiff(register const ulong x, register const ulong y) {
 }
 
 inline ullong llabsDiff(register const llong x, register const llong y) {
-    return ABS_DIFF(x, y);
+    return (ullong) ABS_DIFF(x, y);
 }
 
 inline ullong ullabsDiff(register const ullong x, register const ullong y) {
@@ -53,7 +53,7 @@ inline untmax_t imaxabsDiff(
     register const intmax_t x,
     register const intmax_t y
 ) {
-    return ABS_DIFF(x, y);
+    return (untmax_t) ABS_DIFF(x, y);
 }
 
 inline uintmax_t umaxabsDiff(
