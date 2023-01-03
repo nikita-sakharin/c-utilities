@@ -3,7 +3,6 @@
 
 #include <assert.h> // assert
 #include <inttypes.h> // imaxabs, imaxdiv
-#include <limits.h> // INTMAX_WIDTH, INT_WIDTH, LLONG_WIDTH, LONG_WIDTH
 #include <stdbool.h> // bool
 #include <stdint.h> // intmax_t, uintmax_t
 #include <stdlib.h> // abs, div, labs, ldiv, llabs, lldiv
@@ -12,13 +11,57 @@
 #include <c_utilities/types.h> // llong, uint, ullong, ulong
 
 #define ABS(x) ((x) < 0 ? -(x) : (x))
+#define ABS_DIFF(x, y) ((x) < (y) ? (y) - (x) : (x) - (y))
+#define CEIL_DIV(x, y) ((x) / (y) + (((x) ^ (y)) >= 0 && (x) % (y) != 0))
+// #define CEIL_MOD(x, y) ()
 #define CLAMP(x, a, b) ((x) < (a) ? (a) : (b) < (x) ? (b) : (x))
 #define DIM(x, y) ((y) < (x) ? (x) - (y) : 0)
+// #define EUCLID_DIV(x, y) ()
+// #define EUCLID_MOD(x, y) ()
+#define FLOOR_DIV(x, y) ((x) / (y) - (((x) ^ (y)) < 0 && (x) % (y) != 0))
+// #define FLOOR_MOD(x, y) ()
 #define IN_RANGE(x, a, b) ((x) >= (a) && (b) >= (x))
 #define MAX(x, y) ((x) < (y) ? (y) : (x))
 #define MIN(x, y) ((y) < (x) ? (y) : (x))
-#define SIGN(x) ((x) < 0 ? -1 : 0 < (x) ? 1 : 0)
-// #define SIGN(x) ((0 < (x)) - ((x) < 0))
+#define SIGN(x) ((x) < 0 ? -1 : 0 < (x))
+
+inline uint absDiff(register const int x, register const int y) {
+    return (uint) ABS_DIFF(x, y);
+}
+
+inline uint uabsDiff(register const uint x, register const uint y) {
+    return ABS_DIFF(x, y);
+}
+
+inline ulong labsDiff(register const long x, register const long y) {
+    return (ulong) ABS_DIFF(x, y);
+}
+
+inline ulong ulabsDiff(register const ulong x, register const ulong y) {
+    return ABS_DIFF(x, y);
+}
+
+inline ullong llabsDiff(register const llong x, register const llong y) {
+    return (ullong) ABS_DIFF(x, y);
+}
+
+inline ullong ullabsDiff(register const ullong x, register const ullong y) {
+    return ABS_DIFF(x, y);
+}
+
+inline uintmax_t imaxabsDiff(
+    register const intmax_t x,
+    register const intmax_t y
+) {
+    return (uintmax_t) ABS_DIFF(x, y);
+}
+
+inline uintmax_t umaxabsDiff(
+    register const uintmax_t x,
+    register const uintmax_t y
+) {
+    return ABS_DIFF(x, y);
+}
 
 inline int clamp(
     register const int x,
@@ -92,35 +135,35 @@ inline uintmax_t umaxclamp(
     return CLAMP(x, a, b);
 }
 
-inline int dim(register const int x, register const int y) {
-    return DIM(x, y);
+inline uint dim(register const int x, register const int y) {
+    return (uint) DIM(x, y);
 }
 
 inline uint udim(register const uint x, register const uint y) {
     return DIM(x, y);
 }
 
-inline long ldim(register const long x, register const long y) {
-    return DIM(x, y);
+inline ulong ldim(register const long x, register const long y) {
+    return (ulong) DIM(x, y);
 }
 
 inline ulong uldim(register const ulong x, register const ulong y) {
     return DIM(x, y);
 }
 
-inline llong lldim(register const llong x, register const llong y) {
-    return DIM(x, y);
+inline ullong lldim(register const llong x, register const llong y) {
+    return (ullong) DIM(x, y);
 }
 
 inline ullong ulldim(register const ullong x, register const ullong y) {
     return DIM(x, y);
 }
 
-inline intmax_t imaxdim(
+inline uintmax_t imaxdim(
     register const intmax_t x,
     register const intmax_t y
 ) {
-    return DIM(x, y);
+    return (uintmax_t) DIM(x, y);
 }
 
 inline uintmax_t umaxdim(
@@ -279,22 +322,23 @@ inline uintmax_t umaxmin(
 }
 
 inline int sign(register const int x) {
-    return (x >> (INT_WIDTH - 1U)) - (-x >> (INT_WIDTH - 1U));
+    return SIGN(x);
 }
 
-inline long lsign(register const long x) {
-    return (x >> (LONG_WIDTH - 1U)) - (-x >> (LONG_WIDTH - 1U));
+inline int lsign(register const long x) {
+    return SIGN(x);
 }
 
-inline llong llsign(register const llong x) {
-    return (x >> (LLONG_WIDTH - 1U)) - (-x >> (LLONG_WIDTH - 1U));
+inline int llsign(register const llong x) {
+    return SIGN(x);
 }
 
-inline intmax_t imaxsign(register const intmax_t x) {
-    return (x >> (INTMAX_WIDTH - 1U)) - (-x >> (INTMAX_WIDTH - 1U));
+inline int imaxsign(register const intmax_t x) {
+    return SIGN(x);
 }
 
 #define abs(x) TYPE_GENERIC_SIGNED_INTEGER_1(abs, x)
+#define absDiff(x, y) TYPE_GENERIC_INTEGER_2(absDiff, x, y)
 #define clamp(x, a, b) TYPE_GENERIC_INTEGER_3(clamp, x, a, b)
 #define dim(x, y) TYPE_GENERIC_INTEGER_2(dim, x, y)
 #define div(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(div, x, y)
