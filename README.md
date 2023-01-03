@@ -1,5 +1,5 @@
 `arithmetic.h`:<br/>
-`multiplyHigth` (`mulh`), `ipow`, `isqrt`, `ceilDivMod`, `euclidDivMod`, `floorDivMod`<br/>
+`multiplyHigh` (`mulHi`), `ipow`, `isqrt`, `ceilDivMod`, `euclidDivMod`, `floorDivMod`<br/>
 `minmax`
 
 http://www.open-std.org/jtc1/sc22/wg11/docs/n462.pdf<br/>
