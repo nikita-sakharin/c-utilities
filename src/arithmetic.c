@@ -1,7 +1,7 @@
 #include <stdbool.h> // bool
 #include <stdint.h> // intmax_t, uintmax_t
 
-#include <c_utilities/arithmetic.h> // *absDiff, *clamp, *dim, *inRange, *max, *min, *sign
+#include <c_utilities/arithmetic.h> // *
 #include <c_utilities/types.h> // llong, uint, ullong, ulong
 
 extern inline uint (absDiff)(int, int);
