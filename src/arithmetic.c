@@ -1,7 +1,7 @@
 #include <stdbool.h> // bool
 #include <stdint.h> // intmax_t, uintmax_t
 
-#include <c_utilities/arithmetic.h> // *absDiff, *clamp, *dim, *max, *min, *sign
+#include <c_utilities/arithmetic.h> // *absDiff, *clamp, *dim, *inRange, *max, *min, *sign
 #include <c_utilities/types.h> // llong, uint, ullong, ulong
 
 extern inline uint (absDiff)(int, int);
@@ -10,7 +10,7 @@ extern inline ulong labsDiff(long, long);
 extern inline ulong ulabsDiff(ulong, ulong);
 extern inline ullong llabsDiff(llong, llong);
 extern inline ullong ullabsDiff(ullong, ullong);
-extern inline untmax_t imaxabsDiff(intmax_t, intmax_t);
+extern inline uintmax_t imaxabsDiff(intmax_t, intmax_t);
 extern inline uintmax_t umaxabsDiff(uintmax_t, uintmax_t);
 
 extern inline int (clamp)(int, int, int);
@@ -22,13 +22,13 @@ extern inline ullong ullclamp(ullong, ullong, ullong);
 extern inline intmax_t imaxclamp(intmax_t, intmax_t, intmax_t);
 extern inline uintmax_t umaxclamp(uintmax_t, uintmax_t, uintmax_t);
 
-extern inline int (dim)(int, int);
+extern inline uint (dim)(int, int);
 extern inline uint udim(uint, uint);
-extern inline long ldim(long, long);
+extern inline ulong ldim(long, long);
 extern inline ulong uldim(ulong, ulong);
-extern inline llong lldim(llong, llong);
+extern inline ullong lldim(llong, llong);
 extern inline ullong ulldim(ullong, ullong);
-extern inline intmax_t imaxdim(intmax_t, intmax_t);
+extern inline uintmax_t imaxdim(intmax_t, intmax_t);
 extern inline uintmax_t umaxdim(uintmax_t, uintmax_t);
 
 extern inline bool (inRange)(int, int, int);
