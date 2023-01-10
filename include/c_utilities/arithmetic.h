@@ -13,7 +13,7 @@
 #define ABS(x) ((x) < 0 ? -(x) : (x))
 #define ABS_DIFF(x, y) ((x) < (y) ? (y) - (x) : (x) - (y))
 #define CEIL_DIV(x, y) ((x) / (y) + (((x) ^ (y)) >= 0 && (x) % (y) != 0))
-// #define CEIL_MOD(x, y) ()
+// #define CEIL_MOD(x, y) (((x) ^ (y)) >= 0 && (x) % (y) != 0 ? (x) % (y) - (y) : (x) % (y))
 #define CLAMP(x, a, b) ((x) < (a) ? (a) : (b) < (x) ? (b) : (x))
 #define DIM(x, y) ((y) < (x) ? (x) - (y) : 0)
 // #define EUCLID_DIV(x, y) ()
