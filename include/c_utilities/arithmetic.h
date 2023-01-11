@@ -63,6 +63,44 @@ inline uintmax_t umaxabsDiff(
     return ABS_DIFF(x, y);
 }
 
+inline int ceilDiv(register const int x, register const int y) {
+    return CEIL_DIV(x, y);
+}
+
+inline uint uceilDiv(register const uint x, register const uint y) {
+    return CEIL_DIV(x, y);
+}
+
+inline long lceilDiv(register const long x, register const long y) {
+    return CEIL_DIV(x, y);
+}
+
+inline ulong ulceilDiv(register const ulong x, register const ulong y) {
+    return CEIL_DIV(x, y);
+}
+
+inline llong llceilDiv(register const llong x, register const llong y) {
+    return CEIL_DIV(x, y);
+}
+
+inline ullong ullceilDiv(register const ullong x, register const ullong y) {
+    return CEIL_DIV(x, y);
+}
+
+inline intmax_t imaxceilDiv(
+    register const intmax_t x,
+    register const intmax_t y
+) {
+    return CEIL_DIV(x, y);
+}
+
+inline uintmax_t umaxceilDiv(
+    register const uintmax_t x,
+    register const uintmax_t y
+) {
+    return CEIL_DIV(x, y);
+}
+
 inline int clamp(
     register const int x,
     register const int a,
@@ -339,6 +377,7 @@ inline int imaxsign(register const intmax_t x) {
 
 #define abs(x) TYPE_GENERIC_SIGNED_INTEGER_1(abs, x)
 #define absDiff(x, y) TYPE_GENERIC_INTEGER_2(absDiff, x, y)
+#define ceilDiv(x, y) TYPE_GENERIC_INTEGER_2(ceilDiv, x, y)
 #define clamp(x, a, b) TYPE_GENERIC_INTEGER_3(clamp, x, a, b)
 #define dim(x, y) TYPE_GENERIC_INTEGER_2(dim, x, y)
 #define div(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(div, x, y)
