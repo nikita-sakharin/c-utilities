@@ -68,7 +68,7 @@ inline int ceilDiv(register const int x, register const int y) {
 }
 
 inline uint uceilDiv(register const uint x, register const uint y) {
-    return CEIL_DIV(x, y);
+    return x / y + (x % y != 0U);
 }
 
 inline long lceilDiv(register const long x, register const long y) {
@@ -76,7 +76,7 @@ inline long lceilDiv(register const long x, register const long y) {
 }
 
 inline ulong ulceilDiv(register const ulong x, register const ulong y) {
-    return CEIL_DIV(x, y);
+    return x / y + (x % y != 0U);
 }
 
 inline llong llceilDiv(register const llong x, register const llong y) {
@@ -84,7 +84,7 @@ inline llong llceilDiv(register const llong x, register const llong y) {
 }
 
 inline ullong ullceilDiv(register const ullong x, register const ullong y) {
-    return CEIL_DIV(x, y);
+    return x / y + (x % y != 0U);
 }
 
 inline intmax_t imaxceilDiv(
@@ -98,7 +98,7 @@ inline uintmax_t umaxceilDiv(
     register const uintmax_t x,
     register const uintmax_t y
 ) {
-    return CEIL_DIV(x, y);
+    return x / y + (x % y != 0U);
 }
 
 inline int ceilMod(register const int x, register const int y) {
