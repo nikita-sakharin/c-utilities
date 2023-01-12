@@ -254,7 +254,7 @@ inline int floorDiv(register const int x, register const int y) {
 }
 
 inline uint ufloorDiv(register const uint x, register const uint y) {
-    return FLOOR_DIV(x, y);
+    return x / y;
 }
 
 inline long lfloorDiv(register const long x, register const long y) {
@@ -262,7 +262,7 @@ inline long lfloorDiv(register const long x, register const long y) {
 }
 
 inline ulong ulfloorDiv(register const ulong x, register const ulong y) {
-    return FLOOR_DIV(x, y);
+    return x / y;
 }
 
 inline llong llfloorDiv(register const llong x, register const llong y) {
@@ -270,7 +270,7 @@ inline llong llfloorDiv(register const llong x, register const llong y) {
 }
 
 inline ullong ullfloorDiv(register const ullong x, register const ullong y) {
-    return FLOOR_DIV(x, y);
+    return x / y;
 }
 
 inline intmax_t imaxfloorDiv(
@@ -284,7 +284,7 @@ inline uintmax_t umaxfloorDiv(
     register const uintmax_t x,
     register const uintmax_t y
 ) {
-    return FLOOR_DIV(x, y);
+    return x / y;
 }
 
 inline int floorMod(register const int x, register const int y) {
