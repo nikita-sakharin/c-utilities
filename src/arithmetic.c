@@ -49,6 +49,24 @@ extern inline ullong ulldim(ullong, ullong);
 extern inline uintmax_t imaxdim(intmax_t, intmax_t);
 extern inline uintmax_t umaxdim(uintmax_t, uintmax_t);
 
+extern inline int (floorDiv)(int, int);
+extern inline uint ufloorDiv(uint, uint);
+extern inline long lfloorDiv(long, long);
+extern inline ulong ulfloorDiv(ulong, ulong);
+extern inline llong llfloorDiv(llong, llong);
+extern inline ullong ullfloorDiv(ullong, ullong);
+extern inline intmax_t imaxfloorDiv(intmax_t, intmax_t);
+extern inline uintmax_t umaxfloorDiv(uintmax_t, uintmax_t);
+
+extern inline int (floorMod)(int, int);
+extern inline uint ufloorMod(uint, uint);
+extern inline long lfloorMod(long, long);
+extern inline ulong ulfloorMod(ulong, ulong);
+extern inline llong llfloorMod(llong, llong);
+extern inline ullong ullfloorMod(ullong, ullong);
+extern inline intmax_t imaxfloorMod(intmax_t, intmax_t);
+extern inline uintmax_t umaxfloorMod(uintmax_t, uintmax_t);
+
 extern inline bool (inRange)(int, int, int);
 extern inline bool uinRange(uint, uint, uint);
 extern inline bool linRange(long, long, long);
