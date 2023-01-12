@@ -496,6 +496,8 @@ inline int imaxsign(register const intmax_t x) {
 #define clamp(x, a, b) TYPE_GENERIC_INTEGER_3(clamp, x, a, b)
 #define dim(x, y) TYPE_GENERIC_INTEGER_2(dim, x, y)
 #define div(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(div, x, y)
+#define floorDiv(x, y) TYPE_GENERIC_INTEGER_2(floorDiv, x, y)
+#define floorMod(x, y) TYPE_GENERIC_INTEGER_2(floorMod, x, y)
 #define inRange(x, a, b) TYPE_GENERIC_INTEGER_3(inRange, x, a, b)
 #define max(x, y) TYPE_GENERIC_INTEGER_2(max, x, y)
 #define min(x, y) TYPE_GENERIC_INTEGER_2(min, x, y)
