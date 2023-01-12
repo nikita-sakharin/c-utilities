@@ -249,6 +249,82 @@ inline uintmax_t umaxdim(
     return DIM(x, y);
 }
 
+inline int floorDiv(register const int x, register const int y) {
+    return FLOOR_DIV(x, y);
+}
+
+inline uint ufloorDiv(register const uint x, register const uint y) {
+    return FLOOR_DIV(x, y);
+}
+
+inline long lfloorDiv(register const long x, register const long y) {
+    return FLOOR_DIV(x, y);
+}
+
+inline ulong ulfloorDiv(register const ulong x, register const ulong y) {
+    return FLOOR_DIV(x, y);
+}
+
+inline llong llfloorDiv(register const llong x, register const llong y) {
+    return FLOOR_DIV(x, y);
+}
+
+inline ullong ullfloorDiv(register const ullong x, register const ullong y) {
+    return FLOOR_DIV(x, y);
+}
+
+inline intmax_t imaxfloorDiv(
+    register const intmax_t x,
+    register const intmax_t y
+) {
+    return FLOOR_DIV(x, y);
+}
+
+inline uintmax_t umaxfloorDiv(
+    register const uintmax_t x,
+    register const uintmax_t y
+) {
+    return FLOOR_DIV(x, y);
+}
+
+inline int floorMod(register const int x, register const int y) {
+    return FLOOR_MOD(x, y);
+}
+
+inline uint ufloorMod(register const uint x, register const uint y) {
+    return FLOOR_MOD(x, y);
+}
+
+inline long lfloorMod(register const long x, register const long y) {
+    return FLOOR_MOD(x, y);
+}
+
+inline ulong ulfloorMod(register const ulong x, register const ulong y) {
+    return FLOOR_MOD(x, y);
+}
+
+inline llong llfloorMod(register const llong x, register const llong y) {
+    return FLOOR_MOD(x, y);
+}
+
+inline ullong ullfloorMod(register const ullong x, register const ullong y) {
+    return FLOOR_MOD(x, y);
+}
+
+inline intmax_t imaxfloorMod(
+    register const intmax_t x,
+    register const intmax_t y
+) {
+    return FLOOR_MOD(x, y);
+}
+
+inline uintmax_t umaxfloorMod(
+    register const uintmax_t x,
+    register const uintmax_t y
+) {
+    return FLOOR_MOD(x, y);
+}
+
 inline bool inRange(
     register const int x,
     register const int a,
