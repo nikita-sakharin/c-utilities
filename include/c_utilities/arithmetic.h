@@ -292,7 +292,7 @@ inline int floorMod(register const int x, register const int y) {
 }
 
 inline uint ufloorMod(register const uint x, register const uint y) {
-    return FLOOR_MOD(x, y);
+    return x % y;
 }
 
 inline long lfloorMod(register const long x, register const long y) {
@@ -300,7 +300,7 @@ inline long lfloorMod(register const long x, register const long y) {
 }
 
 inline ulong ulfloorMod(register const ulong x, register const ulong y) {
-    return FLOOR_MOD(x, y);
+    return x % y;
 }
 
 inline llong llfloorMod(register const llong x, register const llong y) {
@@ -308,7 +308,7 @@ inline llong llfloorMod(register const llong x, register const llong y) {
 }
 
 inline ullong ullfloorMod(register const ullong x, register const ullong y) {
-    return FLOOR_MOD(x, y);
+    return x % y;
 }
 
 inline intmax_t imaxfloorMod(
@@ -322,7 +322,7 @@ inline uintmax_t umaxfloorMod(
     register const uintmax_t x,
     register const uintmax_t y
 ) {
-    return FLOOR_MOD(x, y);
+    return x % y;
 }
 
 inline bool inRange(
