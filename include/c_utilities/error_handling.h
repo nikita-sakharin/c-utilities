@@ -10,8 +10,8 @@
 #define ABORT_IF(condition, error) \
     do { \
         if ((condition)) { \
-            fprintf(stderr, "%s:%d: %s: %s\n",
-                __FILE__, __LINE__, __func__, strerror(error)
+            fprintf(stderr, "%s:%d: %s: %s\n", \
+                __FILE__, __LINE__, __func__, strerror(error) \
             ); \
             fflush(stderr); \
             abort(); \
