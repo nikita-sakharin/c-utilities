@@ -13,6 +13,15 @@
 
 // short or shrt, str or string
 // (((uintptr) s1 | (uintptr) s2) & aligof(int) - 1) == 0
+inline int cmpGreaterBool(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    register const bool x = *(const bool *) s1, y = *(const bool *) s2;
+    return CMP_GREATER(x, y);
+}
+
 inline int cmpGreaterChar(
     register const void * const s1,
     register const void * const s2
@@ -155,6 +164,15 @@ inline int cmpGreaterLdbl(
     assert(s1 != NULL && s2 != NULL);
     register const ldbl x = *(const ldbl *) s1, y = *(const ldbl *) s2;
     return CMP_GREATER(x, y);
+}
+
+inline int cmpLessBool(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    register const bool x = *(const bool *) s1, y = *(const bool *) s2;
+    return CMP_LESS(x, y);
 }
 
 inline int cmpLessChar(
@@ -301,6 +319,14 @@ inline int cmpLessLdbl(
     return CMP_LESS(x, y);
 }
 
+inline bool isEqualBool(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const bool *) s1 == *(const bool *) s2;
+}
+
 inline bool isEqualChar(
     register const void * const s1,
     register const void * const s2
@@ -427,6 +453,14 @@ inline bool isEqualLdbl(
 ) {
     assert(s1 != NULL && s2 != NULL);
     return *(const ldbl *) s1 == *(const ldbl *) s2;
+}
+
+inline bool isGreaterBool(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const bool *) s1 > *(const bool *) s2;
 }
 
 inline bool isGreaterChar(
@@ -557,6 +591,14 @@ inline bool isGreaterLdbl(
     return *(const ldbl *) s1 > *(const ldbl *) s2;
 }
 
+inline bool isGreaterEqualBool(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const bool *) s1 >= *(const bool *) s2;
+}
+
 inline bool isGreaterEqualChar(
     register const void * const s1,
     register const void * const s2
@@ -683,6 +725,14 @@ inline bool isGreaterEqualLdbl(
 ) {
     assert(s1 != NULL && s2 != NULL);
     return *(const ldbl *) s1 >= *(const ldbl *) s2;
+}
+
+inline bool isLessBool(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const bool *) s1 < *(const bool *) s2;
 }
 
 inline bool isLessChar(
@@ -813,6 +863,14 @@ inline bool isLessLdbl(
     return *(const ldbl *) s1 < *(const ldbl *) s2;
 }
 
+inline bool isLessEqualBool(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const bool *) s1 <= *(const bool *) s2;
+}
+
 inline bool isLessEqualChar(
     register const void * const s1,
     register const void * const s2
@@ -939,6 +997,14 @@ inline bool isLessEqualLdbl(
 ) {
     assert(s1 != NULL && s2 != NULL);
     return *(const ldbl *) s1 <= *(const ldbl *) s2;
+}
+
+inline bool isNotEqualBool(
+    register const void * const s1,
+    register const void * const s2
+) {
+    assert(s1 != NULL && s2 != NULL);
+    return *(const bool *) s1 != *(const bool *) s2;
 }
 
 inline bool isNotEqualChar(
