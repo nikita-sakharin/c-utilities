@@ -79,6 +79,7 @@ inline long lceilDiv(register const long x, register const long y) {
 }
 
 inline ulong ulceilDiv(register const ulong x, register const ulong y) {
+    assert(y != 0);
     return x / y + (x % y != 0U);
 }
 
