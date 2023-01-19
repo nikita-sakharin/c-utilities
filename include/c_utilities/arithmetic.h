@@ -227,6 +227,44 @@ inline uintmax_t umaxclamp(
     return CLAMP(x, a, b);
 }
 
+inline uint dim(register const int x, register const int y) {
+    return (uint) DIM(x, y);
+}
+
+inline uint udim(register const uint x, register const uint y) {
+    return DIM(x, y);
+}
+
+inline ulong ldim(register const long x, register const long y) {
+    return (ulong) DIM(x, y);
+}
+
+inline ulong uldim(register const ulong x, register const ulong y) {
+    return DIM(x, y);
+}
+
+inline ullong lldim(register const llong x, register const llong y) {
+    return (ullong) DIM(x, y);
+}
+
+inline ullong ulldim(register const ullong x, register const ullong y) {
+    return DIM(x, y);
+}
+
+inline uintmax_t imaxdim(
+    register const intmax_t x,
+    register const intmax_t y
+) {
+    return (uintmax_t) DIM(x, y);
+}
+
+inline uintmax_t umaxdim(
+    register const uintmax_t x,
+    register const uintmax_t y
+) {
+    return DIM(x, y);
+}
+
 inline int euclidDiv(register const int x, register const int y) {
     assert(y != 0);
     return EUCLID_DIV(x, y);
@@ -317,44 +355,6 @@ inline uintmax_t umaxeuclidMod(
 ) {
     assert(y != 0);
     return x % y;
-}
-
-inline uint dim(register const int x, register const int y) {
-    return (uint) DIM(x, y);
-}
-
-inline uint udim(register const uint x, register const uint y) {
-    return DIM(x, y);
-}
-
-inline ulong ldim(register const long x, register const long y) {
-    return (ulong) DIM(x, y);
-}
-
-inline ulong uldim(register const ulong x, register const ulong y) {
-    return DIM(x, y);
-}
-
-inline ullong lldim(register const llong x, register const llong y) {
-    return (ullong) DIM(x, y);
-}
-
-inline ullong ulldim(register const ullong x, register const ullong y) {
-    return DIM(x, y);
-}
-
-inline uintmax_t imaxdim(
-    register const intmax_t x,
-    register const intmax_t y
-) {
-    return (uintmax_t) DIM(x, y);
-}
-
-inline uintmax_t umaxdim(
-    register const uintmax_t x,
-    register const uintmax_t y
-) {
-    return DIM(x, y);
 }
 
 inline int floorDiv(register const int x, register const int y) {
@@ -618,10 +618,10 @@ inline int imaxsign(register const intmax_t x) {
 #define ceilDiv(x, y) TYPE_GENERIC_INTEGER_2(ceilDiv, x, y)
 #define ceilMod(x, y) TYPE_GENERIC_INTEGER_2(ceilMod, x, y)
 #define clamp(x, a, b) TYPE_GENERIC_INTEGER_3(clamp, x, a, b)
-#define euclidDiv(x, y) TYPE_GENERIC_INTEGER_2(euclidDiv, x, y)
-#define euclidMod(x, y) TYPE_GENERIC_INTEGER_2(euclidMod, x, y)
 #define dim(x, y) TYPE_GENERIC_INTEGER_2(dim, x, y)
 #define div(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(div, x, y)
+#define euclidDiv(x, y) TYPE_GENERIC_INTEGER_2(euclidDiv, x, y)
+#define euclidMod(x, y) TYPE_GENERIC_INTEGER_2(euclidMod, x, y)
 #define floorDiv(x, y) TYPE_GENERIC_INTEGER_2(floorDiv, x, y)
 #define floorMod(x, y) TYPE_GENERIC_INTEGER_2(floorMod, x, y)
 #define inRange(x, a, b) TYPE_GENERIC_INTEGER_3(inRange, x, a, b)
