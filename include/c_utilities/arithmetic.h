@@ -618,6 +618,8 @@ inline int imaxsign(register const intmax_t x) {
 #define ceilDiv(x, y) TYPE_GENERIC_INTEGER_2(ceilDiv, x, y)
 #define ceilMod(x, y) TYPE_GENERIC_INTEGER_2(ceilMod, x, y)
 #define clamp(x, a, b) TYPE_GENERIC_INTEGER_3(clamp, x, a, b)
+#define euclidDiv(x, y) TYPE_GENERIC_INTEGER_2(euclidDiv, x, y)
+#define euclidMod(x, y) TYPE_GENERIC_INTEGER_2(euclidMod, x, y)
 #define dim(x, y) TYPE_GENERIC_INTEGER_2(dim, x, y)
 #define div(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(div, x, y)
 #define floorDiv(x, y) TYPE_GENERIC_INTEGER_2(floorDiv, x, y)
