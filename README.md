@@ -1,6 +1,6 @@
 `arithmetic.h`:<br/>
-`multiplyHigh` (`mulHi`), `ipow`, `isqrt`, `ceilDivMod`, `euclidDivMod`, `floorDivMod`<br/>
-`minmax`
+`multiplyHigh` (`mulHi`), `unsignedAbs` (`uabs`)<br/>
+`ceilDivMod`, `euclidDivMod`, `floorDivMod`, `minmax` (`minMax`)
 
 http://www.open-std.org/jtc1/sc22/wg11/docs/n462.pdf<br/>
 http://www.open-std.org/jtc1/sc22/wg11/docs/n497.pdf<br/>
