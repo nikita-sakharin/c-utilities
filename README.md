@@ -1,4 +1,5 @@
 `arithmetic.h`:<br/>
+`midpoint`<br/>
 `multiplyHigh` (`mulHi`), `unsignedAbs` (`uabs`)<br/>
 `ceilDivMod`, `euclidDivMod`, `floorDivMod`, `minmax` (`minMax`)
 
