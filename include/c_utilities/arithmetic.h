@@ -22,6 +22,10 @@
 #define FLOOR_MOD(x, y) (((x) ^ (y)) < 0 && (x) % (y) != 0 ? (x) % (y) + (y) : (x) % (y))
 #define IN_RANGE(x, a, b) ((x) >= (a) && (b) >= (x))
 #define MAX(x, y) ((x) < (y) ? (y) : (x))
+#define MIDPOINT(x, y) (((x) >> 1) + ((y) >> 1) + (1 & (x) & (y)))
+// MIN(x, y) + ABS(x / 2 - y / 2)
+// (x & y) + ((x ^ y) >> 1)
+// (x | y) - ((x ^ y) >> 1)
 #define MIN(x, y) ((y) < (x) ? (y) : (x))
 #define SIGN(x) ((x) < 0 ? -1 : 0 < (x))
 
