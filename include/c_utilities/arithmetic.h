@@ -23,7 +23,8 @@
 #define IN_RANGE(x, a, b) ((x) >= (a) && (b) >= (x))
 #define MAX(x, y) ((x) < (y) ? (y) : (x))
 #define MIDPOINT(x, y) ((x) / 2 + (y) / 2 + ((x) % 2 + (y) % 2) / 2)
-// MAX(x, y) - ABS(x / 2 - y / 2), MIN(x, y) + ABS(x / 2 - y / 2)
+// MIN(x, y) + ABS(x / 2 - y / 2), MAX(x, y) - ABS(x / 2 - y / 2)
+// (x >> 1) + (y >> 1) + (x & y & 1), (x >> 1) + (y >> 1) + ((x | y) & 1)
 // (x & y) + ((x ^ y) >> 1), (x | y) - ((x ^ y) >> 1)
 #define MIN(x, y) ((y) < (x) ? (y) : (x))
 #define SIGN(x) ((x) < 0 ? -1 : 0 < (x))
@@ -37,7 +38,7 @@ inline uint uabsDiff(register const uint x, register const uint y) {
 }
 
 inline ulong labsDiff(register const long x, register const long y) {
-    return (ulong) ABS_DIFF(x, y);
+    return x < y ? (ulong) y - (ulong) x : (ulong) x - (ulong) y;
 }
 
 inline ulong ulabsDiff(register const ulong x, register const ulong y) {
@@ -45,7 +46,7 @@ inline ulong ulabsDiff(register const ulong x, register const ulong y) {
 }
 
 inline ullong llabsDiff(register const llong x, register const llong y) {
-    return (ullong) ABS_DIFF(x, y);
+    return x < y ? (ullong) y - (ullong) x : (ullong) x - (ullong) y;
 }
 
 inline ullong ullabsDiff(register const ullong x, register const ullong y) {
@@ -56,7 +57,7 @@ inline uintmax_t imaxabsDiff(
     register const intmax_t x,
     register const intmax_t y
 ) {
-    return (uintmax_t) ABS_DIFF(x, y);
+    return x < y ? (uintmax_t) y - (uintmax_t) x : (uintmax_t) x - (uintmax_t) y;
 }
 
 inline uintmax_t umaxabsDiff(
