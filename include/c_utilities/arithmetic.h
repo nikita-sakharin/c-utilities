@@ -31,7 +31,7 @@
 #define SIGN(x) ((x) < 0 ? -1 : 0 < (x))
 
 inline uint absDiff(register const int x, register const int y) {
-    return (uint) ABS_DIFF(x, y);
+    return x < y ? (uint) y - (uint) x : (uint) x - (uint) y;
 }
 
 inline uint uabsDiff(register const uint x, register const uint y) {
