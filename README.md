@@ -1,5 +1,5 @@
 `arithmetic.h`:<br/>
-`absDiff`, `inRangeClosed`, `icopysign`, `nabs`<br/>
+`inRangeClosed`, `icopysign`, `negativeAbs` (`nabs`)<br/>
 `midpoint`<br/>
 `multiplyHigh` (`mulHi`), `unsignedAbs` (`uabs`)<br/>
 `ceilDivMod`, `euclidDivMod`, `floorDivMod`, `minmax` (`minMax`)
