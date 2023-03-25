@@ -1,6 +1,6 @@
 `arithmetic.h`:<br/>
 `inRangeClosed`, `icopysign`, `negativeAbs` (`nabs`)<br/>
-`midpoint`<br/>
+`midpoint` (`midpointCeil`, `midpointFloor`, `midpointTrunc`)<br/>
 `multiplyHigh` (`mulHi`), `unsignedAbs` (`uabs`)<br/>
 `ceilDivMod`, `euclidDivMod`, `floorDivMod`, `minmax` (`minMax`)
 
