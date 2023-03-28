@@ -1,12 +1,10 @@
-#ifndef _B_SEARCH_H_SAVE_
-#define _B_SEARCH_H_SAVE_
+#ifndef C_UTILITIES_BINARY_SEARCH_H
+#define C_UTILITIES_BINARY_SEARCH_H
 
-#define _B_SEARCH_H_SAVE_
+#include <stddef.h> // size_t
 
-void *b_search(const void *key, const void *base, size_t num, size_t size, int (compar)(const void *, const void *));
+void *binarySearch(const void *, const void *, size_t, size_t, int (*)(const void *, const void *));
+void *lowerBound(const void *, const void *, size_t, size_t, int (*)(const void *, const void *));
+void *upperBound(const void *, const void *, size_t, size_t, int (*)(const void *, const void *));
 
-void *lower_bound(const void *key, const void *base, size_t num, size_t size, int (compar)(const void *, const void *));
-
-void *upper_bound(const void *key, const void *base, size_t num, size_t size, int (compar)(const void *, const void *));
-
-#endif
+#endif // C_UTILITIES_BINARY_SEARCH_H
