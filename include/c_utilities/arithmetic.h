@@ -20,7 +20,8 @@
 #define EUCLID_MOD(x, y) ((x) % (y) < 0 ? (y) < 0 ? (x) % (y) - (y) : (x) % (y) + (y) : (x) % (y))
 #define FLOOR_DIV(x, y) ((x) / (y) - (((x) ^ (y)) < 0 && (x) % (y) != 0))
 #define FLOOR_MOD(x, y) (((x) ^ (y)) < 0 && (x) % (y) != 0 ? (x) % (y) + (y) : (x) % (y))
-#define IN_RANGE(x, a, b) ((x) >= (a) && (b) >= (x))
+#define IN_RANGE(x, a, b) ((x) >= (a) && (x) < (b))
+#define IN_RANGE_CLOSED(x, a, b) ((x) >= (a) && (b) >= (x))
 #define MAX(x, y) ((x) < (y) ? (y) : (x))
 #define MIDPOINT(x, y) ((x) / 2 + (y) / 2 + ((x) % 2 + (y) % 2) / 2)
 #define MIDPOINT_CEIL(x, y) (((x) | (y)) - (((x) ^ (y)) >> 1))
@@ -525,6 +526,78 @@ inline bool umaxinRange(
 ) {
     assert(a <= b);
     return IN_RANGE(x, a, b);
+}
+
+inline bool inRangeClose(
+    register const int x,
+    register const int a,
+    register const int b
+) {
+    assert(a <= b);
+    return IN_RANGE_CLOSE(x, a, b);
+}
+
+inline bool uinRangeClose(
+    register const uint x,
+    register const uint a,
+    register const uint b
+) {
+    assert(a <= b);
+    return IN_RANGE_CLOSE(x, a, b);
+}
+
+inline bool linRangeClose(
+    register const long x,
+    register const long a,
+    register const long b
+) {
+    assert(a <= b);
+    return IN_RANGE_CLOSE(x, a, b);
+}
+
+inline bool ulinRangeClose(
+    register const ulong x,
+    register const ulong a,
+    register const ulong b
+) {
+    assert(a <= b);
+    return IN_RANGE_CLOSE(x, a, b);
+}
+
+inline bool llinRangeClose(
+    register const llong x,
+    register const llong a,
+    register const llong b
+) {
+    assert(a <= b);
+    return IN_RANGE_CLOSE(x, a, b);
+}
+
+inline bool ullinRangeClose(
+    register const ullong x,
+    register const ullong a,
+    register const ullong b
+) {
+    assert(a <= b);
+    return IN_RANGE_CLOSE(x, a, b);
+}
+
+inline bool imaxinRangeClose(
+    register const intmax_t x,
+    register const intmax_t a,
+    register const intmax_t b
+) {
+    assert(a <= b);
+    return IN_RANGE_CLOSE(x, a, b);
+}
+
+inline bool umaxinRangeClose(
+    register const uintmax_t x,
+    register const uintmax_t a,
+    register const uintmax_t b
+) {
+    assert(a <= b);
+    return IN_RANGE_CLOSE(x, a, b);
 }
 
 inline int max(register const int x, register const int y) {
