@@ -94,6 +94,15 @@ extern inline bool ullinRange(ullong, ullong, ullong);
 extern inline bool imaxinRange(intmax_t, intmax_t, intmax_t);
 extern inline bool umaxinRange(uintmax_t, uintmax_t, uintmax_t);
 
+extern inline bool (inRangeClose)(int, int, int);
+extern inline bool uinRangeClose(uint, uint, uint);
+extern inline bool linRangeClose(long, long, long);
+extern inline bool ulinRangeClose(ulong, ulong, ulong);
+extern inline bool llinRangeClose(llong, llong, llong);
+extern inline bool ullinRangeClose(ullong, ullong, ullong);
+extern inline bool imaxinRangeClose(intmax_t, intmax_t, intmax_t);
+extern inline bool umaxinRangeClose(uintmax_t, uintmax_t, uintmax_t);
+
 extern inline int (max)(int, int);
 extern inline uint umax(uint, uint);
 extern inline long lmax(long, long);
