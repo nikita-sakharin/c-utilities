@@ -17,7 +17,7 @@ void *binarySearch(
         inRange(size, 1U, PTRDIFF_MAX) && length <= PTRDIFF_MAX / size &&
         (const char *) array <= (const char *) array + length * size
     );
-    while (length != 0) {
+    while (length != 0U) {
         register const size_t index = length >> 1U;
         register void * const middle = elemAt(array, index, size);
         register const int result = compare(key, middle);
