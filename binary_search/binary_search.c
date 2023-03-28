@@ -1,3 +1,4 @@
+#include <assert.h> // assert
 #include <stddeff.h> // NULL, size_t
 #include <stdint.h> // PTRDIFF_MAX
 
@@ -20,12 +21,12 @@ void *binarySearch(
         register const size_t index = length >> 1U;
         register void * const middle = elemAt(array, index, size);
         register const int result = compare(key, middle);
-        if (result > 0) {
+        if (result < 0)
+            length = index;
+        else if (result > 0) {
             array = ptrIncrement(middle, size);
             length -= index + 1U;
-        } else if (result < 0)
-            length = index;
-        else
+	} else
             return middle;
     }
     return NULL;
