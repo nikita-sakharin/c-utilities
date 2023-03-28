@@ -13,6 +13,24 @@ extern inline ullong ullabsDiff(ullong, ullong);
 extern inline uintmax_t imaxabsDiff(intmax_t, intmax_t);
 extern inline uintmax_t umaxabsDiff(uintmax_t, uintmax_t);
 
+extern inline int (ceilDiv)(int, int);
+extern inline uint uceilDiv(uint, uint);
+extern inline long lceilDiv(long, long);
+extern inline ulong ulceilDiv(ulong, ulong);
+extern inline llong llceilDiv(llong, llong);
+extern inline ullong ullceilDiv(ullong, ullong);
+extern inline intmax_t imaxceilDiv(intmax_t, intmax_t);
+extern inline uintmax_t umaxceilDiv(uintmax_t, uintmax_t);
+
+extern inline int (ceilMod)(int, int);
+extern inline uint uceilMod(uint, uint);
+extern inline long lceilMod(long, long);
+extern inline ulong ulceilMod(ulong, ulong);
+extern inline llong llceilMod(llong, llong);
+extern inline ullong ullceilMod(ullong, ullong);
+extern inline intmax_t imaxceilMod(intmax_t, intmax_t);
+extern inline uintmax_t umaxceilMod(uintmax_t, uintmax_t);
+
 extern inline int (clamp)(int, int, int);
 extern inline uint uclamp(uint, uint, uint);
 extern inline long lclamp(long, long, long);
@@ -30,6 +48,42 @@ extern inline ullong lldim(llong, llong);
 extern inline ullong ulldim(ullong, ullong);
 extern inline uintmax_t imaxdim(intmax_t, intmax_t);
 extern inline uintmax_t umaxdim(uintmax_t, uintmax_t);
+
+extern inline int (euclidDiv)(int, int);
+extern inline uint ueuclidDiv(uint, uint);
+extern inline long leuclidDiv(long, long);
+extern inline ulong uleuclidDiv(ulong, ulong);
+extern inline llong lleuclidDiv(llong, llong);
+extern inline ullong ulleuclidDiv(ullong, ullong);
+extern inline intmax_t imaxeuclidDiv(intmax_t, intmax_t);
+extern inline uintmax_t umaxeuclidDiv(uintmax_t, uintmax_t);
+
+extern inline int (euclidMod)(int, int);
+extern inline uint ueuclidMod(uint, uint);
+extern inline long leuclidMod(long, long);
+extern inline ulong uleuclidMod(ulong, ulong);
+extern inline llong lleuclidMod(llong, llong);
+extern inline ullong ulleuclidMod(ullong, ullong);
+extern inline intmax_t imaxeuclidMod(intmax_t, intmax_t);
+extern inline uintmax_t umaxeuclidMod(uintmax_t, uintmax_t);
+
+extern inline int (floorDiv)(int, int);
+extern inline uint ufloorDiv(uint, uint);
+extern inline long lfloorDiv(long, long);
+extern inline ulong ulfloorDiv(ulong, ulong);
+extern inline llong llfloorDiv(llong, llong);
+extern inline ullong ullfloorDiv(ullong, ullong);
+extern inline intmax_t imaxfloorDiv(intmax_t, intmax_t);
+extern inline uintmax_t umaxfloorDiv(uintmax_t, uintmax_t);
+
+extern inline int (floorMod)(int, int);
+extern inline uint ufloorMod(uint, uint);
+extern inline long lfloorMod(long, long);
+extern inline ulong ulfloorMod(ulong, ulong);
+extern inline llong llfloorMod(llong, llong);
+extern inline ullong ullfloorMod(ullong, ullong);
+extern inline intmax_t imaxfloorMod(intmax_t, intmax_t);
+extern inline uintmax_t umaxfloorMod(uintmax_t, uintmax_t);
 
 extern inline bool (inRange)(int, int, int);
 extern inline bool uinRange(uint, uint, uint);

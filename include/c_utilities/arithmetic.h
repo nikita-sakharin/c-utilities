@@ -13,20 +13,26 @@
 #define ABS(x) ((x) < 0 ? -(x) : (x))
 #define ABS_DIFF(x, y) ((x) < (y) ? (y) - (x) : (x) - (y))
 #define CEIL_DIV(x, y) ((x) / (y) + (((x) ^ (y)) >= 0 && (x) % (y) != 0))
-// #define CEIL_MOD(x, y) ()
+#define CEIL_MOD(x, y) (((x) ^ (y)) >= 0 && (x) % (y) != 0 ? (x) % (y) - (y) : (x) % (y))
 #define CLAMP(x, a, b) ((x) < (a) ? (a) : (b) < (x) ? (b) : (x))
 #define DIM(x, y) ((y) < (x) ? (x) - (y) : 0)
-// #define EUCLID_DIV(x, y) ()
-// #define EUCLID_MOD(x, y) ()
+#define EUCLID_DIV(x, y) ((x) / (y) + ((x) % (y) < 0 ? (y) > 0 ? -1 : 1 : 0))
+#define EUCLID_MOD(x, y) ((x) % (y) < 0 ? (y) < 0 ? (x) % (y) - (y) : (x) % (y) + (y) : (x) % (y))
 #define FLOOR_DIV(x, y) ((x) / (y) - (((x) ^ (y)) < 0 && (x) % (y) != 0))
-// #define FLOOR_MOD(x, y) ()
+#define FLOOR_MOD(x, y) (((x) ^ (y)) < 0 && (x) % (y) != 0 ? (x) % (y) + (y) : (x) % (y))
 #define IN_RANGE(x, a, b) ((x) >= (a) && (b) >= (x))
 #define MAX(x, y) ((x) < (y) ? (y) : (x))
+#define MIDPOINT(x, y) ((x) / 2 + (y) / 2 + ((x) % 2 + (y) % 2) / 2)
+#define MIDPOINT_CEIL(x, y) (((x) | (y)) - (((x) ^ (y)) >> 1))
+#define MIDPOINT_CEIL(x, y) (((x) >> 1) + ((y) >> 1) + (((x) | (y)) & 1))
+#define MIDPOINT_FLOOR(x, y) (((x) & (y)) + (((x) ^ (y)) >> 1))
+#define MIDPOINT_FLOOR(x, y) (((x) >> 1) + ((y) >> 1) + ((x) & (y) & 1))
+// MIN(x, y) + ABS(x / 2 - y / 2), MAX(x, y) - ABS(x / 2 - y / 2)
 #define MIN(x, y) ((y) < (x) ? (y) : (x))
 #define SIGN(x) ((x) < 0 ? -1 : 0 < (x))
 
 inline uint absDiff(register const int x, register const int y) {
-    return (uint) ABS_DIFF(x, y);
+    return x < y ? (uint) y - (uint) x : (uint) x - (uint) y;
 }
 
 inline uint uabsDiff(register const uint x, register const uint y) {
@@ -34,7 +40,7 @@ inline uint uabsDiff(register const uint x, register const uint y) {
 }
 
 inline ulong labsDiff(register const long x, register const long y) {
-    return (ulong) ABS_DIFF(x, y);
+    return x < y ? (ulong) y - (ulong) x : (ulong) x - (ulong) y;
 }
 
 inline ulong ulabsDiff(register const ulong x, register const ulong y) {
@@ -42,7 +48,7 @@ inline ulong ulabsDiff(register const ulong x, register const ulong y) {
 }
 
 inline ullong llabsDiff(register const llong x, register const llong y) {
-    return (ullong) ABS_DIFF(x, y);
+    return x < y ? (ullong) y - (ullong) x : (ullong) x - (ullong) y;
 }
 
 inline ullong ullabsDiff(register const ullong x, register const ullong y) {
@@ -53,7 +59,7 @@ inline uintmax_t imaxabsDiff(
     register const intmax_t x,
     register const intmax_t y
 ) {
-    return (uintmax_t) ABS_DIFF(x, y);
+    return x < y ? (uintmax_t) y - (uintmax_t) x : (uintmax_t) x - (uintmax_t) y;
 }
 
 inline uintmax_t umaxabsDiff(
@@ -61,6 +67,98 @@ inline uintmax_t umaxabsDiff(
     register const uintmax_t y
 ) {
     return ABS_DIFF(x, y);
+}
+
+inline int ceilDiv(register const int x, register const int y) {
+    assert(y != 0);
+    return CEIL_DIV(x, y);
+}
+
+inline uint uceilDiv(register const uint x, register const uint y) {
+    assert(y != 0);
+    return x / y + (x % y != 0U);
+}
+
+inline long lceilDiv(register const long x, register const long y) {
+    assert(y != 0);
+    return CEIL_DIV(x, y);
+}
+
+inline ulong ulceilDiv(register const ulong x, register const ulong y) {
+    assert(y != 0);
+    return x / y + (x % y != 0U);
+}
+
+inline llong llceilDiv(register const llong x, register const llong y) {
+    assert(y != 0);
+    return CEIL_DIV(x, y);
+}
+
+inline ullong ullceilDiv(register const ullong x, register const ullong y) {
+    assert(y != 0);
+    return x / y + (x % y != 0U);
+}
+
+inline intmax_t imaxceilDiv(
+    register const intmax_t x,
+    register const intmax_t y
+) {
+    assert(y != 0);
+    return CEIL_DIV(x, y);
+}
+
+inline uintmax_t umaxceilDiv(
+    register const uintmax_t x,
+    register const uintmax_t y
+) {
+    assert(y != 0);
+    return x / y + (x % y != 0U);
+}
+
+inline int ceilMod(register const int x, register const int y) {
+    assert(y != 0);
+    return CEIL_MOD(x, y);
+}
+
+inline uint uceilMod(register const uint x, register const uint y) {
+    assert(y != 0);
+    return CEIL_MOD(x, y);
+}
+
+inline long lceilMod(register const long x, register const long y) {
+    assert(y != 0);
+    return CEIL_MOD(x, y);
+}
+
+inline ulong ulceilMod(register const ulong x, register const ulong y) {
+    assert(y != 0);
+    return CEIL_MOD(x, y);
+}
+
+inline llong llceilMod(register const llong x, register const llong y) {
+    assert(y != 0);
+    return CEIL_MOD(x, y);
+}
+
+inline ullong ullceilMod(register const ullong x, register const ullong y) {
+    assert(y != 0);
+    return CEIL_MOD(x, y);
+}
+
+inline intmax_t imaxceilMod(
+    register const intmax_t x,
+    register const intmax_t y
+) {
+    assert(y != 0);
+    return CEIL_MOD(x, y);
+}
+
+inline uintmax_t umaxceilMod(
+    register const uintmax_t x,
+    register const uintmax_t y
+) {
+    assert(y != 0);
+    return CEIL_MOD(x, y);
 }
 
 inline int clamp(
@@ -171,6 +269,190 @@ inline uintmax_t umaxdim(
     register const uintmax_t y
 ) {
     return DIM(x, y);
+}
+
+inline int euclidDiv(register const int x, register const int y) {
+    assert(y != 0);
+    return EUCLID_DIV(x, y);
+}
+
+inline uint ueuclidDiv(register const uint x, register const uint y) {
+    assert(y != 0);
+    return x / y;
+}
+
+inline long leuclidDiv(register const long x, register const long y) {
+    assert(y != 0);
+    return EUCLID_DIV(x, y);
+}
+
+inline ulong uleuclidDiv(register const ulong x, register const ulong y) {
+    assert(y != 0);
+    return x / y;
+}
+
+inline llong lleuclidDiv(register const llong x, register const llong y) {
+    assert(y != 0);
+    return EUCLID_DIV(x, y);
+}
+
+inline ullong ulleuclidDiv(register const ullong x, register const ullong y) {
+    assert(y != 0);
+    return x / y;
+}
+
+inline intmax_t imaxeuclidDiv(
+    register const intmax_t x,
+    register const intmax_t y
+) {
+    assert(y != 0);
+    return EUCLID_DIV(x, y);
+}
+
+inline uintmax_t umaxeuclidDiv(
+    register const uintmax_t x,
+    register const uintmax_t y
+) {
+    assert(y != 0);
+    return x / y;
+}
+
+inline int euclidMod(register const int x, register const int y) {
+    assert(y != 0);
+    return EUCLID_MOD(x, y);
+}
+
+inline uint ueuclidMod(register const uint x, register const uint y) {
+    assert(y != 0);
+    return x % y;
+}
+
+inline long leuclidMod(register const long x, register const long y) {
+    assert(y != 0);
+    return EUCLID_MOD(x, y);
+}
+
+inline ulong uleuclidMod(register const ulong x, register const ulong y) {
+    assert(y != 0);
+    return x % y;
+}
+
+inline llong lleuclidMod(register const llong x, register const llong y) {
+    assert(y != 0);
+    return EUCLID_MOD(x, y);
+}
+
+inline ullong ulleuclidMod(register const ullong x, register const ullong y) {
+    assert(y != 0);
+    return x % y;
+}
+
+inline intmax_t imaxeuclidMod(
+    register const intmax_t x,
+    register const intmax_t y
+) {
+    assert(y != 0);
+    return EUCLID_MOD(x, y);
+}
+
+inline uintmax_t umaxeuclidMod(
+    register const uintmax_t x,
+    register const uintmax_t y
+) {
+    assert(y != 0);
+    return x % y;
+}
+
+inline int floorDiv(register const int x, register const int y) {
+    assert(y != 0);
+    return FLOOR_DIV(x, y);
+}
+
+inline uint ufloorDiv(register const uint x, register const uint y) {
+    assert(y != 0);
+    return x / y;
+}
+
+inline long lfloorDiv(register const long x, register const long y) {
+    assert(y != 0);
+    return FLOOR_DIV(x, y);
+}
+
+inline ulong ulfloorDiv(register const ulong x, register const ulong y) {
+    assert(y != 0);
+    return x / y;
+}
+
+inline llong llfloorDiv(register const llong x, register const llong y) {
+    assert(y != 0);
+    return FLOOR_DIV(x, y);
+}
+
+inline ullong ullfloorDiv(register const ullong x, register const ullong y) {
+    assert(y != 0);
+    return x / y;
+}
+
+inline intmax_t imaxfloorDiv(
+    register const intmax_t x,
+    register const intmax_t y
+) {
+    assert(y != 0);
+    return FLOOR_DIV(x, y);
+}
+
+inline uintmax_t umaxfloorDiv(
+    register const uintmax_t x,
+    register const uintmax_t y
+) {
+    assert(y != 0);
+    return x / y;
+}
+
+inline int floorMod(register const int x, register const int y) {
+    assert(y != 0);
+    return FLOOR_MOD(x, y);
+}
+
+inline uint ufloorMod(register const uint x, register const uint y) {
+    assert(y != 0);
+    return x % y;
+}
+
+inline long lfloorMod(register const long x, register const long y) {
+    assert(y != 0);
+    return FLOOR_MOD(x, y);
+}
+
+inline ulong ulfloorMod(register const ulong x, register const ulong y) {
+    assert(y != 0);
+    return x % y;
+}
+
+inline llong llfloorMod(register const llong x, register const llong y) {
+    assert(y != 0);
+    return FLOOR_MOD(x, y);
+}
+
+inline ullong ullfloorMod(register const ullong x, register const ullong y) {
+    assert(y != 0);
+    return x % y;
+}
+
+inline intmax_t imaxfloorMod(
+    register const intmax_t x,
+    register const intmax_t y
+) {
+    assert(y != 0);
+    return FLOOR_MOD(x, y);
+}
+
+inline uintmax_t umaxfloorMod(
+    register const uintmax_t x,
+    register const uintmax_t y
+) {
+    assert(y != 0);
+    return x % y;
 }
 
 inline bool inRange(
@@ -339,9 +621,15 @@ inline int imaxsign(register const intmax_t x) {
 
 #define abs(x) TYPE_GENERIC_SIGNED_INTEGER_1(abs, x)
 #define absDiff(x, y) TYPE_GENERIC_INTEGER_2(absDiff, x, y)
+#define ceilDiv(x, y) TYPE_GENERIC_INTEGER_2(ceilDiv, x, y)
+#define ceilMod(x, y) TYPE_GENERIC_INTEGER_2(ceilMod, x, y)
 #define clamp(x, a, b) TYPE_GENERIC_INTEGER_3(clamp, x, a, b)
 #define dim(x, y) TYPE_GENERIC_INTEGER_2(dim, x, y)
 #define div(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(div, x, y)
+#define euclidDiv(x, y) TYPE_GENERIC_INTEGER_2(euclidDiv, x, y)
+#define euclidMod(x, y) TYPE_GENERIC_INTEGER_2(euclidMod, x, y)
+#define floorDiv(x, y) TYPE_GENERIC_INTEGER_2(floorDiv, x, y)
+#define floorMod(x, y) TYPE_GENERIC_INTEGER_2(floorMod, x, y)
 #define inRange(x, a, b) TYPE_GENERIC_INTEGER_3(inRange, x, a, b)
 #define max(x, y) TYPE_GENERIC_INTEGER_2(max, x, y)
 #define min(x, y) TYPE_GENERIC_INTEGER_2(min, x, y)

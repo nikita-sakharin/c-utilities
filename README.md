@@ -1,6 +1,8 @@
 `arithmetic.h`:<br/>
-`multiplyHigth` (`mulh`), `ipow`, `isqrt`, `ceilDivMod`, `euclidDivMod`, `floorDivMod`<br/>
-`minmax`
+`inRangeClosed`, `icopysign`, `negativeAbs` (`nabs`)<br/>
+`midpoint` (`midpointCeil`, `midpointFloor`, `midpointTrunc`)<br/>
+`multiplyHigh` (`mulHi`), `unsignedAbs` (`uabs`)<br/>
+`ceilDivMod`, `euclidDivMod`, `floorDivMod`, `minmax` (`minMax`)
 
 http://www.open-std.org/jtc1/sc22/wg11/docs/n462.pdf<br/>
 http://www.open-std.org/jtc1/sc22/wg11/docs/n497.pdf<br/>
@@ -8,7 +10,8 @@ http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
 
 `bit.h`:<br/>
 {`bitCount`|`popCount`}<br/>
-`rotateLeft`, `rotateRight`
+`rotateLeft`, `rotateRight`<br/>
+`clear` (`reset`), `get` (`test`), `set`, `flip`
 
 `error_handling.h`:<br/>
 Макрос `EXIT_IF` можно использовать в следующей ситуации: было выделено несколько ресурсов, далее произошла ошибка, `GOTO_IF` перекинул в место, где выделенные ресурсы освобождаются. Когда вызываем функцию для освобождения ресурса, то возвращаемое значение проверяем уже с помощью `EXIT_IF`, а не с помощью `GOTO_IF`. В данном случае напрашивается аналогия с C++ `std::terminate`, которая вызывается, если при обработке исключения, было выброшено еще одно. Возможно, в рамках данной аналогии, имеет смысл вместо функции `exit`, использовать `_Exit`, или даже `abort`. Но вариант, просто `exit` видится более органичным, более интуитивным, так как в точности копирует `return` в `main` (вызывает `atexit` и закрывает файловые дискрипторы). С другой стороны вариант с функцией `abort` ближе по семантике к `std::terminate`. Вариант при котором будет отдельно макрос с `abort` и отдельно с `exit` кажется откровенно спорным.
@@ -45,3 +48,6 @@ http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
 
 `string.h`:<br/>
 `strFormat`, `strNFormat`, `strReverse`, `strNReverse`
+
+`utility.h`:<br/>
+`memReverse`
