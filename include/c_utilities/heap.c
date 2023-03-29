@@ -1,0 +1,4 @@
+#ifndef C_UTILITIES_HEAP_H
+#define C_UTILITIES_HEAP_H
+
+#endif // C_UTILITIES_HEAP_H
