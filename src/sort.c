@@ -1,7 +1,7 @@
 #include <stddef.h> // size_t
 
-#include <c_utilities/common.h> // elemCompareSwap
 #include <c_utilities/sort.h> // bubbleSort
+#include <c_utilities/utility.h> // elemCompareSwap
 
 void bubbleSort(
     register void * const array, // restrict ???

@@ -1,6 +1,6 @@
 #include <stddef.h> // ptrdiff_t, size_t
 
-#include <c_utilities/common.h> // elem*, mem*, ptr*
+#include <c_utilities/utility.h> // elem*, mem*, ptr*
 
 extern inline void *elemAt(const void *, size_t, size_t);
 extern inline int elemCompare(const void * restrict, size_t, size_t,

@@ -1,5 +1,5 @@
-#ifndef C_UTILITIES_COMMON_H
-#define C_UTILITIES_COMMON_H
+#ifndef C_UTILITIES_UTILITY_H
+#define C_UTILITIES_UTILITY_H
 
 #include <assert.h> // assert
 #include <stdalign.h> // alignas
@@ -277,4 +277,4 @@ inline void *elemSwap(
     return memSwap(elemAt(arr, idx1, size), elemAt(arr, idx2, size));
 }
 
-#endif // C_UTILITIES_COMMON_H
+#endif // C_UTILITIES_UTILITY_H

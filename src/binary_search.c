@@ -4,7 +4,7 @@
 
 #include <c_utilities/arithmetic.h> // inRange
 #include <c_utilities/binary_search.h> // binarySearch
-#include <c_utilities/common.h> // elemAt, ptrIncrement
+#include <c_utilities/utility.h> // elemAt, ptrIncrement
 
 void *binarySearch(
     register const void * const key,
