@@ -10,8 +10,8 @@ void bubbleSort(
     register int (* const compare)(const void *, const void *)
 ) {
     // assert ???
-    for (size_t newLength = 0; length > 1; length = newLength, newLength = 0)
-        for (size_t i = 1; i < length; ++i)
+    for (register size_t newLength = 0; length > 1; length = newLength, newLength = 0)
+        for (register size_t i = 1; i < length; ++i)
             if (elemCompareSwap(array, i - 1, i, size, compare))
                 newLength = i;
 }
