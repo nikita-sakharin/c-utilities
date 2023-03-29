@@ -118,7 +118,7 @@ inline void *ptrOffset(
 #   pragma GCC diagnostic push
 #   pragma GCC diagnostic ignored "-Wcast-qual"
 #   endif
-    return (char *) ptr + idx * size;
+    return (char *) ptr + idx * (ptrdiff_t) size;
 #   ifdef __clang__
 #   pragma clang diagnostic pop
 #   elifdef __GNUC__
