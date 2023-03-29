@@ -103,13 +103,13 @@ inline ptrdiff_t ptrDifference(
 
 inline void *ptrOffset(
     register const void * const ptr,
-    register const ptrdiff_t idx,
+    register const ptrdiff_t off,
     register const size_t size
 ) {
-    assert((ptr != NULL || idx == 0) && inRange(size, 1U, PTRDIFF_MAX) &&
-        idx != PTRDIFF_MIN && abs(idx) <= PTRDIFF_MAX / (ptrdiff_t) size &&
-        sign(idx) == CMP_LESS((const char *) ptr, (const char *) ptr + idx * size) &&
-        (ptr == NULL || (const char *) ptr + idx * size != NULL)
+    assert((ptr != NULL || off == 0) && inRange(size, 1U, PTRDIFF_MAX) &&
+        off != PTRDIFF_MIN && abs(off) <= PTRDIFF_MAX / (ptrdiff_t) size &&
+        sign(off) == CMP_LESS((const char *) ptr, (const char *) ptr + off * size) &&
+        (ptr == NULL || (const char *) ptr + off * size != NULL)
     );
 #   ifdef __clang__
 #   pragma clang diagnostic push
@@ -118,7 +118,7 @@ inline void *ptrOffset(
 #   pragma GCC diagnostic push
 #   pragma GCC diagnostic ignored "-Wcast-qual"
 #   endif
-    return (char *) ptr + idx * (ptrdiff_t) size;
+    return (char *) ptr + off * (ptrdiff_t) size;
 #   ifdef __clang__
 #   pragma clang diagnostic pop
 #   elifdef __GNUC__
