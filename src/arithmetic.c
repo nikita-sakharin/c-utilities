@@ -125,3 +125,8 @@ extern inline int (sign)(int);
 extern inline int lsign(long);
 extern inline int llsign(llong);
 extern inline int imaxsign(intmax_t);
+
+extern inline uint (unsignedAbs)(int);
+extern inline ulong lunsignedAbs(long);
+extern inline ullong llunsignedAbs(llong);
+extern inline uintmax_t imaxunsignedAbs(intmax_t);
