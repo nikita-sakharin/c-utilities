@@ -9,7 +9,7 @@
 #include <stdlib.h> // abs
 #include <string.h> // memcpy
 
-#include <c_utilities/arithmetic.h> // abs, inRange, max, min, sign
+#include <c_utilities/arithmetic.h> // abs, inRangeClosed, max, min, sign
 #include <c_utilities/compare.h> // CMP_LESS
 #include <c_utilities/system_config.h> // LEVEL1_DCACHE_LINESIZE
 #include <c_utilities/types.h> // uchar
@@ -93,7 +93,7 @@ inline ptrdiff_t ptrDifference(
     register const void * const ptr2,
     register const size_t size
 ) {
-    assert((ptr1 == NULL) == (ptr2 == NULL) && inRange(size, 1U, PTRDIFF_MAX) &&
+    assert((ptr1 == NULL) == (ptr2 == NULL) && inRangeClosed(size, 1U, PTRDIFF_MAX) &&
         (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN &&
         sign((const char *) ptr1 - (const char *) ptr2) == CMP_LESS(ptr1, ptr2) &&
         ((const char *) ptr1 - (const char *) ptr2) % (ptrdiff_t) size == 0
@@ -106,7 +106,7 @@ inline void *ptrOffset(
     register const ptrdiff_t off,
     register const size_t size
 ) {
-    assert((ptr != NULL || off == 0) && inRange(size, 1U, PTRDIFF_MAX) &&
+    assert((ptr != NULL || off == 0) && inRangeClosed(size, 1U, PTRDIFF_MAX) &&
         off != PTRDIFF_MIN && abs(off) <= PTRDIFF_MAX / (ptrdiff_t) size &&
         sign(off) == CMP_LESS((const char *) ptr, (const char *) ptr + off * size) &&
         (ptr == NULL || (const char *) ptr + off * size != NULL)
@@ -130,7 +130,7 @@ inline void *ptrDecrement(
     register const void * const ptr,
     register const size_t size
 ) {
-    assert(ptr != NULL && inRange(size, 1U, PTRDIFF_MAX) &&
+    assert(ptr != NULL && inRangeClosed(size, 1U, PTRDIFF_MAX) &&
         (const char *) ptr - size < (const char *) ptr &&
         (const char *) ptr - size != NULL
     );
@@ -141,7 +141,7 @@ inline void *ptrIncrement(
     register const void * const ptr,
     register const size_t size
 ) {
-    assert(ptr != NULL && inRange(size, 1U, PTRDIFF_MAX) &&
+    assert(ptr != NULL && inRangeClosed(size, 1U, PTRDIFF_MAX) &&
         (const char *) ptr < (const char *) ptr + size
     );
     return ptrOffset(ptr, 1, size);
@@ -174,7 +174,7 @@ inline void *ptrMidpoint(
     register const void * const ptr2,
     register const size_t size
 ) {
-    assert((ptr1 == NULL) == (ptr2 == NULL) && inRange(size, 1U, PTRDIFF_MAX) &&
+    assert((ptr1 == NULL) == (ptr2 == NULL) && inRangeClosed(size, 1U, PTRDIFF_MAX) &&
         (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN &&
         sign((const char *) ptr1 - (const char *) ptr2) == CMP_LESS(ptr1, ptr2) &&
         ((const char *) ptr1 - (const char *) ptr2) % (ptrdiff_t) size == 0
@@ -187,7 +187,7 @@ inline void *ptrMidpoint(
     register const size_t n, // ???
     register const size_t size
 ) { // n != 0 ???
-    assert(arr != NULL && n < PTRDIFF_MAX && inRange(size, 1U, PTRDIFF_MAX) &&
+    assert(arr != NULL && n < PTRDIFF_MAX && inRangeClosed(size, 1U, PTRDIFF_MAX) &&
         n <= PTRDIFF_MAX / size &&
         (const char *) arr <= (const char *) arr + n * size
     );
@@ -199,7 +199,7 @@ inline void *elemAt( // elemAtIndex ???
     register const size_t idx,
     register const size_t size
 ) {
-    assert(arr != NULL && inRange(size, 1U, PTRDIFF_MAX) &&
+    assert(arr != NULL && inRangeClosed(size, 1U, PTRDIFF_MAX) &&
         idx < PTRDIFF_MAX / size &&
         (const char *) arr < (const char *) arr + (idx + 1U) * size
     );
@@ -213,7 +213,7 @@ inline int elemCompare(
     register const size_t size,
     register int (* const cmp)(const void *, const void *)
 ) {
-    assert(arr != NULL && inRange(size, 1U, PTRDIFF_MAX) &&
+    assert(arr != NULL && inRangeClosed(size, 1U, PTRDIFF_MAX) &&
         max(idx1, idx2) < PTRDIFF_MAX / size && cmp != NULL &&
         (const char *) arr < (const char *) arr + (max(idx1, idx2) + 1U) * size
     );
@@ -227,7 +227,7 @@ inline void *elemCompareMax(
     register const size_t size,
     register int (* const cmp)(const void *, const void *)
 ) {
-    assert(arr != NULL && inRange(size, 1U, PTRDIFF_MAX) &&
+    assert(arr != NULL && inRangeClosed(size, 1U, PTRDIFF_MAX) &&
         max(idx1, idx2) < PTRDIFF_MAX / size && cmp != NULL &&
         (const char *) arr < (const char *) arr + (max(idx1, idx2) + 1U) * size
     );
@@ -241,7 +241,7 @@ inline void *elemCompareMin(
     register const size_t size,
     register int (* const cmp)(const void *, const void *)
 ) {
-    assert(arr != NULL && inRange(size, 1U, PTRDIFF_MAX) &&
+    assert(arr != NULL && inRangeClosed(size, 1U, PTRDIFF_MAX) &&
         max(idx1, idx2) < PTRDIFF_MAX / size && cmp != NULL &&
         (const char *) arr < (const char *) arr + (max(idx1, idx2) + 1U) * size
     );
@@ -255,7 +255,7 @@ inline bool elemCompareSwap(
     register const size_t size,
     register int (* const cmp)(const void *, const void *)
 ) {
-    assert(arr != NULL && idx1 != idx2 && inRange(size, 1U, PTRDIFF_MAX) &&
+    assert(arr != NULL && idx1 != idx2 && inRangeClosed(size, 1U, PTRDIFF_MAX) &&
         max(idx1, idx2) < PTRDIFF_MAX / size && cmp != NULL &&
         (char *) arr < (char *) arr + (max(idx1, idx2) + 1U) * size
     );
@@ -270,7 +270,7 @@ inline void *elemSwap(
     register const size_t idx2,
     register const size_t size
 ) {
-    assert(arr != NULL && idx1 != idx2 && inRange(size, 1U, PTRDIFF_MAX) &&
+    assert(arr != NULL && idx1 != idx2 && inRangeClosed(size, 1U, PTRDIFF_MAX) &&
         max(idx1, idx2) < PTRDIFF_MAX / size &&
         (char *) arr < (char *) arr + (max(idx1, idx2) + 1U) * size
     );
