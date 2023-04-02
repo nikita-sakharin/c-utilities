@@ -1152,7 +1152,19 @@ inline bool isNotEqualFlt(
     register const void * const s2
 ) {
     assert(s1 != NULL && s2 != NULL);
+#   ifdef __clang__
+#   pragma clang diagnostic push
+#   pragma clang diagnostic ignored "-Wfloat-equal"
+#   elifdef __GNUC__
+#   pragma GCC diagnostic push
+#   pragma GCC diagnostic ignored "-Wfloat-equal"
+#   endif
     return *(const flt *) s1 != *(const flt *) s2;
+#   ifdef __clang__
+#   pragma clang diagnostic pop
+#   elifdef __GNUC__
+#   pragma GCC diagnostic pop
+#   endif
 }
 
 inline bool isNotEqualDbl(
@@ -1160,7 +1172,19 @@ inline bool isNotEqualDbl(
     register const void * const s2
 ) {
     assert(s1 != NULL && s2 != NULL);
+#   ifdef __clang__
+#   pragma clang diagnostic push
+#   pragma clang diagnostic ignored "-Wfloat-equal"
+#   elifdef __GNUC__
+#   pragma GCC diagnostic push
+#   pragma GCC diagnostic ignored "-Wfloat-equal"
+#   endif
     return *(const dbl *) s1 != *(const dbl *) s2;
+#   ifdef __clang__
+#   pragma clang diagnostic pop
+#   elifdef __GNUC__
+#   pragma GCC diagnostic pop
+#   endif
 }
 
 inline bool isNotEqualLdbl(
@@ -1168,7 +1192,19 @@ inline bool isNotEqualLdbl(
     register const void * const s2
 ) {
     assert(s1 != NULL && s2 != NULL);
+#   ifdef __clang__
+#   pragma clang diagnostic push
+#   pragma clang diagnostic ignored "-Wfloat-equal"
+#   elifdef __GNUC__
+#   pragma GCC diagnostic push
+#   pragma GCC diagnostic ignored "-Wfloat-equal"
+#   endif
     return *(const ldbl *) s1 != *(const ldbl *) s2;
+#   ifdef __clang__
+#   pragma clang diagnostic pop
+#   elifdef __GNUC__
+#   pragma GCC diagnostic pop
+#   endif
 }
 
 #endif // C_UTILITIES_COMPARE_H
