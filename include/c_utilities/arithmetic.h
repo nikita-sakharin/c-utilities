@@ -529,7 +529,7 @@ inline bool umaxinRange(
     return IN_RANGE(x, a, b);
 }
 
-inline bool inRangeClose(
+inline bool inRangeClosed(
     register const int x,
     register const int a,
     register const int b
@@ -538,7 +538,7 @@ inline bool inRangeClose(
     return IN_RANGE_CLOSED(x, a, b);
 }
 
-inline bool uinRangeClose(
+inline bool uinRangeClosed(
     register const uint x,
     register const uint a,
     register const uint b
@@ -547,7 +547,7 @@ inline bool uinRangeClose(
     return IN_RANGE_CLOSED(x, a, b);
 }
 
-inline bool linRangeClose(
+inline bool linRangeClosed(
     register const long x,
     register const long a,
     register const long b
@@ -556,7 +556,7 @@ inline bool linRangeClose(
     return IN_RANGE_CLOSED(x, a, b);
 }
 
-inline bool ulinRangeClose(
+inline bool ulinRangeClosed(
     register const ulong x,
     register const ulong a,
     register const ulong b
@@ -565,7 +565,7 @@ inline bool ulinRangeClose(
     return IN_RANGE_CLOSED(x, a, b);
 }
 
-inline bool llinRangeClose(
+inline bool llinRangeClosed(
     register const llong x,
     register const llong a,
     register const llong b
@@ -574,7 +574,7 @@ inline bool llinRangeClose(
     return IN_RANGE_CLOSED(x, a, b);
 }
 
-inline bool ullinRangeClose(
+inline bool ullinRangeClosed(
     register const ullong x,
     register const ullong a,
     register const ullong b
@@ -583,7 +583,7 @@ inline bool ullinRangeClose(
     return IN_RANGE_CLOSED(x, a, b);
 }
 
-inline bool imaxinRangeClose(
+inline bool imaxinRangeClosed(
     register const intmax_t x,
     register const intmax_t a,
     register const intmax_t b
@@ -592,7 +592,7 @@ inline bool imaxinRangeClose(
     return IN_RANGE_CLOSED(x, a, b);
 }
 
-inline bool umaxinRangeClose(
+inline bool umaxinRangeClosed(
     register const uintmax_t x,
     register const uintmax_t a,
     register const uintmax_t b
@@ -721,6 +721,7 @@ inline uintmax_t imaxunsignedAbs(register const intmax_t x) {
 #define floorDiv(x, y) TYPE_GENERIC_INTEGER_2(floorDiv, x, y)
 #define floorMod(x, y) TYPE_GENERIC_INTEGER_2(floorMod, x, y)
 #define inRange(x, a, b) TYPE_GENERIC_INTEGER_3(inRange, x, a, b)
+#define inRangeClosed(x, a, b) TYPE_GENERIC_INTEGER_3(inRangeClosed, x, a, b)
 #define max(x, y) TYPE_GENERIC_INTEGER_2(max, x, y)
 #define min(x, y) TYPE_GENERIC_INTEGER_2(min, x, y)
 #define sign(x) TYPE_GENERIC_SIGNED_INTEGER_1(sign, x)
