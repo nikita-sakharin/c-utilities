@@ -535,7 +535,7 @@ inline bool inRangeClose(
     register const int b
 ) {
     assert(a <= b);
-    return IN_RANGE_CLOSE(x, a, b);
+    return IN_RANGE_CLOSED(x, a, b);
 }
 
 inline bool uinRangeClose(
@@ -544,7 +544,7 @@ inline bool uinRangeClose(
     register const uint b
 ) {
     assert(a <= b);
-    return IN_RANGE_CLOSE(x, a, b);
+    return IN_RANGE_CLOSED(x, a, b);
 }
 
 inline bool linRangeClose(
@@ -553,7 +553,7 @@ inline bool linRangeClose(
     register const long b
 ) {
     assert(a <= b);
-    return IN_RANGE_CLOSE(x, a, b);
+    return IN_RANGE_CLOSED(x, a, b);
 }
 
 inline bool ulinRangeClose(
@@ -562,7 +562,7 @@ inline bool ulinRangeClose(
     register const ulong b
 ) {
     assert(a <= b);
-    return IN_RANGE_CLOSE(x, a, b);
+    return IN_RANGE_CLOSED(x, a, b);
 }
 
 inline bool llinRangeClose(
@@ -571,7 +571,7 @@ inline bool llinRangeClose(
     register const llong b
 ) {
     assert(a <= b);
-    return IN_RANGE_CLOSE(x, a, b);
+    return IN_RANGE_CLOSED(x, a, b);
 }
 
 inline bool ullinRangeClose(
@@ -580,7 +580,7 @@ inline bool ullinRangeClose(
     register const ullong b
 ) {
     assert(a <= b);
-    return IN_RANGE_CLOSE(x, a, b);
+    return IN_RANGE_CLOSED(x, a, b);
 }
 
 inline bool imaxinRangeClose(
@@ -589,7 +589,7 @@ inline bool imaxinRangeClose(
     register const intmax_t b
 ) {
     assert(a <= b);
-    return IN_RANGE_CLOSE(x, a, b);
+    return IN_RANGE_CLOSED(x, a, b);
 }
 
 inline bool umaxinRangeClose(
@@ -598,7 +598,7 @@ inline bool umaxinRangeClose(
     register const uintmax_t b
 ) {
     assert(a <= b);
-    return IN_RANGE_CLOSE(x, a, b);
+    return IN_RANGE_CLOSED(x, a, b);
 }
 
 inline int max(register const int x, register const int y) {
