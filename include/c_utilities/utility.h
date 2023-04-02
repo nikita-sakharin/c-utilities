@@ -9,7 +9,7 @@
 #include <stdlib.h> // abs
 #include <string.h> // memcpy
 
-#include <c_utilities/arithmetic.h> // abs, inRangeClosed, max, min, sign
+#include <c_utilities/arithmetic.h> // *
 #include <c_utilities/compare.h> // CMP_LESS
 #include <c_utilities/system_config.h> // LEVEL1_DCACHE_LINESIZE
 #include <c_utilities/types.h> // uchar
@@ -93,7 +93,8 @@ inline ptrdiff_t ptrDifference(
     register const void * const ptr2,
     register const size_t size
 ) {
-    assert((ptr1 == NULL) == (ptr2 == NULL) && inRangeClosed(size, 1U, PTRDIFF_MAX) &&
+    assert((ptr1 == NULL) == (ptr2 == NULL) &&
+        inRangeClosed(size, 1U, PTRDIFF_MAX) &&
         (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN &&
         sign((const char *) ptr1 - (const char *) ptr2) == CMP_LESS(ptr1, ptr2) &&
         ((const char *) ptr1 - (const char *) ptr2) % (ptrdiff_t) size == 0
@@ -155,7 +156,7 @@ inline void *ptrIncrement(
         (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN &&
         sign((const char *) ptr1 - (const char *) ptr2) == CMP_LESS(ptr1, ptr2)
     );
-    return ;
+    return MAX((const char *) ptr1, (const char *) ptr2);
 }
 
 inline void *ptrMin(
@@ -166,7 +167,7 @@ inline void *ptrMin(
         (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN &&
         sign((const char *) ptr1 - (const char *) ptr2) == CMP_LESS(ptr1, ptr2)
     );
-    return ;
+    return MIN((const char *) ptr1, (const char *) ptr2);
 } */
 
 inline void *ptrMidpoint(
@@ -194,7 +195,7 @@ inline void *ptrMidpoint(
     return elemAt(arr, n >> 1U, size);
 } */
 
-inline void *elemAt( // elemAtIndex ???
+inline void *elemAt( // elemAtIndex
     register const void * const arr,
     register const size_t idx,
     register const size_t size
