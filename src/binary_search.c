@@ -26,7 +26,7 @@ void *binarySearch(
         else if (result > 0) {
             array = ptrIncrement(middle, size);
             length -= index + 1U;
-	} else
+        } else
             return middle;
     }
     return NULL;
