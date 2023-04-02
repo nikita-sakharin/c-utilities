@@ -148,7 +148,7 @@ inline void *ptrIncrement(
     return ptrOffset(ptr, 1, size);
 }
 
-/* inline void *ptrMax(
+inline void *ptrMax(
     register const void * const ptr1,
     register const void * const ptr2
 ) {
@@ -168,7 +168,7 @@ inline void *ptrMin(
         sign((const char *) ptr1 - (const char *) ptr2) == CMP_LESS(ptr1, ptr2)
     );
     return MIN((const char *) ptr1, (const char *) ptr2);
-} */
+}
 
 inline void *ptrMidpoint(
     register const void * const ptr1,
