@@ -31,6 +31,7 @@
 #define MIDPOINT_TRUNC(x, y) ((x) / 2 + (y) / 2 + ((x) % 2 + (y) % 2) / 2)
 // MIN(x, y) + ABS(x / 2 - y / 2), MAX(x, y) - ABS(x / 2 - y / 2)
 #define MIN(x, y) ((y) < (x) ? (y) : (x))
+#define NEGATIVE_ABS(x) (0 < (x) ? -(x) : (x))
 #define SIGN(x) ((x) < 0 ? -1 : 0 < (x))
 
 inline uint absDiff(register const int x, register const int y) {
