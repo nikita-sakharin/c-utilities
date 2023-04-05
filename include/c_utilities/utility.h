@@ -156,7 +156,19 @@ inline void *ptrMax(
         (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN &&
         sign((const char *) ptr1 - (const char *) ptr2) == CMP_LESS(ptr1, ptr2)
     );
-    return MAX((const char *) ptr1, (const char *) ptr2);
+#   ifdef __clang__
+#   pragma clang diagnostic push
+#   pragma clang diagnostic ignored "-Wcast-qual"
+#   elifdef __GNUC__
+#   pragma GCC diagnostic push
+#   pragma GCC diagnostic ignored "-Wcast-qual"
+#   endif
+    return (void *) MAX((const char *) ptr1, (const char *) ptr2);
+#   ifdef __clang__
+#   pragma clang diagnostic pop
+#   elifdef __GNUC__
+#   pragma GCC diagnostic pop
+#   endif
 }
 
 inline void *ptrMin(
@@ -167,7 +179,19 @@ inline void *ptrMin(
         (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN &&
         sign((const char *) ptr1 - (const char *) ptr2) == CMP_LESS(ptr1, ptr2)
     );
-    return MIN((const char *) ptr1, (const char *) ptr2);
+#   ifdef __clang__
+#   pragma clang diagnostic push
+#   pragma clang diagnostic ignored "-Wcast-qual"
+#   elifdef __GNUC__
+#   pragma GCC diagnostic push
+#   pragma GCC diagnostic ignored "-Wcast-qual"
+#   endif
+    return (void *) MIN((const char *) ptr1, (const char *) ptr2);
+#   ifdef __clang__
+#   pragma clang diagnostic pop
+#   elifdef __GNUC__
+#   pragma GCC diagnostic pop
+#   endif
 }
 
 inline void *ptrMidpoint(
