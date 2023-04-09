@@ -88,6 +88,17 @@ inline bool memCompareSwap(
     return true;
 }
 
+inline int ptrCompare(
+    register const void * const ptr1,
+    register const void * const ptr2
+) {
+    assert((ptr1 == NULL) == (ptr2 == NULL) && // ???
+        (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN &&
+        sign((const char *) ptr1 - (const char *) ptr2) == CMP_LESS(ptr1, ptr2)
+    );
+    return CMP_LESS((const char *) ptr1, (const char *) ptr2);
+}
+
 inline ptrdiff_t ptrDifference(
     register const void * const ptr1,
     register const void * const ptr2,
@@ -100,6 +111,52 @@ inline ptrdiff_t ptrDifference(
         ((const char *) ptr1 - (const char *) ptr2) % (ptrdiff_t) size == 0
     );
     return ((const char *) ptr1 - (const char *) ptr2) / (ptrdiff_t) size;
+}
+
+inline void *ptrMax(
+    register const void * const ptr1,
+    register const void * const ptr2
+) {
+    assert((ptr1 == NULL) == (ptr2 == NULL) && // ???
+        (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN &&
+        sign((const char *) ptr1 - (const char *) ptr2) == CMP_LESS(ptr1, ptr2)
+    );
+#   ifdef __clang__
+#   pragma clang diagnostic push
+#   pragma clang diagnostic ignored "-Wcast-qual"
+#   elifdef __GNUC__
+#   pragma GCC diagnostic push
+#   pragma GCC diagnostic ignored "-Wcast-qual"
+#   endif
+    return (void *) MAX((const char *) ptr1, (const char *) ptr2);
+#   ifdef __clang__
+#   pragma clang diagnostic pop
+#   elifdef __GNUC__
+#   pragma GCC diagnostic pop
+#   endif
+}
+
+inline void *ptrMin(
+    register const void * const ptr1,
+    register const void * const ptr2
+) {
+    assert((ptr1 == NULL) == (ptr2 == NULL) && // ???
+        (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN &&
+        sign((const char *) ptr1 - (const char *) ptr2) == CMP_LESS(ptr1, ptr2)
+    );
+#   ifdef __clang__
+#   pragma clang diagnostic push
+#   pragma clang diagnostic ignored "-Wcast-qual"
+#   elifdef __GNUC__
+#   pragma GCC diagnostic push
+#   pragma GCC diagnostic ignored "-Wcast-qual"
+#   endif
+    return (void *) MIN((const char *) ptr1, (const char *) ptr2);
+#   ifdef __clang__
+#   pragma clang diagnostic pop
+#   elifdef __GNUC__
+#   pragma GCC diagnostic pop
+#   endif
 }
 
 inline void *ptrOffset(
@@ -146,52 +203,6 @@ inline void *ptrIncrement(
         (const char *) ptr < (const char *) ptr + size
     );
     return ptrOffset(ptr, 1, size);
-}
-
-inline void *ptrMax(
-    register const void * const ptr1,
-    register const void * const ptr2
-) {
-    assert((ptr1 == NULL) == (ptr2 == NULL) &&
-        (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN &&
-        sign((const char *) ptr1 - (const char *) ptr2) == CMP_LESS(ptr1, ptr2)
-    );
-#   ifdef __clang__
-#   pragma clang diagnostic push
-#   pragma clang diagnostic ignored "-Wcast-qual"
-#   elifdef __GNUC__
-#   pragma GCC diagnostic push
-#   pragma GCC diagnostic ignored "-Wcast-qual"
-#   endif
-    return (void *) MAX((const char *) ptr1, (const char *) ptr2);
-#   ifdef __clang__
-#   pragma clang diagnostic pop
-#   elifdef __GNUC__
-#   pragma GCC diagnostic pop
-#   endif
-}
-
-inline void *ptrMin(
-    register const void * const ptr1,
-    register const void * const ptr2
-) {
-    assert((ptr1 == NULL) == (ptr2 == NULL) &&
-        (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN &&
-        sign((const char *) ptr1 - (const char *) ptr2) == CMP_LESS(ptr1, ptr2)
-    );
-#   ifdef __clang__
-#   pragma clang diagnostic push
-#   pragma clang diagnostic ignored "-Wcast-qual"
-#   elifdef __GNUC__
-#   pragma GCC diagnostic push
-#   pragma GCC diagnostic ignored "-Wcast-qual"
-#   endif
-    return (void *) MIN((const char *) ptr1, (const char *) ptr2);
-#   ifdef __clang__
-#   pragma clang diagnostic pop
-#   elifdef __GNUC__
-#   pragma GCC diagnostic pop
-#   endif
 }
 
 inline void *ptrMidpoint(
