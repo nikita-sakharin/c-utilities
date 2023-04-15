@@ -735,6 +735,22 @@ inline uintmax_t umaxmin(
     return MIN(x, y);
 }
 
+inline int negativeAbs(register const int x) {
+    return x < 0 ? -(uint) x : (uint) x;
+}
+
+inline long lnegativeAbs(register const long x) {
+    return x < 0 ? -(ulong) x : (ulong) x;
+}
+
+inline llong llnegativeAbs(register const llong x) {
+    return x < 0 ? -(ullong) x : (ullong) x;
+}
+
+inline intmax_t imaxnegativeAbs(register const intmax_t x) {
+    return x < 0 ? -(uintmax_t) x : (uintmax_t) x;
+}
+
 inline int sign(register const int x) {
     return SIGN(x);
 }
@@ -772,6 +788,7 @@ inline uintmax_t imaxunsignedAbs(register const intmax_t x) {
 #define ceilDiv(x, y) TYPE_GENERIC_INTEGER_2(ceilDiv, x, y)
 #define ceilMod(x, y) TYPE_GENERIC_INTEGER_2(ceilMod, x, y)
 #define clamp(x, a, b) TYPE_GENERIC_INTEGER_3(clamp, x, a, b)
+#define compare(x, y) TYPE_GENERIC_INTEGER_2(compare, x, y)
 #define dim(x, y) TYPE_GENERIC_INTEGER_2(dim, x, y)
 #define div(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(div, x, y)
 #define euclidDiv(x, y) TYPE_GENERIC_INTEGER_2(euclidDiv, x, y)
@@ -782,6 +799,7 @@ inline uintmax_t imaxunsignedAbs(register const intmax_t x) {
 #define inRangeClosed(x, a, b) TYPE_GENERIC_INTEGER_3(inRangeClosed, x, a, b)
 #define max(x, y) TYPE_GENERIC_INTEGER_2(max, x, y)
 #define min(x, y) TYPE_GENERIC_INTEGER_2(min, x, y)
+#define negativeAbs(x) TYPE_GENERIC_SIGNED_INTEGER_1(negativeAbs, x)
 #define sign(x) TYPE_GENERIC_SIGNED_INTEGER_1(sign, x)
 #define unsignedAbs(x) TYPE_GENERIC_SIGNED_INTEGER_1(unsignedAbs, x)
 
