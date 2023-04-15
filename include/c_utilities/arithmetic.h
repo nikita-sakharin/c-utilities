@@ -15,6 +15,7 @@
 #define CEIL_DIV(x, y) ((x) / (y) + (((x) ^ (y)) >= 0 && (x) % (y) != 0))
 #define CEIL_MOD(x, y) (((x) ^ (y)) >= 0 && (x) % (y) != 0 ? (x) % (y) - (y) : (x) % (y))
 #define CLAMP(x, a, b) ((x) < (a) ? (a) : (b) < (x) ? (b) : (x))
+#define COMPARE(x, y) ((x) < (y) ? -1 : (y) < (x))
 #define DIM(x, y) ((y) < (x) ? (x) - (y) : 0)
 #define EUCLID_DIV(x, y) ((x) / (y) + ((x) % (y) < 0 ? (y) > 0 ? -1 : 1 : 0))
 #define EUCLID_MOD(x, y) ((x) % (y) < 0 ? (y) < 0 ? (x) % (y) - (y) : (x) % (y) + (y) : (x) % (y))
@@ -234,6 +235,62 @@ inline uintmax_t umaxclamp(
 ) {
     assert(a <= b);
     return CLAMP(x, a, b);
+}
+
+inline int compare(
+    register const int x,
+    register const int y
+) {
+    return COMPARE(x, y);
+}
+
+inline uint ucompare(
+    register const uint x,
+    register const uint y
+) {
+    return COMPARE(x, y);
+}
+
+inline long lcompare(
+    register const long x,
+    register const long y
+) {
+    return COMPARE(x, y);
+}
+
+inline ulong ulcompare(
+    register const ulong x,
+    register const ulong y
+) {
+    return COMPARE(x, y);
+}
+
+inline llong llcompare(
+    register const llong x,
+    register const llong y
+) {
+    return COMPARE(x, y);
+}
+
+inline ullong ullcompare(
+    register const ullong x,
+    register const ullong y
+) {
+    return COMPARE(x, y);
+}
+
+inline intmax_t imaxcompare(
+    register const intmax_t x,
+    register const intmax_t y
+) {
+    return COMPARE(x, y);
+}
+
+inline uintmax_t umaxcompare(
+    register const uintmax_t x,
+    register const uintmax_t y
+) {
+    return COMPARE(x, y);
 }
 
 inline uint dim(register const int x, register const int y) {
