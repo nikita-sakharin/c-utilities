@@ -209,7 +209,8 @@ inline void *ptrMidpoint(
     register const void * const ptr2,
     register const size_t size
 ) {
-    assert((ptr1 == NULL) == (ptr2 == NULL) && inRangeClosed(size, 1U, PTRDIFF_MAX) &&
+    assert((ptr1 == NULL) == (ptr2 == NULL) &&
+        inRangeClosed(size, 1U, PTRDIFF_MAX) &&
         (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN &&
         sign((const char *) ptr1 - (const char *) ptr2) == COMPARE(ptr1, ptr2) &&
         ((const char *) ptr1 - (const char *) ptr2) % (ptrdiff_t) size == 0
@@ -290,7 +291,8 @@ inline bool elemCompareSwap(
     register const size_t size,
     register int (* const cmp)(const void *, const void *)
 ) {
-    assert(arr != NULL && idx1 != idx2 && inRangeClosed(size, 1U, PTRDIFF_MAX) &&
+    assert(arr != NULL && idx1 != idx2 &&
+        inRangeClosed(size, 1U, PTRDIFF_MAX) &&
         max(idx1, idx2) < PTRDIFF_MAX / size && cmp != NULL &&
         (char *) arr < (char *) arr + (max(idx1, idx2) + 1U) * size
     );
@@ -305,7 +307,8 @@ inline void *elemSwap(
     register const size_t idx2,
     register const size_t size
 ) {
-    assert(arr != NULL && idx1 != idx2 && inRangeClosed(size, 1U, PTRDIFF_MAX) &&
+    assert(arr != NULL && idx1 != idx2 &&
+        inRangeClosed(size, 1U, PTRDIFF_MAX) &&
         max(idx1, idx2) < PTRDIFF_MAX / size &&
         (char *) arr < (char *) arr + (max(idx1, idx2) + 1U) * size
     );
