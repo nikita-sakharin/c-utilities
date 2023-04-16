@@ -244,49 +244,49 @@ inline int compare(
     return COMPARE(x, y);
 }
 
-inline uint ucompare(
+inline int ucompare(
     register const uint x,
     register const uint y
 ) {
     return COMPARE(x, y);
 }
 
-inline long lcompare(
+inline int lcompare(
     register const long x,
     register const long y
 ) {
     return COMPARE(x, y);
 }
 
-inline ulong ulcompare(
+inline int ulcompare(
     register const ulong x,
     register const ulong y
 ) {
     return COMPARE(x, y);
 }
 
-inline llong llcompare(
+inline int llcompare(
     register const llong x,
     register const llong y
 ) {
     return COMPARE(x, y);
 }
 
-inline ullong ullcompare(
+inline int ullcompare(
     register const ullong x,
     register const ullong y
 ) {
     return COMPARE(x, y);
 }
 
-inline intmax_t imaxcompare(
+inline int imaxcompare(
     register const intmax_t x,
     register const intmax_t y
 ) {
     return COMPARE(x, y);
 }
 
-inline uintmax_t umaxcompare(
+inline int umaxcompare(
     register const uintmax_t x,
     register const uintmax_t y
 ) {

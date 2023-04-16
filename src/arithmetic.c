@@ -41,13 +41,13 @@ extern inline intmax_t imaxclamp(intmax_t, intmax_t, intmax_t);
 extern inline uintmax_t umaxclamp(uintmax_t, uintmax_t, uintmax_t);
 
 extern inline int (compare)(int, int);
-extern inline uint ucompare(uint, uint);
-extern inline long lcompare(long, long);
-extern inline ulong ulcompare(ulong, ulong);
-extern inline llong llcompare(llong, llong);
-extern inline ullong ullcompare(ullong, ullong);
-extern inline intmax_t imaxcompare(intmax_t, intmax_t);
-extern inline uintmax_t umaxcompare(uintmax_t, uintmax_t);
+extern inline int ucompare(uint, uint);
+extern inline int lcompare(long, long);
+extern inline int ulcompare(ulong, ulong);
+extern inline int llcompare(llong, llong);
+extern inline int ullcompare(ullong, ullong);
+extern inline int imaxcompare(intmax_t, intmax_t);
+extern inline int umaxcompare(uintmax_t, uintmax_t);
 
 extern inline uint (dim)(int, int);
 extern inline uint udim(uint, uint);
