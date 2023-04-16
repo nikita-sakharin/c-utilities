@@ -10,7 +10,6 @@
 #include <string.h> // memcpy
 
 #include <c_utilities/arithmetic.h> // *
-#include <c_utilities/compare.h> // CMP_LESS
 #include <c_utilities/system_config.h> // LEVEL1_DCACHE_LINESIZE
 #include <c_utilities/types.h> // uchar
 
@@ -94,9 +93,9 @@ inline int ptrCompare(
 ) {
     assert((ptr1 == NULL) == (ptr2 == NULL) && // ???
         (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN &&
-        sign((const char *) ptr1 - (const char *) ptr2) == CMP_LESS(ptr1, ptr2)
+        sign((const char *) ptr1 - (const char *) ptr2) == COMPARE(ptr1, ptr2)
     );
-    return CMP_LESS((const char *) ptr1, (const char *) ptr2);
+    return COMPARE((const char *) ptr1, (const char *) ptr2);
 }
 
 inline ptrdiff_t ptrDifference(
@@ -107,7 +106,7 @@ inline ptrdiff_t ptrDifference(
     assert((ptr1 == NULL) == (ptr2 == NULL) &&
         inRangeClosed(size, 1U, PTRDIFF_MAX) &&
         (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN &&
-        sign((const char *) ptr1 - (const char *) ptr2) == CMP_LESS(ptr1, ptr2) &&
+        sign((const char *) ptr1 - (const char *) ptr2) == COMPARE(ptr1, ptr2) &&
         ((const char *) ptr1 - (const char *) ptr2) % (ptrdiff_t) size == 0
     );
     return ((const char *) ptr1 - (const char *) ptr2) / (ptrdiff_t) size;
@@ -119,7 +118,7 @@ inline void *ptrMax(
 ) {
     assert((ptr1 == NULL) == (ptr2 == NULL) && // ???
         (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN &&
-        sign((const char *) ptr1 - (const char *) ptr2) == CMP_LESS(ptr1, ptr2)
+        sign((const char *) ptr1 - (const char *) ptr2) == COMPARE(ptr1, ptr2)
     );
 #   ifdef __clang__
 #   pragma clang diagnostic push
@@ -142,7 +141,7 @@ inline void *ptrMin(
 ) {
     assert((ptr1 == NULL) == (ptr2 == NULL) && // ???
         (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN &&
-        sign((const char *) ptr1 - (const char *) ptr2) == CMP_LESS(ptr1, ptr2)
+        sign((const char *) ptr1 - (const char *) ptr2) == COMPARE(ptr1, ptr2)
     );
 #   ifdef __clang__
 #   pragma clang diagnostic push
@@ -166,7 +165,7 @@ inline void *ptrOffset(
 ) {
     assert((ptr != NULL || off == 0) && inRangeClosed(size, 1U, PTRDIFF_MAX) &&
         off != PTRDIFF_MIN && abs(off) <= PTRDIFF_MAX / (ptrdiff_t) size &&
-        sign(off) == CMP_LESS((const char *) ptr, (const char *) ptr + off * size) &&
+        sign(off) == COMPARE((const char *) ptr, (const char *) ptr + off * size) &&
         (ptr == NULL || (const char *) ptr + off * size != NULL)
     );
 #   ifdef __clang__
@@ -212,7 +211,7 @@ inline void *ptrMidpoint(
 ) {
     assert((ptr1 == NULL) == (ptr2 == NULL) && inRangeClosed(size, 1U, PTRDIFF_MAX) &&
         (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN &&
-        sign((const char *) ptr1 - (const char *) ptr2) == CMP_LESS(ptr1, ptr2) &&
+        sign((const char *) ptr1 - (const char *) ptr2) == COMPARE(ptr1, ptr2) &&
         ((const char *) ptr1 - (const char *) ptr2) % (ptrdiff_t) size == 0
     );
     return ptrOffset(ptr1, ptrDifference(ptr2, ptr1, size) >> 1U, size);
