@@ -1,6 +1,6 @@
 `arithmetic.h`:<br/>
-`icopysign`, `negativeAbs` (`nabs`)<br/>
-`multiplyHigh` (`mulHi`), `unsignedAbs` (`uabs`)<br/>
+`icopysign`<br/>
+`multiplyHigh` (`mulHi`)<br/>
 `ceilDivMod`, `euclidDivMod`, `floorDivMod`, `minmax` (`minMax`)
 
 http://www.open-std.org/jtc1/sc22/wg11/docs/n462.pdf<br/>
