@@ -24,7 +24,7 @@
 #define IN_RANGE(x, a, b) ((x) >= (a) && (x) < (b))
 #define IN_RANGE_CLOSED(x, a, b) ((x) >= (a) && (b) >= (x))
 #define MAX(x, y) ((x) < (y) ? (y) : (x))
-// #define MIDPOINT(x, y) ((x) + ((y) / 2 - (x) / 2) + (((y) % 2 - (x) % 2 + ((y) < (x))) >> 1))
+#define MIDPOINT(x, y) ((x) + ((y) / 2 - (x) / 2) + (((y) % 2 - (x) % 2 + ((y) < (x))) >> 1))
 #define MIDPOINT_CEIL(x, y) (((x) | (y)) - (((x) ^ (y)) >> 1))
 #define MIDPOINT_CEIL(x, y) (((x) >> 1) + ((y) >> 1) + (((x) | (y)) & 1))
 #define MIDPOINT_FLOOR(x, y) (((x) & (y)) + (((x) ^ (y)) >> 1))
