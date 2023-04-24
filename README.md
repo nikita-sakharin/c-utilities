@@ -53,4 +53,5 @@ http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
 
 `utility.h`:<br/>
 `memReverse`<br/>
+`memShift` (`memExchange`)<br/>
 `checkIndexSize`, `checkLengthSize`, `checkSize`
