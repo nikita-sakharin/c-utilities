@@ -39,15 +39,12 @@ http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
 `fclampf`, `fclamp`, `fclampl`, `lerp`<br/>
 `toDegrees`, `toRadians`<br/>
 `DBL_1_PI`, `DBL_2_PI`, `DBL_2_SQRTPI`, `DBL_E`, `DBL_LN10`, `DBL_LN2`, `DBL_LOG10E`, `DBL_LOG2E`, `DBL_PHI`, `DBL_PI`, `DBL_PI_2`, `DBL_PI_4`, `DBL_SQRT1_2`, `DBL_SQRT2`<br/>
-`comb`, `factorial`, `perm`<br/>
+`comb` (`binomialCoefficient`), `perm` (`factorial`)<br/>
 `ulp`, `nextDown`, `nextUp`, `union { uint32_t u32; flt f; }`<br/>
 `random`
 
 `numeric.h`:<br/>
-`gcd`, `lcm`, `midpoint`, `fmidpoint`, `isqrt`
-
-Неправильный вариант:<br/>
-`imidpoint`, `fmidpoint`
+`gcd`, `lcm`, `midpoint`, `fmidpoint`, `isqrt`, `icbrt`
 
 `string.h`:<br/>
 `strFormat`, `strNFormat`, `strReverse`, `strNReverse`
