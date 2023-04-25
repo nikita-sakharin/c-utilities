@@ -1,7 +1,7 @@
 `arithmetic.h`:<br/>
 `icopysign`<br/>
 `multiplyHigh` (`mulHi`)<br/>
-`nextMultipleOf` (`???`)<br/>
+`isMultipleOf`, `nextMultipleOf`, `prevMultipleOf`<br/>
 `ceilDivMod`, `euclidDivMod`, `floorDivMod`, `minmax` (`minMax`)
 
 http://www.open-std.org/jtc1/sc22/wg11/docs/n462.pdf<br/>
