@@ -10,6 +10,11 @@
 // #define ALL(x) ((x) ^ ~(x))
 // #define ALL(x) ((x) | ~(x))
 // #define ALL(x) (~NONE(x))
+#define IS_EVEN(x) (((x) & 1) == 0)
+#define IS_ODD(x) (((x) & 1) == 1)
+#define IS_POWER_OF_TWO(x) ((x) > 0 && ((x) & ((x) - 1)) == 0)
+#define IS_SAME_SIGN(x, y) (((x) ^ (y)) >= 0)
+// HAS_SAME_SIGN, HAS_SAME_SIGNUM, IS_SAME_SIGNUM, SAME_SIGN, SAME_SIGNUM
 // #define IS_SIGNED(x) (ALL(x) < 0)
 // #define IS_SIGNED(x) (!IS_UNSIGNED(x))
 // #define IS_UNSIGNED(x) (ALL(x) >= 0)
@@ -18,11 +23,8 @@
 // #define NONE(x) ((x) & 0)
 // #define NONE(x) ((x) ^ (x))
 // #define NONE(x) (~ALL(x))
-#define IS_EVEN(x) (((x) & 1) == 0)
-// #define IS_EVEN(x) (((x) & 1) != 1)
-#define IS_ODD(x) (((x) & 1) == 1)
-// #define IS_ODD(x) (((x) & 1) != 0)
-#define IS_POWER_OF_TWO(x) ((x) > 0 && ((x) & ((x) - 1)) == 0)
+// #define ROTATE_LEFT(x, shift, width)
+// #define ROTATE_RIGHT(x, shift, width)
 
 inline bool isEven(register const int x) {
     return IS_EVEN(x);
