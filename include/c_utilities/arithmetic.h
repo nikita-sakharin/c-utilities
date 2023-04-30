@@ -22,7 +22,7 @@
 #define FLOOR_DIV(x, y) ((x) / (y) - (((x) ^ (y)) < 0 && (x) % (y) != 0))
 #define FLOOR_MOD(x, y) (((x) ^ (y)) < 0 && (x) % (y) != 0 ? (x) % (y) + (y) : (x) % (y))
 // #define ICOPYSIGN(x, y) ((y) < 0 ? NEGATIVE_ABS(x) : ABS(x))
-// #define ICOPYSIGN(x, y) (IS_SAME_SIGN(x, y) ? (x) : -(x))
+// #define ICOPYSIGN(x, y) (ABS(x) * SIGN(y))
 #define IN_RANGE(x, a, b) ((x) >= (a) && (x) < (b))
 #define IN_RANGE_CLOSED(x, a, b) ((x) >= (a) && (b) >= (x))
 #define MAX(x, y) ((x) < (y) ? (y) : (x))
