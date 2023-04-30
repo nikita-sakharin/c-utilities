@@ -6,13 +6,12 @@
 #include <c_utilities/utility.h> // elemCompareSwap
 
 void bubbleSort(
-    register void * const restrict array, // ???
+    register void * const restrict array,
     register size_t length,
     register const size_t size,
     register int (* const compare)(const void *, const void *)
 ) {
-    assert((array != NULL || length == 0U) &&
-        (array != NULL) == (compare == NULL) &&
+    assert(((array != NULL && compare != NULL) || length == 0U) &&
         inRangeClosed(size, 1U, PTRDIFF_MAX) &&
         length <= PTRDIFF_MAX / size &&
         (char *) array <= (char *) array + length * size
