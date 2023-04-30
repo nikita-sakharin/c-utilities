@@ -21,8 +21,6 @@
 #define EUCLID_MOD(x, y) ((x) % (y) < 0 ? (y) < 0 ? (x) % (y) - (y) : (x) % (y) + (y) : (x) % (y))
 #define FLOOR_DIV(x, y) ((x) / (y) - (((x) ^ (y)) < 0 && (x) % (y) != 0))
 #define FLOOR_MOD(x, y) (((x) ^ (y)) < 0 && (x) % (y) != 0 ? (x) % (y) + (y) : (x) % (y))
-// #define ICOPYSIGN(x, y) ((y) < 0 ? NEGATIVE_ABS(x) : ABS(x))
-// #define ICOPYSIGN(x, y) (ABS(x) * SIGN(y))
 #define IN_RANGE(x, a, b) ((x) >= (a) && (x) < (b))
 #define IN_RANGE_CLOSED(x, a, b) ((x) >= (a) && (b) >= (x))
 #define MAX(x, y) ((x) < (y) ? (y) : (x))
@@ -36,6 +34,8 @@
 #define MIDPOINT_TRUNC(x, y) ((x) / 2 + (y) / 2 + ((x) % 2 + (y) % 2) / 2)
 #define MIN(x, y) ((y) < (x) ? (y) : (x))
 #define NEGATIVE_ABS(x) (0 < (x) ? -(x) : (x))
+#define ICOPYSIGN(x, y) ((y) < 0 ? NEGATIVE_ABS(x) : ABS(x))
+// #define ICOPYSIGN(x, y) (ABS(x) * SIGN(y))
 #define SIGN(x) ((x) < 0 ? -1 : 0 < (x))
 
 inline uint absDiff(register const int x, register const int y) {
