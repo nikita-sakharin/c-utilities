@@ -130,6 +130,11 @@ extern inline ullong ullmin(ullong, ullong);
 extern inline intmax_t imaxmin(intmax_t, intmax_t);
 extern inline uintmax_t umaxmin(uintmax_t, uintmax_t);
 
+extern inline int (negativeAbs)(int);
+extern inline long lnegativeAbs(long);
+extern inline llong llnegativeAbs(llong);
+extern inline intmax_t imaxnegativeAbs(intmax_t);
+
 extern inline int (sign)(int);
 extern inline int lsign(long);
 extern inline int llsign(llong);

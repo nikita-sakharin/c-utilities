@@ -21,6 +21,8 @@
 #define EUCLID_MOD(x, y) ((x) % (y) < 0 ? (y) < 0 ? (x) % (y) - (y) : (x) % (y) + (y) : (x) % (y))
 #define FLOOR_DIV(x, y) ((x) / (y) - (((x) ^ (y)) < 0 && (x) % (y) != 0))
 #define FLOOR_MOD(x, y) (((x) ^ (y)) < 0 && (x) % (y) != 0 ? (x) % (y) + (y) : (x) % (y))
+// #define ICOPYSIGN(x, y) ((y) < 0 ? NEGATIVE_ABS(x) : ABS(x))
+// #define ICOPYSIGN(x, y) (IS_SAME_SIGN(x, y) ? (x) : -(x))
 #define IN_RANGE(x, a, b) ((x) >= (a) && (x) < (b))
 #define IN_RANGE_CLOSED(x, a, b) ((x) >= (a) && (b) >= (x))
 #define MAX(x, y) ((x) < (y) ? (y) : (x))
@@ -737,19 +739,19 @@ inline uintmax_t umaxmin(
 }
 
 inline int negativeAbs(register const int x) {
-    return x < 0 ? -(uint) x : (uint) x;
+    return NEGATIVE_ABS(x);
 }
 
 inline long lnegativeAbs(register const long x) {
-    return x < 0 ? -(ulong) x : (ulong) x;
+    return NEGATIVE_ABS(x);
 }
 
 inline llong llnegativeAbs(register const llong x) {
-    return x < 0 ? -(ullong) x : (ullong) x;
+    return NEGATIVE_ABS(x);
 }
 
 inline intmax_t imaxnegativeAbs(register const intmax_t x) {
-    return x < 0 ? -(uintmax_t) x : (uintmax_t) x;
+    return NEGATIVE_ABS(x);
 }
 
 inline int sign(register const int x) {
