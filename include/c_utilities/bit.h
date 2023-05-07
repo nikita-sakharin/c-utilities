@@ -14,7 +14,6 @@
 #define IS_ODD(x) (((x) & 1) == 1)
 #define IS_POWER_OF_TWO(x) ((x) > 0 && ((x) & ((x) - 1)) == 0)
 #define IS_SAME_SIGN(x, y) (((x) ^ (y)) >= 0)
-// HAS_SAME_SIGN, HAS_SAME_SIGNUM, IS_SAME_SIGNUM, SAME_SIGN, SAME_SIGNUM
 // #define IS_SIGNED(x) (ALL(x) < 0)
 // #define IS_SIGNED(x) (!IS_UNSIGNED(x))
 // #define IS_UNSIGNED(x) (ALL(x) >= 0)
@@ -106,8 +105,28 @@ inline bool umaxisPowerOfTwo(register const uintmax_t x) {
     return IS_POWER_OF_TWO(x);
 }
 
+inline bool isSameSign(register const int x, register const int y) {
+    return IS_SAME_SIGN(x, y);
+}
+
+inline bool lisSameSign(register const long x, register const long y) {
+    return IS_SAME_SIGN(x, y);
+}
+
+inline bool llisSameSign(register const llong x, register const llong y) {
+    return IS_SAME_SIGN(x, y);
+}
+
+inline bool imaxisSameSign(
+    register const intmax_t x,
+    register const intmax_t y
+) {
+    return IS_SAME_SIGN(x, y);
+}
+
 #define isEven(x) TYPE_GENERIC_INTEGER_1(isEven, x)
 #define isOdd(x) TYPE_GENERIC_INTEGER_1(isOdd, x)
 #define isPowerOfTwo(x) TYPE_GENERIC_UNSIGNED_INTEGER_1(isPowerOfTwo, x)
+#define isSameSign(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(isSameSign, x, y)
 
 #endif // C_UTILITIES_BIT_H
