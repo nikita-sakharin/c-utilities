@@ -23,6 +23,8 @@
 #define FLOOR_MOD(x, y) (((x) ^ (y)) < 0 && (x) % (y) != 0 ? (x) % (y) + (y) : (x) % (y))
 #define IN_RANGE(x, a, b) ((x) >= (a) && (x) < (b))
 #define IN_RANGE_CLOSED(x, a, b) ((x) >= (a) && (b) >= (x))
+#define IS_EVEN(x) (((x) & 1) == 0)
+#define IS_ODD(x) (((x) & 1) == 1)
 #define MAX(x, y) ((x) < (y) ? (y) : (x))
 #define MIDPOINT(x, y) ((x) + (((y) >> 1) - ((x) >> 1)) + ((((y) & 1) - ((x) & 1) + ((y) < (x))) >> 1))
 // #define MIDPOINT(x, y) ((x) + ((y) / 2 - (x) / 2) + (((y) % 2 - (x) % 2 + ((y) < (x))) >> 1))
@@ -36,7 +38,6 @@
 #define MIN(x, y) ((y) < (x) ? (y) : (x))
 #define NEGATIVE_ABS(x) (0 < (x) ? -(x) : (x))
 #define ICOPYSIGN(x, y) ((y) < 0 ? NEGATIVE_ABS(x) : ABS(x))
-// #define ICOPYSIGN(x, y) (ABS(x) * SIGN(y))
 #define SIGN(x) ((x) < 0 ? -1 : 0 < (x))
 
 inline uint absDiff(register const int x, register const int y) {
@@ -663,6 +664,70 @@ inline bool umaxinRangeClosed(
     return IN_RANGE_CLOSED(x, a, b);
 }
 
+inline bool isEven(register const int x) {
+    return IS_EVEN(x);
+}
+
+inline bool uisEven(register const uint x) {
+    return IS_EVEN(x);
+}
+
+inline bool lisEven(register const long x) {
+    return IS_EVEN(x);
+}
+
+inline bool ulisEven(register const ulong x) {
+    return IS_EVEN(x);
+}
+
+inline bool llisEven(register const llong x) {
+    return IS_EVEN(x);
+}
+
+inline bool ullisEven(register const ullong x) {
+    return IS_EVEN(x);
+}
+
+inline bool imaxisEven(register const intmax_t x) {
+    return IS_EVEN(x);
+}
+
+inline bool umaxisEven(register const uintmax_t x) {
+    return IS_EVEN(x);
+}
+
+inline bool isOdd(register const int x) {
+    return IS_ODD(x);
+}
+
+inline bool uisOdd(register const uint x) {
+    return IS_ODD(x);
+}
+
+inline bool lisOdd(register const long x) {
+    return IS_ODD(x);
+}
+
+inline bool ulisOdd(register const ulong x) {
+    return IS_ODD(x);
+}
+
+inline bool llisOdd(register const llong x) {
+    return IS_ODD(x);
+}
+
+inline bool ullisOdd(register const ullong x) {
+    return IS_ODD(x);
+}
+
+inline bool imaxisOdd(register const intmax_t x) {
+    return IS_ODD(x);
+}
+
+inline bool umaxisOdd(register const uintmax_t x) {
+    return IS_ODD(x);
+}
+
 inline int max(register const int x, register const int y) {
     return MAX(x, y);
 }
@@ -755,6 +820,25 @@ inline intmax_t imaxnegativeAbs(register const intmax_t x) {
     return NEGATIVE_ABS(x);
 }
 
+inline int icopysign(register const int x, register const int y) {
+    return y < 0 ? negativeAbs(x) : abs(x);
+}
+
+inline long licopysign(register const long x, register const long y) {
+    return y < 0 ? negativeAbs(x) : abs(x);
+}
+
+inline llong llicopysign(register const llong x, register const llong y) {
+    return y < 0 ? negativeAbs(x) : abs(x);
+}
+
+inline intmax_t imaxicopysign(
+    register const intmax_t x,
+    register const intmax_t y
+) {
+    return y < 0 ? negativeAbs(x) : abs(x);
+}
+
 inline int sign(register const int x) {
     return SIGN(x);
 }
@@ -799,8 +883,11 @@ inline uintmax_t imaxunsignedAbs(register const intmax_t x) {
 #define euclidMod(x, y) TYPE_GENERIC_INTEGER_2(euclidMod, x, y)
 #define floorDiv(x, y) TYPE_GENERIC_INTEGER_2(floorDiv, x, y)
 #define floorMod(x, y) TYPE_GENERIC_INTEGER_2(floorMod, x, y)
+#define icopysign(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(icopysign, x, y)
 #define inRange(x, a, b) TYPE_GENERIC_INTEGER_3(inRange, x, a, b)
 #define inRangeClosed(x, a, b) TYPE_GENERIC_INTEGER_3(inRangeClosed, x, a, b)
+#define isEven(x) TYPE_GENERIC_INTEGER_1(isEven, x)
+#define isOdd(x) TYPE_GENERIC_INTEGER_1(isOdd, x)
 #define max(x, y) TYPE_GENERIC_INTEGER_2(max, x, y)
 #define min(x, y) TYPE_GENERIC_INTEGER_2(min, x, y)
 #define negativeAbs(x) TYPE_GENERIC_SIGNED_INTEGER_1(negativeAbs, x)

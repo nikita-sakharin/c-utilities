@@ -94,6 +94,11 @@ extern inline ullong ullfloorMod(ullong, ullong);
 extern inline intmax_t imaxfloorMod(intmax_t, intmax_t);
 extern inline uintmax_t umaxfloorMod(uintmax_t, uintmax_t);
 
+extern inline int (icopysign)(int, int);
+extern inline long licopysign(long, long);
+extern inline llong llicopysign(llong, llong);
+extern inline intmax_t imaxicopysign(intmax_t, intmax_t);
+
 extern inline bool (inRange)(int, int, int);
 extern inline bool uinRange(uint, uint, uint);
 extern inline bool linRange(long, long, long);
@@ -111,6 +116,24 @@ extern inline bool llinRangeClosed(llong, llong, llong);
 extern inline bool ullinRangeClosed(ullong, ullong, ullong);
 extern inline bool imaxinRangeClosed(intmax_t, intmax_t, intmax_t);
 extern inline bool umaxinRangeClosed(uintmax_t, uintmax_t, uintmax_t);
+
+extern inline bool (isEven)(int);
+extern inline bool uisEven(uint);
+extern inline bool lisEven(long);
+extern inline bool ulisEven(ulong);
+extern inline bool llisEven(llong);
+extern inline bool ullisEven(ullong);
+extern inline bool imaxisEven(intmax_t);
+extern inline bool umaxisEven(uintmax_t);
+
+extern inline bool (isOdd)(int);
+extern inline bool uisOdd(uint);
+extern inline bool lisOdd(long);
+extern inline bool ulisOdd(ulong);
+extern inline bool llisOdd(llong);
+extern inline bool ullisOdd(ullong);
+extern inline bool imaxisOdd(intmax_t);
+extern inline bool umaxisOdd(uintmax_t);
 
 extern inline int (max)(int, int);
 extern inline uint umax(uint, uint);

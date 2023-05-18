@@ -10,8 +10,6 @@
 // #define ALL(x) ((x) ^ ~(x))
 // #define ALL(x) ((x) | ~(x))
 // #define ALL(x) (~NONE(x))
-#define IS_EVEN(x) (((x) & 1) == 0)
-#define IS_ODD(x) (((x) & 1) == 1)
 #define IS_POWER_OF_TWO(x) ((x) > 0 && ((x) & ((x) - 1)) == 0)
 #define IS_SAME_SIGN(x, y) (((x) ^ (y)) >= 0)
 // #define IS_SIGNED(x) (ALL(x) < 0)
@@ -24,70 +22,6 @@
 // #define NONE(x) (~ALL(x))
 // #define ROTATE_LEFT(x, shift, width)
 // #define ROTATE_RIGHT(x, shift, width)
-
-inline bool isEven(register const int x) {
-    return IS_EVEN(x);
-}
-
-inline bool uisEven(register const uint x) {
-    return IS_EVEN(x);
-}
-
-inline bool lisEven(register const long x) {
-    return IS_EVEN(x);
-}
-
-inline bool ulisEven(register const ulong x) {
-    return IS_EVEN(x);
-}
-
-inline bool llisEven(register const llong x) {
-    return IS_EVEN(x);
-}
-
-inline bool ullisEven(register const ullong x) {
-    return IS_EVEN(x);
-}
-
-inline bool imaxisEven(register const intmax_t x) {
-    return IS_EVEN(x);
-}
-
-inline bool umaxisEven(register const uintmax_t x) {
-    return IS_EVEN(x);
-}
-
-inline bool isOdd(register const int x) {
-    return IS_ODD(x);
-}
-
-inline bool uisOdd(register const uint x) {
-    return IS_ODD(x);
-}
-
-inline bool lisOdd(register const long x) {
-    return IS_ODD(x);
-}
-
-inline bool ulisOdd(register const ulong x) {
-    return IS_ODD(x);
-}
-
-inline bool llisOdd(register const llong x) {
-    return IS_ODD(x);
-}
-
-inline bool ullisOdd(register const ullong x) {
-    return IS_ODD(x);
-}
-
-inline bool imaxisOdd(register const intmax_t x) {
-    return IS_ODD(x);
-}
-
-inline bool umaxisOdd(register const uintmax_t x) {
-    return IS_ODD(x);
-}
 
 inline bool uisPowerOfTwo(register const uint x) {
     return IS_POWER_OF_TWO(x);
@@ -124,8 +58,6 @@ inline bool imaxisSameSign(
     return IS_SAME_SIGN(x, y);
 }
 
-#define isEven(x) TYPE_GENERIC_INTEGER_1(isEven, x)
-#define isOdd(x) TYPE_GENERIC_INTEGER_1(isOdd, x)
 #define isPowerOfTwo(x) TYPE_GENERIC_UNSIGNED_INTEGER_1(isPowerOfTwo, x)
 #define isSameSign(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(isSameSign, x, y)
 
