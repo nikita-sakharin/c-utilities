@@ -25,6 +25,7 @@
 #define IN_RANGE_CLOSED(x, a, b) ((x) >= (a) && (b) >= (x))
 #define IS_EVEN(x) (((x) & 1) == 0)
 #define IS_ODD(x) (((x) & 1) == 1)
+#define IS_SAME_SIGN(x, y) (((x) ^ (y)) >= 0)
 #define MAX(x, y) ((x) < (y) ? (y) : (x))
 #define MIDPOINT(x, y) ((x) + (((y) >> 1) - ((x) >> 1)) + ((((y) & 1) - ((x) & 1) + ((y) < (x))) >> 1))
 // #define MIDPOINT(x, y) ((x) + ((y) / 2 - (x) / 2) + (((y) % 2 - (x) % 2 + ((y) < (x))) >> 1))
@@ -728,6 +729,25 @@ inline bool umaxisOdd(register const uintmax_t x) {
     return IS_ODD(x);
 }
 
+inline bool isSameSign(register const int x, register const int y) {
+    return IS_SAME_SIGN(x, y);
+}
+
+inline bool lisSameSign(register const long x, register const long y) {
+    return IS_SAME_SIGN(x, y);
+}
+
+inline bool llisSameSign(register const llong x, register const llong y) {
+    return IS_SAME_SIGN(x, y);
+}
+
+inline bool imaxisSameSign(
+    register const intmax_t x,
+    register const intmax_t y
+) {
+    return IS_SAME_SIGN(x, y);
+}
+
 inline int max(register const int x, register const int y) {
     return MAX(x, y);
 }
@@ -888,6 +908,7 @@ inline uintmax_t imaxunsignedAbs(register const intmax_t x) {
 #define inRangeClosed(x, a, b) TYPE_GENERIC_INTEGER_3(inRangeClosed, x, a, b)
 #define isEven(x) TYPE_GENERIC_INTEGER_1(isEven, x)
 #define isOdd(x) TYPE_GENERIC_INTEGER_1(isOdd, x)
+#define isSameSign(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(isSameSign, x, y)
 #define max(x, y) TYPE_GENERIC_INTEGER_2(max, x, y)
 #define min(x, y) TYPE_GENERIC_INTEGER_2(min, x, y)
 #define negativeAbs(x) TYPE_GENERIC_SIGNED_INTEGER_1(negativeAbs, x)

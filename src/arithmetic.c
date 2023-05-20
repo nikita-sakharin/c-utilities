@@ -135,6 +135,11 @@ extern inline bool ullisOdd(ullong);
 extern inline bool imaxisOdd(intmax_t);
 extern inline bool umaxisOdd(uintmax_t);
 
+extern inline bool (isSameSign)(int, int);
+extern inline bool lisSameSign(long, long);
+extern inline bool llisSameSign(llong, llong);
+extern inline bool imaxisSameSign(intmax_t, intmax_t);
+
 extern inline int (max)(int, int);
 extern inline uint umax(uint, uint);
 extern inline long lmax(long, long);
