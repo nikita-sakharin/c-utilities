@@ -1,5 +1,5 @@
-#ifndef C_UTILITIES_UTILITY_H
-#define C_UTILITIES_UTILITY_H
+#ifndef C_COMMONS_UTILITY_H
+#define C_COMMONS_UTILITY_H
 
 #include <assert.h> // assert
 #include <stdalign.h> // alignas
@@ -9,9 +9,9 @@
 #include <stdlib.h> // abs
 #include <string.h> // memcpy
 
-#include <c_utilities/arithmetic.h> // *
-#include <c_utilities/system_config.h> // LEVEL1_DCACHE_LINESIZE
-#include <c_utilities/types.h> // uchar
+#include <c_commons/arithmetic.h> // *
+#include <c_commons/system_config.h> // LEVEL1_DCACHE_LINESIZE
+#include <c_commons/types.h> // uchar
 
 inline void *memCompareMax(
     register const void * const s1,
@@ -315,4 +315,4 @@ inline void *elemSwap(
     return memSwap(elemAt(arr, idx1, size), elemAt(arr, idx2, size));
 }
 
-#endif // C_UTILITIES_UTILITY_H
+#endif // C_COMMONS_UTILITY_H

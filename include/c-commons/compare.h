@@ -1,12 +1,12 @@
-#ifndef C_UTILITIES_COMPARE_H
-#define C_UTILITIES_COMPARE_H
+#ifndef C_COMMONS_COMPARE_H
+#define C_COMMONS_COMPARE_H
 
 #include <assert.h> // assert
 #include <stdbool.h> // bool
 #include <stddef.h> // NULL
 #include <stdint.h> // intmax_t, uintmax_t
 
-#include <c_utilities/types.h> // *
+#include <c_commons/types.h> // *
 
 #define CMP_GREATER(x, y) ((x) > (y) ? -1 : (y) > (x))
 #define CMP_LESS(x, y) ((x) < (y) ? -1 : (y) < (x))
@@ -1207,4 +1207,4 @@ inline bool isNotEqualLdbl(
 #   endif
 }
 
-#endif // C_UTILITIES_COMPARE_H
+#endif // C_COMMONS_COMPARE_H

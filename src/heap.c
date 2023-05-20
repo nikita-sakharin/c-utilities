@@ -1,4 +1,4 @@
-#include <c_utilities/heap.h> // *Heap
+#include <c_commons/heap.h> // *Heap
 /*
 void makeHeap(
     register const void *array,

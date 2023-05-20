@@ -1,11 +1,11 @@
-#ifndef C_UTILITIES_BIT_H
-#define C_UTILITIES_BIT_H
+#ifndef C_COMMONS_BIT_H
+#define C_COMMONS_BIT_H
 
 #include <stdbool.h> // bool
 #include <stdint.h> // uintmax_t
 
-#include <c_utilities/type_generic.h> // TYPE_GENERIC_UNSIGNED_INTEGER_1
-#include <c_utilities/types.h> // uint, ullong, ulong
+#include <c_commons/type_generic.h> // TYPE_GENERIC_UNSIGNED_INTEGER_1
+#include <c_commons/types.h> // uint, ullong, ulong
 
 // #define ALL(x) ((x) ^ ~(x))
 // #define ALL(x) ((x) | ~(x))
@@ -40,4 +40,4 @@ inline bool umaxisPowerOfTwo(register const uintmax_t x) {
 
 #define isPowerOfTwo(x) TYPE_GENERIC_UNSIGNED_INTEGER_1(isPowerOfTwo, x)
 
-#endif // C_UTILITIES_BIT_H
+#endif // C_COMMONS_BIT_H

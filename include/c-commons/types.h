@@ -14,8 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef C_UTILITIES_TYPES_H
-#define C_UTILITIES_TYPES_H
+#ifndef C_COMMONS_TYPES_H
+#define C_COMMONS_TYPES_H
 
 typedef signed char schar;
 typedef unsigned char uchar;
@@ -29,4 +29,4 @@ typedef float flt;
 typedef double dbl;
 typedef long double ldbl;
 
-#endif // C_UTILITIES_TYPES_H
+#endif // C_COMMONS_TYPES_H

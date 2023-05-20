@@ -1,12 +1,12 @@
-#ifndef C_UTILITIES_SYSTEM_CONFIG_H
-#define C_UTILITIES_SYSTEM_CONFIG_H
+#ifndef C_COMMONS_SYSTEM_CONFIG_H
+#define C_COMMONS_SYSTEM_CONFIG_H
 
 #include <assert.h> // static_assert
 #include <stdalign.h> // alignof
 #include <stddef.h> // max_align_t, ptrdiff_t, size_t
 #include <stdint.h> // PTRDIFF_MAX, SIZE_MAX
 
-#include <c_utilities/bit.h> // IS_POWER_OF_TWO
+#include <c_commons/bit.h> // IS_POWER_OF_TWO
 
 #ifndef LEVEL1_DCACHE_LINESIZE
 #define LEVEL1_DCACHE_LINESIZE (64U & SIZE_MAX)
@@ -69,4 +69,4 @@ static_assert(
     "then LEVEL4_CACHE_LINESIZE shall be equal to 0 too"
 );
 
-#endif // C_UTILITIES_SYSTEM_CONFIG_H
+#endif // C_COMMONS_SYSTEM_CONFIG_H

@@ -1,10 +1,10 @@
-#ifndef C_UTILITIES_TYPE_GENERIC_H
-#define C_UTILITIES_TYPE_GENERIC_H
+#ifndef C_COMMONS_TYPE_GENERIC_H
+#define C_COMMONS_TYPE_GENERIC_H
 
 #include <limits.h> // LLONG_MAX
 #include <stdint.h> // INTMAX_MAX, intmax_t, uintmax_t
 
-#include <c_utilities/types.h> // dbl, flt, ldbl, llong, uint, ullong, ulong
+#include <c_commons/types.h> // dbl, flt, ldbl, llong, uint, ullong, ulong
 
 #if LLONG_MAX < INTMAX_MAX
 
@@ -144,4 +144,4 @@
         func, (x) + (y) + (z) + (w), x, y, z, w __VA_OPT__(,) __VA_ARGS__ \
     )
 
-#endif // C_UTILITIES_TYPE_GENERIC_H
+#endif // C_COMMONS_TYPE_GENERIC_H

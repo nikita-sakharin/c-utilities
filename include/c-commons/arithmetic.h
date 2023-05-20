@@ -14,8 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef C_UTILITIES_ARITHMETIC_H
-#define C_UTILITIES_ARITHMETIC_H
+#ifndef C_COMMONS_ARITHMETIC_H
+#define C_COMMONS_ARITHMETIC_H
 
 #include <assert.h> // assert
 #include <inttypes.h> // imaxabs, imaxdiv
@@ -23,8 +23,8 @@
 #include <stdint.h> // intmax_t, uintmax_t
 #include <stdlib.h> // abs, div, labs, ldiv, llabs, lldiv
 
-#include <c_utilities/type_generic.h> // TYPE_GENERIC_*INTEGER_*
-#include <c_utilities/types.h> // llong, uint, ullong, ulong
+#include <c_commons/type_generic.h> // TYPE_GENERIC_*INTEGER_*
+#include <c_commons/types.h> // llong, uint, ullong, ulong
 
 #define ABS(x) ((x) < 0 ? -(x) : (x))
 #define ABS_DIFF(x, y) ((x) < (y) ? (y) - (x) : (x) - (y))
@@ -931,4 +931,4 @@ inline uintmax_t imaxunsignedAbs(register const intmax_t x) {
 #define sign(x) TYPE_GENERIC_SIGNED_INTEGER_1(sign, x)
 #define unsignedAbs(x) TYPE_GENERIC_SIGNED_INTEGER_1(unsignedAbs, x)
 
-#endif // C_UTILITIES_ARITHMETIC_H
+#endif // C_COMMONS_ARITHMETIC_H

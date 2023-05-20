@@ -1,5 +1,5 @@
-#ifndef C_UTILITIES_SORT_H
-#define C_UTILITIES_SORT_H
+#ifndef C_COMMONS_SORT_H
+#define C_COMMONS_SORT_H
 
 #include <stddef.h> // size_t
 
@@ -14,4 +14,4 @@ void bubbleSort(void * restrict, size_t, size_t,
     int (*)(const void *, const void *)
 );
 
-#endif // C_UTILITIES_SORT_H
+#endif // C_COMMONS_SORT_H

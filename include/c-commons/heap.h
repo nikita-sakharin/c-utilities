@@ -1,5 +1,5 @@
-#ifndef C_UTILITIES_HEAP_H
-#define C_UTILITIES_HEAP_H
+#ifndef C_COMMONS_HEAP_H
+#define C_COMMONS_HEAP_H
 
 bool isHeap(const void *, size_t, size_t, int (*)(const void *, const void *));
 size_t isHeapUntil(const void *, size_t, size_t,
@@ -18,4 +18,4 @@ void sortHeap(const void *, size_t, size_t,
     int (*)(const void *, const void *)
 );
 
-#endif // C_UTILITIES_HEAP_H
+#endif // C_COMMONS_HEAP_H

@@ -1,11 +1,11 @@
-#ifndef C_UTILITIES_DEBUG_H
-#define C_UTILITIES_DEBUG_H
+#ifndef C_COMMONS_DEBUG_H
+#define C_COMMONS_DEBUG_H
 
 #include <stdbool.h> // bool
 #include <stddef.h> // NULL, ptrdiff_t, size_t
 #include <stdint.h> // PTRDIFF_MAX, PTRDIFF_MIN
 
-#include <c_utilities/arithmetic.h> // inRangeClosed
+#include <c_commons/arithmetic.h> // inRangeClosed
 
 // isMemory
 inline bool checkMemory(
@@ -30,4 +30,4 @@ inline bool checkSize(register const size_t size) {
     return inRangeClosed(size, 1U, PTRDIFF_MAX);
 }
 
-#endif // C_UTILITIES_DEBUG_H
+#endif // C_COMMONS_DEBUG_H

@@ -2,9 +2,9 @@
 #include <stddeff.h> // NULL, size_t
 #include <stdint.h> // PTRDIFF_MAX
 
-#include <c_utilities/arithmetic.h> // inRangeClosed
-#include <c_utilities/binary_search.h> // binarySearch
-#include <c_utilities/utility.h> // elemAt, ptrIncrement
+#include <c_commons/arithmetic.h> // inRangeClosed
+#include <c_commons/binary_search.h> // binarySearch
+#include <c_commons/utility.h> // elemAt, ptrIncrement
 
 void *binarySearch(
     register const void * const key,

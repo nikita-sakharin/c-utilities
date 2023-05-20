@@ -1,9 +1,9 @@
 #include <stddef.h> // NULL, size_t
 #include <stdint.h> // PTRDIFF_MAX
 
-#include <c_utilities/arithmetic.h> // inRangeClosed
-#include <c_utilities/sort.h> // bubbleSort
-#include <c_utilities/utility.h> // elemCompareSwap
+#include <c_commons/arithmetic.h> // inRangeClosed
+#include <c_commons/sort.h> // bubbleSort
+#include <c_commons/utility.h> // elemCompareSwap
 
 void bubbleSort(
     register void * const restrict array,

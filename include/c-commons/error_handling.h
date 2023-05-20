@@ -1,5 +1,5 @@
-#ifndef C_UTILITIES_ERROR_HANDLING_H
-#define C_UTILITIES_ERROR_HANDLING_H
+#ifndef C_COMMONS_ERROR_HANDLING_H
+#define C_COMMONS_ERROR_HANDLING_H
 
 #include <stdbool.h> // false
 #include <stdio.h> // fprintf, perror, stderr
@@ -20,4 +20,4 @@
             goto label; \
     } while (false)
 
-#endif // C_UTILITIES_ERROR_HANDLING_H
+#endif // C_COMMONS_ERROR_HANDLING_H

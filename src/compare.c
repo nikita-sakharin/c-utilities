@@ -1,4 +1,4 @@
-#include <c_utilities/compare.h> // cmpGreater*, cmpLess*, is*
+#include <c_commons/compare.h> // cmpGreater*, cmpLess*, is*
 
 extern inline int cmpGreaterChar(const void *, const void *);
 extern inline int cmpGreaterSchar(const void *, const void *);
