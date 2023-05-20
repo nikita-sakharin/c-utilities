@@ -1,0 +1,4 @@
+#ifndef C_COMMONS_POINTER_H
+#define C_COMMONS_POINTER_H
+
+#endif // C_COMMONS_POINTER_H
