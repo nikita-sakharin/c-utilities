@@ -38,7 +38,7 @@
 #define FLOOR_DIV(x, y) ((x) / (y) - (((x) ^ (y)) < 0 && (x) % (y) != 0))
 #define FLOOR_MOD(x, y) (((x) ^ (y)) < 0 && (x) % (y) != 0 ? (x) % (y) + (y) : (x) % (y))
 #define IN_RANGE(x, a, b) ((x) >= (a) && (x) < (b))
-#define IN_RANGE_CLOSED(x, a, b) ((x) >= (a) && (b) >= (x))
+#define IN_CLOSED_RANGE(x, a, b) ((x) >= (a) && (b) >= (x))
 #define IS_EVEN(x) (((x) & 1) == 0)
 #define IS_ODD(x) (((x) & 1) == 1)
 #define IS_SAME_SIGN(x, y) (((x) ^ (y)) >= 0)
