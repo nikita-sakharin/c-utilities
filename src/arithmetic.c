@@ -115,6 +115,15 @@ extern inline long licopysign(long, long);
 extern inline llong llicopysign(llong, llong);
 extern inline intmax_t imaxicopysign(intmax_t, intmax_t);
 
+extern inline bool (inClosedRange)(int, int, int);
+extern inline bool uinClosedRange(uint, uint, uint);
+extern inline bool linClosedRange(long, long, long);
+extern inline bool ulinClosedRange(ulong, ulong, ulong);
+extern inline bool llinClosedRange(llong, llong, llong);
+extern inline bool ullinClosedRange(ullong, ullong, ullong);
+extern inline bool imaxinClosedRange(intmax_t, intmax_t, intmax_t);
+extern inline bool umaxinClosedRange(uintmax_t, uintmax_t, uintmax_t);
+
 extern inline bool (inRange)(int, int, int);
 extern inline bool uinRange(uint, uint, uint);
 extern inline bool linRange(long, long, long);
@@ -123,15 +132,6 @@ extern inline bool llinRange(llong, llong, llong);
 extern inline bool ullinRange(ullong, ullong, ullong);
 extern inline bool imaxinRange(intmax_t, intmax_t, intmax_t);
 extern inline bool umaxinRange(uintmax_t, uintmax_t, uintmax_t);
-
-extern inline bool (inRangeClosed)(int, int, int);
-extern inline bool uinRangeClosed(uint, uint, uint);
-extern inline bool linRangeClosed(long, long, long);
-extern inline bool ulinRangeClosed(ulong, ulong, ulong);
-extern inline bool llinRangeClosed(llong, llong, llong);
-extern inline bool ullinRangeClosed(ullong, ullong, ullong);
-extern inline bool imaxinRangeClosed(intmax_t, intmax_t, intmax_t);
-extern inline bool umaxinRangeClosed(uintmax_t, uintmax_t, uintmax_t);
 
 extern inline bool (isEven)(int);
 extern inline bool uisEven(uint);

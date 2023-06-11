@@ -37,8 +37,8 @@
 #define EUCLID_MOD(x, y) ((x) % (y) < 0 ? (y) < 0 ? (x) % (y) - (y) : (x) % (y) + (y) : (x) % (y))
 #define FLOOR_DIV(x, y) ((x) / (y) - (((x) ^ (y)) < 0 && (x) % (y) != 0))
 #define FLOOR_MOD(x, y) (((x) ^ (y)) < 0 && (x) % (y) != 0 ? (x) % (y) + (y) : (x) % (y))
-#define IN_RANGE(x, a, b) ((x) >= (a) && (x) < (b))
 #define IN_CLOSED_RANGE(x, a, b) ((x) >= (a) && (b) >= (x))
+#define IN_RANGE(x, a, b) ((x) >= (a) && (x) < (b))
 #define IS_EVEN(x) (((x) & 1) == 0)
 #define IS_ODD(x) (((x) & 1) == 1)
 #define IS_SAME_SIGN(x, y) (((x) ^ (y)) >= 0)
@@ -615,7 +615,7 @@ inline bool inRangeClosed(
     register const int b
 ) {
     assert(a <= b);
-    return IN_RANGE_CLOSED(x, a, b);
+    return IN_CLOSED_RANGE(x, a, b);
 }
 
 inline bool uinRangeClosed(
@@ -624,7 +624,7 @@ inline bool uinRangeClosed(
     register const uint b
 ) {
     assert(a <= b);
-    return IN_RANGE_CLOSED(x, a, b);
+    return IN_CLOSED_RANGE(x, a, b);
 }
 
 inline bool linRangeClosed(
@@ -633,7 +633,7 @@ inline bool linRangeClosed(
     register const long b
 ) {
     assert(a <= b);
-    return IN_RANGE_CLOSED(x, a, b);
+    return IN_CLOSED_RANGE(x, a, b);
 }
 
 inline bool ulinRangeClosed(
@@ -642,7 +642,7 @@ inline bool ulinRangeClosed(
     register const ulong b
 ) {
     assert(a <= b);
-    return IN_RANGE_CLOSED(x, a, b);
+    return IN_CLOSED_RANGE(x, a, b);
 }
 
 inline bool llinRangeClosed(
@@ -651,7 +651,7 @@ inline bool llinRangeClosed(
     register const llong b
 ) {
     assert(a <= b);
-    return IN_RANGE_CLOSED(x, a, b);
+    return IN_CLOSED_RANGE(x, a, b);
 }
 
 inline bool ullinRangeClosed(
@@ -660,7 +660,7 @@ inline bool ullinRangeClosed(
     register const ullong b
 ) {
     assert(a <= b);
-    return IN_RANGE_CLOSED(x, a, b);
+    return IN_CLOSED_RANGE(x, a, b);
 }
 
 inline bool imaxinRangeClosed(
@@ -669,7 +669,7 @@ inline bool imaxinRangeClosed(
     register const intmax_t b
 ) {
     assert(a <= b);
-    return IN_RANGE_CLOSED(x, a, b);
+    return IN_CLOSED_RANGE(x, a, b);
 }
 
 inline bool umaxinRangeClosed(
@@ -678,7 +678,7 @@ inline bool umaxinRangeClosed(
     register const uintmax_t b
 ) {
     assert(a <= b);
-    return IN_RANGE_CLOSED(x, a, b);
+    return IN_CLOSED_RANGE(x, a, b);
 }
 
 inline bool isEven(register const int x) {
@@ -920,8 +920,8 @@ inline uintmax_t imaxunsignedAbs(register const intmax_t x) {
 #define floorDiv(x, y) TYPE_GENERIC_INTEGER_2(floorDiv, x, y)
 #define floorMod(x, y) TYPE_GENERIC_INTEGER_2(floorMod, x, y)
 #define icopysign(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(icopysign, x, y)
+#define inClosedRange(x, a, b) TYPE_GENERIC_INTEGER_3(inClosedRange, x, a, b)
 #define inRange(x, a, b) TYPE_GENERIC_INTEGER_3(inRange, x, a, b)
-#define inRangeClosed(x, a, b) TYPE_GENERIC_INTEGER_3(inRangeClosed, x, a, b)
 #define isEven(x) TYPE_GENERIC_INTEGER_1(isEven, x)
 #define isOdd(x) TYPE_GENERIC_INTEGER_1(isOdd, x)
 #define isSameSign(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(isSameSign, x, y)
