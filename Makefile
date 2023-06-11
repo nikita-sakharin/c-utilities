@@ -14,7 +14,7 @@ CFLAGS=-Wall -Walloc-zero -Walloca -Wanalyzer-too-complex -Warith-conversion \
     -Wswitch-default -Wswitch-enum -Wundef -Wunreachable-code \
     -Wunsafe-loop-optimizations -Wunused-const-variable=2 -Wunused-macros \
     -Wvector-operation-performance -Wvla -Wwrite-strings -fanalyzer \
-    -pedantic-errors -std=c18 --include-directory=./include
+    -pedantic-errors -std=c2x --include-directory=./include
 # -Wattribute-alias=2 -Wnormalized -Wopenacc-parallelism -Wstack-protector \
 # -Wtrampolines
 # -Waggregate-return -Wdeclaration-after-statement -Wsystem-headers \
