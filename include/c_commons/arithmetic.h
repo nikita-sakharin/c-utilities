@@ -537,78 +537,6 @@ inline uintmax_t umaxfloorMod(
     return x % y;
 }
 
-inline bool inRange(
-    register const int x,
-    register const int a,
-    register const int b
-) {
-    assert(a <= b);
-    return IN_RANGE(x, a, b);
-}
-
-inline bool uinRange(
-    register const uint x,
-    register const uint a,
-    register const uint b
-) {
-    assert(a <= b);
-    return IN_RANGE(x, a, b);
-}
-
-inline bool linRange(
-    register const long x,
-    register const long a,
-    register const long b
-) {
-    assert(a <= b);
-    return IN_RANGE(x, a, b);
-}
-
-inline bool ulinRange(
-    register const ulong x,
-    register const ulong a,
-    register const ulong b
-) {
-    assert(a <= b);
-    return IN_RANGE(x, a, b);
-}
-
-inline bool llinRange(
-    register const llong x,
-    register const llong a,
-    register const llong b
-) {
-    assert(a <= b);
-    return IN_RANGE(x, a, b);
-}
-
-inline bool ullinRange(
-    register const ullong x,
-    register const ullong a,
-    register const ullong b
-) {
-    assert(a <= b);
-    return IN_RANGE(x, a, b);
-}
-
-inline bool imaxinRange(
-    register const intmax_t x,
-    register const intmax_t a,
-    register const intmax_t b
-) {
-    assert(a <= b);
-    return IN_RANGE(x, a, b);
-}
-
-inline bool umaxinRange(
-    register const uintmax_t x,
-    register const uintmax_t a,
-    register const uintmax_t b
-) {
-    assert(a <= b);
-    return IN_RANGE(x, a, b);
-}
-
 inline bool inClosedRange(
     register const int x,
     register const int a,
@@ -679,6 +607,78 @@ inline bool umaxinClosedRange(
 ) {
     assert(a <= b);
     return IN_CLOSED_RANGE(x, a, b);
+}
+
+inline bool inRange(
+    register const int x,
+    register const int a,
+    register const int b
+) {
+    assert(a <= b);
+    return IN_RANGE(x, a, b);
+}
+
+inline bool uinRange(
+    register const uint x,
+    register const uint a,
+    register const uint b
+) {
+    assert(a <= b);
+    return IN_RANGE(x, a, b);
+}
+
+inline bool linRange(
+    register const long x,
+    register const long a,
+    register const long b
+) {
+    assert(a <= b);
+    return IN_RANGE(x, a, b);
+}
+
+inline bool ulinRange(
+    register const ulong x,
+    register const ulong a,
+    register const ulong b
+) {
+    assert(a <= b);
+    return IN_RANGE(x, a, b);
+}
+
+inline bool llinRange(
+    register const llong x,
+    register const llong a,
+    register const llong b
+) {
+    assert(a <= b);
+    return IN_RANGE(x, a, b);
+}
+
+inline bool ullinRange(
+    register const ullong x,
+    register const ullong a,
+    register const ullong b
+) {
+    assert(a <= b);
+    return IN_RANGE(x, a, b);
+}
+
+inline bool imaxinRange(
+    register const intmax_t x,
+    register const intmax_t a,
+    register const intmax_t b
+) {
+    assert(a <= b);
+    return IN_RANGE(x, a, b);
+}
+
+inline bool umaxinRange(
+    register const uintmax_t x,
+    register const uintmax_t a,
+    register const uintmax_t b
+) {
+    assert(a <= b);
+    return IN_RANGE(x, a, b);
 }
 
 inline bool isEven(register const int x) {
