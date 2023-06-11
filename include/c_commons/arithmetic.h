@@ -609,7 +609,7 @@ inline bool umaxinRange(
     return IN_RANGE(x, a, b);
 }
 
-inline bool inRangeClosed(
+inline bool inClosedRange(
     register const int x,
     register const int a,
     register const int b
@@ -618,7 +618,7 @@ inline bool inRangeClosed(
     return IN_CLOSED_RANGE(x, a, b);
 }
 
-inline bool uinRangeClosed(
+inline bool uinClosedRange(
     register const uint x,
     register const uint a,
     register const uint b
@@ -627,7 +627,7 @@ inline bool uinRangeClosed(
     return IN_CLOSED_RANGE(x, a, b);
 }
 
-inline bool linRangeClosed(
+inline bool linClosedRange(
     register const long x,
     register const long a,
     register const long b
@@ -636,7 +636,7 @@ inline bool linRangeClosed(
     return IN_CLOSED_RANGE(x, a, b);
 }
 
-inline bool ulinRangeClosed(
+inline bool ulinClosedRange(
     register const ulong x,
     register const ulong a,
     register const ulong b
@@ -645,7 +645,7 @@ inline bool ulinRangeClosed(
     return IN_CLOSED_RANGE(x, a, b);
 }
 
-inline bool llinRangeClosed(
+inline bool llinClosedRange(
     register const llong x,
     register const llong a,
     register const llong b
@@ -654,7 +654,7 @@ inline bool llinRangeClosed(
     return IN_CLOSED_RANGE(x, a, b);
 }
 
-inline bool ullinRangeClosed(
+inline bool ullinClosedRange(
     register const ullong x,
     register const ullong a,
     register const ullong b
@@ -663,7 +663,7 @@ inline bool ullinRangeClosed(
     return IN_CLOSED_RANGE(x, a, b);
 }
 
-inline bool imaxinRangeClosed(
+inline bool imaxinClosedRange(
     register const intmax_t x,
     register const intmax_t a,
     register const intmax_t b
@@ -672,7 +672,7 @@ inline bool imaxinRangeClosed(
     return IN_CLOSED_RANGE(x, a, b);
 }
 
-inline bool umaxinRangeClosed(
+inline bool umaxinClosedRange(
     register const uintmax_t x,
     register const uintmax_t a,
     register const uintmax_t b
