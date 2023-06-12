@@ -11,7 +11,7 @@ http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
 {`bitCount`|`popCount`}<br/>
 `rotateLeft`, `rotateRight`<br/>
 `clear` (`reset`), `get` (`test`), `set`, `flip`<br/>
-(are|has|have|is)SameSign[um]
+`(are|have|has|is)SameSign[um]`
 
 `compare.h` (`cmp.h`):<br/>
 `compare` (`cmp`)
