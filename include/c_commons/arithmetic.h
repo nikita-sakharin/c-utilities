@@ -316,8 +316,7 @@ inline int umaxcompare(
 }
 
 inline uint dim(register const int x, register const int y) {
-    return (uint) DIM(x, y);
-    // return y < x ? (uint) x - (uint) y : 0U;
+    return y < x ? (uint) x - (uint) y : 0U;
 }
 
 inline uint udim(register const uint x, register const uint y) {
@@ -325,8 +324,7 @@ inline uint udim(register const uint x, register const uint y) {
 }
 
 inline ulong ldim(register const long x, register const long y) {
-    return (ulong) DIM(x, y);
-    // return y < x ? (ulong) x - (ulong) y : 0U;
+    return y < x ? (ulong) x - (ulong) y : 0U;
 }
 
 inline ulong uldim(register const ulong x, register const ulong y) {
@@ -334,8 +332,7 @@ inline ulong uldim(register const ulong x, register const ulong y) {
 }
 
 inline ullong lldim(register const llong x, register const llong y) {
-    return (ullong) DIM(x, y);
-    // return y < x ? (ullong) x - (ullong) y : 0U;
+    return y < x ? (ullong) x - (ullong) y : 0U;
 }
 
 inline ullong ulldim(register const ullong x, register const ullong y) {
