@@ -346,8 +346,7 @@ inline uintmax_t imaxdim(
     register const intmax_t x,
     register const intmax_t y
 ) {
-    return (uintmax_t) DIM(x, y);
-    // return y < x ? (uintmax_t) x - (uintmax_t) y : 0U;
+    return y < x ? (uintmax_t) x - (uintmax_t) y : 0U;
 }
 
 inline uintmax_t umaxdim(
