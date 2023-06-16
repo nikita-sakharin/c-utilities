@@ -50,6 +50,10 @@ http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
 `numeric.h`:<br/>
 `gcd`, `lcm`, `midpoint`, `fmidpoint`, `isqrt`, `icbrt`
 
+`preprocessor.h`:<br/>
+all `arithmetic.h` `#define`s and
+`ALL`, `IS_[UN]SIGNED`, `NONE` (`???`)
+
 `string.h`:<br/>
 `strFormat`, `strNFormat`, `strReverse`, `strNReverse`
 
