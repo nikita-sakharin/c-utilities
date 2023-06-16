@@ -17,6 +17,7 @@
 // #define IS_UNSIGNED(x) (!IS_SIGNED(x))
 // #define NONE(x) ((x) - (x))
 // #define NONE(x) ((x) & 0)
+// #define NONE(x) ((x) & ~(x))
 // #define NONE(x) ((x) ^ (x))
 // #define NONE(x) (~ALL(x))
 // #define ROTATE_LEFT(x, shift, width)
