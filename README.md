@@ -51,8 +51,7 @@ http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
 `gcd`, `lcm`, `midpoint`, `fmidpoint`, `isqrt`, `icbrt`
 
 `preprocessor.h`:<br/>
-all `arithmetic.h` `#define`s and
-`ALL`, `IS_[UN]SIGNED`, `NONE` (`???`)
+Все `#define` (макросы) из `arithmetic.h` и `bit.h`, в том числе `ALL`, `NONE`, `IS_SIGNED` `IS_UNSIGNED`
 
 `string.h`:<br/>
 `strFormat`, `strNFormat`, `strReverse`, `strNReverse`
