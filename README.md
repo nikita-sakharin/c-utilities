@@ -51,7 +51,8 @@ http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
 `gcd`, `lcm`, `midpoint`, `fmidpoint`, `isqrt`, `icbrt`
 
 `preprocessor.h`:<br/>
-Все `#define` (макросы) из `arithmetic.h` и `bit.h`, в том числе `ALL`, `NONE`, `IS_SIGNED` `IS_UNSIGNED`
+Все `#define` (макросы) из `arithmetic.h` и `bit.h`, в том числе `ALL`, `NONE`, `IS_SIGNED` `IS_UNSIGNED`</br>
+В этом случае, при вычислении функций можно считать, что имеет место только два типа: `intmax_t` и `uintmax_t`
 
 `string.h`:<br/>
 `strFormat`, `strNFormat`, `strReverse`, `strNReverse`
