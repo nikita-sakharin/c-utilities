@@ -20,8 +20,8 @@
 // #define NONE(x) ((x) & ~(x))
 // #define NONE(x) ((x) ^ (x))
 // #define NONE(x) (~ALL(x))
-// #define ROTATE_LEFT(x, shift, width)
-// #define ROTATE_RIGHT(x, shift, width)
+// #define ROTATE_LEFT(x, shift)
+// #define ROTATE_RIGHT(x, shift)
 
 inline bool uisPowerOfTwo(register const uint x) {
     return IS_POWER_OF_TWO(x);
