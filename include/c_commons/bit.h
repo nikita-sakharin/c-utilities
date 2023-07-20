@@ -7,19 +7,7 @@
 #include <c_commons/type_generic.h> // TYPE_GENERIC_UNSIGNED_INTEGER_1
 #include <c_commons/types.h> // uint, ullong, ulong
 
-// #define ALL(x) ((x) ^ ~(x))
-// #define ALL(x) ((x) | ~(x))
-// #define ALL(x) (~NONE(x))
 #define IS_POWER_OF_TWO(x) ((x) > 0 && ((x) & ((x) - 1)) == 0)
-// #define IS_SIGNED(x) (ALL(x) < 0)
-// #define IS_SIGNED(x) (!IS_UNSIGNED(x))
-// #define IS_UNSIGNED(x) (ALL(x) >= 0)
-// #define IS_UNSIGNED(x) (!IS_SIGNED(x))
-// #define NONE(x) ((x) - (x))
-// #define NONE(x) ((x) & 0)
-// #define NONE(x) ((x) & ~(x))
-// #define NONE(x) ((x) ^ (x))
-// #define NONE(x) (~ALL(x))
 // #define ROTATE_LEFT(x, shift)
 // #define ROTATE_RIGHT(x, shift)
 
