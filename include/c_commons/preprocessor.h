@@ -27,7 +27,14 @@
 // IS_ABS_OVERFLOW, CHECK_ABS
 #define IS_ADD_OVERFLOW(x, y) (IS_SIGNED((x) ^ (y)) ? (y) < 0 ? (x) < INTMAX_MIN - (y) : (x) > INTMAX_MAX - (y) : (x) > UINTMAX_MAX - (y)) // CHECK_ADD
 #define IS_DIV_OVERFLOW(x, y) (IS_SIGNED((x) ^ (y)) && (x) == INTMAX_MIN && (y) == -1) // CHECK_DIV
-#define IS_MUL_OVERFLOW(x, y) ((y) != 0 && (IS_SIGNED((x) ^ (y)) ? IS_SAME_SIGN(x, y) : (x) > UINTMAX_MAX / (y))) // CHECK_MUL
+#define IS_MUL_OVERFLOW(x, y) ((y) != 0 &&
+    (IS_SIGNED((x) ^ (y)) ?
+        (x) < 0 ?
+            (x) < ((y) < 0 ? INTMAX_MAX : INTMAX_MIN) / (y) :
+            (y) != -1 && (x) > ((y) < 0 ? INTMAX_MIN : INTMAX_MAX) / (y) :
+        (x) > UINTMAX_MAX / (y)
+    )
+) // CHECK_MUL
 #define IS_NEG_OVERFLOW(x) (IS_SIGNED(x) && (x) == INTMAX_MIN) // CHECK_NEG
 #define IS_SUB_OVERFLOW(x, y) (IS_SIGNED((x) ^ (y)) ? (y) < 0 ? (x) > INTMAX_MAX + (y) : (x) < INTMAX_MIN + (y) : (x) < (y)) // CHECK_SUB
 #define IS_UNSIGNED(x) (ALL(x) >= 0)
