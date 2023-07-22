@@ -56,6 +56,7 @@
 #define NEGATIVE_ABS(x) (0 < (x) ? -(x) : (x))
 #define ICOPYSIGN(x, y) ((y) < 0 ? NEGATIVE_ABS(x) : ABS(x))
 #define SIGN(x) ((x) < 0 ? -1 : 0 < (x))
+#define SIGNUM(x) ((x) < 0 ? -1 : 1)
 
 inline uint absDiff(register const int x, register const int y) {
     return x < y ? (uint) y - (uint) x : (uint) x - (uint) y;
@@ -889,6 +890,22 @@ inline int llsign(register const llong x) {
 
 inline int imaxsign(register const intmax_t x) {
     return SIGN(x);
+}
+
+inline int signum(register const int x) {
+    return SIGNUM(x);
+}
+
+inline int lsignum(register const long x) {
+    return SIGNUM(x);
+}
+
+inline int llsignum(register const llong x) {
+    return SIGNUM(x);
+}
+
+inline int imaxsignum(register const intmax_t x) {
+    return SIGNUM(x);
 }
 
 inline uint unsignedAbs(register const int x) {
