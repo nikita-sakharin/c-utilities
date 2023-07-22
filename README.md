@@ -51,6 +51,7 @@ http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
 `gcd`, `lcm`, `midpoint`, `fmidpoint`, `isqrt`, `icbrt`
 
 `preprocessor.h`:<br/>
+Нужно ли всем литералам (`-1`, `0`) ставить суффиксы `LL` и `ULL` для занковых и беззнаковых, соответсвенно? Так как все вычисления производятся в `intmax_t` и `uintmax_t`, то это наводит на мысль, что все литералы действительно должны иметь суффикс.
 Все `#define` (макросы) из `arithmetic.h` и `bit.h`, в том числе `ALL`, `NONE`, `IS_SIGNED` `IS_UNSIGNED`,</br>
 а также макросы для проверки переполнения `CHECK_ADD` (`CHECKED_ADD`), `CHECK_SUB` (`CHECKED_SUB`), `CHECK_MUL` (`CHECKED_MUL`).</br>
 В этом случае, при вычислении функций можно считать, что имеет место только два типа: `intmax_t` и `uintmax_t`
