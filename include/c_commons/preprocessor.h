@@ -50,7 +50,7 @@
     )                                                                          \
 )
 
-#define IS_NEG_OVERFLOW(x) (IS_SIGNED(x) && (x) == INTMAX_MIN)
+#define IS_NEG_OVERFLOW(x) (IS_SIGNED(x) ? (x) == INTMAX_MIN : (x) != 0ULL)
 
 #define IS_SUB_OVERFLOW(x, y) (IS_SIGNED((x) ^ (y))               \
     ? (y) < 0LL ? (x) > INTMAX_MAX + (y) : (x) < INTMAX_MIN + (y) \
