@@ -80,83 +80,83 @@
     ldbl: func##l                                                    \
 )(__VA_ARGS__)
 
-#define TYPE_GENERIC_INTEGER_1(func, x, ...) \
-    TYPE_GENERIC_INTEGER( \
+#define TYPE_GENERIC_INTEGER_1(func, x, ...)   \
+    TYPE_GENERIC_INTEGER(                      \
         func, (x), x __VA_OPT__(,) __VA_ARGS__ \
     )
 
-#define TYPE_GENERIC_INTEGER_2(func, x, y, ...) \
-    TYPE_GENERIC_INTEGER( \
+#define TYPE_GENERIC_INTEGER_2(func, x, y, ...)         \
+    TYPE_GENERIC_INTEGER(                               \
         func, (x) + (y), x, y __VA_OPT__(,) __VA_ARGS__ \
     )
 
-#define TYPE_GENERIC_INTEGER_3(func, x, y, z, ...) \
-    TYPE_GENERIC_INTEGER( \
+#define TYPE_GENERIC_INTEGER_3(func, x, y, z, ...)               \
+    TYPE_GENERIC_INTEGER(                                        \
         func, (x) + (y) + (z), x, y, z __VA_OPT__(,) __VA_ARGS__ \
     )
 
-#define TYPE_GENERIC_INTEGER_4(func, x, y, z, w, ...) \
-    TYPE_GENERIC_INTEGER( \
+#define TYPE_GENERIC_INTEGER_4(func, x, y, z, w, ...)                     \
+    TYPE_GENERIC_INTEGER(                                                 \
         func, (x) + (y) + (z) + (w), x, y, z, w __VA_OPT__(,) __VA_ARGS__ \
     )
 
 #define TYPE_GENERIC_SIGNED_INTEGER_1(func, x, ...) \
-    TYPE_GENERIC_SIGNED_INTEGER( \
-        func, (x), x __VA_OPT__(,) __VA_ARGS__ \
+    TYPE_GENERIC_SIGNED_INTEGER(                    \
+        func, (x), x __VA_OPT__(,) __VA_ARGS__      \
     )
 
-#define TYPE_GENERIC_SIGNED_INTEGER_2(func, x, y, ...) \
-    TYPE_GENERIC_SIGNED_INTEGER( \
+#define TYPE_GENERIC_SIGNED_INTEGER_2(func, x, y, ...)  \
+    TYPE_GENERIC_SIGNED_INTEGER(                        \
         func, (x) + (y), x, y __VA_OPT__(,) __VA_ARGS__ \
     )
 
-#define TYPE_GENERIC_SIGNED_INTEGER_3(func, x, y, z, ...) \
-    TYPE_GENERIC_SIGNED_INTEGER( \
+#define TYPE_GENERIC_SIGNED_INTEGER_3(func, x, y, z, ...)        \
+    TYPE_GENERIC_SIGNED_INTEGER(                                 \
         func, (x) + (y) + (z), x, y, z __VA_OPT__(,) __VA_ARGS__ \
     )
 
-#define TYPE_GENERIC_SIGNED_INTEGER_4(func, x, y, z, w, ...) \
-    TYPE_GENERIC_SIGNED_INTEGER( \
+#define TYPE_GENERIC_SIGNED_INTEGER_4(func, x, y, z, w, ...)              \
+    TYPE_GENERIC_SIGNED_INTEGER(                                          \
         func, (x) + (y) + (z) + (w), x, y, z, w __VA_OPT__(,) __VA_ARGS__ \
     )
 
 #define TYPE_GENERIC_UNSIGNED_INTEGER_1(func, x, ...) \
-    TYPE_GENERIC_UNSIGNED_INTEGER( \
-        func, (x), x __VA_OPT__(,) __VA_ARGS__ \
+    TYPE_GENERIC_UNSIGNED_INTEGER(                    \
+        func, (x), x __VA_OPT__(,) __VA_ARGS__        \
     )
 
 #define TYPE_GENERIC_UNSIGNED_INTEGER_2(func, x, y, ...) \
-    TYPE_GENERIC_UNSIGNED_INTEGER( \
-        func, (x) + (y), x, y __VA_OPT__(,) __VA_ARGS__ \
+    TYPE_GENERIC_UNSIGNED_INTEGER(                       \
+        func, (x) + (y), x, y __VA_OPT__(,) __VA_ARGS__  \
     )
 
-#define TYPE_GENERIC_UNSIGNED_INTEGER_3(func, x, y, z, ...) \
-    TYPE_GENERIC_UNSIGNED_INTEGER( \
+#define TYPE_GENERIC_UNSIGNED_INTEGER_3(func, x, y, z, ...)      \
+    TYPE_GENERIC_UNSIGNED_INTEGER(                               \
         func, (x) + (y) + (z), x, y, z __VA_OPT__(,) __VA_ARGS__ \
     )
 
-#define TYPE_GENERIC_UNSIGNED_INTEGER_4(func, x, y, z, w, ...) \
-    TYPE_GENERIC_UNSIGNED_INTEGER( \
+#define TYPE_GENERIC_UNSIGNED_INTEGER_4(func, x, y, z, w, ...)            \
+    TYPE_GENERIC_UNSIGNED_INTEGER(                                        \
         func, (x) + (y) + (z) + (w), x, y, z, w __VA_OPT__(,) __VA_ARGS__ \
     )
 
 #define TYPE_GENERIC_REAL_FLOATING_1(func, x, ...) \
-    TYPE_GENERIC_REAL_FLOATING( \
-        func, (x), x __VA_OPT__(,) __VA_ARGS__ \
+    TYPE_GENERIC_REAL_FLOATING(                    \
+        func, (x), x __VA_OPT__(,) __VA_ARGS__     \
     )
 
-#define TYPE_GENERIC_REAL_FLOATING_2(func, x, y, ...) \
-    TYPE_GENERIC_REAL_FLOATING( \
+#define TYPE_GENERIC_REAL_FLOATING_2(func, x, y, ...)   \
+    TYPE_GENERIC_REAL_FLOATING(                         \
         func, (x) + (y), x, y __VA_OPT__(,) __VA_ARGS__ \
     )
 
-#define TYPE_GENERIC_REAL_FLOATING_3(func, x, y, z, ...) \
-    TYPE_GENERIC_REAL_FLOATING( \
+#define TYPE_GENERIC_REAL_FLOATING_3(func, x, y, z, ...)         \
+    TYPE_GENERIC_REAL_FLOATING(                                  \
         func, (x) + (y) + (z), x, y, z __VA_OPT__(,) __VA_ARGS__ \
     )
 
-#define TYPE_GENERIC_REAL_FLOATING_4(func, x, y, z, w, ...) \
-    TYPE_GENERIC_REAL_FLOATING( \
+#define TYPE_GENERIC_REAL_FLOATING_4(func, x, y, z, w, ...)               \
+    TYPE_GENERIC_REAL_FLOATING(                                           \
         func, (x) + (y) + (z) + (w), x, y, z, w __VA_OPT__(,) __VA_ARGS__ \
     )
 
