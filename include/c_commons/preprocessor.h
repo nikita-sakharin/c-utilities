@@ -25,7 +25,7 @@
 
 #define IS_SIGNED(x) (!IS_UNSIGNED(x))
 
-// #define IS_ABS_OVERFLOW(x)
+// #define IS_ABS_OVERFLOW(x) (IS_SIGNED(x) && (x) == INTMAX_MIN)
 
 #define IS_ADD_OVERFLOW(x, y) (IS_SIGNED((x) ^ (y))               \
     ? (y) < 0LL ? (x) < INTMAX_MIN - (y) : (x) > INTMAX_MAX - (y) \
