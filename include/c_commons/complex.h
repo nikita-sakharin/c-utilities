@@ -10,18 +10,18 @@ typedef double complex dblCmplx;
 typedef long double complex ldblCmplx;
 
 #define TYPE_GENERIC_COMPLEX(func, expr, ...) _Generic((expr), \
-    fltCmplx: func##f, \
-    default: func, \
-    ldblCmplx: func##l \
+    fltCmplx: func##f,                                         \
+    default: func,                                             \
+    ldblCmplx: func##l                                         \
 )(__VA_ARGS__)
 
 #define TYPE_GENERIC_FLOATING(func, expr, ...) _Generic((expr), \
-    flt: func##f, \
-    default: func, \
-    ldbl: func##l, \
-    fltCmplx: c##func##f, \
-    dblCmplx: c##func, \
-    ldblCmplx: c##func##l \
+    flt: func##f,                                               \
+    default: func,                                              \
+    ldbl: func##l,                                              \
+    fltCmplx: c##func##f,                                       \
+    dblCmplx: c##func,                                          \
+    ldblCmplx: c##func##l                                       \
 )(__VA_ARGS__)
 
 #define TYPE_GENERIC_COMPLEX_1(func, x, ...) \

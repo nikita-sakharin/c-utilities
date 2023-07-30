@@ -9,59 +9,59 @@
 #if LLONG_MAX < INTMAX_MAX
 
 #define TYPE_GENERIC_INTEGER(func, expr, ...) _Generic((expr), \
-    default: func, \
-    uint: u##func, \
-    long: l##func, \
-    ulong: ul##func, \
-    llong: ll##func, \
-    ullong: ull##func, \
-    intmax_t: imax##func, \
-    uintmax_t: umax##func \
+    default: func,                                             \
+    uint: u##func,                                             \
+    long: l##func,                                             \
+    ulong: ul##func,                                           \
+    llong: ll##func,                                           \
+    ullong: ull##func,                                         \
+    intmax_t: imax##func,                                      \
+    uintmax_t: umax##func                                      \
 )(__VA_ARGS__)
 
 #define TYPE_GENERIC_SIGNED_INTEGER(func, expr, ...) _Generic((expr), \
-    default: func, \
-    long: l##func, \
-    llong: ll##func, \
-    intmax_t: imax##func \
+    default: func,                                                    \
+    long: l##func,                                                    \
+    llong: ll##func,                                                  \
+    intmax_t: imax##func                                              \
 )(__VA_ARGS__)
 
 #define TYPE_GENERIC_UNSIGNED_INTEGER(func, expr, ...) _Generic((expr), \
-    default: u##func, \
-    ulong: ul##func, \
-    ullong: ull##func, \
-    uintmax_t: umax##func \
+    default: u##func,                                                   \
+    ulong: ul##func,                                                    \
+    ullong: ull##func,                                                  \
+    uintmax_t: umax##func                                               \
 )(__VA_ARGS__)
 
 #else // LLONG_MAX == INTMAX_MAX
 
 #define TYPE_GENERIC_INTEGER(func, expr, ...) _Generic((expr), \
-    default: func, \
-    uint: u##func, \
-    long: l##func, \
-    ulong: ul##func, \
-    llong: ll##func, \
-    ullong: ull##func \
+    default: func,                                             \
+    uint: u##func,                                             \
+    long: l##func,                                             \
+    ulong: ul##func,                                           \
+    llong: ll##func,                                           \
+    ullong: ull##func                                          \
 )(__VA_ARGS__)
 
 #define TYPE_GENERIC_SIGNED_INTEGER(func, expr, ...) _Generic((expr), \
-    default: func, \
-    long: l##func, \
-    llong: ll##func \
+    default: func,                                                    \
+    long: l##func,                                                    \
+    llong: ll##func                                                   \
 )(__VA_ARGS__)
 
 #define TYPE_GENERIC_UNSIGNED_INTEGER(func, expr, ...) _Generic((expr), \
-    default: u##func, \
-    ulong: ul##func, \
-    ullong: ull##func \
+    default: u##func,                                                   \
+    ulong: ul##func,                                                    \
+    ullong: ull##func                                                   \
 )(__VA_ARGS__)
 
 #endif // LLONG_MAX == INTMAX_MAX
 
 #define TYPE_GENERIC_REAL_FLOATING(func, expr, ...) _Generic((expr), \
-    flt: func##f, \
-    default: func, \
-    ldbl: func##l \
+    flt: func##f,                                                    \
+    default: func,                                                   \
+    ldbl: func##l                                                    \
 )(__VA_ARGS__)
 
 #define TYPE_GENERIC_INTEGER_1(func, x, ...) \
