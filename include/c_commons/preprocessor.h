@@ -23,7 +23,7 @@
 // #define ALL(x) ((x) | ~(x))
 // #define ALL(x) (~NONE(x))
 
-#define IS_SIGNED(x) (ALL(x) < 0LL)
+#define IS_SIGNED(x) (!IS_UNSIGNED(x))
 
 // #define IS_ABS_OVERFLOW(x)
 
@@ -57,7 +57,7 @@
     : (x) < (y)                                                   \
 )
 
-#define IS_UNSIGNED(x) (ALL(x) >= 0LL)
+#define IS_UNSIGNED(x) (ALL(x) > 0LL)
 
 // #define NONE(x) ((x) - (x))
 // #define NONE(x) ((x) & 0LL)

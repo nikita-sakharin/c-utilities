@@ -40,43 +40,43 @@ typedef long double complex ldblCmplx;
     ldblCmplx: c##func##l                                       \
 )(__VA_ARGS__)
 
-#define TYPE_GENERIC_COMPLEX_1(func, x, ...) \
-    TYPE_GENERIC_COMPLEX( \
+#define TYPE_GENERIC_COMPLEX_1(func, x, ...)   \
+    TYPE_GENERIC_COMPLEX(                      \
         func, (x), x __VA_OPT__(,) __VA_ARGS__ \
     )
 
-#define TYPE_GENERIC_COMPLEX_2(func, x, y, ...) \
-    TYPE_GENERIC_COMPLEX( \
+#define TYPE_GENERIC_COMPLEX_2(func, x, y, ...)         \
+    TYPE_GENERIC_COMPLEX(                               \
         func, (x) + (y), x, y __VA_OPT__(,) __VA_ARGS__ \
     )
 
-#define TYPE_GENERIC_COMPLEX_3(func, x, y, z, ...) \
-    TYPE_GENERIC_COMPLEX( \
+#define TYPE_GENERIC_COMPLEX_3(func, x, y, z, ...)               \
+    TYPE_GENERIC_COMPLEX(                                        \
         func, (x) + (y) + (z), x, y, z __VA_OPT__(,) __VA_ARGS__ \
     )
 
-#define TYPE_GENERIC_COMPLEX_4(func, x, y, z, w, ...) \
-    TYPE_GENERIC_COMPLEX( \
+#define TYPE_GENERIC_COMPLEX_4(func, x, y, z, w, ...)                     \
+    TYPE_GENERIC_COMPLEX(                                                 \
         func, (x) + (y) + (z) + (w), x, y, z, w __VA_OPT__(,) __VA_ARGS__ \
     )
 
-#define TYPE_GENERIC_FLOATING_1(func, x, ...) \
-    TYPE_GENERIC_FLOATING( \
+#define TYPE_GENERIC_FLOATING_1(func, x, ...)  \
+    TYPE_GENERIC_FLOATING(                     \
         func, (x), x __VA_OPT__(,) __VA_ARGS__ \
     )
 
-#define TYPE_GENERIC_FLOATING_2(func, x, y, ...) \
-    TYPE_GENERIC_FLOATING( \
+#define TYPE_GENERIC_FLOATING_2(func, x, y, ...)        \
+    TYPE_GENERIC_FLOATING(                              \
         func, (x) + (y), x, y __VA_OPT__(,) __VA_ARGS__ \
     )
 
-#define TYPE_GENERIC_FLOATING_3(func, x, y, z, ...) \
-    TYPE_GENERIC_FLOATING( \
+#define TYPE_GENERIC_FLOATING_3(func, x, y, z, ...)              \
+    TYPE_GENERIC_FLOATING(                                       \
         func, (x) + (y) + (z), x, y, z __VA_OPT__(,) __VA_ARGS__ \
     )
 
-#define TYPE_GENERIC_FLOATING_4(func, x, y, z, w, ...) \
-    TYPE_GENERIC_FLOATING( \
+#define TYPE_GENERIC_FLOATING_4(func, x, y, z, w, ...)                    \
+    TYPE_GENERIC_FLOATING(                                                \
         func, (x) + (y) + (z) + (w), x, y, z, w __VA_OPT__(,) __VA_ARGS__ \
     )
 
