@@ -32,10 +32,8 @@
     : (x) > UINTMAX_MAX - (y)                                     \
 )
 
-#define IS_DIV_OVERFLOW(x, y) ( \
-    IS_SIGNED((x) ^ (y))        \
-    && (x) == INTMAX_MIN        \
-    && (y) == -1LL              \
+#define IS_DIV_OVERFLOW(x, y) (                                              \
+    (y) == 0LL || (IS_SIGNED((x) ^ (y)) && (x) == INTMAX_MIN && (y) == -1LL) \
 )
 
 // #define IS_LEFT_SHIFT_OVERFLOW(x, shift)
