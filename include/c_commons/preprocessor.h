@@ -17,7 +17,7 @@
 #ifndef C_COMMONS_PREPROCESSOR_H
 #define C_COMMONS_PREPROCESSOR_H
 
-#include <stdint.h> // INTMAX_MIN, UINTMAX_MAX
+#include <stdint.h> // INTMAX_C, INTMAX_MIN, UINTMAX_C, UINTMAX_MAX
 
 // #define ALL(x) ((x) ^ ~(x))
 // #define ALL(x) ((x) | ~(x))
