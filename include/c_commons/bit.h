@@ -18,7 +18,7 @@
 #define C_COMMONS_BIT_H
 
 #include <stdbool.h> // bool
-#include <stdint.h> // uintmax_t
+#include <stdint.h> // INTMAX_C, intmax_t, uintmax_t
 
 #include <c_commons/type_generic.h> // TYPE_GENERIC_UNSIGNED_INTEGER_1
 #include <c_commons/types.h> // uint, ullong, ulong
@@ -43,6 +43,23 @@ inline bool umaxisPowerOfTwo(register const uintmax_t x) {
     return IS_POWER_OF_TWO(x);
 }
 
+inline bool isignbit(register const int x) {
+    return x < 0;
+}
+
+inline bool lisignbit(register const long x) {
+    return x < 0L;
+}
+
+inline bool llisignbit(register const llong x) {
+    return x < 0LL;
+}
+
+inline bool imaxisignbit(register const intmax_t x) {
+    return x < INTMAX_C(0);
+}
+
 #define isPowerOfTwo(x) TYPE_GENERIC_UNSIGNED_INTEGER_1(isPowerOfTwo, x)
+#define isignbit(x) TYPE_GENERIC_UNSIGNED_INTEGER_1(isignbit, x)
 
 #endif // C_COMMONS_BIT_H

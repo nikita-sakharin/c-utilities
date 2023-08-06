@@ -24,3 +24,8 @@ extern inline bool uisPowerOfTwo(uint);
 extern inline bool ulisPowerOfTwo(ulong);
 extern inline bool ullisPowerOfTwo(ullong);
 extern inline bool umaxisPowerOfTwo(uintmax_t);
+
+extern inline bool isignbit(int);
+extern inline bool lisignbit(long);
+extern inline bool llisignbit(llong);
+extern inline bool imaxisignbit(intmax_t);
