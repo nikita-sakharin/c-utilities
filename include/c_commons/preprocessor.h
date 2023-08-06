@@ -27,38 +27,42 @@
 
 // #define IS_ABS_OVERFLOW(x) (IS_SIGNED(x) && (x) == INTMAX_MIN)
 
-#define IS_ADD_OVERFLOW(x, y) (IS_SIGNED((x) ^ (y))               \
-    ? (y) < 0LL ? (x) < INTMAX_MIN - (y) : (x) > INTMAX_MAX - (y) \
-    : (x) > UINTMAX_MAX - (y)                                     \
+#define IS_ADD_OVERFLOW(x, y) (IS_SIGNED((x) ^ (y))                       \
+    ? (y) < INTMAX_C(0) ? (x) < INTMAX_MIN - (y) : (x) > INTMAX_MAX - (y) \
+    : (x) > UINTMAX_MAX - (y)                                             \
 )
 
-#define IS_DIV_OVERFLOW(x, y) (                                              \
-    (y) == 0LL || (IS_SIGNED((x) ^ (y)) && (x) == INTMAX_MIN && (y) == -1LL) \
+#define IS_DIV_OVERFLOW(x, y) (                                           \
+    (y) == INTMAX_C(0)                                                    \
+    || (IS_SIGNED((x) ^ (y)) && (x) == INTMAX_MIN && (y) == INTMAX_C(-1)) \
 )
 
 // #define IS_LEFT_SHIFT_OVERFLOW(x, shift)
 
-#define IS_MUL_OVERFLOW(x, y) (                                                \
-    (y) != 0LL                                                                 \
-    && (IS_SIGNED((x) ^ (y))                                                   \
-        ? (x) < 0LL                                                            \
-            ? (x) < ((y) < 0LL ? INTMAX_MAX : INTMAX_MIN) / (y)                \
-            : (y) != -1LL && (x) > ((y) < 0LL ? INTMAX_MIN : INTMAX_MAX) / (y) \
-        : (x) > UINTMAX_MAX / (y)                                              \
-    )                                                                          \
+#define IS_MUL_OVERFLOW(x, y) (                                                                \
+    (y) != INTMAX_C(0)                                                                         \
+    && (IS_SIGNED((x) ^ (y))                                                                   \
+        ? (x) < INTMAX_C(0)                                                                    \
+            ? (x) < ((y) < INTMAX_C(0) ? INTMAX_MAX : INTMAX_MIN) / (y)                        \
+            : (y) != INTMAX_C(-1) && (x) > ((y) < INTMAX_C(0) ? INTMAX_MIN : INTMAX_MAX) / (y) \
+        : (x) > UINTMAX_MAX / (y)                                                              \
+    )                                                                                          \
 )
 
-#define IS_NEG_OVERFLOW(x) (IS_SIGNED(x) ? (x) == INTMAX_MIN : (x) != 0ULL)
-
-#define IS_SUB_OVERFLOW(x, y) (IS_SIGNED((x) ^ (y))               \
-    ? (y) < 0LL ? (x) > INTMAX_MAX + (y) : (x) < INTMAX_MIN + (y) \
-    : (x) < (y)                                                   \
+#define IS_NEG_OVERFLOW(x) (IS_SIGNED(x) \
+    ? (x) == INTMAX_MIN                  \
+    : (x) != UINTMAX_C(0)                \
 )
 
-#define IS_UNSIGNED(x) (ALL(x) > 0LL)
+#define IS_SUB_OVERFLOW(x, y) (IS_SIGNED((x) ^ (y))                       \
+    ? (y) < INTMAX_C(0) ? (x) > INTMAX_MAX + (y) : (x) < INTMAX_MIN + (y) \
+    : (x) < (y)                                                           \
+)
+
+#define IS_UNSIGNED(x) (ALL(x) > INTMAX_C(0))
 
 // #define NONE(x) ((x) - (x))
-// #define NONE(x) ((x) & 0LL)
+// #define NONE(x) ((x) & INTMAX_C(0))
 // #define NONE(x) ((x) & ~(x))
 // #define NONE(x) ((x) ^ (x))
 // #define NONE(x) (~ALL(x))
