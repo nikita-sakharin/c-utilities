@@ -26,7 +26,6 @@
 #include <c_commons/type_generic.h> // TYPE_GENERIC_*INTEGER_*
 #include <c_commons/types.h> // llong, uint, ullong, ulong
 
-#define ABS(x) ((x) < 0 ? -(x) : (x))
 #define ABS_DIFF(x, y) ((x) < (y) ? (y) - (x) : (x) - (y))
 #define CEIL_DIV(x, y) ((x) / (y) + (((x) ^ (y)) >= 0 && (x) % (y) != 0))
 #define CEIL_MOD(x, y) (((x) ^ (y)) >= 0 && (x) % (y) != 0 ? (x) % (y) - (y) : (x) % (y))

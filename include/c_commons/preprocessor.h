@@ -19,6 +19,8 @@
 
 #include <stdint.h> // INTMAX_C, INTMAX_MIN, UINTMAX_C, UINTMAX_MAX
 
+#define ABS(x) ((x) < INTMAX_C(0) ? -(x) : (x))
+
 #define ALL(x) ((x) ^ ~(x))
 // #define ALL(x) ((x) | ~(x))
 // #define ALL(x) (~NONE(x))
