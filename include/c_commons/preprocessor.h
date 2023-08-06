@@ -19,7 +19,7 @@
 
 #include <stdint.h> // INTMAX_C, INTMAX_MIN, UINTMAX_C, UINTMAX_MAX
 
-// #define ALL(x) ((x) ^ ~(x))
+#define ALL(x) ((x) ^ ~(x))
 // #define ALL(x) ((x) | ~(x))
 // #define ALL(x) (~NONE(x))
 
@@ -64,7 +64,7 @@
 // #define NONE(x) ((x) - (x))
 // #define NONE(x) ((x) & INTMAX_C(0))
 // #define NONE(x) ((x) & ~(x))
-// #define NONE(x) ((x) ^ (x))
+#define NONE(x) ((x) ^ (x))
 // #define NONE(x) (~ALL(x))
 
 #endif // C_COMMONS_PREPROCESSOR_H
