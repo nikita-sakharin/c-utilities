@@ -17,7 +17,7 @@ CFLAGS=-Wall -Walloc-zero -Walloca -Wanalyzer-too-complex -Warith-conversion   \
     -Wvla -Wwrite-strings -fanalyzer -pedantic-errors -std=c2x                 \
     --include-directory=./include
 # -Wattribute-alias=2 -Wopenacc-parallelism -Wstack-protector
-# -Wtrampolines
+# -Wtrampolines -Winvalid-utf8 -Wtrivial-auto-var-init
 # -Waggregate-return -Wdeclaration-after-statement -Wsystem-headers
 # -Wtraditional -Wtraditional-conversion
 LDFLAGS=
