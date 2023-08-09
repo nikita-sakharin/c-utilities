@@ -1,6 +1,6 @@
 CC=gcc
 RM=rm -frd
-CFLAGS=-Wall -Walloc-zero -Walloca -Wanalyzer-too-complex -Warith-conversion \
+CFLAGS=-Wabi -Wall -Walloc-zero -Walloca -Wanalyzer-too-complex -Warith-conversion \
     -Warray-bounds=2 -Wbad-function-cast -Wc++-compat -Wcast-align=strict \
     -Wcast-qual -Wconversion -Wdate-time -Wdisabled-optimization \
     -Wdouble-promotion -Wduplicated-branches -Wduplicated-cond -Werror -Wextra \
