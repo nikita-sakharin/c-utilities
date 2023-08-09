@@ -16,9 +16,9 @@ CFLAGS=-Wall -Walloc-zero -Walloca -Wanalyzer-too-complex -Warith-conversion   \
     -Wunused-const-variable=2 -Wunused-macros -Wvector-operation-performance   \
     -Wvla -Wwrite-strings -fanalyzer -pedantic-errors -std=c2x                 \
     --include-directory=./include
-# -Wattribute-alias=2 -Wopenacc-parallelism -Wstack-protector \
+# -Wattribute-alias=2 -Wopenacc-parallelism -Wstack-protector
 # -Wtrampolines
-# -Waggregate-return -Wdeclaration-after-statement -Wsystem-headers \
+# -Waggregate-return -Wdeclaration-after-statement -Wsystem-headers
 # -Wtraditional -Wtraditional-conversion
 LDFLAGS=
 LDLIBS=-lm
