@@ -8,7 +8,7 @@ CFLAGS=-Wall -Walloc-zero -Walloca -Wanalyzer-too-complex -Warith-conversion   \
     -Wformat-signedness -Wformat-truncation=2 -Wimplicit-fallthrough=5         \
     -Winit-self -Winline -Winvalid-pch -Wlogical-op -Wmissing-declarations     \
     -Wmissing-include-dirs -Wmissing-noreturn -Wmissing-prototypes             \
-    -Wnested-externs -Wnull-dereference -Wold-style-definition -Wpacked        \
+    -Wnested-externs -Wnormalized -Wnull-dereference -Wold-style-definition -Wpacked        \
     -Wpadded -Wpedantic -Wredundant-decls -Wshadow=global -Wshift-overflow=2   \
     -Wstrict-overflow=5 -Wstrict-prototypes -Wstringop-overflow=4              \
     -Wswitch-default -Wswitch-enum -Wundef -Wunreachable-code                  \
@@ -16,7 +16,7 @@ CFLAGS=-Wall -Walloc-zero -Walloca -Wanalyzer-too-complex -Warith-conversion   \
     -Wunused-const-variable=2 -Wunused-macros -Wvector-operation-performance   \
     -Wvla -Wwrite-strings -fanalyzer -pedantic-errors -std=c2x                 \
     --include-directory=./include
-# -Wattribute-alias=2 -Wnormalized -Wopenacc-parallelism -Wstack-protector \
+# -Wattribute-alias=2 -Wopenacc-parallelism -Wstack-protector \
 # -Wtrampolines
 # -Waggregate-return -Wdeclaration-after-statement -Wsystem-headers \
 # -Wtraditional -Wtraditional-conversion
