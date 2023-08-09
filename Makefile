@@ -8,9 +8,9 @@ CFLAGS=-Wall -Walloc-zero -Walloca -Wanalyzer-too-complex -Warith-conversion   \
     -Wformat-signedness -Wformat-truncation=2 -Wimplicit-fallthrough=5         \
     -Winit-self -Winline -Winvalid-pch -Wlogical-op -Wmissing-declarations     \
     -Wmissing-include-dirs -Wmissing-noreturn -Wmissing-prototypes             \
-    -Wnested-externs -Wnormalized -Wnull-dereference -Wold-style-definition    \
-    -Wpacked -Wpadded -Wpedantic -Wredundant-decls -Wshadow=global             \
-    -Wshift-overflow=2 -Wstrict-overflow=5 -Wstrict-prototypes                 \
+    -Wnested-externs -Wnormalized=nfkc -Wnull-dereference                      \
+    -Wold-style-definition -Wpacked -Wpadded -Wpedantic -Wredundant-decls      \
+    -Wshadow=global -Wshift-overflow=2 -Wstrict-overflow=5 -Wstrict-prototypes \
     -Wstringop-overflow=4 -Wswitch-default -Wswitch-enum -Wundef               \
     -Wunreachable-code -Wunsafe-loop-optimizations -Wunsuffixed-float-constants\
     -Wunused-const-variable=2 -Wunused-macros -Wvector-operation-performance   \
