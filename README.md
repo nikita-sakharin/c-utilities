@@ -51,7 +51,7 @@ http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
 `gcd`, `lcm`, `midpoint`, `fmidpoint`, `isqrt`, `icbrt`
 
 `preprocessor.h`:<br/>
-`check_*` (`checked_*`), `is_*_undefined`, `overflowing_*`, `saturating_`, `wrapping_*`
+`check_*` (`checked_*`), `is_*_undefined`, `overflowing_*`, `saturating_*`, `wrapping_*`
 
 `string.h`:<br/>
 `strFormat`, `strNFormat`, `strReverse`, `strNReverse`
