@@ -70,8 +70,8 @@
 // #define NONE(x) (~ALL(x))
 
 // #define SATURATING_ADD
+// #define SATURATING_DIVIDE
 // #define SATURATING_MULTIPLY
 // #define SATURATING_SUBTRACT
-// #define SATURATING_DIVIDE
 
 #endif // C_COMMONS_PREPROCESSOR_H
