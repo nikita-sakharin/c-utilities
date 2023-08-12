@@ -64,10 +64,14 @@
 
 #define IS_UNSIGNED(x) (ALL(x) > INTMAX_C(0))
 
-// #define NONE(x) ((x) - (x))
 // #define NONE(x) ((x) & INTMAX_C(0))
 // #define NONE(x) ((x) & ~(x))
 #define NONE(x) ((x) ^ (x))
 // #define NONE(x) (~ALL(x))
+
+// #define SATURATING_ADD
+// #define SATURATING_MULTIPLY
+// #define SATURATING_SUBTRACT
+// #define SATURATING_DIVIDE
 
 #endif // C_COMMONS_PREPROCESSOR_H
