@@ -22,7 +22,6 @@
 #define ABS(x) ((x) < INTMAX_C(0) ? -(x) : (x))
 
 #define ALL(x) ((x) ^ ~(x))
-// #define ALL(x) ((x) | ~(x))
 // #define ALL(x) (~NONE(x))
 
 #define IS_SIGNED(x) (!IS_UNSIGNED(x))
@@ -65,10 +64,10 @@
 #define IS_UNSIGNED(x) (ALL(x) > INTMAX_C(0))
 
 // #define NONE(x) ((x) & INTMAX_C(0))
-// #define NONE(x) ((x) & ~(x))
 #define NONE(x) ((x) ^ (x))
 // #define NONE(x) (~ALL(x))
 
+// #define SATURATING_ADD
 // #define SATURATING_ADD
 // #define SATURATING_DIVIDE
 // #define SATURATING_MULTIPLY
