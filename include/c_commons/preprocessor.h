@@ -67,7 +67,7 @@
 #define NONE(x) ((x) ^ (x))
 // #define NONE(x) (~ALL(x))
 
-// #define SATURATING_ADD
+// #define SATURATING_ABS
 // #define SATURATING_ADD
 // #define SATURATING_DIVIDE
 // #define SATURATING_MULTIPLY
