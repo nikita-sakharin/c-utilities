@@ -52,7 +52,7 @@ http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
 
 `preprocessor.h`:<br/>
 - `check_*` (`checked_*`), `is_*_undefined`
-- `wrapping_*` (~~`overflowing_*`~~)
+- `wrapping_*', ~~`overflowing_*`~~
 - `saturating_*`
 
 `string.h`:<br/>
