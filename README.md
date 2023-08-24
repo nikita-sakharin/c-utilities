@@ -14,9 +14,6 @@ http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
 `clear` (`reset`), `get` (`test`), `set`, `flip`<br/>
 `(are|have|has|is)SameSign[um|Bit]`
 
-`compare.h` (`cmp.h`):<br/>
-`compare` (`cmp`)
-
 `debug.h` (`check.h`):<br/>
 `checkArray` (`checkPointer`), `checkIndexSize`, `checkLengthSize`
 
