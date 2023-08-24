@@ -56,6 +56,7 @@ http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
 `strFormat`, `strNFormat`, `strReverse`, `strNReverse`
 
 `utility.h`:<br/>
+`memCompareEqual`, `memCompareGreater`, `memCompareGreaterEqual`, `memCompareLess`, `memCompareLessEqual`, `memCompareNotEqual`<br/>
 `memReverse`<br/>
 `memRotate` (`memExchange`, `memShift`)<br/>
 `ptrRemoveConst` (`ptrConstCast`), `ptrRemoveConstVolatile` (`ptrConstVolatileCast`), `ptrRemoveVolatile` (`ptrVolatileCast`)
