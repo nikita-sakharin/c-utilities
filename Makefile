@@ -16,10 +16,10 @@ CFLAGS=-Wall -Walloc-zero -Walloca -Wanalyzer-too-complex -Warith-conversion   \
     -Wunused-const-variable=2 -Wunused-macros -Wvector-operation-performance   \
     -Wvla -Wwrite-strings -fanalyzer -pedantic-errors -std=c2x                 \
     --include-directory=./include
-# -Wattribute-alias=2 -Wopenacc-parallelism -Wstack-protector
-# -Wtrampolines -Winvalid-utf8 -Wtrivial-auto-var-init
-# -Waggregate-return -Wdeclaration-after-statement -Wsystem-headers
-# -Wtraditional -Wtraditional-conversion
+# -Waggregate-return -Wattribute-alias=2 -Wbidi-chars=any,ucn
+# -Wdeclaration-after-statement -Winvalid-utf8 -Wopenacc-parallelism
+# -Wstack-protector -Wsystem-headers -Wtraditional -Wtraditional-conversion
+# -Wtrampolines -Wtrivial-auto-var-init
 LDFLAGS=
 LDLIBS=-lm
 SOURCES=$(shell find ./src -name *.c -type f -print)
