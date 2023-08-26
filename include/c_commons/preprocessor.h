@@ -63,6 +63,12 @@
 
 #define IS_UNSIGNED(x) (ALL(x) > INTMAX_C(0))
 
+#define MAX(x, y) ((x) < (y) ? (y) : (x))
+
+#define MIN(x, y) ((y) < (x) ? (y) : (x))
+
+#define NEGATIVE_ABS(x) (0 < (x) ? -(x) : (x))
+
 // #define NONE(x) ((x) & INTMAX_C(0))
 #define NONE(x) ((x) ^ (x))
 // #define NONE(x) (~ALL(x))
