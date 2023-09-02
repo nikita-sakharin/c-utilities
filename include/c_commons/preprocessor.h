@@ -24,7 +24,6 @@
 #define ABS_DIFF(x, y) ((x) < (y) ? (y) - (x) : (x) - (y))
 
 #define ALL(x) ((x) ^ ~(x))
-// #define ALL(x) (~NONE(x))
 
 #define CLAMP(x, a, b) ((x) < (a) ? (a) : (b) < (x) ? (b) : (x))
 
@@ -83,9 +82,7 @@
 
 #define ICOPYSIGN(x, y) ((y) < INTMAX_C(0) ? NEGATIVE_ABS(x) : ABS(x))
 
-// #define NONE(x) ((x) & INTMAX_C(0))
 #define NONE(x) ((x) ^ (x))
-// #define NONE(x) (~ALL(x))
 
 // #define SATURATING_ABS
 // #define SATURATING_ADD
