@@ -26,6 +26,8 @@
 #define ALL(x) ((x) ^ ~(x))
 // #define ALL(x) (~NONE(x))
 
+#define CLAMP(x, a, b) ((x) < (a) ? (a) : (b) < (x) ? (b) : (x))
+
 #define IN_CLOSED_RANGE(x, a, b) ((x) >= (a) && (b) >= (x))
 
 #define IN_RANGE(x, a, b) ((x) >= (a) && (x) < (b))
