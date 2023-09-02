@@ -156,7 +156,7 @@ extern inline bool lisSameSign(long, long);
 extern inline bool llisSameSign(llong, llong);
 extern inline bool imaxisSameSign(intmax_t, intmax_t);
 
-extern inline Minmax minmax(int, int);
+extern inline Minmax (minmax)(int, int);
 extern inline UMinmax uminmax(uint, uint);
 extern inline LMinmax lminmax(long, long);
 extern inline UlMinmax ulminmax(ulong, ulong);
