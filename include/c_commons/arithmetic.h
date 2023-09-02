@@ -23,13 +23,13 @@
 #include <stdint.h> // intmax_t, uintmax_t
 #include <stdlib.h> // abs, div, labs, ldiv, llabs, lldiv
 
+#include <c_commons/preprocessor.h> // *
 #include <c_commons/type_generic.h> // TYPE_GENERIC_*INTEGER_*
 #include <c_commons/types.h> // llong, uint, ullong, ulong
 
 #define CEIL_DIV(x, y) ((x) / (y) + (((x) ^ (y)) >= 0 && (x) % (y) != 0))
 #define CEIL_MOD(x, y) (((x) ^ (y)) >= 0 && (x) % (y) != 0 ? (x) % (y) - (y) : (x) % (y))
 #define COMPARE(x, y) ((x) < (y) ? -1 : (y) < (x))
-#define DIM(x, y) ((y) < (x) ? (x) - (y) : 0)
 #define EUCLID_DIV(x, y) ((x) / (y) + ((x) % (y) < 0 ? 0 < (y) ? -1 : 1 : 0))
 #define EUCLID_MOD(x, y) ((x) % (y) < 0 ? (y) < 0 ? (x) % (y) - (y) : (x) % (y) + (y) : (x) % (y))
 #define FLOOR_DIV(x, y) ((x) / (y) - (!IS_SAME_SIGN(x, y) && (x) % (y) != 0))
