@@ -47,6 +47,38 @@
 #define SIGN(x) ((x) < 0 ? -1 : 0 < (x))
 #define SIGNUM(x) ((x) < 0 ? -1 : 1)
 
+typedef struct {
+    int min, max;
+} Minmax;
+
+typedef struct {
+    uint min, max;
+} UMinmax;
+
+typedef struct {
+    long min, max;
+} LMinmax;
+
+typedef struct {
+    ulong min, max;
+} UlMinmax;
+
+typedef struct {
+    llong min, max;
+} LlMinmax;
+
+typedef struct {
+    ullong min, max;
+} UllMinmax;
+
+typedef struct {
+    intmax_t min, max;
+} ImaxMinmax;
+
+typedef struct {
+    uintmax_t min, max;
+} UmaxMinmax;
+
 inline uint absDiff(register const int x, register const int y) {
     return x < y ? (uint) y - (uint) x : (uint) x - (uint) y;
 }
@@ -790,6 +822,44 @@ inline uintmax_t umaxmax(
     register const uintmax_t y
 ) {
     return MAX(x, y);
+}
+
+inline Minmax minmax(register const int x, register const int y) {
+    return ;
+}
+
+inline UMinmax uminmax(register const uint x, register const uint y) {
+    return ;
+}
+
+inline LMinmax lminmax(register const long x, register const long y) {
+    return ;
+}
+
+inline UlMinmax ulminmax(register const ulong x, register const ulong y) {
+    return ;
+}
+
+inline LlMinmax llminmax(register const llong x, register const llong y) {
+    return ;
+}
+
+inline UllMinmax ullminmax(register const ullong x, register const ullong y) {
+    return ;
+}
+
+inline ImaxMinmax imaxminmax(
+    register const intmax_t x,
+    register const intmax_t y
+) {
+    return ;
+}
+
+inline UmaxMinmax umaxminmax(
+    register const uintmax_t x,
+    register const uintmax_t y
+) {
+    return ;
 }
 
 inline int min(register const int x, register const int y) {
