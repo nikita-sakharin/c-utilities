@@ -34,8 +34,8 @@
 #define DIM(x, y) ((y) < (x) ? (x) - (y) : 0)
 #define EUCLID_DIV(x, y) ((x) / (y) + ((x) % (y) < 0 ? 0 < (y) ? -1 : 1 : 0))
 #define EUCLID_MOD(x, y) ((x) % (y) < 0 ? (y) < 0 ? (x) % (y) - (y) : (x) % (y) + (y) : (x) % (y))
-#define FLOOR_DIV(x, y) ((x) / (y) - (((x) ^ (y)) < 0 && (x) % (y) != 0))
-#define FLOOR_MOD(x, y) (((x) ^ (y)) < 0 && (x) % (y) != 0 ? (x) % (y) + (y) : (x) % (y))
+#define FLOOR_DIV(x, y) ((x) / (y) - (!IS_SAME_SIGN(x, y) && (x) % (y) != 0))
+#define FLOOR_MOD(x, y) (!IS_SAME_SIGN(x, y) && (x) % (y) != 0 ? (x) % (y) + (y) : (x) % (y))
 #define IN_CLOSED_RANGE(x, a, b) ((x) >= (a) && (b) >= (x))
 #define IN_RANGE(x, a, b) ((x) >= (a) && (x) < (b))
 #define IS_EVEN(x) (((x) & INTMAX_C(1)) == INTMAX_C(0))
@@ -858,18 +858,18 @@ inline int icopysign(register const int x, register const int y) {
 }
 
 inline long licopysign(register const long x, register const long y) {
-    return y < 0 ? negativeAbs(x) : abs(x);
+    return y < 0L ? negativeAbs(x) : abs(x);
 }
 
 inline llong llicopysign(register const llong x, register const llong y) {
-    return y < 0 ? negativeAbs(x) : abs(x);
+    return y < 0LL ? negativeAbs(x) : abs(x);
 }
 
 inline intmax_t imaxicopysign(
     register const intmax_t x,
     register const intmax_t y
 ) {
-    return y < 0 ? negativeAbs(x) : abs(x);
+    return y < INTMAX_C(0) ? negativeAbs(x) : abs(x);
 }
 
 inline int sign(register const int x) {
@@ -909,15 +909,15 @@ inline uint unsignedAbs(register const int x) {
 }
 
 inline ulong lunsignedAbs(register const long x) {
-    return x < 0 ? -(ulong) x : (ulong) x;
+    return x < 0L ? -(ulong) x : (ulong) x;
 }
 
 inline ullong llunsignedAbs(register const llong x) {
-    return x < 0 ? -(ullong) x : (ullong) x;
+    return x < 0LL ? -(ullong) x : (ullong) x;
 }
 
 inline uintmax_t imaxunsignedAbs(register const intmax_t x) {
-    return x < 0 ? -(uintmax_t) x : (uintmax_t) x;
+    return x < INTMAX_C(0) ? -(uintmax_t) x : (uintmax_t) x;
 }
 
 #define abs(x) TYPE_GENERIC_SIGNED_INTEGER_1(abs, x)
