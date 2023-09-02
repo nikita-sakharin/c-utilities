@@ -84,10 +84,10 @@
 
 #define NONE(x) ((x) ^ (x))
 
-// #define SATURATING_ABS
-// #define SATURATING_ADD
-// #define SATURATING_DIVIDE
-// #define SATURATING_MULTIPLY
-// #define SATURATING_SUBTRACT
+// #define SATURATING_ABS(x)
+// #define SATURATING_ADD(x)
+// #define SATURATING_DIVIDE(x)
+// #define SATURATING_MULTIPLY(x)
+// #define SATURATING_SUBTRACT(x)
 
 #endif // C_COMMONS_PREPROCESSOR_H
