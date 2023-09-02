@@ -26,7 +26,6 @@
 #include <c_commons/type_generic.h> // TYPE_GENERIC_*INTEGER_*
 #include <c_commons/types.h> // llong, uint, ullong, ulong
 
-#define ABS_DIFF(x, y) ((x) < (y) ? (y) - (x) : (x) - (y))
 #define CEIL_DIV(x, y) ((x) / (y) + (((x) ^ (y)) >= 0 && (x) % (y) != 0))
 #define CEIL_MOD(x, y) (((x) ^ (y)) >= 0 && (x) % (y) != 0 ? (x) % (y) - (y) : (x) % (y))
 #define CLAMP(x, a, b) ((x) < (a) ? (a) : (b) < (x) ? (b) : (x))
@@ -36,8 +35,6 @@
 #define EUCLID_MOD(x, y) ((x) % (y) < 0 ? (y) < 0 ? (x) % (y) - (y) : (x) % (y) + (y) : (x) % (y))
 #define FLOOR_DIV(x, y) ((x) / (y) - (!IS_SAME_SIGN(x, y) && (x) % (y) != 0))
 #define FLOOR_MOD(x, y) (!IS_SAME_SIGN(x, y) && (x) % (y) != 0 ? (x) % (y) + (y) : (x) % (y))
-#define IN_CLOSED_RANGE(x, a, b) ((x) >= (a) && (b) >= (x))
-#define IN_RANGE(x, a, b) ((x) >= (a) && (x) < (b))
 #define IS_EVEN(x) (((x) & INTMAX_C(1)) == INTMAX_C(0))
 #define IS_ODD(x) (((x) & INTMAX_C(1)) == INTMAX_C(1))
 #define IS_SAME_SIGN(x, y) (((x) ^ (y)) >= 0)
