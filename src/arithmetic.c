@@ -156,15 +156,6 @@ extern inline bool lisSameSign(long, long);
 extern inline bool llisSameSign(llong, llong);
 extern inline bool imaxisSameSign(intmax_t, intmax_t);
 
-extern inline Minmax (minmax)(int, int);
-extern inline UMinmax uminmax(uint, uint);
-extern inline LMinmax lminmax(long, long);
-extern inline UlMinmax ulminmax(ulong, ulong);
-extern inline LlMinmax llminmax(llong, llong);
-extern inline UllMinmax ullminmax(ullong, ullong);
-extern inline ImaxMinmax imaxminmax(intmax_t, intmax_t);
-extern inline UmaxMinmax umaxminmax(uintmax_t, uintmax_t);
-
 extern inline int (max)(int, int);
 extern inline uint umax(uint, uint);
 extern inline long lmax(long, long);
@@ -182,6 +173,15 @@ extern inline llong llmin(llong, llong);
 extern inline ullong ullmin(ullong, ullong);
 extern inline intmax_t imaxmin(intmax_t, intmax_t);
 extern inline uintmax_t umaxmin(uintmax_t, uintmax_t);
+
+extern inline Minmax (minmax)(int, int);
+extern inline UMinmax uminmax(uint, uint);
+extern inline LMinmax lminmax(long, long);
+extern inline UlMinmax ulminmax(ulong, ulong);
+extern inline LlMinmax llminmax(llong, llong);
+extern inline UllMinmax ullminmax(ullong, ullong);
+extern inline ImaxMinmax imaxminmax(intmax_t, intmax_t);
+extern inline UmaxMinmax umaxminmax(uintmax_t, uintmax_t);
 
 extern inline int (negativeAbs)(int);
 extern inline long lnegativeAbs(long);
