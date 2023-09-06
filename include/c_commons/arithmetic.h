@@ -825,41 +825,57 @@ inline uintmax_t umaxmax(
 }
 
 inline Minmax minmax(register const int x, register const int y) {
-    return ;
+    return x < y
+        ? (Minmax) { .min = , .max = }
+        : (Minmax) { .min = , .max = };
 }
 
 inline UMinmax uminmax(register const uint x, register const uint y) {
-    return ;
+    return x < y
+        ? (UMinmax) { .min = , .max = }
+        : (UMinmax) { .min = , .max = };
 }
 
 inline LMinmax lminmax(register const long x, register const long y) {
-    return ;
+    return x < y
+        ? (LMinmax) { .min = , .max = }
+        : (LMinmax) { .min = , .max = };
 }
 
 inline UlMinmax ulminmax(register const ulong x, register const ulong y) {
-    return ;
+    return x < y
+        ? (UlMinmax) { .min = , .max = }
+        : (UlMinmax) { .min = , .max = };
 }
 
 inline LlMinmax llminmax(register const llong x, register const llong y) {
-    return ;
+    return x < y
+        ? (LlMinmax) { .min = , .max = }
+        : (LlMinmax) { .min = , .max = };
 }
 
 inline UllMinmax ullminmax(register const ullong x, register const ullong y) {
-    return ;
+    return x < y
+        ? (UllMinmax) { .min = , .max = }
+        : (UllMinmax) { .min = , .max = };
 }
 
 inline ImaxMinmax imaxminmax(
     register const intmax_t x,
     register const intmax_t y
 ) {
-    return ;
+    return x < y
+        ? (ImaxMinmax) { .min = , .max = }
+        : (ImaxMinmax) { .min = , .max = };
 }
 
 inline UmaxMinmax umaxminmax(
     register const uintmax_t x,
     register const uintmax_t y
 ) {
-    return ;
+    return x < y
+        ? (UmaxMinmax) { .min = , .max = }
+        : (UmaxMinmax) { .min = , .max = };
 }
 
 inline int min(register const int x, register const int y) {
