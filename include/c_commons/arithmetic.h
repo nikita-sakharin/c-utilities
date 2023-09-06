@@ -824,6 +824,44 @@ inline uintmax_t umaxmax(
     return MAX(x, y);
 }
 
+inline int min(register const int x, register const int y) {
+    return MIN(x, y);
+}
+
+inline uint umin(register const uint x, register const uint y) {
+    return MIN(x, y);
+}
+
+inline long lmin(register const long x, register const long y) {
+    return MIN(x, y);
+}
+
+inline ulong ulmin(register const ulong x, register const ulong y) {
+    return MIN(x, y);
+}
+
+inline llong llmin(register const llong x, register const llong y) {
+    return MIN(x, y);
+}
+
+inline ullong ullmin(register const ullong x, register const ullong y) {
+    return MIN(x, y);
+}
+
+inline intmax_t imaxmin(
+    register const intmax_t x,
+    register const intmax_t y
+) {
+    return MIN(x, y);
+}
+
+inline uintmax_t umaxmin(
+    register const uintmax_t x,
+    register const uintmax_t y
+) {
+    return MIN(x, y);
+}
+
 inline Minmax minmax(register const int x, register const int y) {
     return x < y
         ? (Minmax) { .min = x, .max = y }
@@ -876,44 +914,6 @@ inline UmaxMinmax umaxminmax(
     return x < y
         ? (UmaxMinmax) { .min = x, .max = y }
         : (UmaxMinmax) { .min = y, .max = x };
-}
-
-inline int min(register const int x, register const int y) {
-    return MIN(x, y);
-}
-
-inline uint umin(register const uint x, register const uint y) {
-    return MIN(x, y);
-}
-
-inline long lmin(register const long x, register const long y) {
-    return MIN(x, y);
-}
-
-inline ulong ulmin(register const ulong x, register const ulong y) {
-    return MIN(x, y);
-}
-
-inline llong llmin(register const llong x, register const llong y) {
-    return MIN(x, y);
-}
-
-inline ullong ullmin(register const ullong x, register const ullong y) {
-    return MIN(x, y);
-}
-
-inline intmax_t imaxmin(
-    register const intmax_t x,
-    register const intmax_t y
-) {
-    return MIN(x, y);
-}
-
-inline uintmax_t umaxmin(
-    register const uintmax_t x,
-    register const uintmax_t y
-) {
-    return MIN(x, y);
 }
 
 inline int negativeAbs(register const int x) {
