@@ -1021,6 +1021,7 @@ inline uintmax_t imaxunsignedAbs(register const intmax_t x) {
 #define min(x, y) TYPE_GENERIC_INTEGER_2(min, x, y)
 #define negativeAbs(x) TYPE_GENERIC_SIGNED_INTEGER_1(negativeAbs, x)
 #define sign(x) TYPE_GENERIC_SIGNED_INTEGER_1(sign, x)
+#define signum(x) TYPE_GENERIC_SIGNED_INTEGER_1(signum, x)
 #define unsignedAbs(x) TYPE_GENERIC_SIGNED_INTEGER_1(unsignedAbs, x)
 
 #endif // C_COMMONS_ARITHMETIC_H
