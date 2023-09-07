@@ -933,14 +933,17 @@ inline intmax_t imaxnegativeAbs(register const intmax_t x) {
 }
 
 inline int icopysign(register const int x, register const int y) {
+    assert(x != INT_MIN || y < 0);
     return y < 0 ? negativeAbs(x) : abs(x);
 }
 
 inline long licopysign(register const long x, register const long y) {
+    assert(x != LONG_MIN || y < 0L);
     return y < 0L ? negativeAbs(x) : abs(x);
 }
 
 inline llong llicopysign(register const llong x, register const llong y) {
+    assert(x != LLONG_MIN || y < 0LL);
     return y < 0LL ? negativeAbs(x) : abs(x);
 }
 
@@ -948,6 +951,7 @@ inline intmax_t imaxicopysign(
     register const intmax_t x,
     register const intmax_t y
 ) {
+    assert(x != INTMAX_MIN || y < INTMAX_C(0));
     return y < INTMAX_C(0) ? negativeAbs(x) : abs(x);
 }
 
