@@ -36,7 +36,7 @@
 #define IS_SIGNED(x) (!IS_UNSIGNED(x))
 
 // #define IS_ABS_OVERFLOW(x) (IS_SIGNED(x) && (x) == INTMAX_MIN)
-// #define IS_ABS_OVERFLOW(x) ((x) == INTMAX_MIN)
+#define IS_ABS_OVERFLOW(x) ((x) == INTMAX_MIN)
 
 #define IS_ADD_OVERFLOW(x, y) (IS_SIGNED((x) ^ (y))                       \
     ? (y) < INTMAX_C(0) ? (x) < INTMAX_MIN - (y) : (x) > INTMAX_MAX - (y) \
@@ -91,5 +91,11 @@
 // #define SATURATING_DIVIDE(x)
 // #define SATURATING_MULTIPLY(x)
 // #define SATURATING_SUBTRACT(x)
+
+// #define WRAPPING_ABS(x)
+// #define WRAPPING_ADD(x)
+// #define WRAPPING_DIVIDE(x)
+// #define WRAPPING_MULTIPLY(x)
+// #define WRAPPING_SUBTRACT(x)
 
 #endif // C_COMMONS_PREPROCESSOR_H

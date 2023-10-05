@@ -46,7 +46,17 @@
 #define MIDPOINT_TRUNC(x, y) ((x) / 2 + (y) / 2 + ((x) % 2 + (y) % 2) / 2)
 #define SIGN(x) ((x) < 0 ? -1 : 0 < (x))
 #define SIGNUM(x) ((x) < 0 ? -1 : 1)
+/*
+typedef struct {
+    int result;
+    bool flag;
+} Checked;
 
+typedef struct {
+    uint result;
+    bool flag;
+} UChecked;
+*/
 typedef struct {
     int min, max;
 } Minmax;
