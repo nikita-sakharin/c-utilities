@@ -33,6 +33,8 @@
 
 #define IN_RANGE(x, a, b) ((x) >= (a) && (x) < (b))
 
+#define IS_UNSIGNED(x) (ALL(x) > INTMAX_C(0))
+
 #define IS_SIGNED(x) (!IS_UNSIGNED(x))
 
 // #define IS_ABS_OVERFLOW(x) (IS_SIGNED(x) && (x) == INTMAX_MIN)
@@ -73,8 +75,6 @@
     ? (y) < INTMAX_C(0) ? (x) > INTMAX_MAX + (y) : (x) < INTMAX_MIN + (y) \
     : (x) < (y)                                                           \
 )
-
-#define IS_UNSIGNED(x) (ALL(x) > INTMAX_C(0))
 
 #define MAX(x, y) ((x) < (y) ? (y) : (x))
 
