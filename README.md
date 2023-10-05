@@ -48,6 +48,7 @@ http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
 `gcd`, `lcm`, `midpoint`, `fmidpoint`, `isqrt`, `icbrt`
 
 `preprocessor.h`:<br/>
+[Integer Properties](https://www.gnu.org/software/gnulib/manual/html_node/Integer-Properties.html)
 - `check_*` (`checked_*`), `is_*_undefined`
 - `wrapping_*`, ~~`overflowing_*`~~
 - `saturating_*`
