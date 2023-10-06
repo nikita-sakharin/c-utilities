@@ -50,7 +50,7 @@ http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
 `preprocessor.h`:<br/>
 [Integer Properties](https://www.gnu.org/software/gnulib/manual/html_node/Integer-Properties.html)
 - `check_*` (`checked_*`), `is_*_overflow`, ~~`is_*_undefined`~~
-- `wrapping_*`, ~`overflowing_*`~
+- `wrapping_*`, ~~`overflowing_*`~~
 - `saturating_*`
 
 `string.h`:<br/>
