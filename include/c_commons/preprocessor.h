@@ -45,7 +45,7 @@
     : (x) > UINTMAX_MAX - (y)                                             \
 )
 
-#define IS_DIV_OVERFLOW(x, y) (                                           \
+#define IS_DIVIDE_OVERFLOW(x, y) (                                        \
     (y) == INTMAX_C(0)                                                    \
     || (IS_SIGNED((x) ^ (y)) && (x) == INTMAX_MIN && (y) == INTMAX_C(-1)) \
 )
@@ -54,7 +54,7 @@
 
 // #define IS_LEFT_SHIFT_OVERFLOW(x, shift)
 
-#define IS_MUL_OVERFLOW(x, y) (                                                                \
+#define IS_MULTIPLY_OVERFLOW(x, y) (                                                           \
     (y) != INTMAX_C(0)                                                                         \
     && (IS_SIGNED((x) ^ (y))                                                                   \
         ? (x) < INTMAX_C(0)                                                                    \
@@ -71,7 +71,7 @@
 
 #define IS_ODD(x) (((x) & INTMAX_C(1)) == INTMAX_C(1))
 
-#define IS_SUB_OVERFLOW(x, y) (IS_SIGNED((x) ^ (y))                       \
+#define IS_SUBTRACT_OVERFLOW(x, y) (IS_SIGNED((x) ^ (y))                  \
     ? (y) < INTMAX_C(0) ? (x) > INTMAX_MAX + (y) : (x) < INTMAX_MIN + (y) \
     : (x) < (y)                                                           \
 )
