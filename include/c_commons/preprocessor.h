@@ -65,8 +65,8 @@
 )
 
 #define IS_NEGATE_OVERFLOW(x) (IS_SIGNED(x) \
-    ? (x) == INTMAX_MIN                  \
-    : (x) != UINTMAX_C(0)                \
+    ? (x) == INTMAX_MIN                     \
+    : (x) != UINTMAX_C(0)                   \
 )
 
 #define IS_ODD(x) (((x) & INTMAX_C(1)) == INTMAX_C(1))
