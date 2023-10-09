@@ -64,7 +64,7 @@
     )                                                                                          \
 )
 
-#define IS_NEG_OVERFLOW(x) (IS_SIGNED(x) \
+#define IS_NEGATE_OVERFLOW(x) (IS_SIGNED(x) \
     ? (x) == INTMAX_MIN                  \
     : (x) != UINTMAX_C(0)                \
 )
@@ -87,15 +87,17 @@
 #define NONE(x) ((x) ^ (x))
 
 // #define SATURATING_ABS(x)
-// #define SATURATING_ADD(x)
-// #define SATURATING_DIVIDE(x)
-// #define SATURATING_MULTIPLY(x)
-// #define SATURATING_SUBTRACT(x)
+// #define SATURATING_ADD(x, y)
+// #define SATURATING_DIVIDE(x, y)
+// #define SATURATING_MULTIPLY(x, y)
+// #define SATURATING_NEGATE(x)
+// #define SATURATING_SUBTRACT(x, y)
 
 // #define WRAPPING_ABS(x)
-// #define WRAPPING_ADD(x)
-// #define WRAPPING_DIVIDE(x)
-// #define WRAPPING_MULTIPLY(x)
-// #define WRAPPING_SUBTRACT(x)
+// #define WRAPPING_ADD(x, y)
+// #define WRAPPING_DIVIDE(x, y)
+// #define WRAPPING_MULTIPLY(x, y)
+// #define WRAPPING_NEGATE(x)
+// #define WRAPPING_SUBTRACT(x, y)
 
 #endif // C_COMMONS_PREPROCESSOR_H
