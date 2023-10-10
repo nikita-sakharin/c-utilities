@@ -23,8 +23,6 @@
 
 #define ABS_DIFF(x, y) ((x) < (y) ? (y) - (x) : (x) - (y))
 
-#define ALL(x) ((x) ^ ~(x))
-
 #define CLAMP(x, a, b) ((x) < (a) ? (a) : (b) < (x) ? (b) : (x))
 
 #define DIM(x, y) ((y) < (x) ? (x) - (y) : INTMAX_C(0))
@@ -33,7 +31,9 @@
 
 #define IN_RANGE(x, a, b) ((x) >= (a) && (x) < (b))
 
-#define IS_UNSIGNED(x) (ALL(x) > INTMAX_C(0))
+#define SET_ALL(x) ((x) ^ ~(x))
+
+#define IS_UNSIGNED(x) (SET_ALL(x) > INTMAX_C(0))
 
 #define IS_SIGNED(x) (!IS_UNSIGNED(x))
 
