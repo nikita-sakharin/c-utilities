@@ -84,6 +84,7 @@
 
 #define ICOPYSIGN(x, y) ((y) < INTMAX_C(0) ? NEGATIVE_ABS(x) : ABS(x))
 
+// CLEAR_ALL, RESET_ALL
 #define NONE(x) ((x) ^ (x))
 
 // #define SATURATING_ABS(x)
