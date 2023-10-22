@@ -4,12 +4,9 @@
 `isignbit`, `sign` (`signum`)<br/>
 `ceilDivMod`, `euclidDivMod`, `floorDivMod`, `minmax` (`minMax`)
 
-<details>
-  <summary>ISO/IEC 10967</summary>
-  http://www.open-std.org/jtc1/sc22/wg11/docs/n462.pdf<br/>
-  http://www.open-std.org/jtc1/sc22/wg11/docs/n497.pdf<br/>
-  http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf
-</details>
+- [ISO/IEC Part 1: Integer and floating point arithmetic](http://www.open-std.org/jtc1/sc22/wg11/docs/n519.pdf)
+- [ISO/IEC Part 2: Elementary numerical functions](http://www.open-std.org/jtc1/sc22/wg11/docs/n462.pdf)
+- [ISO/IEC Part 3: Complex integer and floating point arithmetic and complex elementary numerical functions](http://www.open-std.org/jtc1/sc22/wg11/docs/n497.pdf)
 
 `bit.h`:<br/>
 {`bitCount`|`popCount`}<br/>
