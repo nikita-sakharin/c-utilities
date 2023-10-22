@@ -25,6 +25,8 @@
 
 #define CLAMP(x, a, b) ((x) < (a) ? (a) : (b) < (x) ? (b) : (x))
 
+#define CLEAR_ALL(x) ((x) ^ (x)) // RESET_ALL
+
 #define DIM(x, y) ((y) < (x) ? (x) - (y) : INTMAX_C(0))
 
 #define IN_CLOSED_RANGE(x, a, b) ((x) >= (a) && (b) >= (x))
@@ -83,9 +85,6 @@
 #define NEGATIVE_ABS(x) (INTMAX_C(0) < (x) ? -(x) : (x))
 
 #define ICOPYSIGN(x, y) ((y) < INTMAX_C(0) ? NEGATIVE_ABS(x) : ABS(x))
-
-// CLEAR_ALL, RESET_ALL
-#define NONE(x) ((x) ^ (x))
 
 // #define SATURATING_ABS(x)
 // #define SATURATING_ADD(x, y)
