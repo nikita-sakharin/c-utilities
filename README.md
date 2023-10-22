@@ -17,7 +17,7 @@
  - `testAny` (~~`getAny`~~)
  - `testNone` (~~`getNone`~~)
 
-`(are|have|has|is)SameSign[um|Bit]`
+`(are|have|has|is)SameSign[um]`
 
 `debug.h` (`check.h`):<br/>
 `checkArray` (`checkPointer`), `checkIndexSize`, `checkLengthSize`
