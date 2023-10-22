@@ -11,7 +11,7 @@
 `bit.h`:<br/>
 {`bitCount`|`popCount`}<br/>
 `rotateLeft`, `rotateRight`<br/>
-`clear` (`reset`), `get` (`test`), `set`, `flip`<br/>
+`clear` (~~`reset`~~), `get` (`test`), `set`, `flip`<br/>
 `(are|have|has|is)SameSign[um|Bit]`
 
 `debug.h` (`check.h`):<br/>
