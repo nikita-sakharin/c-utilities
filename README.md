@@ -13,9 +13,9 @@
 `rotateLeft`, `rotateRight`<br/>
 `clear` (~~`reset`~~), `set`, `flip`<br/>
  `getBit` (`testBit`):<br/>
- - `testAll` (~~`getAll`~~)
- - `testAny` (~~`getAny`~~)
- - `testNone` (~~`getNone`~~)
+ - `testAll` (`isAll`, ~~`getAll`~~)
+ - `testAny` (`isAny`, ~~`getAny`~~)
+ - `testNone` (`isNone`, ~~`getNone`~~)
 
 `(are|have|has|is)SameSign[um]`
 
