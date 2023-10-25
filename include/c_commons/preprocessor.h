@@ -25,7 +25,7 @@
 
 #define CLAMP(x, a, b) ((x) < (a) ? (a) : (b) < (x) ? (b) : (x))
 
-#define CLEAR_ALL(x) ((x) ^ (x)) // RESET_ALL
+#define CLEAR_ALL(x) ((x) ^ (x))
 
 #define DIM(x, y) ((y) < (x) ? (x) - (y) : INTMAX_C(0))
 
