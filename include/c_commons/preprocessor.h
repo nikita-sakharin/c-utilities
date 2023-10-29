@@ -82,7 +82,7 @@
 
 #define MIN(x, y) ((x) > (y) ? (y) : (x))
 
-#define NEGATIVE_ABS(x) (INTMAX_C(0) < (x) ? -(x) : (x))
+#define NEGATIVE_ABS(x) ((x) > INTMAX_C(0) ? -(x) : (x))
 
 #define ICOPYSIGN(x, y) ((y) < INTMAX_C(0) ? NEGATIVE_ABS(x) : ABS(x))
 
@@ -92,6 +92,8 @@
 // #define SATURATING_MULTIPLY(x, y)
 // #define SATURATING_NEGATE(x)
 // #define SATURATING_SUBTRACT(x, y)
+
+#define SIGN(x) ((x) < INTMAX_C(0) ? INTMAX_C(-1) : (x) > INTMAX_C(0))
 
 // #define WRAPPING_ABS(x)
 // #define WRAPPING_ADD(x, y)
