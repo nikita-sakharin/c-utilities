@@ -23,7 +23,7 @@
 
 #define ABS_DIFF(x, y) ((x) < (y) ? (y) - (x) : (x) - (y))
 
-#define CLAMP(x, a, b) ((x) < (a) ? (a) : (b) < (x) ? (b) : (x))
+#define CLAMP(x, a, b) ((x) < (a) ? (a) : (x) > (b) ? (b) : (x))
 
 #define CLEAR_ALL(x) ((x) ^ (x))
 
