@@ -80,7 +80,7 @@
 
 #define MAX(x, y) ((x) < (y) ? (y) : (x))
 
-#define MIN(x, y) ((y) < (x) ? (y) : (x))
+#define MIN(x, y) ((x) > (y) ? (y) : (x))
 
 #define NEGATIVE_ABS(x) (INTMAX_C(0) < (x) ? -(x) : (x))
 
