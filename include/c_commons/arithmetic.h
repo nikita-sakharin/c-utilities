@@ -926,19 +926,19 @@ inline UmaxMinmax umaxminmax(
 }
 
 inline int negativeAbs(register const int x) {
-    return NEGATIVE_ABS(x);
+    return x > 0 ? -x : x;
 }
 
 inline long lnegativeAbs(register const long x) {
-    return NEGATIVE_ABS(x);
+    return x > 0L ? -x : x;
 }
 
 inline llong llnegativeAbs(register const llong x) {
-    return NEGATIVE_ABS(x);
+    return x > 0LL ? -x : x;
 }
 
 inline intmax_t imaxnegativeAbs(register const intmax_t x) {
-    return NEGATIVE_ABS(x);
+    return x > INTMAX_C(0) ? -x : x;
 }
 
 inline int icopysign(register const int x, register const int y) {
