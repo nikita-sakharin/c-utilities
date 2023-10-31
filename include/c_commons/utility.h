@@ -231,7 +231,7 @@ inline void *ptrMidpoint(
         && sign((const char *) ptr1 - (const char *) ptr2) == COMPARE(ptr1, ptr2)
         && ((const char *) ptr1 - (const char *) ptr2) % (ptrdiff_t) size == 0
     );
-    return ptrOffset(ptr1, ptrDifference(ptr2, ptr1, size) >> 1U, size);
+    return ptrOffset(ptr1, ptrDifference(ptr2, ptr1, size) / 2, size);
 }
 
 /* inline void *arrayMidpoint(
