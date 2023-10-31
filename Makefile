@@ -38,7 +38,7 @@ CFLAGS=-Wall -Walloc-zero -Walloca -Wanalyzer-too-complex -Warith-conversion   \
 # -Wtrampolines -Wtrivial-auto-var-init
 LDFLAGS=
 LDLIBS=-lm
-SOURCES=$(shell find ./src -name *.c -type f -print)
+SOURCES=$(shell find ./src -name '*.c' -type f -print)
 OBJECTS=$(SOURCES:.c=.o)
 EXECUTABLE=main
 
