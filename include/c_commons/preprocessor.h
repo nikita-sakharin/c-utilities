@@ -25,6 +25,8 @@
 
 #define CLAMP(x, a, b) ((x) < (a) ? (a) : (x) > (b) ? (b) : (x))
 
+#define COMPARE(x, y) ((x) < (y) ? INTMAX_C(-1) : (y) < (x))
+
 #define CLEAR_ALL(x) ((x) ^ (x))
 
 #define DIM(x, y) ((y) < (x) ? (x) - (y) : INTMAX_C(0))
@@ -93,7 +95,7 @@
 // #define SATURATING_NEGATE(x)
 // #define SATURATING_SUBTRACT(x, y)
 
-#define SIGN(x) ((x) < INTMAX_C(0) ? INTMAX_C(-1) : (x) > INTMAX_C(0))
+#define SIGN(x) COMPARE(x, INTMAX_C(0))
 
 // #define WRAPPING_ABS(x)
 // #define WRAPPING_ADD(x, y)
