@@ -25,7 +25,7 @@
 
 #define CLAMP(x, a, b) ((x) < (a) ? (a) : (x) > (b) ? (b) : (x))
 
-#define COMPARE(x, y) ((x) < (y) ? INTMAX_C(-1) : (y) < (x))
+#define COMPARE(x, y) ((x) < (y) ? INTMAX_C(-1) : (x) > (y))
 
 #define CLEAR_ALL(x) ((x) ^ (x))
 
