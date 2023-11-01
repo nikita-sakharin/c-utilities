@@ -26,7 +26,7 @@ inline int ptrCompare(
     register const void * const ptr1,
     register const void * const ptr2
 ) {
-    assert((ptr1 == NULL) == (ptr2 == NULL) // ???
+    assert((ptr1 == NULL) == (ptr2 == NULL)
         && (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN
         && sign((const char *) ptr1 - (const char *) ptr2) == COMPARE(ptr1, ptr2)
     );
@@ -51,7 +51,7 @@ inline void *ptrMax(
     register const void * const ptr1,
     register const void * const ptr2
 ) {
-    assert((ptr1 == NULL) == (ptr2 == NULL) // ???
+    assert((ptr1 == NULL) == (ptr2 == NULL)
         && (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN
         && sign((const char *) ptr1 - (const char *) ptr2) == COMPARE(ptr1, ptr2)
     );
@@ -74,7 +74,7 @@ inline void *ptrMin(
     register const void * const ptr1,
     register const void * const ptr2
 ) {
-    assert((ptr1 == NULL) == (ptr2 == NULL) // ???
+    assert((ptr1 == NULL) == (ptr2 == NULL)
         && (const char *) ptr1 - (const char *) ptr2 != PTRDIFF_MIN
         && sign((const char *) ptr1 - (const char *) ptr2) == COMPARE(ptr1, ptr2)
     );
