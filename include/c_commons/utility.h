@@ -24,7 +24,7 @@
 #include <stdint.h> // PTRDIFF_MAX
 #include <string.h> // memcpy
 
-#include <c_commons/arithmetic.h> // *
+#include <c_commons/arithmetic.h> // inRangeClosed, max, min, sign
 #include <c_commons/pointer.h> // ptrOffset
 #include <c_commons/system_config.h> // LEVEL1_DCACHE_LINESIZE
 #include <c_commons/types.h> // uchar
@@ -176,8 +176,7 @@ inline bool elemCompareSwap(
     register const size_t size,
     register int (* const cmp)(const void *, const void *)
 ) {
-    assert(arr != NULL && idx1 != idx2
-        && inRangeClosed(size, 1U, PTRDIFF_MAX)
+    assert(arr != NULL && idx1 != idx2 && inRangeClosed(size, 1U, PTRDIFF_MAX)
         && max(idx1, idx2) < PTRDIFF_MAX / size && cmp != NULL
         && (char *) arr < (char *) arr + (max(idx1, idx2) + 1U) * size
     );
@@ -192,8 +191,7 @@ inline void *elemSwap(
     register const size_t idx2,
     register const size_t size
 ) {
-    assert(arr != NULL && idx1 != idx2
-        && inRangeClosed(size, 1U, PTRDIFF_MAX)
+    assert(arr != NULL && idx1 != idx2 && inRangeClosed(size, 1U, PTRDIFF_MAX)
         && max(idx1, idx2) < PTRDIFF_MAX / size
         && (char *) arr < (char *) arr + (max(idx1, idx2) + 1U) * size
     );
