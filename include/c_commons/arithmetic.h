@@ -965,19 +965,19 @@ inline intmax_t imaxicopysign(
 }
 
 inline int sign(register const int x) {
-    return x < 0 ? -1 : x > 0;
+    return compare(x, 0);
 }
 
 inline int lsign(register const long x) {
-    return x < 0L ? -1 : x > 0L;
+    return compare(x, 0L);
 }
 
 inline int llsign(register const llong x) {
-    return x < 0LL ? -1 : x > 0LL;
+    return compare(x, 0LL);
 }
 
 inline int imaxsign(register const intmax_t x) {
-    return x < INTMAX_C(0) ? -1 : x > INTMAX_C(0);
+    return compare(x, INTMAX_C(0));
 }
 
 inline int signum(register const int x) {
