@@ -22,6 +22,9 @@
 #include <stdint.h> // PTRDIFF_MAX, PTRDIFF_MIN
 #include <stdlib.h> // abs
 
+#include <c_commons/arithmetic.h> // abs, inRangeClosed, sign
+#include <c_commons/preprocessor.h> // MAX, MIN, COMPARE
+
 inline int ptrCompare(
     register const void * const ptr1,
     register const void * const ptr2
