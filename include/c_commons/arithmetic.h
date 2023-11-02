@@ -116,7 +116,9 @@ inline uintmax_t imaxabsDiff(
     register const intmax_t x,
     register const intmax_t y
 ) {
-    return x < y ? (uintmax_t) y - (uintmax_t) x : (uintmax_t) x - (uintmax_t) y;
+    return x < y
+        ? (uintmax_t) y - (uintmax_t) x
+        : (uintmax_t) x - (uintmax_t) y;
 }
 
 inline uintmax_t umaxabsDiff(
