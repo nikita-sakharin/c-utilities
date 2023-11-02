@@ -86,6 +86,7 @@
 
 #define NEGATIVE_ABS(x) ((x) > INTMAX_C(0) ? -(x) : (x))
 
+// #define ICOPYSIGN(x, y) (IS_SAME_SIGN(x, y) ? (x) : -(x))
 #define ICOPYSIGN(x, y) ((y) < INTMAX_C(0) ? NEGATIVE_ABS(x) : ABS(x))
 
 // #define SATURATING_ABS(x)
