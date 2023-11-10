@@ -93,6 +93,7 @@
 
 #define MIN(x, y) ((x) > (y) ? (y) : (x))
 
+// #define NEGATIVE_ABS(x) ((x) < INTMAX_C(0) ? (x) : -(x))
 #define NEGATIVE_ABS(x) ((x) > INTMAX_C(0) ? -(x) : (x))
 
 // #define ICOPYSIGN(x, y) (IS_SAME_SIGN(x, y) ? (x) : -(x))
