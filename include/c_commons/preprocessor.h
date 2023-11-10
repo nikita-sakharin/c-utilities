@@ -85,6 +85,12 @@
 
 #define MAX(x, y) ((x) < (y) ? (y) : (x))
 
+#define MIDPOINT_TRUNC(x, y) (                              \
+    (x) / INTMAX_C(2)                                       \
+    + (y) / INTMAX_C(2)                                     \
+    + ((x) % INTMAX_C(2) + (y) % INTMAX_C(2)) / INTMAX_C(2) \
+)
+
 #define MIN(x, y) ((x) > (y) ? (y) : (x))
 
 #define NEGATIVE_ABS(x) ((x) > INTMAX_C(0) ? -(x) : (x))
