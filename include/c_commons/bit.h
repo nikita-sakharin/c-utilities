@@ -20,10 +20,10 @@
 #include <stdbool.h> // bool
 #include <stdint.h> // INTMAX_C, intmax_t, uintmax_t
 
+#include <c_commons/preprocessor.h> // IS_POWER_OF_TWO
 #include <c_commons/type_generic.h> // TYPE_GENERIC_UNSIGNED_INTEGER_1
 #include <c_commons/types.h> // uint, ullong, ulong
 
-#define IS_POWER_OF_TWO(x) ((x) > 0 && ((x) & ((x) - 1)) == 0)
 // #define ROTATE_LEFT(x, shift)
 // #define ROTATE_RIGHT(x, shift)
 
