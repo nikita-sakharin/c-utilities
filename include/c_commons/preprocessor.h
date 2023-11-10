@@ -29,7 +29,7 @@
 
 #define CLEAR_ALL(x) ((x) ^ (x))
 
-#define DIM(x, y) ((y) < (x) ? (x) - (y) : INTMAX_C(0))
+#define DIM(x, y) ((x) > (y) ? (x) - (y) : INTMAX_C(0))
 
 #define IN_CLOSED_RANGE(x, a, b) ((x) >= (a) && (b) >= (x))
 
