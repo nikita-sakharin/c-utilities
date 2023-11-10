@@ -134,27 +134,27 @@ inline int ceilDiv(register const int x, register const int y) {
 }
 
 inline uint uceilDiv(register const uint x, register const uint y) {
-    assert(y != 0);
+    assert(y != 0U);
     return x / y + (x % y != 0U);
 }
 
 inline long lceilDiv(register const long x, register const long y) {
-    assert(y != 0);
+    assert(y != 0L);
     return CEIL_DIV(x, y);
 }
 
 inline ulong ulceilDiv(register const ulong x, register const ulong y) {
-    assert(y != 0);
+    assert(y != 0UL);
     return x / y + (x % y != 0U);
 }
 
 inline llong llceilDiv(register const llong x, register const llong y) {
-    assert(y != 0);
+    assert(y != 0LL);
     return CEIL_DIV(x, y);
 }
 
 inline ullong ullceilDiv(register const ullong x, register const ullong y) {
-    assert(y != 0);
+    assert(y != 0ULL);
     return x / y + (x % y != 0U);
 }
 
@@ -162,7 +162,7 @@ inline intmax_t imaxceilDiv(
     register const intmax_t x,
     register const intmax_t y
 ) {
-    assert(y != 0);
+    assert(y != INTMAX_C(0));
     return CEIL_DIV(x, y);
 }
 
@@ -170,7 +170,7 @@ inline uintmax_t umaxceilDiv(
     register const uintmax_t x,
     register const uintmax_t y
 ) {
-    assert(y != 0);
+    assert(y != UINTMAX_C(0));
     return x / y + (x % y != 0U);
 }
 
@@ -180,27 +180,27 @@ inline int ceilMod(register const int x, register const int y) {
 }
 
 inline uint uceilMod(register const uint x, register const uint y) {
-    assert(y != 0);
+    assert(y != 0U);
     return CEIL_MOD(x, y);
 }
 
 inline long lceilMod(register const long x, register const long y) {
-    assert(y != 0);
+    assert(y != 0L);
     return CEIL_MOD(x, y);
 }
 
 inline ulong ulceilMod(register const ulong x, register const ulong y) {
-    assert(y != 0);
+    assert(y != 0UL);
     return CEIL_MOD(x, y);
 }
 
 inline llong llceilMod(register const llong x, register const llong y) {
-    assert(y != 0);
+    assert(y != 0LL);
     return CEIL_MOD(x, y);
 }
 
 inline ullong ullceilMod(register const ullong x, register const ullong y) {
-    assert(y != 0);
+    assert(y != 0ULL);
     return CEIL_MOD(x, y);
 }
 
@@ -208,7 +208,7 @@ inline intmax_t imaxceilMod(
     register const intmax_t x,
     register const intmax_t y
 ) {
-    assert(y != 0);
+    assert(y != INTMAX_C(0));
     return CEIL_MOD(x, y);
 }
 
@@ -216,7 +216,7 @@ inline uintmax_t umaxceilMod(
     register const uintmax_t x,
     register const uintmax_t y
 ) {
-    assert(y != 0);
+    assert(y != UINTMAX_C(0));
     return CEIL_MOD(x, y);
 }
 
@@ -357,7 +357,7 @@ inline uint udim(register const uint x, register const uint y) {
 }
 
 inline ulong ldim(register const long x, register const long y) {
-    return x > y ? (ulong) x - (ulong) y : 0U;
+    return x > y ? (ulong) x - (ulong) y : 0UL;
 }
 
 inline ulong uldim(register const ulong x, register const ulong y) {
@@ -365,7 +365,7 @@ inline ulong uldim(register const ulong x, register const ulong y) {
 }
 
 inline ullong lldim(register const llong x, register const llong y) {
-    return x > y ? (ullong) x - (ullong) y : 0U;
+    return x > y ? (ullong) x - (ullong) y : 0ULL;
 }
 
 inline ullong ulldim(register const ullong x, register const ullong y) {
@@ -376,7 +376,7 @@ inline uintmax_t imaxdim(
     register const intmax_t x,
     register const intmax_t y
 ) {
-    return x > y ? (uintmax_t) x - (uintmax_t) y : 0U;
+    return x > y ? (uintmax_t) x - (uintmax_t) y : UINTMAX_C(0);
 }
 
 inline uintmax_t umaxdim(
