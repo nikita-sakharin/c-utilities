@@ -60,14 +60,15 @@
 
 // #define IS_LEFT_SHIFT_OVERFLOW(x, shift)
 
-#define IS_MULTIPLY_OVERFLOW(x, y) (                                                           \
-    (y) != INTMAX_C(0)                                                                         \
-    && (IS_SIGNED((x) ^ (y))                                                                   \
-        ? (x) < INTMAX_C(0)                                                                    \
-            ? (x) < ((y) < INTMAX_C(0) ? INTMAX_MAX : INTMAX_MIN) / (y)                        \
-            : (y) != INTMAX_C(-1) && (x) > ((y) < INTMAX_C(0) ? INTMAX_MIN : INTMAX_MAX) / (y) \
-        : (x) > UINTMAX_MAX / (y)                                                              \
-    )                                                                                          \
+#define IS_MULTIPLY_OVERFLOW(x, y) (                                         \
+    (y) != INTMAX_C(0)                                                       \
+    && (IS_SIGNED((x) ^ (y))                                                 \
+        ? (x) < INTMAX_C(0)                                                  \
+            ? (x) < ((y) < INTMAX_C(0) ? INTMAX_MAX : INTMAX_MIN) / (y)      \
+            : (y) != INTMAX_C(-1)                                            \
+                && (x) > ((y) < INTMAX_C(0) ? INTMAX_MIN : INTMAX_MAX) / (y) \
+        : (x) > UINTMAX_MAX / (y)                                            \
+    )                                                                        \
 )
 
 #define IS_NEGATE_OVERFLOW(x) (IS_SIGNED(x) \
