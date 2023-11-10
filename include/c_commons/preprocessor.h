@@ -33,7 +33,7 @@
 
 // #define FLIP_ALL(x) (~(x))
 
-#define IN_CLOSED_RANGE(x, a, b) ((x) >= (a) && (b) >= (x))
+#define IN_CLOSED_RANGE(x, a, b) ((x) >= (a) && (x) <= (b))
 
 #define IN_RANGE(x, a, b) ((x) >= (a) && (x) < (b))
 
