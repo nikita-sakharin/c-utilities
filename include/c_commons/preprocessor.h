@@ -31,6 +31,8 @@
 
 #define DIM(x, y) ((x) > (y) ? (x) - (y) : INTMAX_C(0))
 
+// #define FLIP_ALL(x) (~(x))
+
 #define IN_CLOSED_RANGE(x, a, b) ((x) >= (a) && (b) >= (x))
 
 #define IN_RANGE(x, a, b) ((x) >= (a) && (x) < (b))
