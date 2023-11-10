@@ -78,6 +78,8 @@
 
 #define IS_ODD(x) (((x) & INTMAX_C(1)) == INTMAX_C(1))
 
+#define IS_POWER_OF_TWO(x) ((x) > 0 && ((x) & ((x) - 1)) == 0)
+
 #define IS_SUBTRACT_OVERFLOW(x, y) (IS_SIGNED((x) ^ (y))                  \
     ? (y) < INTMAX_C(0) ? (x) > INTMAX_MAX + (y) : (x) < INTMAX_MIN + (y) \
     : (x) < (y)                                                           \
