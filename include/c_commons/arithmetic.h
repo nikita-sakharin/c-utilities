@@ -29,7 +29,6 @@
 
 #define CEIL_DIV(x, y) ((x) / (y) + (((x) ^ (y)) >= 0 && (x) % (y) != 0))
 #define CEIL_MOD(x, y) (((x) ^ (y)) >= 0 && (x) % (y) != 0 ? (x) % (y) - (y) : (x) % (y))
-#define COMPARE(x, y) ((x) < (y) ? -1 : (y) < (x))
 #define EUCLID_DIV(x, y) ((x) / (y) + ((x) % (y) < 0 ? 0 < (y) ? -1 : 1 : 0))
 #define EUCLID_MOD(x, y) ((x) % (y) < 0 ? (y) < 0 ? (x) % (y) - (y) : (x) % (y) + (y) : (x) % (y))
 #define FLOOR_DIV(x, y) ((x) / (y) - (!IS_SAME_SIGN(x, y) && (x) % (y) != 0))
