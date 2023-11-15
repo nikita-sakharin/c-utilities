@@ -43,7 +43,6 @@
 #define MIDPOINT_FLOOR(x, y) (((x) & (y)) + (((x) ^ (y)) >> 1))
 // #define MIDPOINT_FLOOR(x, y) (((x) >> 1) + ((y) >> 1) + ((x) & (y) & 1))
 // #define MIDPOINT_FLOOR(x, y) (MIN(x, y) + ABS(x / 2 - y / 2))
-#define SIGNUM(x) ((x) < 0 ? -1 : 1)
 /*
 typedef struct {
     int result;
