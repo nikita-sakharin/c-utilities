@@ -113,6 +113,8 @@
 
 #define SIGN(x) COMPARE(x, INTMAX_C(0))
 
+#define SIGNBIT(x) ((x) < INTMAX_C(0))
+
 // #define WRAPPING_ABS(x)
 // #define WRAPPING_ADD(x, y)
 // #define WRAPPING_DIVIDE(x, y)
