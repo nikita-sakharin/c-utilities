@@ -60,6 +60,6 @@ inline bool imaxisignbit(register const intmax_t x) {
 }
 
 #define isPowerOfTwo(x) TYPE_GENERIC_UNSIGNED_INTEGER_1(isPowerOfTwo, x)
-#define isignbit(x) TYPE_GENERIC_UNSIGNED_INTEGER_1(isignbit, x)
+#define isignbit(x) TYPE_GENERIC_SIGNED_INTEGER_1(isignbit, x)
 
 #endif // C_COMMONS_BIT_H
