@@ -28,19 +28,19 @@
 // #define ROTATE_RIGHT(x, shift)
 
 inline bool uisPowerOfTwo(register const uint x) {
-    return IS_POWER_OF_TWO(x);
+    return x != 0U && (x & (x - 1U)) == 0U;
 }
 
 inline bool ulisPowerOfTwo(register const ulong x) {
-    return IS_POWER_OF_TWO(x);
+    return x != 0UL && (x & (x - 1UL)) == 0UL;
 }
 
 inline bool ullisPowerOfTwo(register const ullong x) {
-    return IS_POWER_OF_TWO(x);
+    return x != 0ULL && (x & (x - 1ULL)) == 0ULL;
 }
 
 inline bool umaxisPowerOfTwo(register const uintmax_t x) {
-    return IS_POWER_OF_TWO(x);
+    return x != UINTMAX_C(0) && (x & (x - UINTMAX_C(1))) == UINTMAX_C(0);
 }
 
 inline bool isignbit(register const int x) {
