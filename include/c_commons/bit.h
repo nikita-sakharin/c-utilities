@@ -20,12 +20,8 @@
 #include <stdbool.h> // bool
 #include <stdint.h> // INTMAX_C, intmax_t, uintmax_t
 
-#include <c_commons/preprocessor.h> // IS_POWER_OF_TWO
 #include <c_commons/type_generic.h> // TYPE_GENERIC_*SIGNED_INTEGER_1
-#include <c_commons/types.h> // uint, ullong, ulong
-
-// #define ROTATE_LEFT(x, shift)
-// #define ROTATE_RIGHT(x, shift)
+#include <c_commons/types.h> // llong, uint, ullong, ulong
 
 inline bool uisPowerOfTwo(register const uint x) {
     return x != 0U && (x & (x - 1U)) == 0U;

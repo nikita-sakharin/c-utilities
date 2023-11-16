@@ -104,6 +104,9 @@
 // #define ICOPYSIGN(x, y) (IS_SAME_SIGN(x, y) ? (x) : -(x))
 #define ICOPYSIGN(x, y) ((y) < INTMAX_C(0) ? NEGATIVE_ABS(x) : ABS(x))
 
+// #define ROTATE_LEFT(x, shift)
+// #define ROTATE_RIGHT(x, shift)
+
 // #define SATURATING_ABS(x)
 // #define SATURATING_ADD(x, y)
 // #define SATURATING_DIVIDE(x, y)
