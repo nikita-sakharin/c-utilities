@@ -5,7 +5,7 @@
 #include <limits.h> // *_MAX, *_MIN
 #include <stdint.h> // intmax_t, uintmax_t
 
-#include <c_commons/arithmetic.h> // inRange, max, min
+#include <c_commons/arithmetic.h> // inClosedRange, max, min
 #include <c_commons/bit.h> // isOdd
 #include <c_commons/type_generic.h> // TYPE_GENERIC_INTEGER_*
 #include <c_commons/types.h> // llong, uint, ullong, ulong
@@ -38,13 +38,13 @@ inline int ipow(register int base, register uint exp) {
         return -1;
     if (base == 0 && exp != 0U)
         return 0;
-    if (inRange(base, -1, 1) || exp == 0U)
+    if (inClosedRange(base, -1, 1) || exp == 0U)
         return 1;
     register int result = 1;
     for (; exp > 1U; base *= base, exp >>= 1U)
         if (isOdd(exp))
             result *= base;
-    assert(inRange(result,
+    assert(inClosedRange(result,
         min(INT_MAX / base, INT_MIN / base),
         max(INT_MAX / base, INT_MIN / base)
     ));
