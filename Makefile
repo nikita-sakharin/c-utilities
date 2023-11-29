@@ -40,7 +40,9 @@ LDFLAGS=
 LDLIBS=-lm
 SOURCES=$(shell find ./src -name '*.c' -type f -print)
 OBJECTS=$(SOURCES:.c=.o)
+TEST_SOURCES=$(shell find ./test -name '*.c' -type f -print)
 EXECUTABLE=main
+TEST_EXECUTABLE=$(TEST_SOURCES:.c=)
 
 all: $(SOURCES) $(EXECUTABLE)
 
@@ -50,11 +52,19 @@ release: CFLAGS+=-DNDEBUG -O3 -flto -march=native -mtune=native -s
 release: LDFLAGS+=-O3 -flto -march=native -mtune=native -s
 release: all
 
+# out-of-source `build` directory
+
 $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(LDFLAGS) $(OBJECTS) $(LDLIBS) -o $@
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+%: %.c $(OBJECTS)
+	$(CC) $(CFLAGS) $(OBJECTS) $< -o $@
+
+test: $(TEST_EXECUTABLE)
+	$(TEST_EXECUTABLE)
+
 clean:
-	$(RM) $(OBJECTS) $(EXECUTABLE)
+	$(RM) $(OBJECTS) $(EXECUTABLE) $(TEST_EXECUTABLE)
