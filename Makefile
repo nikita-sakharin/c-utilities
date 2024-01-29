@@ -63,7 +63,7 @@ $(EXECUTABLE): $(OBJECTS)
 %: %.c $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) $< -o $@
 
-test: $(TEST_EXECUTABLE)
+check: $(TEST_EXECUTABLE)
 	$(TEST_EXECUTABLE)
 
 clean:
