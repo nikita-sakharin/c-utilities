@@ -83,6 +83,8 @@
     && ((x) & ((x) - INTMAX_C(1))) == INTMAX_C(0) \
 )
 
+#define IS_SAME_SIGN(x, y) (((x) ^ (y)) >= 0)
+
 #define IS_SUBTRACT_OVERFLOW(x, y) (IS_SIGNED((x) ^ (y))                  \
     ? (y) < INTMAX_C(0) ? (x) > INTMAX_MAX + (y) : (x) < INTMAX_MIN + (y) \
     : (x) < (y)                                                           \
