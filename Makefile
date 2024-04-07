@@ -54,8 +54,6 @@ $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(LDFLAGS) $(OBJECTS) $(LDLIBS) -o $@
 
 %.o: %.c
-	gcc --version
-	clang --version
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
