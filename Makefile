@@ -42,6 +42,7 @@ SOURCES=$(shell find ./src -name '*.c' -type f -print)
 OBJECTS=$(SOURCES:.c=.o)
 EXECUTABLE=main
 
+.PHONY: clean
 all: $(SOURCES) $(EXECUTABLE)
 
 debug: CFLAGS+=-Og -g
