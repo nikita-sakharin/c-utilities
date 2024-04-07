@@ -51,6 +51,7 @@ release: LDFLAGS+=-O3 -flto -march=native -mtune=native -s
 release: all
 
 $(EXECUTABLE): $(OBJECTS)
+	gcc --version
 	$(CC) $(LDFLAGS) $(OBJECTS) $(LDLIBS) -o $@
 
 %.o: %.c
