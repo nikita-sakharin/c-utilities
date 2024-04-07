@@ -52,6 +52,7 @@ release: all
 
 $(EXECUTABLE): $(OBJECTS)
 	gcc --version
+	clang --version
 	$(CC) $(LDFLAGS) $(OBJECTS) $(LDLIBS) -o $@
 
 %.o: %.c
