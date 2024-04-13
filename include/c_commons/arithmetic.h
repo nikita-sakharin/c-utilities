@@ -978,22 +978,6 @@ inline int imaxsign(register const intmax_t x) {
     return compare(x, INTMAX_C(0));
 }
 
-inline int signum(register const int x) {
-    return SIGNUM(x);
-}
-
-inline int lsignum(register const long x) {
-    return SIGNUM(x);
-}
-
-inline int llsignum(register const llong x) {
-    return SIGNUM(x);
-}
-
-inline int imaxsignum(register const intmax_t x) {
-    return SIGNUM(x);
-}
-
 inline uint unsignedAbs(register const int x) {
     return x < 0 ? -(uint) x : (uint) x;
 }
@@ -1030,9 +1014,9 @@ inline uintmax_t imaxunsignedAbs(register const intmax_t x) {
 #define isSameSign(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(isSameSign, x, y)
 #define max(x, y) TYPE_GENERIC_INTEGER_2(max, x, y)
 #define min(x, y) TYPE_GENERIC_INTEGER_2(min, x, y)
+#define minmax(x, y) TYPE_GENERIC_INTEGER_2(minmax, x, y)
 #define negativeAbs(x) TYPE_GENERIC_SIGNED_INTEGER_1(negativeAbs, x)
 #define sign(x) TYPE_GENERIC_SIGNED_INTEGER_1(sign, x)
-#define signum(x) TYPE_GENERIC_SIGNED_INTEGER_1(signum, x)
 #define unsignedAbs(x) TYPE_GENERIC_SIGNED_INTEGER_1(unsignedAbs, x)
 
 #endif // C_COMMONS_ARITHMETIC_H
