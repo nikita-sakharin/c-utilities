@@ -23,11 +23,21 @@
 
 #define ABS_DIFF(x, y) ((x) < (y) ? (y) - (x) : (x) - (y))
 
+#define CEIL_DIV(x, y) (                               \
+    (x) / (y)                                          \
+    + (IS_SAME_SIGN(x, y) && (x) % (y) != INTMAX_C(0)) \
+)
+
+#define CEIL_MOD(x, y) (IS_SAME_SIGN(x, y) && (x) % (y) != INTMAX_C(0) \
+    ? (x) % (y) - (y)                                                  \
+    : (x) % (y)                                                        \
+)
+
 #define CLAMP(x, a, b) ((x) < (a) ? (a) : (x) > (b) ? (b) : (x))
 
-#define COMPARE(x, y) ((x) < (y) ? INTMAX_C(-1) : (x) > (y))
-
 #define CLEAR_ALL(x) ((x) ^ (x))
+
+#define COMPARE(x, y) ((x) < (y) ? INTMAX_C(-1) : (x) > (y))
 
 #define DIM(x, y) ((x) > (y) ? (x) - (y) : INTMAX_C(0))
 

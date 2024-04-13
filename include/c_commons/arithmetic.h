@@ -27,8 +27,6 @@
 #include <c_commons/type_generic.h> // TYPE_GENERIC_*INTEGER_*
 #include <c_commons/types.h> // llong, uint, ullong, ulong
 
-#define CEIL_DIV(x, y) ((x) / (y) + (IS_SAME_SIGN(x, y) && (x) % (y) != 0))
-#define CEIL_MOD(x, y) (IS_SAME_SIGN(x, y) && (x) % (y) != 0 ? (x) % (y) - (y) : (x) % (y))
 #define EUCLID_DIV(x, y) ((x) / (y) + ((x) % (y) < 0 ? 0 < (y) ? -1 : 1 : 0))
 #define EUCLID_MOD(x, y) ((x) % (y) < 0 ? (y) < 0 ? (x) % (y) - (y) : (x) % (y) + (y) : (x) % (y))
 #define FLOOR_DIV(x, y) ((x) / (y) - (!IS_SAME_SIGN(x, y) && (x) % (y) != 0))
