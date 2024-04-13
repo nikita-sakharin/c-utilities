@@ -23,6 +23,8 @@
 
 #define ABS_DIFF(x, y) ((x) < (y) ? (y) - (x) : (x) - (y))
 
+#define IS_SAME_SIGN(x, y) (((x) ^ (y)) >= INTMAX_C(0))
+
 #define CEIL_DIV(x, y) (                               \
     (x) / (y)                                          \
     + (IS_SAME_SIGN(x, y) && (x) % (y) != INTMAX_C(0)) \
@@ -42,6 +44,8 @@
 #define DIM(x, y) ((x) > (y) ? (x) - (y) : INTMAX_C(0))
 
 // #define FLIP_ALL(x) (~(x))
+
+#define COPYSIGN(x, y) (IS_SAME_SIGN(x, y) ? (x) : -(x))
 
 #define IN_CLOSED_RANGE(x, a, b) ((x) >= (a) && (x) <= (b))
 
@@ -93,8 +97,6 @@
     && ((x) & ((x) - INTMAX_C(1))) == INTMAX_C(0) \
 )
 
-#define IS_SAME_SIGN(x, y) (((x) ^ (y)) >= INTMAX_C(0))
-
 #define IS_SUBTRACT_OVERFLOW(x, y) (IS_SIGNED((x) ^ (y))                  \
     ? (y) < INTMAX_C(0) ? (x) > INTMAX_MAX + (y) : (x) < INTMAX_MIN + (y) \
     : (x) < (y)                                                           \
@@ -112,8 +114,6 @@
 
 // #define NEGATIVE_ABS(x) ((x) < INTMAX_C(0) ? (x) : -(x))
 #define NEGATIVE_ABS(x) ((x) > INTMAX_C(0) ? -(x) : (x))
-
-#define COPYSIGN(x, y) (IS_SAME_SIGN(x, y) ? (x) : -(x))
 
 // #define ROTATE_LEFT(x, shift)
 // #define ROTATE_RIGHT(x, shift)
