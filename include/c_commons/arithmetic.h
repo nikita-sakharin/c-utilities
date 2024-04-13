@@ -139,7 +139,7 @@ inline long lceilDiv(register const long x, register const long y) {
 
 inline ulong ulceilDiv(register const ulong x, register const ulong y) {
     assert(y != 0UL);
-    return x / y + (x % y != 0U);
+    return x / y + (x % y != 0UL);
 }
 
 inline llong llceilDiv(register const llong x, register const llong y) {
@@ -149,7 +149,7 @@ inline llong llceilDiv(register const llong x, register const llong y) {
 
 inline ullong ullceilDiv(register const ullong x, register const ullong y) {
     assert(y != 0ULL);
-    return x / y + (x % y != 0U);
+    return x / y + (x % y != 0ULL);
 }
 
 inline intmax_t imaxceilDiv(
@@ -165,7 +165,7 @@ inline uintmax_t umaxceilDiv(
     register const uintmax_t y
 ) {
     assert(y != UINTMAX_C(0));
-    return x / y + (x % y != 0U);
+    return x / y + (x % y != UINTMAX_C(0));
 }
 
 inline int ceilMod(register const int x, register const int y) {
