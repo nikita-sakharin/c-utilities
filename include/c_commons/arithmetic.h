@@ -185,7 +185,6 @@ inline long lceilMod(register const long x, register const long y) {
 
 inline ulong ulceilMod(register const ulong x, register const ulong y) {
     assert(y != 0UL);
-    register const ullong mod = x % y;
     return CEIL_MOD(x, y);
 }
 

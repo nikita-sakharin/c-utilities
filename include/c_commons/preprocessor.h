@@ -113,8 +113,7 @@
 // #define NEGATIVE_ABS(x) ((x) < INTMAX_C(0) ? (x) : -(x))
 #define NEGATIVE_ABS(x) ((x) > INTMAX_C(0) ? -(x) : (x))
 
-// #define COPYSIGN(x, y) (IS_SAME_SIGN(x, y) ? (x) : -(x))
-#define COPYSIGN(x, y) ((y) < INTMAX_C(0) ? NEGATIVE_ABS(x) : ABS(x))
+#define COPYSIGN(x, y) (IS_SAME_SIGN(x, y) ? (x) : -(x))
 
 // #define ROTATE_LEFT(x, shift)
 // #define ROTATE_RIGHT(x, shift)
