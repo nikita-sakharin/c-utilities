@@ -23,18 +23,6 @@
 
 #define ABS_DIFF(x, y) ((x) < (y) ? (y) - (x) : (x) - (y))
 
-#define IS_SAME_SIGN(x, y) (((x) ^ (y)) >= INTMAX_C(0))
-
-#define CEIL_DIV(x, y) (                               \
-    (x) / (y)                                          \
-    + (IS_SAME_SIGN(x, y) && (x) % (y) != INTMAX_C(0)) \
-)
-
-#define CEIL_MOD(x, y) (IS_SAME_SIGN(x, y) && (x) % (y) != INTMAX_C(0) \
-    ? (x) % (y) - (y)                                                  \
-    : (x) % (y)                                                        \
-)
-
 #define CLAMP(x, a, b) ((x) < (a) ? (a) : (x) > (b) ? (b) : (x))
 
 #define CLEAR_ALL(x) ((x) ^ (x))
@@ -95,6 +83,28 @@
 #define IS_POWER_OF_TWO(x) (                      \
     (x) > INTMAX_C(0)                             \
     && ((x) & ((x) - INTMAX_C(1))) == INTMAX_C(0) \
+)
+
+#define IS_SAME_SIGN(x, y) (((x) ^ (y)) >= INTMAX_C(0))
+
+#define CEIL_DIV(x, y) (                               \
+    (x) / (y)                                          \
+    + (IS_SAME_SIGN(x, y) && (x) % (y) != INTMAX_C(0)) \
+)
+
+#define CEIL_MOD(x, y) (IS_SAME_SIGN(x, y) && (x) % (y) != INTMAX_C(0) \
+    ? (x) % (y) - (y)                                                  \
+    : (x) % (y)                                                        \
+)
+
+#define FLOOR_DIV(x, y) (                               \
+    (x) / (y)                                           \
+    - (!IS_SAME_SIGN(x, y) && (x) % (y) != INTMAX_C(0)) \
+)
+
+#define FLOOR_MOD(x, y) (!IS_SAME_SIGN(x, y) && (x) % (y) != INTMAX_C(0) \
+    ? (x) % (y) + (y)                                                    \
+    : (x) % (y)                                                          \
 )
 
 #define IS_SUBTRACT_OVERFLOW(x, y) (IS_SIGNED((x) ^ (y))                  \
