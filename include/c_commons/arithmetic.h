@@ -80,6 +80,9 @@ typedef struct {
     uintmax_t min, max;
 } UmaxMinmax;
 
+#define abs(x) TYPE_GENERIC_SIGNED_INTEGER_1(abs, x)
+#define div(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(div, x, y)
+
 inline uint absDiff(register const int x, register const int y) {
     return x < y ? (uint) y - (uint) x : (uint) x - (uint) y;
 }
@@ -119,6 +122,8 @@ inline uintmax_t umaxabsDiff(
 ) {
     return ABS_DIFF(x, y);
 }
+
+#define absDiff(x, y) TYPE_GENERIC_INTEGER_2(absDiff, x, y)
 
 inline int ceilDiv(register const int x, register const int y) {
     assert(y != 0);
@@ -971,14 +976,11 @@ inline uintmax_t imaxunsignedAbs(register const intmax_t x) {
     return x < INTMAX_C(0) ? -(uintmax_t) x : (uintmax_t) x;
 }
 
-#define abs(x) TYPE_GENERIC_SIGNED_INTEGER_1(abs, x)
-#define absDiff(x, y) TYPE_GENERIC_INTEGER_2(absDiff, x, y)
 #define ceilDiv(x, y) TYPE_GENERIC_INTEGER_2(ceilDiv, x, y)
 #define ceilMod(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(ceilMod, x, y)
 #define clamp(x, a, b) TYPE_GENERIC_INTEGER_3(clamp, x, a, b)
 #define compare(x, y) TYPE_GENERIC_INTEGER_2(compare, x, y)
 #define dim(x, y) TYPE_GENERIC_INTEGER_2(dim, x, y)
-#define div(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(div, x, y)
 #define euclidDiv(x, y) TYPE_GENERIC_INTEGER_2(euclidDiv, x, y)
 #define euclidMod(x, y) TYPE_GENERIC_INTEGER_2(euclidMod, x, y)
 #define floorDiv(x, y) TYPE_GENERIC_INTEGER_2(floorDiv, x, y)
