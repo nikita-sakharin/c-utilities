@@ -33,8 +33,6 @@
 
 // #define FLIP_ALL(x) (~(x))
 
-#define COPYSIGN(x, y) (IS_SAME_SIGN(x, y) ? (x) : -(x))
-
 #define IN_CLOSED_RANGE(x, a, b) ((x) >= (a) && (x) <= (b))
 
 #define IN_RANGE(x, a, b) ((x) >= (a) && (x) < (b))
@@ -96,6 +94,8 @@
     ? (x) % (y) - (y)                                                  \
     : (x) % (y)                                                        \
 )
+
+#define COPYSIGN(x, y) (IS_SAME_SIGN(x, y) ? (x) : -(x))
 
 #define FLOOR_DIV(x, y) (                               \
     (x) / (y)                                           \
