@@ -25,9 +25,9 @@
 
 #define CLAMP(x, a, b) ((x) < (a) ? (a) : (x) > (b) ? (b) : (x))
 
-#define COMPARE(x, y) ((x) < (y) ? INTMAX_C(-1) : (x) > (y))
-
 #define CLEAR_ALL(x) ((x) ^ (x))
+
+#define COMPARE(x, y) ((x) < (y) ? INTMAX_C(-1) : (x) > (y))
 
 #define DIM(x, y) ((x) > (y) ? (x) - (y) : INTMAX_C(0))
 
@@ -36,6 +36,15 @@
 #define IN_CLOSED_RANGE(x, a, b) ((x) >= (a) && (x) <= (b))
 
 #define IN_RANGE(x, a, b) ((x) >= (a) && (x) < (b))
+
+#define IS_EVEN(x) (((x) & INTMAX_C(1)) == INTMAX_C(0))
+
+#define IS_ODD(x) (((x) & INTMAX_C(1)) == INTMAX_C(1))
+
+#define IS_POWER_OF_TWO(x) (                      \
+    (x) > INTMAX_C(0)                             \
+    && ((x) & ((x) - INTMAX_C(1))) == INTMAX_C(0) \
+)
 
 #define SET_ALL(x) ((x) ^ ~(x))
 
@@ -56,8 +65,6 @@
     || (IS_SIGNED((x) ^ (y)) && (x) == INTMAX_MIN && (y) == INTMAX_C(-1)) \
 )
 
-#define IS_EVEN(x) (((x) & INTMAX_C(1)) == INTMAX_C(0))
-
 // #define IS_LEFT_SHIFT_OVERFLOW(x, shift)
 
 #define IS_MULTIPLY_OVERFLOW(x, y) (                                         \
@@ -76,11 +83,28 @@
     : (x) != UINTMAX_C(0)                   \
 )
 
-#define IS_ODD(x) (((x) & INTMAX_C(1)) == INTMAX_C(1))
+#define IS_SAME_SIGN(x, y) (((x) ^ (y)) >= INTMAX_C(0))
 
-#define IS_POWER_OF_TWO(x) (                      \
-    (x) > INTMAX_C(0)                             \
-    && ((x) & ((x) - INTMAX_C(1))) == INTMAX_C(0) \
+#define CEIL_DIV(x, y) (                               \
+    (x) / (y)                                          \
+    + (IS_SAME_SIGN(x, y) && (x) % (y) != INTMAX_C(0)) \
+)
+
+#define CEIL_MOD(x, y) (IS_SAME_SIGN(x, y) && (x) % (y) != INTMAX_C(0) \
+    ? (x) % (y) - (y)                                                  \
+    : (x) % (y)                                                        \
+)
+
+#define COPYSIGN(x, y) (IS_SAME_SIGN(x, y) ? (x) : -(x))
+
+#define FLOOR_DIV(x, y) (                               \
+    (x) / (y)                                           \
+    - (!IS_SAME_SIGN(x, y) && (x) % (y) != INTMAX_C(0)) \
+)
+
+#define FLOOR_MOD(x, y) (!IS_SAME_SIGN(x, y) && (x) % (y) != INTMAX_C(0) \
+    ? (x) % (y) + (y)                                                    \
+    : (x) % (y)                                                          \
 )
 
 #define IS_SUBTRACT_OVERFLOW(x, y) (IS_SIGNED((x) ^ (y))                  \
@@ -100,9 +124,6 @@
 
 // #define NEGATIVE_ABS(x) ((x) < INTMAX_C(0) ? (x) : -(x))
 #define NEGATIVE_ABS(x) ((x) > INTMAX_C(0) ? -(x) : (x))
-
-// #define ICOPYSIGN(x, y) (IS_SAME_SIGN(x, y) ? (x) : -(x))
-#define ICOPYSIGN(x, y) ((y) < INTMAX_C(0) ? NEGATIVE_ABS(x) : ABS(x))
 
 // #define ROTATE_LEFT(x, shift)
 // #define ROTATE_RIGHT(x, shift)

@@ -39,13 +39,9 @@ extern inline intmax_t imaxceilDiv(intmax_t, intmax_t);
 extern inline uintmax_t umaxceilDiv(uintmax_t, uintmax_t);
 
 extern inline int (ceilMod)(int, int);
-extern inline uint uceilMod(uint, uint);
 extern inline long lceilMod(long, long);
-extern inline ulong ulceilMod(ulong, ulong);
 extern inline llong llceilMod(llong, llong);
-extern inline ullong ullceilMod(ullong, ullong);
 extern inline intmax_t imaxceilMod(intmax_t, intmax_t);
-extern inline uintmax_t umaxceilMod(uintmax_t, uintmax_t);
 
 extern inline int (clamp)(int, int, int);
 extern inline uint uclamp(uint, uint, uint);

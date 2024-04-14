@@ -27,13 +27,8 @@
 #include <c_commons/type_generic.h> // TYPE_GENERIC_*INTEGER_*
 #include <c_commons/types.h> // llong, uint, ullong, ulong
 
-#define CEIL_DIV(x, y) ((x) / (y) + (((x) ^ (y)) >= 0 && (x) % (y) != 0))
-#define CEIL_MOD(x, y) (((x) ^ (y)) >= 0 && (x) % (y) != 0 ? (x) % (y) - (y) : (x) % (y))
 #define EUCLID_DIV(x, y) ((x) / (y) + ((x) % (y) < 0 ? 0 < (y) ? -1 : 1 : 0))
 #define EUCLID_MOD(x, y) ((x) % (y) < 0 ? (y) < 0 ? (x) % (y) - (y) : (x) % (y) + (y) : (x) % (y))
-#define FLOOR_DIV(x, y) ((x) / (y) - (!IS_SAME_SIGN(x, y) && (x) % (y) != 0))
-#define FLOOR_MOD(x, y) (!IS_SAME_SIGN(x, y) && (x) % (y) != 0 ? (x) % (y) + (y) : (x) % (y))
-#define IS_SAME_SIGN(x, y) (((x) ^ (y)) >= 0)
 #define MIDPOINT(x, y) ((x) + (((y) >> 1) - ((x) >> 1)) + ((((y) & 1) - ((x) & 1) + ((y) < (x))) >> 1))
 // #define MIDPOINT(x, y) ((x) + ((y) / 2 - (x) / 2) + (((y) % 2 - (x) % 2 + ((y) < (x))) >> 1))
 #define MIDPOINT_CEIL(x, y) (((x) | (y)) - (((x) ^ (y)) >> 1))
@@ -85,6 +80,9 @@ typedef struct {
     uintmax_t min, max;
 } UmaxMinmax;
 
+#define abs(x) TYPE_GENERIC_SIGNED_INTEGER_1(abs, x)
+#define div(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(div, x, y)
+
 inline uint absDiff(register const int x, register const int y) {
     return x < y ? (uint) y - (uint) x : (uint) x - (uint) y;
 }
@@ -125,6 +123,8 @@ inline uintmax_t umaxabsDiff(
     return ABS_DIFF(x, y);
 }
 
+#define absDiff(x, y) TYPE_GENERIC_INTEGER_2(absDiff, x, y)
+
 inline int ceilDiv(register const int x, register const int y) {
     assert(y != 0);
     return CEIL_DIV(x, y);
@@ -142,7 +142,7 @@ inline long lceilDiv(register const long x, register const long y) {
 
 inline ulong ulceilDiv(register const ulong x, register const ulong y) {
     assert(y != 0UL);
-    return x / y + (x % y != 0U);
+    return x / y + (x % y != 0UL);
 }
 
 inline llong llceilDiv(register const llong x, register const llong y) {
@@ -152,7 +152,7 @@ inline llong llceilDiv(register const llong x, register const llong y) {
 
 inline ullong ullceilDiv(register const ullong x, register const ullong y) {
     assert(y != 0ULL);
-    return x / y + (x % y != 0U);
+    return x / y + (x % y != 0ULL);
 }
 
 inline intmax_t imaxceilDiv(
@@ -168,37 +168,25 @@ inline uintmax_t umaxceilDiv(
     register const uintmax_t y
 ) {
     assert(y != UINTMAX_C(0));
-    return x / y + (x % y != 0U);
+    return x / y + (x % y != UINTMAX_C(0));
 }
 
 inline int ceilMod(register const int x, register const int y) {
     assert(y != 0);
-    return CEIL_MOD(x, y);
-}
-
-inline uint uceilMod(register const uint x, register const uint y) {
-    assert(y != 0U);
-    return CEIL_MOD(x, y);
+    register const int mod = x % y;
+    return isSameSign(x, y) && mod != 0 ? mod - y : mod;
 }
 
 inline long lceilMod(register const long x, register const long y) {
     assert(y != 0L);
-    return CEIL_MOD(x, y);
-}
-
-inline ulong ulceilMod(register const ulong x, register const ulong y) {
-    assert(y != 0UL);
-    return CEIL_MOD(x, y);
+    register const long mod = x % y;
+    return isSameSign(x, y) && mod != 0L ? mod - y : mod;
 }
 
 inline llong llceilMod(register const llong x, register const llong y) {
     assert(y != 0LL);
-    return CEIL_MOD(x, y);
-}
-
-inline ullong ullceilMod(register const ullong x, register const ullong y) {
-    assert(y != 0ULL);
-    return CEIL_MOD(x, y);
+    register const llong mod = x % y;
+    return isSameSign(x, y) && mod != 0LL ? mod - y : mod;
 }
 
 inline intmax_t imaxceilMod(
@@ -206,15 +194,8 @@ inline intmax_t imaxceilMod(
     register const intmax_t y
 ) {
     assert(y != INTMAX_C(0));
-    return CEIL_MOD(x, y);
-}
-
-inline uintmax_t umaxceilMod(
-    register const uintmax_t x,
-    register const uintmax_t y
-) {
-    assert(y != UINTMAX_C(0));
-    return CEIL_MOD(x, y);
+    register const intmax_t mod = x % y;
+    return isSameSign(x, y) && mod != INTMAX_C(0) ? mod - y : mod;
 }
 
 inline int clamp(
@@ -776,22 +757,22 @@ inline bool umaxisOdd(register const uintmax_t x) {
 }
 
 inline bool isSameSign(register const int x, register const int y) {
-    return IS_SAME_SIGN(x, y);
+    return (x ^ y) >= 0;
 }
 
 inline bool lisSameSign(register const long x, register const long y) {
-    return IS_SAME_SIGN(x, y);
+    return (x ^ y) >= 0L;
 }
 
 inline bool llisSameSign(register const llong x, register const llong y) {
-    return IS_SAME_SIGN(x, y);
+    return (x ^ y) >= 0LL;
 }
 
 inline bool imaxisSameSign(
     register const intmax_t x,
     register const intmax_t y
 ) {
-    return IS_SAME_SIGN(x, y);
+    return (x ^ y) >= INTMAX_C(0);
 }
 
 inline int max(register const int x, register const int y) {
@@ -979,22 +960,6 @@ inline int imaxsign(register const intmax_t x) {
     return compare(x, INTMAX_C(0));
 }
 
-inline int signum(register const int x) {
-    return SIGNUM(x);
-}
-
-inline int lsignum(register const long x) {
-    return SIGNUM(x);
-}
-
-inline int llsignum(register const llong x) {
-    return SIGNUM(x);
-}
-
-inline int imaxsignum(register const intmax_t x) {
-    return SIGNUM(x);
-}
-
 inline uint unsignedAbs(register const int x) {
     return x < 0 ? -(uint) x : (uint) x;
 }
@@ -1011,14 +976,11 @@ inline uintmax_t imaxunsignedAbs(register const intmax_t x) {
     return x < INTMAX_C(0) ? -(uintmax_t) x : (uintmax_t) x;
 }
 
-#define abs(x) TYPE_GENERIC_SIGNED_INTEGER_1(abs, x)
-#define absDiff(x, y) TYPE_GENERIC_INTEGER_2(absDiff, x, y)
 #define ceilDiv(x, y) TYPE_GENERIC_INTEGER_2(ceilDiv, x, y)
-#define ceilMod(x, y) TYPE_GENERIC_INTEGER_2(ceilMod, x, y)
+#define ceilMod(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(ceilMod, x, y)
 #define clamp(x, a, b) TYPE_GENERIC_INTEGER_3(clamp, x, a, b)
 #define compare(x, y) TYPE_GENERIC_INTEGER_2(compare, x, y)
 #define dim(x, y) TYPE_GENERIC_INTEGER_2(dim, x, y)
-#define div(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(div, x, y)
 #define euclidDiv(x, y) TYPE_GENERIC_INTEGER_2(euclidDiv, x, y)
 #define euclidMod(x, y) TYPE_GENERIC_INTEGER_2(euclidMod, x, y)
 #define floorDiv(x, y) TYPE_GENERIC_INTEGER_2(floorDiv, x, y)
@@ -1031,9 +993,9 @@ inline uintmax_t imaxunsignedAbs(register const intmax_t x) {
 #define isSameSign(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(isSameSign, x, y)
 #define max(x, y) TYPE_GENERIC_INTEGER_2(max, x, y)
 #define min(x, y) TYPE_GENERIC_INTEGER_2(min, x, y)
+#define minmax(x, y) TYPE_GENERIC_INTEGER_2(minmax, x, y)
 #define negativeAbs(x) TYPE_GENERIC_SIGNED_INTEGER_1(negativeAbs, x)
 #define sign(x) TYPE_GENERIC_SIGNED_INTEGER_1(sign, x)
-#define signum(x) TYPE_GENERIC_SIGNED_INTEGER_1(signum, x)
 #define unsignedAbs(x) TYPE_GENERIC_SIGNED_INTEGER_1(unsignedAbs, x)
 
 #endif // C_COMMONS_ARITHMETIC_H
