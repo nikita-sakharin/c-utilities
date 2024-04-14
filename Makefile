@@ -14,8 +14,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+AR=ar
 CC=gcc
 RM=rm -frd
+ARFLAGS=-rcs
 CFLAGS=-I ./include -Wall -Walloc-zero -Walloca -Wanalyzer-too-complex         \
     -Warith-conversion -Warray-bounds=2 -Wbad-function-cast -Wc++-compat       \
     -Wcast-align=strict -Wcast-qual -Wconversion -Wdate-time                   \
