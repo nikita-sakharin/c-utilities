@@ -57,7 +57,6 @@ release: LDFLAGS+=-O3 -flto -march=native -mtune=native -s
 release: all
 
 # out-of-source `build` directory
-
 $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(LDFLAGS) $(OBJECTS) $(LDLIBS) -o $@
 
