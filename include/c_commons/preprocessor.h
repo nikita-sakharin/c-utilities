@@ -37,6 +37,15 @@
 
 #define IN_RANGE(x, a, b) ((x) >= (a) && (x) < (b))
 
+#define IS_EVEN(x) (((x) & INTMAX_C(1)) == INTMAX_C(0))
+
+#define IS_ODD(x) (((x) & INTMAX_C(1)) == INTMAX_C(1))
+
+#define IS_POWER_OF_TWO(x) (                      \
+    (x) > INTMAX_C(0)                             \
+    && ((x) & ((x) - INTMAX_C(1))) == INTMAX_C(0) \
+)
+
 #define SET_ALL(x) ((x) ^ ~(x))
 
 #define IS_UNSIGNED(x) (SET_ALL(x) > INTMAX_C(0))
@@ -56,8 +65,6 @@
     || (IS_SIGNED((x) ^ (y)) && (x) == INTMAX_MIN && (y) == INTMAX_C(-1)) \
 )
 
-#define IS_EVEN(x) (((x) & INTMAX_C(1)) == INTMAX_C(0))
-
 // #define IS_LEFT_SHIFT_OVERFLOW(x, shift)
 
 #define IS_MULTIPLY_OVERFLOW(x, y) (                                         \
@@ -74,13 +81,6 @@
 #define IS_NEGATE_OVERFLOW(x) (IS_SIGNED(x) \
     ? (x) == INTMAX_MIN                     \
     : (x) != UINTMAX_C(0)                   \
-)
-
-#define IS_ODD(x) (((x) & INTMAX_C(1)) == INTMAX_C(1))
-
-#define IS_POWER_OF_TWO(x) (                      \
-    (x) > INTMAX_C(0)                             \
-    && ((x) & ((x) - INTMAX_C(1))) == INTMAX_C(0) \
 )
 
 #define IS_SAME_SIGN(x, y) (((x) ^ (y)) >= INTMAX_C(0))
