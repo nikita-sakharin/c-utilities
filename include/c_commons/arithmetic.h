@@ -168,17 +168,20 @@ inline uintmax_t umaxceilDiv(
 
 inline int ceilMod(register const int x, register const int y) {
     assert(y != 0);
-    return CEIL_MOD(x, y);
+    register const int mod = x % y;
+    return isSameSign(x, y) && mod != 0 ? mod - y : mod;
 }
 
 inline long lceilMod(register const long x, register const long y) {
     assert(y != 0L);
-    return CEIL_MOD(x, y);
+    register const long mod = x % y;
+    return isSameSign(x, y) && mod != 0L ? mod - y : mod;
 }
 
 inline llong llceilMod(register const llong x, register const llong y) {
     assert(y != 0LL);
-    return CEIL_MOD(x, y);
+    register const llong mod = x % y;
+    return isSameSign(x, y) && mod != 0LL ? mod - y : mod;
 }
 
 inline intmax_t imaxceilMod(
@@ -186,7 +189,8 @@ inline intmax_t imaxceilMod(
     register const intmax_t y
 ) {
     assert(y != INTMAX_C(0));
-    return CEIL_MOD(x, y);
+    register const intmax_t mod = x % y;
+    return isSameSign(x, y) && mod != INTMAX_C(0) ? mod - y : mod;
 }
 
 inline int clamp(
@@ -748,22 +752,22 @@ inline bool umaxisOdd(register const uintmax_t x) {
 }
 
 inline bool isSameSign(register const int x, register const int y) {
-    return IS_SAME_SIGN(x, y);
+    return (x ^ y) >= 0;
 }
 
 inline bool lisSameSign(register const long x, register const long y) {
-    return IS_SAME_SIGN(x, y);
+    return (x ^ y) >= 0L;
 }
 
 inline bool llisSameSign(register const llong x, register const llong y) {
-    return IS_SAME_SIGN(x, y);
+    return (x ^ y) >= 0LL;
 }
 
 inline bool imaxisSameSign(
     register const intmax_t x,
     register const intmax_t y
 ) {
-    return IS_SAME_SIGN(x, y);
+    return (x ^ y) >= INTMAX_C(0);
 }
 
 inline int max(register const int x, register const int y) {
