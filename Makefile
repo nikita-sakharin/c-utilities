@@ -32,7 +32,8 @@ CFLAGS=-I ./include -Wall -Walloc-zero -Walloca -Wanalyzer-too-complex         \
     -Wstringop-overflow=4 -Wswitch-default -Wswitch-enum -Wundef               \
     -Wunreachable-code -Wunsafe-loop-optimizations -Wunsuffixed-float-constants\
     -Wunused-const-variable=2 -Wunused-macros -Wvector-operation-performance   \
-    -Wvla -Wwrite-strings -fanalyzer -pedantic-errors -std=c23
+    -Wvla -Wwrite-strings -fanalyzer -finput-charset=UTF-8 -pedantic-errors    \
+    -std=c23
 # -Waggregate-return -Wattribute-alias=2 -Wbidi-chars=any,ucn
 # -Wdeclaration-after-statement -Winvalid-utf8 -Wopenacc-parallelism
 # -Wstack-protector -Wsystem-headers -Wtraditional -Wtraditional-conversion
