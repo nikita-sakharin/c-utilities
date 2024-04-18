@@ -41,6 +41,7 @@ CFLAGS=-I ./include -Wall -Walloc-zero -Walloca -Wanalyzer-too-complex         \
 LDFLAGS=
 LDLIBS=-lm
 SOURCES=$(shell find ./src -name '*.c' -type f -print)
+HEADERS=$(shell find ./include -name '*.h' -type f -print)
 OBJECTS=$(SOURCES:.c=.o)
 EXECUTABLE=libc-commons.a
 
