@@ -191,8 +191,7 @@ inline void *elemSet( // elemExchange
     register const size_t size,
     register void * const restrict value
 ) {
-    assert(arr != NULL && checkSize(size)
-        && idx < PTRDIFF_MAX / size
+    assert(arr != NULL && checkSize(size) && idx < PTRDIFF_MAX / size
         && (char *) arr < (char *) arr + (idx + 1U) * size
         && value != NULL && (char *) value < (char *) value + size
     );
