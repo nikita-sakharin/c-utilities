@@ -24,7 +24,8 @@
 #include <stdint.h> // PTRDIFF_MAX
 #include <string.h> // memcpy
 
-#include <c_commons/arithmetic.h> // inRangeClosed, max, min, sign
+#include <c_commons/arithmetic.h> // max, min
+#include <c_commons/debug.h> // checkSize
 #include <c_commons/pointer.h> // ptrOffset
 #include <c_commons/system_config.h> // LEVEL1_DCACHE_LINESIZE
 #include <c_commons/types.h> // uchar
@@ -108,19 +109,19 @@ inline bool memCompareSwap(
     register const size_t n, // ???
     register const size_t size
 ) { // n != 0 ???
-    assert(arr != NULL && n < PTRDIFF_MAX && inRangeClosed(size, 1U, PTRDIFF_MAX)
+    assert(arr != NULL && n < PTRDIFF_MAX && checkSize(size)
         && n <= PTRDIFF_MAX / size
         && (const char *) arr <= (const char *) arr + n * size
     );
     return elemAt(arr, n >> 1U, size);
 } */
 
-inline void *elemAt( // elemAtIndex
+inline void *elemAt(
     register const void * const arr,
     register const size_t idx,
     register const size_t size
 ) {
-    assert(arr != NULL && inRangeClosed(size, 1U, PTRDIFF_MAX)
+    assert(arr != NULL && checkSize(size)
         && idx < PTRDIFF_MAX / size
         && (const char *) arr < (const char *) arr + (idx + 1U) * size
     );
@@ -134,7 +135,7 @@ inline int elemCompare(
     register const size_t size,
     register int (* const cmp)(const void *, const void *)
 ) {
-    assert(arr != NULL && inRangeClosed(size, 1U, PTRDIFF_MAX)
+    assert(arr != NULL && checkSize(size)
         && max(idx1, idx2) < PTRDIFF_MAX / size && cmp != NULL
         && (const char *) arr < (const char *) arr + (max(idx1, idx2) + 1U) * size
     );
@@ -148,7 +149,7 @@ inline void *elemCompareMax(
     register const size_t size,
     register int (* const cmp)(const void *, const void *)
 ) {
-    assert(arr != NULL && inRangeClosed(size, 1U, PTRDIFF_MAX)
+    assert(arr != NULL && checkSize(size)
         && max(idx1, idx2) < PTRDIFF_MAX / size && cmp != NULL
         && (const char *) arr < (const char *) arr + (max(idx1, idx2) + 1U) * size
     );
@@ -162,7 +163,7 @@ inline void *elemCompareMin(
     register const size_t size,
     register int (* const cmp)(const void *, const void *)
 ) {
-    assert(arr != NULL && inRangeClosed(size, 1U, PTRDIFF_MAX)
+    assert(arr != NULL && checkSize(size)
         && max(idx1, idx2) < PTRDIFF_MAX / size && cmp != NULL
         && (const char *) arr < (const char *) arr + (max(idx1, idx2) + 1U) * size
     );
@@ -176,7 +177,7 @@ inline bool elemCompareSwap(
     register const size_t size,
     register int (* const cmp)(const void *, const void *)
 ) {
-    assert(arr != NULL && idx1 != idx2 && inRangeClosed(size, 1U, PTRDIFF_MAX)
+    assert(arr != NULL && idx1 != idx2 && checkSize(size)
         && max(idx1, idx2) < PTRDIFF_MAX / size && cmp != NULL
         && (char *) arr < (char *) arr + (max(idx1, idx2) + 1U) * size
     );
@@ -185,13 +186,27 @@ inline bool elemCompareSwap(
     );
 }
 
+inline void *elemSet( // elemExchange
+    register void * const restrict arr,
+    register const size_t idx,
+    register const size_t size,
+    register void * const restrict value
+) {
+    assert(arr != NULL && checkSize(size)
+        && idx < PTRDIFF_MAX / size
+        && (char *) arr < (char *) arr + (idx + 1U) * size
+        && value != NULL && (char *) value < (char *) value + size
+    );
+    return memSwap(elemAt(arr, idx1, size), value);
+}
+
 inline void *elemSwap(
     register void * const restrict arr,
     register const size_t idx1,
     register const size_t idx2,
     register const size_t size
 ) {
-    assert(arr != NULL && idx1 != idx2 && inRangeClosed(size, 1U, PTRDIFF_MAX)
+    assert(arr != NULL && idx1 != idx2 && checkSize(size)
         && max(idx1, idx2) < PTRDIFF_MAX / size
         && (char *) arr < (char *) arr + (max(idx1, idx2) + 1U) * size
     );

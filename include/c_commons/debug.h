@@ -28,8 +28,8 @@ inline bool checkMemory(
     register const void * const src,
     register const size_t n
 ) {
-    return src != NULL && n <= PTRDIFF_MAX &&
-        (const char *) src <= (const char *) src + n;
+    return src != NULL && n <= PTRDIFF_MAX
+        && (const char *) src <= (const char *) src + n;
 }
 
 // isMemoryCompare

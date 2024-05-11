@@ -14,23 +14,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include <assert.h> // assert
 #include <stddef.h> // NULL, size_t
 #include <stdint.h> // PTRDIFF_MAX
 
-#include <c_commons/arithmetic.h> // inRangeClosed
+#include <c_commons/arithmetic.h> // max, min
+#include <c_commons/debug.h> // checkSize
 #include <c_commons/sort.h> // bubbleSort
 #include <c_commons/utility.h> // elemCompareSwap
 
-void bubbleSort(
+extern void bubbleSort(
     register void * const restrict array,
     register size_t length,
     register const size_t size,
     register int (* const compare)(const void *, const void *)
 ) {
-    assert(((array != NULL && compare != NULL) || length == 0U) &&
-        inRangeClosed(size, 1U, PTRDIFF_MAX) &&
-        length <= PTRDIFF_MAX / size &&
-        (char *) array <= (char *) array + length * size
+    assert(((array != NULL && compare != NULL) || length == 0U)
+        && checkSize(size) && length <= PTRDIFF_MAX / size
+        && (char *) array <= (char *) array + length * size
     ); // ???
     for (register size_t first = 1U, last = 0U;
         length > 1U; length = last, first = length, last = 0U)

@@ -19,14 +19,14 @@
 
 #include <stddef.h> // size_t
 
-bool isSorted(const void *, size_t, size_t,
+extern bool isSorted(const void *, size_t, size_t,
     int (*)(const void *, const void *)
 );
-size_t isSortedUntil(const void *, size_t, size_t,
+extern size_t isSortedUntil(const void *, size_t, size_t,
     int (*)(const void *, const void *)
 );
 
-void bubbleSort(void * restrict, size_t, size_t,
+extern void bubbleSort(void * restrict, size_t, size_t,
     int (*)(const void *, const void *)
 );
 
