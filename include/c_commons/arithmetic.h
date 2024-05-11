@@ -817,6 +817,8 @@ inline uintmax_t umaxmax(
     return MAX(x, y);
 }
 
+#define max(x, y) TYPE_GENERIC_INTEGER_2(max, x, y)
+
 inline int min(register const int x, register const int y) {
     return MIN(x, y);
 }
@@ -854,6 +856,8 @@ inline uintmax_t umaxmin(
 ) {
     return MIN(x, y);
 }
+
+#define min(x, y) TYPE_GENERIC_INTEGER_2(min, x, y)
 
 inline Minmax minmax(register const int x, register const int y) {
     return x < y
@@ -908,6 +912,8 @@ inline UmaxMinmax umaxminmax(
         ? (UmaxMinmax) { .min = x, .max = y }
         : (UmaxMinmax) { .min = y, .max = x };
 }
+
+#define minmax(x, y) TYPE_GENERIC_INTEGER_2(minmax, x, y)
 
 inline int negativeAbs(register const int x) {
     return x > 0 ? -x : x;
@@ -993,9 +999,6 @@ inline uintmax_t imaxunsignedAbs(register const intmax_t x) {
 #define isEven(x) TYPE_GENERIC_INTEGER_1(isEven, x)
 #define isOdd(x) TYPE_GENERIC_INTEGER_1(isOdd, x)
 #define isSameSign(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(isSameSign, x, y)
-#define max(x, y) TYPE_GENERIC_INTEGER_2(max, x, y)
-#define min(x, y) TYPE_GENERIC_INTEGER_2(min, x, y)
-#define minmax(x, y) TYPE_GENERIC_INTEGER_2(minmax, x, y)
 #define negativeAbs(x) TYPE_GENERIC_SIGNED_INTEGER_1(negativeAbs, x)
 #define sign(x) TYPE_GENERIC_SIGNED_INTEGER_1(sign, x)
 #define unsignedAbs(x) TYPE_GENERIC_SIGNED_INTEGER_1(unsignedAbs, x)
