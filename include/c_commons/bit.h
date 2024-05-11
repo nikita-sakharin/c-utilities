@@ -39,6 +39,8 @@ inline bool umaxisPowerOfTwo(register const uintmax_t x) {
     return x != UINTMAX_C(0) && (x & (x - UINTMAX_C(1))) == UINTMAX_C(0);
 }
 
+#define isPowerOfTwo(x) TYPE_GENERIC_UNSIGNED_INTEGER_1(isPowerOfTwo, x)
+
 inline bool isignbit(register const int x) {
     return x < 0;
 }
@@ -55,7 +57,6 @@ inline bool imaxisignbit(register const intmax_t x) {
     return x < INTMAX_C(0);
 }
 
-#define isPowerOfTwo(x) TYPE_GENERIC_UNSIGNED_INTEGER_1(isPowerOfTwo, x)
 #define isignbit(x) TYPE_GENERIC_SIGNED_INTEGER_1(isignbit, x)
 
 #endif // C_COMMONS_BIT_H
