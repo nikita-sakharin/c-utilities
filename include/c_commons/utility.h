@@ -121,8 +121,7 @@ inline void *elemAt(
     register const size_t idx,
     register const size_t size
 ) {
-    assert(arr != NULL && checkSize(size)
-        && idx < PTRDIFF_MAX / size
+    assert(arr != NULL && checkSize(size) && idx < PTRDIFF_MAX / size
         && (const char *) arr < (const char *) arr + (idx + 1U) * size
     );
     return ptrOffset(arr, (ptrdiff_t) idx, size);
