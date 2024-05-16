@@ -29,6 +29,7 @@
 
 #define COMPARE(x, y) ((x) < (y) ? INTMAX_C(-1) : (x) > (y))
 
+// #define DIM(x, y) (MAX(x, y) - (y))
 #define DIM(x, y) ((x) > (y) ? (x) - (y) : INTMAX_C(0))
 
 // #define FLIP_ALL(x) (~(x))
