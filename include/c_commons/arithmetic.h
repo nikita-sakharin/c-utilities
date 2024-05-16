@@ -624,6 +624,8 @@ inline bool umaxinClosedRange(
     return IN_CLOSED_RANGE(x, a, b);
 }
 
+#define inClosedRange(x, a, b) TYPE_GENERIC_INTEGER_3(inClosedRange, x, a, b)
+
 inline bool inRange(
     register const int x,
     register const int a,
@@ -695,6 +697,8 @@ inline bool umaxinRange(
     assert(a <= b);
     return IN_RANGE(x, a, b);
 }
+
+#define inRange(x, a, b) TYPE_GENERIC_INTEGER_3(inRange, x, a, b)
 
 inline bool isEven(register const int x) {
     return IS_EVEN(x);
@@ -994,8 +998,6 @@ inline uintmax_t imaxunsignedAbs(register const intmax_t x) {
 #define floorDiv(x, y) TYPE_GENERIC_INTEGER_2(floorDiv, x, y)
 #define floorMod(x, y) TYPE_GENERIC_INTEGER_2(floorMod, x, y)
 #define icopysign(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(icopysign, x, y)
-#define inClosedRange(x, a, b) TYPE_GENERIC_INTEGER_3(inClosedRange, x, a, b)
-#define inRange(x, a, b) TYPE_GENERIC_INTEGER_3(inRange, x, a, b)
 #define isEven(x) TYPE_GENERIC_INTEGER_1(isEven, x)
 #define isOdd(x) TYPE_GENERIC_INTEGER_1(isOdd, x)
 #define isSameSign(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(isSameSign, x, y)
