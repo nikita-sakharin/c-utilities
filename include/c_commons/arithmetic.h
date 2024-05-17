@@ -701,68 +701,72 @@ inline bool umaxinRange(
 #define inRange(x, a, b) TYPE_GENERIC_INTEGER_3(inRange, x, a, b)
 
 inline bool isEven(register const int x) {
-    return IS_EVEN(x);
+    return (x & 1) == 0;
 }
 
 inline bool uisEven(register const uint x) {
-    return IS_EVEN(x);
+    return (x & 1U) == 0U;
 }
 
 inline bool lisEven(register const long x) {
-    return IS_EVEN(x);
+    return (x & 1L) == 0L;
 }
 
 inline bool ulisEven(register const ulong x) {
-    return IS_EVEN(x);
+    return (x & 1UL) == 0UL;
 }
 
 inline bool llisEven(register const llong x) {
-    return IS_EVEN(x);
+    return (x & 1LL) == 0LL;
 }
 
 inline bool ullisEven(register const ullong x) {
-    return IS_EVEN(x);
+    return (x & 1ULL) == 0ULL;
 }
 
 inline bool imaxisEven(register const intmax_t x) {
-    return IS_EVEN(x);
+    return (x & INTMAX_C(1)) == INTMAX_C(0);
 }
 
 inline bool umaxisEven(register const uintmax_t x) {
-    return IS_EVEN(x);
+    return (x & UINTMAX_C(1)) == UINTMAX_C(0);
 }
 
+#define isEven(x) TYPE_GENERIC_INTEGER_1(isEven, x)
+
 inline bool isOdd(register const int x) {
-    return IS_ODD(x);
+    return (x & 1) == 1;
 }
 
 inline bool uisOdd(register const uint x) {
-    return IS_ODD(x);
+    return (x & 1U) == 1U;
 }
 
 inline bool lisOdd(register const long x) {
-    return IS_ODD(x);
+    return (x & 1L) == 1L;
 }
 
 inline bool ulisOdd(register const ulong x) {
-    return IS_ODD(x);
+    return (x & 1UL) == 1UL;
 }
 
 inline bool llisOdd(register const llong x) {
-    return IS_ODD(x);
+    return (x & 1LL) == 1LL;
 }
 
 inline bool ullisOdd(register const ullong x) {
-    return IS_ODD(x);
+    return (x & 1ULL) == 1ULL;
 }
 
 inline bool imaxisOdd(register const intmax_t x) {
-    return IS_ODD(x);
+    return (x & INTMAX_C(1)) == INTMAX_C(1);
 }
 
 inline bool umaxisOdd(register const uintmax_t x) {
-    return IS_ODD(x);
+    return (x & UINTMAX_C(1)) == UINTMAX_C(1);
 }
+
+#define isOdd(x) TYPE_GENERIC_INTEGER_1(isOdd, x)
 
 inline bool isSameSign(register const int x, register const int y) {
     return (x ^ y) >= 0;
@@ -998,8 +1002,6 @@ inline uintmax_t imaxunsignedAbs(register const intmax_t x) {
 #define floorDiv(x, y) TYPE_GENERIC_INTEGER_2(floorDiv, x, y)
 #define floorMod(x, y) TYPE_GENERIC_INTEGER_2(floorMod, x, y)
 #define icopysign(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(icopysign, x, y)
-#define isEven(x) TYPE_GENERIC_INTEGER_1(isEven, x)
-#define isOdd(x) TYPE_GENERIC_INTEGER_1(isOdd, x)
 #define isSameSign(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(isSameSign, x, y)
 #define negativeAbs(x) TYPE_GENERIC_SIGNED_INTEGER_1(negativeAbs, x)
 #define sign(x) TYPE_GENERIC_SIGNED_INTEGER_1(sign, x)
