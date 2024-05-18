@@ -19,6 +19,7 @@
 
 #include <stdint.h> // INTMAX_C, INTMAX_MIN, UINTMAX_C, UINTMAX_MAX
 
+// INTMAX_MIN, IS_UNSIGNED
 #define ABS(x) ((x) < INTMAX_C(0) ? -(x) : (x))
 
 #define ABS_DIFF(x, y) ((x) < (y) ? (y) - (x) : (x) - (y))
