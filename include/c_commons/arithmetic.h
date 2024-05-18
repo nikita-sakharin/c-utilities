@@ -787,6 +787,8 @@ inline bool imaxisSameSign(
     return (x ^ y) >= INTMAX_C(0);
 }
 
+#define isSameSign(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(isSameSign, x, y)
+
 inline int max(register const int x, register const int y) {
     return MAX(x, y);
 }
@@ -1004,7 +1006,6 @@ inline uintmax_t imaxunsignedAbs(register const intmax_t x) {
 #define floorDiv(x, y) TYPE_GENERIC_INTEGER_2(floorDiv, x, y)
 #define floorMod(x, y) TYPE_GENERIC_INTEGER_2(floorMod, x, y)
 #define icopysign(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(icopysign, x, y)
-#define isSameSign(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(isSameSign, x, y)
 #define negativeAbs(x) TYPE_GENERIC_SIGNED_INTEGER_1(negativeAbs, x)
 #define sign(x) TYPE_GENERIC_SIGNED_INTEGER_1(sign, x)
 
