@@ -124,7 +124,7 @@
 
 #define MIN(x, y) ((x) > (y) ? (y) : (x))
 
-// #define NEGATIVE_ABS(x) ((x) < INTMAX_C(0) ? (x) : -(x))
+// #define NEGATIVE_ABS(x) ((x) <= INTMAX_C(0) ? (x) : -(x))
 #define NEGATIVE_ABS(x) ((x) > INTMAX_C(0) ? -(x) : (x))
 
 // #define ROTATE_LEFT(x, shift)
