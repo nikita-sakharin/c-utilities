@@ -994,6 +994,8 @@ inline uintmax_t imaxunsignedAbs(register const intmax_t x) {
     return x < INTMAX_C(0) ? -(uintmax_t) x : (uintmax_t) x;
 }
 
+#define unsignedAbs(x) TYPE_GENERIC_SIGNED_INTEGER_1(unsignedAbs, x)
+
 #define ceilDiv(x, y) TYPE_GENERIC_INTEGER_2(ceilDiv, x, y)
 #define ceilMod(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(ceilMod, x, y)
 #define dim(x, y) TYPE_GENERIC_INTEGER_2(dim, x, y)
@@ -1005,6 +1007,5 @@ inline uintmax_t imaxunsignedAbs(register const intmax_t x) {
 #define isSameSign(x, y) TYPE_GENERIC_SIGNED_INTEGER_2(isSameSign, x, y)
 #define negativeAbs(x) TYPE_GENERIC_SIGNED_INTEGER_1(negativeAbs, x)
 #define sign(x) TYPE_GENERIC_SIGNED_INTEGER_1(sign, x)
-#define unsignedAbs(x) TYPE_GENERIC_SIGNED_INTEGER_1(unsignedAbs, x)
 
 #endif // C_COMMONS_ARITHMETIC_H
