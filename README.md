@@ -64,9 +64,9 @@
 
 `utility.h`:<br/>
 Три уровня интерфейса:
-- Два указателя
-- Элемент массива и указатель
-- Два элемента массива
+- Два указателя (`mem*`)
+- Элемент массива и указатель (`elemGet`, `elemSet`, `elem*`) ???
+- Два элемента массива (`arr*`/`array*`) ???
 
 `elemCompareEqual`, `elemCompareGreater`, `elemCompareGreaterEqual`, `elemCompareLess`, `elemCompareLessEqual`, `elemCompareNotEqual`<br/>
 `memCompareEqual`, `memCompareGreater`, `memCompareGreaterEqual`, `memCompareLess`, `memCompareLessEqual`, `memCompareNotEqual`<br/>
