@@ -67,6 +67,7 @@
 - Два указателя
 - Элемент массива и указатель
 - Два элемента массива
+
 `elemCompareEqual`, `elemCompareGreater`, `elemCompareGreaterEqual`, `elemCompareLess`, `elemCompareLessEqual`, `elemCompareNotEqual`<br/>
 `memCompareEqual`, `memCompareGreater`, `memCompareGreaterEqual`, `memCompareLess`, `memCompareLessEqual`, `memCompareNotEqual`<br/>
 `memReverse`<br/>
