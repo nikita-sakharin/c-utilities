@@ -20,6 +20,9 @@
 
 `(are|have|has|is)SameSign[um]`
 
+`ctype.h`:<br/>
+`isAscii`, `toAscii`
+
 `debug.h` (`check.h`):<br/>
 `checkArray` (`checkPointer`), `checkIndexSize`, `checkLengthSize`
 
@@ -61,6 +64,9 @@
 
 `string.h`:<br/>
 `strFormat`, `strNFormat`, `strReverse`, `strNReverse`
+
+`type_generic.h`:<br/>
+`TYPE_GENERIC_POINTER`
 
 `utility.h`:<br/>
 Три уровня интерфейса:
