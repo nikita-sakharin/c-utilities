@@ -73,6 +73,7 @@
 - Два указателя (`mem*`)
 - Элемент массива и указатель (`elemGet`, `elemSet`, `elem*`/`elem*Mem`) ???
 - Два элемента массива (`arr*`/`arrElem*`/`array*`/`elem*Elem`)
+- Все элементы масства (`arrMax`/`arrElemMax`/`arrayMax`) ???
 
 `elemCompareEqual`, `elemCompareGreater`, `elemCompareGreaterEqual`, `elemCompareLess`, `elemCompareLessEqual`, `elemCompareNotEqual`<br/>
 `memCompareEqual`, `memCompareGreater`, `memCompareGreaterEqual`, `memCompareLess`, `memCompareLessEqual`, `memCompareNotEqual`<br/>
