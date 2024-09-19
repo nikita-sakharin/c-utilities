@@ -72,7 +72,7 @@
 Три уровня интерфейса:
 - Два указателя (`mem*`)
 - Элемент массива и указатель (`elemGet`, `elemSet`, `elem*`/`elem*Mem`) ???
-- Два элемента массива (`arr*`/`arrElem*`/`array*`/`elem*Elem`)
+- Два элемента массива (`arr*`/`arrElem*`/`array*`/`elem*Elem`/`arrayCompareMax`)
 - Все элементы массива (`arrMax`/`arrElemMax`/`arrayMax`) ???
 
 `elemCompareEqual`, `elemCompareGreater`, `elemCompareGreaterEqual`, `elemCompareLess`, `elemCompareLessEqual`, `elemCompareNotEqual`<br/>
