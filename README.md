@@ -1,4 +1,4 @@
-`arithmetic.h`:<br/>
+# `arithmetic.h`:<br/>
 `multiplyHigh` (`mulHi`)<br/>
 `isMultipleOf`, `nextMultipleOf`, `prevMultipleOf`<br/>
 [`icopysign`](https://gcc.gnu.org/onlinedocs/gfortran/SIGN.html)<br/>
@@ -9,7 +9,7 @@
 - [ISO/IEC Part 2: Elementary numerical functions](http://www.open-std.org/jtc1/sc22/wg11/docs/n462.pdf)
 - [ISO/IEC Part 3: Complex integer and floating point arithmetic and complex elementary numerical functions](http://www.open-std.org/jtc1/sc22/wg11/docs/n497.pdf)
 
-`bit.h`:<br/>
+# `bit.h`:<br/>
 {`bitCount`|`popCount`}<br/>
 `rotateLeft`, `rotateRight`<br/>
 `clear` (~~`reset`~~), `set`, `flip`<br/>
@@ -20,13 +20,13 @@
 
 `(are|have|has|is)SameSign[um]`
 
-`ctype.h`:<br/>
+# `ctype.h`:<br/>
 `isAscii`, `toAscii`
 
-`debug.h` (`check.h`):<br/>
+# `debug.h` (`check.h`):<br/>
 `checkArray` (`checkPointer`), `checkIndexSize`, `checkLengthSize`
 
-`error_handling.h`:<br/>
+# `error_handling.h`:<br/>
 Макрос `EXIT_IF` можно использовать в следующей ситуации: было выделено несколько ресурсов, далее произошла ошибка, `GOTO_IF` перекинул в место, где выделенные ресурсы освобождаются. Когда вызываем функцию для освобождения ресурса, то возвращаемое значение проверяем уже с помощью `EXIT_IF`, а не с помощью `GOTO_IF`. В данном случае напрашивается аналогия с C++ `std::terminate`, которая вызывается, если при обработке исключения, было выброшено еще одно. Возможно, в рамках данной аналогии, имеет смысл вместо функции `exit`, использовать `_Exit`, или даже `abort`. Но вариант, просто `exit` видится более органичным, более интуитивным, так как в точности копирует `return` в `main` (вызывает `atexit` и закрывает файловые дискрипторы). С другой стороны вариант с функцией `abort` ближе по семантике к `std::terminate`. Вариант при котором будет отдельно макрос с `abort` и отдельно с `exit` кажется откровенно спорным.
 
 Так же имеет смысл рассмотреть макрос для вывода сообщений об ошибках в формате POSIX. Например:<br/>
@@ -45,7 +45,7 @@
 [Errors](https://www.gnu.org/prep/standards/html_node/Errors.html)<br/>
 [Error Messages](https://www.gnu.org/software/libc/manual/html_node/Error-Messages.html)
 
-`math.h`:<br/>
+# `math.h`:<br/>
 `fclampf`, `fclamp`, `fclampl`, `lerp`, `saturate`<br/>
 `toDegrees`, `toRadians`<br/>
 `DBL_1_PI`, `DBL_2_PI`, `DBL_2_SQRTPI`, `DBL_E`, `DBL_LN10`, `DBL_LN2`, `DBL_LOG10E`, `DBL_LOG2E`, `DBL_PHI`, `DBL_PI`, `DBL_PI_2`, `DBL_PI_4`, `DBL_SQRT1_2`, `DBL_SQRT2`<br/>
@@ -53,10 +53,10 @@
 `ulp`, `nextDown`, `nextUp`, `union { uint32_t u32; flt f; }`<br/>
 `random`
 
-`numeric.h`:<br/>
+# `numeric.h`:<br/>
 `gcd`, `lcm`, `midpoint`, `fmidpoint`, `isqrt`, `icbrt`
 
-`preprocessor.h`:<br/>
+# `preprocessor.h`:<br/>
 [Integer Properties](https://www.gnu.org/software/gnulib/manual/html_node/Integer-Properties.html)
 - `check_*` (`checked_*`), `is_*_overflow`, ~~`is_*_undefined`~~
 - `wrapping_*`, ~~`overflowing_*`~~
@@ -68,7 +68,14 @@
 `type_generic.h`:<br/>
 `TYPE_GENERIC_POINTER`
 
-`utility.h`:<br/>
+# `utility.h`:<br/>
+`memSwap`:
+- изменить имена переменных `s1` и `s2` на `src1` и `src2` ???
+- изменить имя переменной `n` на `size` или `length` (контрпример: `strn{cat,cmp,cpy,len}`) ???
+- изменить имя переменной `offset` на `step` ???
+- сделать `const`-антной переменную `size_t n`. Вместо `n -= offset` использовать `offset = min(LEVEL1_DCACHE_LINESIZE, (size_t) (end1 - s1))` ???
+- На данный момент используются разные реализации в зависимости от макроса `NDEBUG`. Будет лучше подставлять разные реализацию для `inline` и `extern` ???
+
 Три уровня интерфейса:
 - Два указателя (`mem*`)
 - Элемент массива и указатель (`elemGet`, `elemSet`, `elem*`/`elem*Mem`) ???
