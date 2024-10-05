@@ -14,9 +14,9 @@
 `rotateLeft`, `rotateRight`<br/>
 `clear` (~~`reset`~~), `set`, `flip`<br/>
  `getBit` (`testBit`):<br/>
- - `testAll` (`isAll`, ~~`getAll`~~, [Ruby](https://ruby-doc.org/core-3.1.2/Integer.html#method-i-allbits-3F))
- - `testAny` (`isAny`, ~~`getAny`~~, [Ruby](https://ruby-doc.org/core-3.1.2/Integer.html#method-i-anybits-3F))
- - `testNone` (`isNone`, ~~`getNone`~~, [Ruby](https://ruby-doc.org/core-3.1.2/Integer.html#method-i-nobits-3F))
+ - `testAll` (`isAll`, ~~`getAll`~~, [Ruby](https://ruby-doc.org/current/Integer.html#method-i-allbits-3F))
+ - `testAny` (`isAny`, ~~`getAny`~~, [Ruby](https://ruby-doc.org/current/Integer.html#method-i-anybits-3F))
+ - `testNone` (`isNone`, ~~`getNone`~~, [Ruby](https://ruby-doc.org/current/Integer.html#method-i-nobits-3F))
 
 `(are|have|has|is)SameSign[um]`
 
