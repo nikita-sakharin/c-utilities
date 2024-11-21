@@ -44,6 +44,8 @@ SOURCES=$(shell find ./src -name '*.c' -type f -print)
 HEADERS=$(shell find ./include -name '*.h' -type f -print)
 OBJECTS=$(SOURCES:.c=.o)
 EXECUTABLE=libc-commons.a
+TEST_SOURCES=$(shell find ./test -name '*.c' -type f -print) # '*.test.c'
+TEST_EXECUTABLE=$(TEST_SOURCES:.c=)
 
 .PHONY: all clean
 
@@ -55,11 +57,18 @@ release: CFLAGS+=-DNDEBUG -O3 -flto -march=native -mtune=native -s
 release: LDFLAGS+=-O3 -flto -march=native -mtune=native -s
 release: all
 
+# out-of-source `build` directory
 $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(LDFLAGS) $(OBJECTS) $(LDLIBS) -o $@
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+%: %.c $(OBJECTS)
+	$(CC) $(CFLAGS) $(OBJECTS) $< -o $@
+
+check: $(TEST_EXECUTABLE)
+	$(TEST_EXECUTABLE)
+
 clean:
-	$(RM) $(OBJECTS) $(EXECUTABLE)
+	$(RM) $(OBJECTS) $(EXECUTABLE) $(TEST_EXECUTABLE)
